@@ -1,5 +1,5 @@
 package es.uniovi.seti.Model;
 
-public class Question {
+public interface Question {
 
 }
