@@ -7,5 +7,8 @@ Mezclado con Eclipse
 Cambiando en Eclipse pasando de GitHub
 Desde Github provocando conflicto con Eclipse
 Mezclando de nuevo desde Eclipse
-hola hhhhhklsvalalaskdffkldñadfhbvd
+hola hhhhhklsvalalaskdffkldÃ±adfhbvd
 prueba de push
+
+Como conectar a MongoDB
+https://josemmsimo.wordpress.com/2014/01/02/conectando-una-aplicacion-java-con-mongodb-en-windows/
