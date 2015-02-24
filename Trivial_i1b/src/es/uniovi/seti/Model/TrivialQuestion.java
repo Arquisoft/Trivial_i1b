@@ -1,5 +1,7 @@
 package es.uniovi.seti.Model;
 
+import java.util.List;
+
 public class TrivialQuestion {
   
   private String question; 
