@@ -1,5 +1,10 @@
 package es.uniovi.seti.DataBase;
 
-public interface DBConnector {
+import com.mongodb.MongoClient;
 
+public interface DBConnector {
+	public MongoClient getConexion();
+	
+	
 }
+
