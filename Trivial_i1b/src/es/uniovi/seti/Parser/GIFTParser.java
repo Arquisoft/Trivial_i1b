@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.uniovi.seti.Model.Question;
-import es.uniovi.seti.Model.TrivialQuestion;
 
 public class GIFTParser implements Parser{
 	
