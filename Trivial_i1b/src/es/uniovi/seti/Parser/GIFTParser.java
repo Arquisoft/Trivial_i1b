@@ -15,45 +15,35 @@ public class GIFTParser implements Parser {
 	private List<Question> questions;
 	private BufferedReader reader;
 
-	public GIFTParser(String file) {
-		try {
-			reader = new BufferedReader(new FileReader(file));
-			questions = new ArrayList<Question>();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void parse() {
-		try {
-			String line = "";
-			String question = "";
-			List<String> answers = new ArrayList<String>();
-			int correctAnswer = 0;
-			int counter = 0;
-			while ((line = reader.readLine()) != null) {
-				line = line.trim();
-
-				if (line.startsWith("::")) {
-					question = line;
-				} else if (line.startsWith("~")) {
-					answers.add(line);
-					counter++;
-				} else if (line.startsWith("=")) {
-					answers.add(line);
-					correctAnswer = counter;
-				} else if (line.startsWith("}")){
-					questions.add(new TrivialQuestion(question, new ArrayList<>(answers), correctAnswer));
-					question = "";
-					answers.clear();
-					correctAnswer = 0;
-					counter = 0;
-				}
+private void parse() {
+	try {
+		String line = "";
+		String question = "";
+		List<String> answers = new ArrayList<String>();
+		int correctAnswer = 0;
+		int counter = 0;
+		while ((line = reader.readLine()) != null) {
+			line = line.trim();
+			if (line.startsWith("::")) {
+				question = line.split(":")[4];
+			} else if (line.startsWith("~")) {
+				answers.add(line.replace("~",""));
+				counter++;
+			} else if (line.startsWith("=")) {
+				answers.add(line.replace("=",""));
+				correctAnswer = counter;
+			} else if (line.startsWith("}")){
+				questions.add(new TrivialQuestion(question, new ArrayList<>(answers), correctAnswer));
+				question = "";
+				answers.clear();
+				correctAnswer = 0;
+				counter = 0;
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
+	} catch (IOException e) {
+		e.printStackTrace();
 	}
+}
 
 	@Override
 	public List<Question> getQuestions() {
