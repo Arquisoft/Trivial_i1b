@@ -1,5 +1,9 @@
 package es.uniovi.seti.Model;
 
-public interface Question {
+import java.util.List;
 
+public interface Question {
+	
+	public String getQuestion();
+	public List<String> getAnswers();
 }
