@@ -44,7 +44,7 @@ public class XMLParser implements Parser {
 			for(int j = 0; j < answerList.getLength(); j++)
 			{
 				Element answer = (Element) answerList.item(j);
-				answers.add(answer.getNodeValue());
+				answers.add(answer.getAttribute("value"));
 				if(answer.getAttribute("correctAnswer") != null)
 					correctAnswer = j;
 			}
