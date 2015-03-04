@@ -1,14 +1,14 @@
-package es.uniovi.seti.DBWritter;
+package Trivial_i1b.Trivial_i1b.DBWritter;
 
 import java.util.List;
+
+import Trivial_i1b.Trivial_i1b.DataBase.MongoDBConnector;
+import Trivial_i1b.Trivial_i1b.Model.Question;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
-
-import es.uniovi.seti.DataBase.MongoDBConnector;
-import es.uniovi.seti.Model.Question;
 
 public class MongoDBWriter implements DBWriter {
 	

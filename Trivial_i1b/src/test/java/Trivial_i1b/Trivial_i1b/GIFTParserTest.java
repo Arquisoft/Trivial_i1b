@@ -1,20 +1,20 @@
-package es.uniovi.seti.Tests;
+package Trivial_i1b.Trivial_i1b;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
 import org.junit.Test;
 
-import es.uniovi.seti.Model.Question;
-import es.uniovi.seti.Parser.GIFTParser;
+import Trivial_i1b.Trivial_i1b.Model.Question;
+import Trivial_i1b.Trivial_i1b.Parser.GIFTParser;
 
 public class GIFTParserTest {
 
 	private List<Question> questions;
 
 	private void initialize() {
-		questions = new GIFTParser("test.gift").getQuestions();
+		questions = new GIFTParser("src/test/resources/test.gift").getQuestions();
 	}
 
 	@Test

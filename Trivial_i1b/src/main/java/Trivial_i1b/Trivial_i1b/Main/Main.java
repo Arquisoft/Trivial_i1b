@@ -1,11 +1,11 @@
-package es.uniovi.seti.Main;
+package Trivial_i1b.Trivial_i1b.Main;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import es.uniovi.seti.Parser.GIFTParser;
-import es.uniovi.seti.Parser.XMLParser;
+import Trivial_i1b.Trivial_i1b.Parser.GIFTParser;
+import Trivial_i1b.Trivial_i1b.Parser.XMLParser;
 
 public class Main {
 

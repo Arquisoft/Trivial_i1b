@@ -1,4 +1,4 @@
-package es.uniovi.seti.Model;
+package Trivial_i1b.Trivial_i1b.Model;
 
 import java.util.List;
 

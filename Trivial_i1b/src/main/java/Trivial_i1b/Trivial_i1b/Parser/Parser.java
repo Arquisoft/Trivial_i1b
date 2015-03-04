@@ -1,8 +1,8 @@
-package es.uniovi.seti.Parser;
+package Trivial_i1b.Trivial_i1b.Parser;
 
 import java.util.List;
 
-import es.uniovi.seti.Model.Question;
+import Trivial_i1b.Trivial_i1b.Model.Question;
 
 public interface Parser {
 

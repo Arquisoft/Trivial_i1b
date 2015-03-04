@@ -1,4 +1,4 @@
-package es.uniovi.seti.DataBase;
+package Trivial_i1b.Trivial_i1b.DataBase;
 
 import com.mongodb.MongoClient;
 

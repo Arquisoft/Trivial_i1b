@@ -1,4 +1,4 @@
-package es.uniovi.seti.Tests;
+package Trivial_i1b.Trivial_i1b;
 
 import static org.junit.Assert.assertTrue;
 
@@ -8,10 +8,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.uniovi.seti.Model.Question;
-import es.uniovi.seti.Model.TrivialQuestion;
-import es.uniovi.seti.Parser.Parser;
-import es.uniovi.seti.Parser.XMLParser;
+import Trivial_i1b.Trivial_i1b.Model.Question;
+import Trivial_i1b.Trivial_i1b.Model.TrivialQuestion;
+import Trivial_i1b.Trivial_i1b.Parser.Parser;
+import Trivial_i1b.Trivial_i1b.Parser.XMLParser;
 
 public class XMLParserTest {
 	
@@ -35,7 +35,7 @@ public class XMLParserTest {
 
 	@Test
 	public void test() {
-		Parser xmlParser = new XMLParser("test.xml");
+		Parser xmlParser = new XMLParser("src/test/resources/test.xml");
 		List<Question> returnedValues = xmlParser.getQuestions();
 		for (int i = 0; i < expectedValues.size(); i++) {
 			assertTrue(expectedValues.get(i).getQuestion().equals(returnedValues.get(i).getQuestion()));

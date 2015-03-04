@@ -1,4 +1,4 @@
-package es.uniovi.seti.Parser;
+package Trivial_i1b.Trivial_i1b.Parser;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +13,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import es.uniovi.seti.Model.Question;
-import es.uniovi.seti.Model.TrivialQuestion;
+import Trivial_i1b.Trivial_i1b.Model.Question;
+import Trivial_i1b.Trivial_i1b.Model.TrivialQuestion;
 
 public class XMLParser implements Parser {
 
