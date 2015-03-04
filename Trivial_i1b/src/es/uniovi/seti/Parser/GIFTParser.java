@@ -34,12 +34,12 @@ public class GIFTParser implements Parser {
 			while ((line = reader.readLine()) != null) {
 				line = line.trim();
 				if (line.startsWith("::")) {
-					question = line.split(":")[4];
+					question = line.split(":")[4].replace("{", "").trim();
 				} else if (line.startsWith("~")) {
-					answers.add(line.replace("~", ""));
+					answers.add(line.replace("~", "").trim());
 					counter++;
 				} else if (line.startsWith("=")) {
-					answers.add(line.replace("=", ""));
+					answers.add(line.replace("=", "").trim());
 					correctAnswer = counter;
 				} else if (line.startsWith("}")) {
 					questions.add(new TrivialQuestion(question,
