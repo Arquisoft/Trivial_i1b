@@ -11,7 +11,7 @@
     <name>Trivia_ilb</name>
 
     <modules>
-        <!--<module>extract</module>-->
+        <!-- <module>extract</module> -->
 	<module>Trivial_i1b</module>
 <!-- Other modules should be added here: <module>...</module> -->
     </modules>
