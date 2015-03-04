@@ -2,13 +2,11 @@ package es.uniovi.seti.Tests;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
 import es.uniovi.seti.Model.Question;
-import es.uniovi.seti.Model.TrivialQuestion;
 import es.uniovi.seti.Parser.GIFTParser;
 
 public class GIFTParserTest {

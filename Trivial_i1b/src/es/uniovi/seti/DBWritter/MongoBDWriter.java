@@ -8,16 +8,16 @@ import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 
 import es.uniovi.seti.DataBase.MongoDBConnector;
-import es.uniovi.seti.Model.TrivialQuestion;
+import es.uniovi.seti.Model.Question;
 
-public class MongoDBWriter implements DBWriter {
+public class MongoBDWriter implements DBWriter {
 	
 	private MongoClient mongo;
-	private List<TrivialQuestion> answers;
+	private List<Question> answers;
 	private DB database;
 	private DBCollection table;
 	
-	public MongoDBWriter(List<TrivialQuestion> answers) {
+	public MongoBDWriter(List<Question> answers) {
 		this.answers = answers;
 	}
 	
@@ -37,15 +37,15 @@ public class MongoDBWriter implements DBWriter {
 		table = database.getCollection("question");
 	}
 	
-	private void addQuestions(List<TrivialQuestion> questions) {
+	private void addQuestions(List<Question> questions) {
 		BasicDBObject question;
-		for (TrivialQuestion q : questions) {
+		for (Question q : questions) {
 			question = createEntries(q);
 			table.insert(question);
 		}
 	}
 	
-	private BasicDBObject createEntries(TrivialQuestion question) {
+	private BasicDBObject createEntries(Question question) {
 		
 		List<String> answers = question.getAnswers();
 		BasicDBObject answer = new BasicDBObject();
