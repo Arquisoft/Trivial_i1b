@@ -21,7 +21,12 @@ public class Main {
 				String[] line = input.readLine().split(" ");
 				
 				if(line[0].equals("read")){
-					readCommand(line);
+					if(line.length > 1)
+						readCommand(line);
+					else
+						System.out.println("Name of file not introduced");
+				} else if(line[0].equals("help")){
+					showHelp();
 				} else if (line[0].equals("exit"))
 					return ;	
 			} catch (IOException e) {
@@ -43,7 +48,8 @@ public class Main {
 
 	private static void showHelp() {
 		System.out.println("This is the help:");
-		System.out.println("Introduce read and the name of the file to read a file");
+		System.out.println("Introduce read and the name of the file to read a file and shows the contents");
+		System.out.println("Introduce help to show the help");		
 		System.out.println("Introduce exit to exit the program");
 		
 	}
