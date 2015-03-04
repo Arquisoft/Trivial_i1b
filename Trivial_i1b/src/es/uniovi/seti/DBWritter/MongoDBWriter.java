@@ -8,52 +8,52 @@ import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 
 import es.uniovi.seti.DataBase.MongoDBConnector;
-import es.uniovi.seti.Model.TrivialQuestion;
+import es.uniovi.seti.Model.Question;
 
 public class MongoDBWriter implements DBWriter {
 	
 	private MongoClient mongo;
-	private List<TrivialQuestion> preguntas;
+	private List<Question> trivialQuestions;
 	private DB database;
 	private DBCollection table;
 	
-	public MongoDBWriter(List<TrivialQuestion> preguntas) {
-		this.preguntas=preguntas;
+	public MongoDBWriter(List<Question> trivialQuestions) {
+		this.trivialQuestions=trivialQuestions;
 	}
 	
 	public void insertQuestions(){
-		mongo=new MongoDBConnector().getConexion();
+		mongo=new MongoDBConnector().getConnection();
 		if (mongo!=null){
-			crearElementos();
-			addPreguntas(preguntas);
+			createElements();
+			addQuestions(trivialQuestions);
 		}
 		else{
-			throw new IllegalStateException("No se ha establecido una conexión con la base de datos");
+			throw new IllegalStateException("The connection to the database has not beem estabished");
 		}
 	}
 	
-	private void crearElementos(){
+	private void createElements(){
 		database=mongo.getDB("Trivial");
-		table=database.getCollection("pregunta");
+		table=database.getCollection("question");
 	}
 	
-	private void addPreguntas(List<TrivialQuestion>preguntas){
-		BasicDBObject pregunta;
-		for (TrivialQuestion question: preguntas){
-			pregunta=crearEntradas(question);
-			table.insert(pregunta);		
+	private void addQuestions(List<Question>questions){
+		BasicDBObject trivialQuestion;
+		for (Question question: questions){
+			trivialQuestion=createEntries(question);
+			table.insert(trivialQuestion);		
 		}
 	}
 	
-	private BasicDBObject crearEntradas(TrivialQuestion question){
-		BasicDBObject pregunta=new BasicDBObject();
+	private BasicDBObject createEntries(Question question){
+		BasicDBObject questionToInsert=new BasicDBObject();
 
 		List<String>answers=question.getAnswers();
-		pregunta.put("pregunta", question.getQuestion());
-		pregunta.put("correcta", answers.remove(question.getPositionTrue()));
-		pregunta.put("erronea1", answers.get(0));
-		pregunta.put("erronea2", answers.get(1));
+		questionToInsert.put("question", question.getQuestion());
+		questionToInsert.put("correct", answers.remove(question.getPositionTrue()));
+		questionToInsert.put("wrong1", answers.get(0));
+		questionToInsert.put("wrong2", answers.get(1));
 		
-		return pregunta;
+		return questionToInsert;
 	}
 }

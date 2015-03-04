@@ -9,19 +9,19 @@ public class MongoDBConnector implements DBConnector {
 	
 	public MongoDBConnector(){}
 
-	private void createConexion() {
+	private void createConnection() {
 		try {
 			mongo = new MongoClient("localhost", 27017);
 		} catch (UnknownHostException e) {
 			System.err
-					.println("No se ha podido establecer la conexion con la base");
+					.println("The connection to the database could not be established");
 		}
 
 	}
 
-	public MongoClient getConexion() {
+	public MongoClient getConnection() {
 		if (mongo == null)
-			createConexion();
+			createConnection();
 		return mongo;
 	}
 }
