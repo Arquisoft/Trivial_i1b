@@ -43,7 +43,7 @@ public class GIFTParser implements Parser {
 					correctAnswer = counter;
 				} else if (line.startsWith("}")) {
 					questions.add(new TrivialQuestion(question,
-							new ArrayList<>(answers), correctAnswer));
+							new ArrayList<String>(answers), correctAnswer));
 					question = "";
 					answers.clear();
 					correctAnswer = 0;
