@@ -55,7 +55,6 @@ public class GIFTParser implements Parser {
 		}
 	}
 
-	@Override
 	public List<Question> getQuestions() {
 		parse();
 		return questions;

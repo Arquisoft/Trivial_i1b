@@ -52,7 +52,6 @@ public class XMLParser implements Parser {
 		}
 	}
 
-	@Override
 	public List<Question> getQuestions() {
 		parse();
 		return questions;
