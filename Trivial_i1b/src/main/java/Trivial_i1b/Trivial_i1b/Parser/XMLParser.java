@@ -26,7 +26,7 @@ public class XMLParser implements Parser {
 			doc = DocumentBuilderFactory.newInstance().newDocumentBuilder()
 					.parse(new File(file));
 			questions = new ArrayList<Question>();
-		} catch (SAXException | IOException | ParserConfigurationException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
