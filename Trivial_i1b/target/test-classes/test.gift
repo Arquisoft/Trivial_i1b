@@ -1,0 +1,17 @@
+::Tema 10 - 001::First Question: {
+     = Good answer
+     ~ Wrong answer
+     ~Another Wrong answer
+}
+
+::Tema 10 - 002::Second Question {
+     =Las modificaciones son posibles, pero con restricciones
+     ~Se permite la redistribución binaria
+     ~En caso de redistribución binaria, es obligada la redistribución de los fuentes
+}
+
+::Tema 10 - 003::Third Question {
+     =Un autor no puede distribuir varias obras con distintas licencias
+     ~Shareware es una forma de licenciar el software comercial
+     ~GPL y BSD permiten la redistribución fuente y binaria
+}
