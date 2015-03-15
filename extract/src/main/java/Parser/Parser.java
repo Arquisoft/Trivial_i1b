@@ -1,8 +1,8 @@
-package Trivial_i1b.Trivial_i1b.Parser;
+package Parser;
 
 import java.util.List;
 
-import Trivial_i1b.Trivial_i1b.Model.Question;
+import Model.Question;
 
 public interface Parser {
 

@@ -1,4 +1,4 @@
-package Trivial_i1b.Trivial_i1b.DataBase;
+package DataBase;
 
 import com.mongodb.MongoClient;
 

@@ -1,4 +1,4 @@
-package Trivial_i1b.Trivial_i1b;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import Trivial_i1b.Trivial_i1b.Model.Question;
-import Trivial_i1b.Trivial_i1b.Parser.GIFTParser;
+import Model.Question;
+import Parser.GIFTParser;
 
 public class GIFTParserTest {
 

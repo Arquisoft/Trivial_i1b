@@ -1,11 +1,11 @@
-package Trivial_i1b.Trivial_i1b.Main;
+package Main;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import Trivial_i1b.Trivial_i1b.Parser.GIFTParser;
-import Trivial_i1b.Trivial_i1b.Parser.XMLParser;
+import Parser.GIFTParser;
+import Parser.XMLParser;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package Trivial_i1b.Trivial_i1b;
+
 
 import static org.junit.Assert.assertTrue;
 
@@ -8,10 +8,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import Trivial_i1b.Trivial_i1b.Model.Question;
-import Trivial_i1b.Trivial_i1b.Model.TrivialQuestion;
-import Trivial_i1b.Trivial_i1b.Parser.Parser;
-import Trivial_i1b.Trivial_i1b.Parser.XMLParser;
+import Model.Question;
+import Model.TrivialQuestion;
+import Parser.Parser;
+import Parser.XMLParser;
 
 public class XMLParserTest {
 	

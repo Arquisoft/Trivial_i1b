@@ -1,4 +1,4 @@
-package Trivial_i1b.Trivial_i1b.DBWritter;
+package DBWritter;
 
 public interface DBWriter {
 

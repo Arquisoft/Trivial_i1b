@@ -1,4 +1,4 @@
-package Trivial_i1b.Trivial_i1b.Parser;
+package Parser;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import Trivial_i1b.Trivial_i1b.Model.Question;
-import Trivial_i1b.Trivial_i1b.Model.TrivialQuestion;
+import Model.Question;
+import Model.TrivialQuestion;
 
 public class XMLParser implements Parser {
 

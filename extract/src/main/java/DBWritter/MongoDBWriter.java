@@ -1,9 +1,9 @@
-package Trivial_i1b.Trivial_i1b.DBWritter;
+package DBWritter;
 
 import java.util.List;
 
-import Trivial_i1b.Trivial_i1b.DataBase.MongoDBConnector;
-import Trivial_i1b.Trivial_i1b.Model.Question;
+import DataBase.MongoDBConnector;
+import Model.Question;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;

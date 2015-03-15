@@ -1,4 +1,4 @@
-package Trivial_i1b.Trivial_i1b.Model;
+package Model;
 
 import java.util.List;
 
