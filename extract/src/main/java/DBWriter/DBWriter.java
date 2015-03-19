@@ -1,4 +1,4 @@
-package DBWritter;
+package DBWriter;
 
 public interface DBWriter {
 
