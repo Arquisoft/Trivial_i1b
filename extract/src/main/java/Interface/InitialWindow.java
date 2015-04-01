@@ -42,6 +42,7 @@ public class InitialWindow extends JFrame {
 		});
 	}
 
+	
 	/**
 	 * Create the frame.
 	 */
