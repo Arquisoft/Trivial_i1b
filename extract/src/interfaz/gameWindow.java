@@ -99,5 +99,5 @@ public class gameWindow extends JFrame {
 			textField.setColumns(10);
 		}
 		return textField;
-	}
+	}------------
 }
