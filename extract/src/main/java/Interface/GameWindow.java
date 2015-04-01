@@ -44,7 +44,7 @@ public class GameWindow extends JFrame {
 	 */
 	public GameWindow() {
 		setTitle("Trivial - Software Architecture");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GameWindow.class.getResource("main/resources/Images/icono.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GameWindow.class.getResource("src/main/resources/Images/icono.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
 		contentPane = new JPanel();
@@ -62,7 +62,7 @@ public class GameWindow extends JFrame {
 	private JLabel getLbTitle() {
 		if (lbTitle == null) {
 			lbTitle = new JLabel("");
-			lbTitle.setIcon(new ImageIcon(GameWindow.class.getResource("main/resources/Images/tituloSmall.png")));
+			lbTitle.setIcon(new ImageIcon(GameWindow.class.getResource("src/main/resources/Images/tituloSmall.png")));
 			lbTitle.setBounds(68, 28, 678, 114);
 		}
 		return lbTitle;
@@ -99,5 +99,5 @@ public class GameWindow extends JFrame {
 			textField.setColumns(10);
 		}
 		return textField;
-	}------------
+	}
 }
