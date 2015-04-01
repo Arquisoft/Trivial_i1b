@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+
 public class NewUserWindow extends JFrame {
 
 	private JPanel contentPane;
@@ -47,7 +48,7 @@ public class NewUserWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public NewUserWindow() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(NewUserWindow.class.getResource("/imagenes/icono.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(NewUserWindow.class.getResource("main/resources/Images/icono.png")));
 		setTitle("Trivial - Software Architecture");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
@@ -72,7 +73,7 @@ public class NewUserWindow extends JFrame {
 	private JLabel getLbTitle() {
 		if (lbTitle == null) {
 			lbTitle = new JLabel("");
-			lbTitle.setIcon(new ImageIcon(NewUserWindow.class.getResource("/imagenes/titulo.png")));
+			lbTitle.setIcon(new ImageIcon(NewUserWindow.class.getResource("main/resources/Images/titulo.png")));
 			lbTitle.setBounds(47, 53, 1175, 184);
 		}
 		return lbTitle;
@@ -80,7 +81,7 @@ public class NewUserWindow extends JFrame {
 	private JLabel getLabel() {
 		if (label == null) {
 			label = new JLabel("");
-			label.setIcon(new ImageIcon(NewUserWindow.class.getResource("/imagenes/labelNewUser.png")));
+			label.setIcon(new ImageIcon(NewUserWindow.class.getResource("main/resources/Images/labelNewUser.png")));
 			label.setBounds(158, 269, 321, 52);
 		}
 		return label;
@@ -146,7 +147,7 @@ public class NewUserWindow extends JFrame {
 	private JLabel getLabel_1() {
 		if (label_1 == null) {
 			label_1 = new JLabel("");
-			label_1.setIcon(new ImageIcon(NewUserWindow.class.getResource("/imagenes/TEXTO.jpg")));
+			label_1.setIcon(new ImageIcon(NewUserWindow.class.getResource("main/resources/Images/TEXTO.jpg")));
 			label_1.setBounds(502, 141, 785, 545);
 		}
 		return label_1;
