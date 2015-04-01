@@ -13,7 +13,6 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-
 public class NewUserWindow extends JFrame {
 
 	private JPanel contentPane;
