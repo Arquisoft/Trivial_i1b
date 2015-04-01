@@ -1,14 +1,12 @@
 import static org.junit.Assert.assertEquals;
 
-import java.util.List;
+import java.awt.Color;
 
 import org.junit.Test;
 
-import Model.Question;
-import Parser.GIFTParser;
 import Interface.InitialWindow;
 
-public class GIFTParserTest {
+public class InitialWindowTest {
 
 	private  InitialWindow window;
 	private Color blue=new Color(0, 0, 139);
@@ -20,9 +18,9 @@ public class GIFTParserTest {
 	public void test() {
 		initialize();
 
-		assertEquals(blue, pnFondo.getBackground());
-		btnRed.doClick();
-		assertEquals(Color.RED, pnFondo.getBackground());
+		assertEquals(blue, window.pnFondo.getBackground());
+		window.getBtnRed().doClick();
+		assertEquals(Color.RED, window.pnFondo.getBackground());
 	}
 
 }
