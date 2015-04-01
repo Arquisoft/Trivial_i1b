@@ -62,7 +62,7 @@ public class GameWindow extends JFrame {
 	private JLabel getLbTitle() {
 		if (lbTitle == null) {
 			lbTitle = new JLabel("");
-			lbTitle.setIcon(new ImageIcon(GameWindow.class.getResource("/imagenes/tituloSmall.png")));
+			lbTitle.setIcon(new ImageIcon(GameWindow.class.getResource("main/resources/Images/tituloSmall.png")));
 			lbTitle.setBounds(68, 28, 678, 114);
 		}
 		return lbTitle;
