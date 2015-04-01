@@ -1,24 +1,9 @@
 package Interface;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.EventQueue;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.Font;
-import javax.swing.JTextField;
 
 
-public class InitialWindow extends JFrame {
+public class initialWindow extends JFrame {
 
-	private JPanel pnFondo;
+	public static JPanel pnFondo;
 	private JButton btnRed;
 	private JButton btnG;
 	private JButton btnBlue;
@@ -33,7 +18,7 @@ public class InitialWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InitialWindow frame = new InitialWindow();
+					initialWindow frame = new initialWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +30,7 @@ public class InitialWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public InitialWindow() {
+	public initialWindow() {
 		final JTextField textField=new JTextField();
 		final JTextField textField_1 = new JTextField();
 		
@@ -55,13 +40,13 @@ public class InitialWindow extends JFrame {
 		final JButton btnLogIn = new JButton("Log in");
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GameWindow game = new GameWindow();
+				gameWindow game = new gameWindow();
 				game.setVisible(true);
 			}
 		});
 
 		final JLabel lblPassword = new JLabel("Password:");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(InitialWindow.class.getResource("main/resources/Images/icono.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(initialWindow.class.getResource("main/resources/Images/icono.png")));
 		setTitle("Trivial - Software Architecture");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
@@ -72,7 +57,7 @@ public class InitialWindow extends JFrame {
 		pnFondo.setLayout(null);
 		
 		JLabel lbTitulo = new JLabel("");
-		lbTitulo.setIcon(new ImageIcon(InitialWindow.class.getResource("main/resources/Images/titulo.png")));
+		lbTitulo.setIcon(new ImageIcon(initialWindow.class.getResource("main/resources/Images/titulo.png")));
 		lbTitulo.setBounds(74, 38, 1334, 183);
 		pnFondo.add(lbTitulo);
 		JButton btLog = new JButton("");
@@ -91,7 +76,7 @@ public class InitialWindow extends JFrame {
 		btLog.setBorderPainted(false);
 		btLog.setBorder(null);
 		btLog.setOpaque(false);
-		btLog.setIcon(new ImageIcon(InitialWindow.class.getResource("main/resources/Images/loginn.png")));
+		btLog.setIcon(new ImageIcon(initialWindow.class.getResource("main/resources/Images/loginn.png")));
 		btLog.setBounds(456, 248, 302, 159);
 		pnFondo.add(btLog);
 		
@@ -99,11 +84,11 @@ public class InitialWindow extends JFrame {
 		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewUserWindow ventana = new NewUserWindow();
+				newUser ventana = new newUser();
 				ventana.setVisible(true);
 			}
 		});
-		button.setIcon(new ImageIcon(InitialWindow.class.getResource("main/resources/Images/newuser.png")));
+		button.setIcon(new ImageIcon(initialWindow.class.getResource("main/resources/Images/newuser.png")));
 		button.setOpaque(false);
 		button.setFocusPainted(false);
 		button.setContentAreaFilled(false);
@@ -151,16 +136,22 @@ public class InitialWindow extends JFrame {
 			btnRed.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					pnFondo.setBackground(Color.RED);
+					
 				}
 			});
 			btnRed.setBounds(70, 324, 89, 23);
 		}
-		
 		return btnRed;
 	}
 	private JButton getBtnG() {
 		if (btnG == null) {
 			btnG = new JButton("Green");
+			btnG.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					pnFondo.setBackground(new Color(50,205,50));
+				}
+			});
+			btnG.setBackground(new Color(50, 205, 50));
 			btnG.setBounds(70, 361, 89, 23);
 		}
 		return btnG;
@@ -168,6 +159,12 @@ public class InitialWindow extends JFrame {
 	private JButton getBtnBlue() {
 		if (btnBlue == null) {
 			btnBlue = new JButton("Blue");
+			btnBlue.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					pnFondo.setBackground(new Color (0, 0, 205));
+				}
+			});
+			btnBlue.setBackground(new Color(0, 0, 205));
 			btnBlue.setBounds(70, 399, 89, 23);
 		}
 		return btnBlue;
@@ -175,6 +172,12 @@ public class InitialWindow extends JFrame {
 	private JButton getBtnPink() {
 		if (btnPink == null) {
 			btnPink = new JButton("Pink");
+			btnPink.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					pnFondo.setBackground(Color.PINK);
+				}
+			});
+			btnPink.setBackground(Color.PINK);
 			btnPink.setBounds(70, 436, 89, 23);
 		}
 		return btnPink;
@@ -182,6 +185,12 @@ public class InitialWindow extends JFrame {
 	private JButton getBtnYellow() {
 		if (btnYellow == null) {
 			btnYellow = new JButton("Yellow");
+			btnYellow.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					pnFondo.setBackground(Color.YELLOW);
+				}
+			});
+			btnYellow.setBackground(Color.YELLOW);
 			btnYellow.setBounds(70, 470, 89, 23);
 		}
 		return btnYellow;

@@ -44,7 +44,7 @@ public class GameWindow extends JFrame {
 	 */
 	public GameWindow() {
 		setTitle("Trivial - Software Architecture");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GameWindow.class.getResource("/imagenes/icono.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GameWindow.class.getResource("main/resources/Images/icono.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
 		contentPane = new JPanel();
