@@ -1,4 +1,4 @@
-package interfaz;
+package Interface;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -14,7 +14,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 
 
-public class gameWindow extends JFrame {
+public class GameWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lbTitle;
@@ -30,7 +30,7 @@ public class gameWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					gameWindow frame = new gameWindow();
+					GameWindow frame = new GameWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,9 +42,9 @@ public class gameWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public gameWindow() {
+	public GameWindow() {
 		setTitle("Trivial - Software Architecture");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(gameWindow.class.getResource("/imagenes/icono.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GameWindow.class.getResource("/imagenes/icono.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
 		contentPane = new JPanel();
@@ -62,7 +62,7 @@ public class gameWindow extends JFrame {
 	private JLabel getLbTitle() {
 		if (lbTitle == null) {
 			lbTitle = new JLabel("");
-			lbTitle.setIcon(new ImageIcon(gameWindow.class.getResource("/imagenes/tituloSmall.png")));
+			lbTitle.setIcon(new ImageIcon(GameWindow.class.getResource("/imagenes/tituloSmall.png")));
 			lbTitle.setBounds(68, 28, 678, 114);
 		}
 		return lbTitle;

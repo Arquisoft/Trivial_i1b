@@ -1,4 +1,4 @@
-package interfaz;
+package Interface;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 
-public class newUser extends JFrame {
+public class NewUserWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lbTitle;
@@ -35,7 +35,7 @@ public class newUser extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					newUser frame = new newUser();
+					NewUserWindow frame = new NewUserWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,8 +47,8 @@ public class newUser extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public newUser() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(newUser.class.getResource("/imagenes/icono.png")));
+	public NewUserWindow() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(NewUserWindow.class.getResource("/imagenes/icono.png")));
 		setTitle("Trivial - Software Architecture");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
@@ -73,7 +73,7 @@ public class newUser extends JFrame {
 	private JLabel getLbTitle() {
 		if (lbTitle == null) {
 			lbTitle = new JLabel("");
-			lbTitle.setIcon(new ImageIcon(newUser.class.getResource("/imagenes/titulo.png")));
+			lbTitle.setIcon(new ImageIcon(NewUserWindow.class.getResource("/imagenes/titulo.png")));
 			lbTitle.setBounds(47, 53, 1175, 184);
 		}
 		return lbTitle;
@@ -81,7 +81,7 @@ public class newUser extends JFrame {
 	private JLabel getLabel() {
 		if (label == null) {
 			label = new JLabel("");
-			label.setIcon(new ImageIcon(newUser.class.getResource("/imagenes/labelNewUser.png")));
+			label.setIcon(new ImageIcon(NewUserWindow.class.getResource("/imagenes/labelNewUser.png")));
 			label.setBounds(158, 269, 321, 52);
 		}
 		return label;
@@ -147,7 +147,7 @@ public class newUser extends JFrame {
 	private JLabel getLabel_1() {
 		if (label_1 == null) {
 			label_1 = new JLabel("");
-			label_1.setIcon(new ImageIcon(newUser.class.getResource("/imagenes/TEXTO.jpg")));
+			label_1.setIcon(new ImageIcon(NewUserWindow.class.getResource("/imagenes/TEXTO.jpg")));
 			label_1.setBounds(502, 141, 785, 545);
 		}
 		return label_1;
