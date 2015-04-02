@@ -50,12 +50,19 @@ public class MongoDBWriter implements DBWriter {
 	private Document createEntries(Question question) {
 		Document questionToInsert = new Document();
 
-		List<String> answers = question.getAnswers();
 		questionToInsert.put("question", question.getQuestion());
-		questionToInsert.put("correct",
-				answers.remove(question.getPositionTrue()));
-		questionToInsert.put("wrong1", answers.get(0));
-		questionToInsert.put("wrong2", answers.get(1));
+		List<String> answers = question.getAnswers();
+		
+		for(int i = 0; i < answers.size(); i++)
+			if(i == question.getPositionTrue())
+				questionToInsert.put("corect", answers.get(i));
+			else
+				questionToInsert.put("wrong" + i, answers.get(i));
+		
+//		questionToInsert.put("correct",
+//				answers.remove(question.getPositionTrue()));
+//		questionToInsert.put("wrong1", answers.get(0));
+//		questionToInsert.put("wrong2", answers.get(1));
 
 		return questionToInsert;
 	}
