@@ -15,6 +15,10 @@ import javax.swing.border.EmptyBorder;
 
 public class NewUserWindow extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lbTitle;
 	private JLabel label;
@@ -25,7 +29,6 @@ public class NewUserWindow extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JButton btnOk;
-	private JLabel label_1;
 
 	/**
 	 * Launch the application.
@@ -66,13 +69,12 @@ public class NewUserWindow extends JFrame {
 		contentPane.add(getTextField_1());
 		contentPane.add(getTextField_2());
 		contentPane.add(getBtnOk());
-		contentPane.add(getLabel_1());
 	}
 
 	private JLabel getLbTitle() {
 		if (lbTitle == null) {
 			lbTitle = new JLabel("");
-			lbTitle.setIcon(new ImageIcon(NewUserWindow.class.getResource("src/main/resources/Images/titulo.png")));
+			lbTitle.setIcon(new ImageIcon(NewUserWindow.class.getResource("/Images/titulo.png")));
 			lbTitle.setBounds(47, 53, 1175, 184);
 		}
 		return lbTitle;
@@ -142,13 +144,5 @@ public class NewUserWindow extends JFrame {
 			btnOk.setBounds(221, 522, 89, 23);
 		}
 		return btnOk;
-	}
-	private JLabel getLabel_1() {
-		if (label_1 == null) {
-			label_1 = new JLabel("");
-			label_1.setIcon(new ImageIcon(NewUserWindow.class.getResource("src/main/resources/Images/TEXTO.jpg")));
-			label_1.setBounds(502, 141, 785, 545);
-		}
-		return label_1;
 	}
 }
