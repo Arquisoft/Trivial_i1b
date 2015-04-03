@@ -2,16 +2,22 @@ package logic;
 
 public class User {
 	
-	private String user;
+	private String username;
 	private String password;
 	private String email;
 
-	public String getUser() {
-		return user;
+	public User(String username, String password, String email) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String user) {
+		this.username = user;
 	}
 
 	public String getPassword() {
