@@ -49,6 +49,7 @@ public class MongoUserManager {
 		Document doc = new Document();
 		doc.put("user", user.getUser());
 		doc.put("password", user.getPassword());
+		doc.put("email", user.getEmail());
 		return doc;
 	}
 
