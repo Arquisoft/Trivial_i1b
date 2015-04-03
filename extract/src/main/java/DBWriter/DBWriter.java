@@ -1,6 +1,10 @@
 package DBWriter;
 
+import java.util.List;
+
+import Model.Question;
+
 public interface DBWriter {
 
-	void insertQuestions();
+	void insertQuestions(List<Question> trivialQuestions);
 }

@@ -13,20 +13,21 @@ import com.mongodb.client.MongoDatabase;
 
 public class MongoDBWriter implements DBWriter {
 
+	private final static String DATABASE_NAME= "game";
+	private static final String QUESTIONS_COLLECTION = "questions";
+	
 	private MongoClient mongo;
-	private List<Question> trivialQuestions;
 	private MongoDatabase database;
 	private MongoCollection<Document> table;
 
-	public MongoDBWriter(List<Question> trivialQuestions) {
-		this.trivialQuestions = trivialQuestions;
+	public MongoDBWriter() {
+		mongo = new MongoDBConnector().getConnection();
 	}
 
-	public void insertQuestions() {
-		mongo = new MongoDBConnector().getConnection();
+	public void insertQuestions(List<Question> trivialQuestions) {
 		if (mongo != null) {
 			createElements();
-			addQuestions();
+			addQuestions(trivialQuestions);
 		} else {
 			throw new IllegalStateException(
 					"The connection to the database has not beem estabished");
@@ -34,12 +35,11 @@ public class MongoDBWriter implements DBWriter {
 	}
 
 	private void createElements() {
-		database = mongo.getDatabase("localhost");
-		database.createCollection("questions");
-		table = database.getCollection("question");
+		database = mongo.getDatabase(DATABASE_NAME);
+		table = database.getCollection(QUESTIONS_COLLECTION);
 	}
 
-	private void addQuestions() {
+	private void addQuestions(List<Question> trivialQuestions) {
 		Document trivialQuestion;
 		for (Question question : trivialQuestions) {
 			trivialQuestion = createEntries(question);
@@ -55,7 +55,7 @@ public class MongoDBWriter implements DBWriter {
 		
 		for(int i = 0; i < answers.size(); i++)
 			if(i == question.getPositionTrue())
-				questionToInsert.put("corect", answers.get(i));
+				questionToInsert.put("correct", answers.get(i));
 			else
 				questionToInsert.put("wrong" + i, answers.get(i));
 		

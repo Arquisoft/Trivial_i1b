@@ -23,7 +23,7 @@ public class InitialWindow extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static JPanel pnFondo;
+	public JPanel pnFondo;
 	private JButton btnRed;
 	private JButton btnG;
 	private JButton btnBlue;
