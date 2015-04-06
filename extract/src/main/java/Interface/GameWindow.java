@@ -1,3 +1,4 @@
+
 package Interface;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -70,10 +71,6 @@ public class GameWindow extends JFrame {
 		}
 		return lbTitle;
 	}
-/**
-* The buttons for each corner of the panel have to be rotated
-*
-**/
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
@@ -168,3 +165,4 @@ public class GameWindow extends JFrame {
 		return textField;
 	}
 }
+>>>>>>> 952e4c174f21f14705e51655c043b28e29eaf1db
