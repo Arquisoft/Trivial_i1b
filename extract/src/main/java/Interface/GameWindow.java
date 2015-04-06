@@ -70,6 +70,10 @@ public class GameWindow extends JFrame {
 		}
 		return lbTitle;
 	}
+/**
+* The buttons for each corner of the panel have to be rotated
+*
+**/
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
