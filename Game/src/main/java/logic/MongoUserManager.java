@@ -18,7 +18,7 @@ public class MongoUserManager {
 	private static MongoClient mongo;
 	private static MongoDatabase db;
 	private static MongoCollection<Document> table;
-
+	
 	public static boolean saveUser(User user) {
 		try {
 			connectDatabase();
