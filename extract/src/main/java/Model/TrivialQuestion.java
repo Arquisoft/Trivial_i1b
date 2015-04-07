@@ -3,12 +3,23 @@ package Model;
 import java.util.List;
 
 public class TrivialQuestion implements Question {
+	
+	public enum Categories {
+		GEOGRAPHY(0), ENTERTAINMENT(1), HISTORY(2), ART(3), SCIENCE(4), SPORT(5);
+		private int value;
+
+		private Categories(int value) {
+			this.value = value;
+		}
+	};
 
 	private String question;
 
 	private List<String> answers;
 
 	private int positionTrue;
+	
+	private Categories category;
 
 	public TrivialQuestion(String question, List<String> answers,
 			int positionTrue) {
@@ -27,6 +38,14 @@ public class TrivialQuestion implements Question {
 
 	public int getPositionTrue() {
 		return this.positionTrue;
+	}
+
+	public Categories getCategory() {
+		return category;
+	}
+
+	public void setCategory(Categories category) {
+		this.category = category;
 	}
 
 	@Override
