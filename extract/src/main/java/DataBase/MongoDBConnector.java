@@ -17,4 +17,8 @@ public class MongoDBConnector implements DBConnector {
 			createConnection();
 		return mongo;
 	}
+	
+	public void closeConnection() {
+		mongo.close();
+	}
 }

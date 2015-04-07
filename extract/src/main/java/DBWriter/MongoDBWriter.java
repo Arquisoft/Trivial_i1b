@@ -42,12 +42,12 @@ public class MongoDBWriter implements DBWriter {
 	private void addQuestions(List<Question> trivialQuestions) {
 		Document trivialQuestion;
 		for (Question question : trivialQuestions) {
-			trivialQuestion = createEntries(question);
+			trivialQuestion = createEntrie(question);
 			table.insertOne(trivialQuestion);
 		}
 	}
 
-	private Document createEntries(Question question) {
+	private Document createEntrie(Question question) {
 		Document questionToInsert = new Document();
 
 		questionToInsert.put("question", question.getQuestion());
