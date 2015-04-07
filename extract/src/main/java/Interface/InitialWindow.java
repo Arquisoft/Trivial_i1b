@@ -23,7 +23,7 @@ public class InitialWindow extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static JPanel pnFondo;
+	public JPanel pnFondo;
 	private JButton btnRed;
 	private JButton btnG;
 	private JButton btnBlue;
@@ -66,7 +66,7 @@ public class InitialWindow extends JFrame {
 		});
 
 		final JLabel lblPassword = new JLabel("Password:");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(InitialWindow.class.getResource("/src/main/java/Images/icono.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(InitialWindow.class.getResource("/Images/icono.png")));
 		setTitle("Trivial - Software Architecture");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
@@ -77,7 +77,7 @@ public class InitialWindow extends JFrame {
 		pnFondo.setLayout(null);
 		
 		JLabel lbTitulo = new JLabel("");
-		lbTitulo.setIcon(new ImageIcon(InitialWindow.class.getResource("/src/main/java/Images/titulo.png")));
+		lbTitulo.setIcon(new ImageIcon(InitialWindow.class.getResource("/Images/titulo.png")));
 		lbTitulo.setBounds(74, 38, 1334, 183);
 		pnFondo.add(lbTitulo);
 		JButton btLog = new JButton("");
@@ -96,7 +96,7 @@ public class InitialWindow extends JFrame {
 		btLog.setBorderPainted(false);
 		btLog.setBorder(null);
 		btLog.setOpaque(false);
-		btLog.setIcon(new ImageIcon(InitialWindow.class.getResource("/src/main/java/Images/loginn.png")));
+		btLog.setIcon(new ImageIcon(InitialWindow.class.getResource("/Images/loginn.png")));
 		btLog.setBounds(456, 248, 302, 159);
 		pnFondo.add(btLog);
 		
@@ -108,13 +108,13 @@ public class InitialWindow extends JFrame {
 				ventana.setVisible(true);
 			}
 		});
-		button.setIcon(new ImageIcon(InitialWindow.class.getResource("/src/main/java/Images/newuser.png")));
+		button.setIcon(new ImageIcon(InitialWindow.class.getResource("/Images/newuser.png")));
 		button.setOpaque(false);
 		button.setFocusPainted(false);
 		button.setContentAreaFilled(false);
 		button.setBorderPainted(false);
 		button.setBorder(null);
-		button.setBounds(434, 441, 351, 172);
+		button.setBounds(439, 436, 310, 164);
 		pnFondo.add(button);
 		
 		

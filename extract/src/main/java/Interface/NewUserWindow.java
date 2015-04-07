@@ -15,6 +15,10 @@ import javax.swing.border.EmptyBorder;
 
 public class NewUserWindow extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lbTitle;
 	private JLabel label;
@@ -25,7 +29,6 @@ public class NewUserWindow extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JButton btnOk;
-	private JLabel label_1;
 
 	/**
 	 * Launch the application.
@@ -47,7 +50,7 @@ public class NewUserWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public NewUserWindow() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(NewUserWindow.class.getResource("src/main/resources/Images/icono.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GameWindow.class.getResource("/Images/icono.png")));
 		setTitle("Trivial - Software Architecture");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
@@ -66,13 +69,12 @@ public class NewUserWindow extends JFrame {
 		contentPane.add(getTextField_1());
 		contentPane.add(getTextField_2());
 		contentPane.add(getBtnOk());
-		contentPane.add(getLabel_1());
 	}
 
 	private JLabel getLbTitle() {
 		if (lbTitle == null) {
 			lbTitle = new JLabel("");
-			lbTitle.setIcon(new ImageIcon(NewUserWindow.class.getResource("src/main/resources/Images/titulo.png")));
+			lbTitle.setIcon(new ImageIcon(NewUserWindow.class.getResource("/Images/titulo.png")));
 			lbTitle.setBounds(47, 53, 1175, 184);
 		}
 		return lbTitle;
@@ -80,7 +82,7 @@ public class NewUserWindow extends JFrame {
 	private JLabel getLabel() {
 		if (label == null) {
 			label = new JLabel("");
-			label.setIcon(new ImageIcon(NewUserWindow.class.getResource("src/main/resources/Images/labelNewUser.png")));
+			label.setIcon(new ImageIcon(NewUserWindow.class.getResource("/Images/labelNewUser.png")));
 			label.setBounds(158, 269, 321, 52);
 		}
 		return label;
@@ -142,13 +144,5 @@ public class NewUserWindow extends JFrame {
 			btnOk.setBounds(221, 522, 89, 23);
 		}
 		return btnOk;
-	}
-	private JLabel getLabel_1() {
-		if (label_1 == null) {
-			label_1 = new JLabel("");
-			label_1.setIcon(new ImageIcon(NewUserWindow.class.getResource("src/main/resources/Images/TEXTO.jpg")));
-			label_1.setBounds(502, 141, 785, 545);
-		}
-		return label_1;
 	}
 }
