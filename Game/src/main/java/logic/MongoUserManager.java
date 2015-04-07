@@ -5,22 +5,13 @@ import java.util.List;
 
 import org.bson.Document;
 
-import Model.Question;
-import Model.TrivialQuestion;
-
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 
-public class MongoUserManager {
+public class MongoUserManager extends AbstractMongoManager{
 
 	private static final String COLLECTION_NAME = "users";
 	private static final String DATABASE_NAME = "game";
-
-	private static MongoClient mongo;
-	private static MongoDatabase db;
-	private static MongoCollection<Document> table;
 
 	public static boolean saveUser(User user) {
 		try {

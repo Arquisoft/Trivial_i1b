@@ -5,21 +5,15 @@ import java.util.List;
 
 import org.bson.Document;
 
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-
 import Model.Question;
 import Model.TrivialQuestion;
 
-public class MongoQuestionManager {
+import com.mongodb.MongoClient;
+
+public class MongoQuestionManager extends AbstractMongoManager{
 	
 	private static final String COLLECTION_NAME = "questions";
 	private static final String DATABASE_NAME = "game";
-
-	private static MongoClient mongo;
-	private static MongoDatabase db;
-	private static MongoCollection<Document> table;
 	
 	private static List<Question> getQuestions() {
 		try {
