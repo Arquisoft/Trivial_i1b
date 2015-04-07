@@ -13,9 +13,9 @@ import com.mongodb.client.MongoDatabase;
 
 public class MongoDBWriter implements DBWriter {
 
-	private final static String DATABASE_NAME= "game";
+	private final static String DATABASE_NAME = "game";
 	private static final String QUESTIONS_COLLECTION = "questions";
-	
+
 	private MongoClient mongo;
 	private MongoDatabase database;
 	private MongoCollection<Document> table;
@@ -52,17 +52,17 @@ public class MongoDBWriter implements DBWriter {
 
 		questionToInsert.put("question", question.getQuestion());
 		List<String> answers = question.getAnswers();
-		
-		for(int i = 0; i < answers.size(); i++)
-			if(i == question.getPositionTrue())
-				questionToInsert.put("correct", answers.get(i));
-			else
-				questionToInsert.put("wrong" + i, answers.get(i));
-		
-//		questionToInsert.put("correct",
-//				answers.remove(question.getPositionTrue()));
-//		questionToInsert.put("wrong1", answers.get(0));
-//		questionToInsert.put("wrong2", answers.get(1));
+
+		for (int i = 0; i < answers.size(); i++) {
+			if (i == question.getPositionTrue())
+				questionToInsert.put("correct", i);
+			questionToInsert.put("answer" + i, answers.get(i));
+		}
+
+		// questionToInsert.put("correct",
+		// answers.remove(question.getPositionTrue()));
+		// questionToInsert.put("wrong1", answers.get(0));
+		// questionToInsert.put("wrong2", answers.get(1));
 
 		return questionToInsert;
 	}

@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.bson.Document;
 
+import Model.Question;
+import Model.TrivialQuestion;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -18,7 +21,7 @@ public class MongoUserManager {
 	private static MongoClient mongo;
 	private static MongoDatabase db;
 	private static MongoCollection<Document> table;
-	
+
 	public static boolean saveUser(User user) {
 		try {
 			connectDatabase();
