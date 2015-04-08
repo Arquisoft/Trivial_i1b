@@ -29,7 +29,6 @@ public class NewUserWindow extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JButton btnOk;
-	
 	private JLabel label_1;
 
 	/**
