@@ -46,8 +46,4 @@ public class MongoQuestionManager extends AbstractMongoManager{
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
 	}
-	
-	private static void closeDatabase() {
-		mongo.close();
-	}
 }

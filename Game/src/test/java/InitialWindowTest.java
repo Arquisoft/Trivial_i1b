@@ -25,12 +25,12 @@ public class InitialWindowTest {
 
 }*/
 import static org.junit.Assert.assertEquals;
+import gui.InitialWindow;
 
 import java.awt.Color;
 
 import org.junit.Test;
 
-import Interface.InitialWindow;
 
 public class InitialWindowTest {
 

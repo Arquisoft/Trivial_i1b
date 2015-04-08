@@ -10,7 +10,7 @@ import org.bson.Document;
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 
-public class MongoUserManager extends AbstractMongoManager{
+public class MongoUserManager extends AbstractMongoManager {
 
 	private static final String COLLECTION_NAME = "users";
 	private static final String DATABASE_NAME = "game";
@@ -84,8 +84,9 @@ public class MongoUserManager extends AbstractMongoManager{
 	}
 
 	private static User createUser(Document doc) {
-		User user = new User((String) doc.get("username"),
-				(String) doc.get("password"), (String) doc.get("email"));
+		User user = new User(doc.getString("username"),
+				doc.getString("password"), doc.getString("email"),
+				MongoStatisticsManager.getStatistics(doc.getString("username")));
 		return user;
 	}
 
@@ -101,9 +102,5 @@ public class MongoUserManager extends AbstractMongoManager{
 		mongo = new MongoClient("localhost", 27017);
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
-	}
-
-	private static void closeDatabase() {
-		mongo.close();
 	}
 }
