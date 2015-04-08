@@ -27,6 +27,7 @@ public class GameWindow extends JFrame {
 	private JLabel lblTurnoDelJugador;
 	private JTextField textField;
 	private JTextField txDado;
+	private JLabel label;
 
 	/**
 	 * Launch the application.
@@ -63,6 +64,7 @@ public class GameWindow extends JFrame {
 		contentPane.add(getLblTurnoDelJugador());
 		contentPane.add(getTextField());
 		contentPane.add(getTxDado());
+		contentPane.add(getLabel());
 	}
 
 	private JLabel getLbTitle() {
@@ -76,6 +78,7 @@ public class GameWindow extends JFrame {
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
+			panel.setBackground(SystemColor.desktop);
 			panel.setBounds(79, 195, 760, 505);
 			panel.setLayout(null);
 			
@@ -177,5 +180,13 @@ public class GameWindow extends JFrame {
 			txDado.setColumns(10);
 		}
 		return txDado;
+	}
+	private JLabel getLabel() {
+		if (label == null) {
+			label = new JLabel("");
+			label.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/tablero.jpg")));
+			label.setBounds(0, 0, 500, 473);
+		}
+		return label;
 	}
 }
