@@ -26,6 +26,7 @@ public class GameWindow extends JFrame {
 	private JButton btnPulsarDado;
 	private JLabel lblTurnoDelJugador;
 	private JTextField textField;
+	private JTextField txDado;
 
 	/**
 	 * Launch the application.
@@ -61,6 +62,7 @@ public class GameWindow extends JFrame {
 		contentPane.add(getBtnPulsarDado());
 		contentPane.add(getLblTurnoDelJugador());
 		contentPane.add(getTextField());
+		contentPane.add(getTxDado());
 	}
 
 	private JLabel getLbTitle() {
@@ -141,8 +143,12 @@ public class GameWindow extends JFrame {
 	}
 	private JButton getBtnPulsarDado() {
 		if (btnPulsarDado == null) {
-			btnPulsarDado = new JButton("Pulsar dado");
-			btnPulsarDado.setBounds(810, 90, 89, 23);
+			btnPulsarDado = new JButton("");
+			btnPulsarDado.setContentAreaFilled(false);
+			btnPulsarDado.setBorderPainted(false);
+			btnPulsarDado.setOpaque(false);
+			btnPulsarDado.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/Dado.png")));
+			btnPulsarDado.setBounds(818, 107, 137, 85);
 		}
 		return btnPulsarDado;
 	}
@@ -163,5 +169,13 @@ public class GameWindow extends JFrame {
 			textField.setColumns(10);
 		}
 		return textField;
+	}
+		private JTextField getTxDado() {
+		if (txDado == null) {
+			txDado = new JTextField();
+			txDado.setBounds(949, 122, 86, 53);
+			txDado.setColumns(10);
+		}
+		return txDado;
 	}
 }
