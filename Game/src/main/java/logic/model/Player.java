@@ -2,7 +2,7 @@ package logic.model;
 
 public class Player {
 
-	private String username;
+	private User user;
 	/*
 	 * From 0 to n wedges assigned to each player at the start of the game true
 	 * if the player has match the question, false otherwise, all players start
@@ -10,13 +10,13 @@ public class Player {
 	 */
 	private boolean[] wedges;
 
-	public Player(String username, int numberOfWedges) {
-		this.username = username;
+	public Player(User user, int numberOfWedges) {
+		this.user = user;
 		this.wedges = new boolean[numberOfWedges];
 	}
 
 	public String getUsername() {
-		return username;
+		return user.getUsername();
 	}
 
 	public boolean[] getWedges() {
@@ -24,8 +24,8 @@ public class Player {
 	}
 
 	public boolean allQuestionsMatched() {
-		for (int i = 0; i < wedges.length; i++)
-			if (!wedges[i])
+		for (boolean bool : wedges)
+			if (!bool)
 				return false;
 		return true;
 	}

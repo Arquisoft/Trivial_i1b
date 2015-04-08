@@ -1,14 +1,10 @@
 package logic.DB;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import logic.model.User;
 
 import org.bson.Document;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.MongoClient;
 
 public class MongoUserManager extends AbstractMongoManager {
 
@@ -18,9 +14,9 @@ public class MongoUserManager extends AbstractMongoManager {
 	public static boolean saveUser(User user) {
 		try {
 			connectDatabase();
-			if (getUser(user.getUsername()) != null)
+			if (getUser(user.getUsername()) != null) {
 				table.insertOne(createDocument(user));
-			else
+			} else
 				System.err.println("User with username " + user.getUsername()
 						+ " alredy exists.");
 			return true;
@@ -31,7 +27,7 @@ public class MongoUserManager extends AbstractMongoManager {
 		}
 	}
 
-	public static boolean saveManyUsers(List<User> users) {
+	/*public static boolean saveManyUsers(List<User> users) {
 		try {
 			connectDatabase();
 			List<Document> docs = new ArrayList<Document>();
@@ -49,7 +45,7 @@ public class MongoUserManager extends AbstractMongoManager {
 		} finally {
 			closeDatabase();
 		}
-	}
+	}*/
 
 	public static User getUser(String username) {
 		try {
@@ -92,14 +88,12 @@ public class MongoUserManager extends AbstractMongoManager {
 
 	private static Document createDocument(User user) {
 		Document doc = new Document();
-		doc.put("username", user.getUsername());
 		doc.put("password", user.getPassword());
 		doc.put("email", user.getEmail());
 		return doc;
 	}
 
 	private static void connectDatabase() {
-		mongo = new MongoClient("localhost", 27017);
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
 	}

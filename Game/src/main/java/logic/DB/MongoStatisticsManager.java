@@ -6,7 +6,6 @@ import logic.model.User;
 import org.bson.Document;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.MongoClient;
 
 public class MongoStatisticsManager extends AbstractMongoManager {
 
@@ -45,9 +44,24 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 		}
 	}
 	
+	public static boolean updateStatistics(User user) {
+		try {
+			connectDatabase();
+			BasicDBObject query = new BasicDBObject().append("username",
+					user.getUsername());
+			Document document = new Document().append("$inc",
+					createDocument(user));
+			table.updateOne(query, document);
+			return true;
+		} catch (Exception e) {
+			return false;
+		} finally {
+			closeDatabase();
+		}
+	}
+	
 	private static Document createDocument(User user) {
 		Document doc = new Document();
-		doc.put("username", user.getUsername());
 		doc.put("timesPlayed", user.getStatistics().getTimesPlayed());
 		doc.put("questionsAnswered", user.getStatistics().getQuestionsAnswered());
 		doc.put("questionsMatched", user.getStatistics().getQuestionsMatched());
@@ -62,7 +76,6 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 	}
 
 	private static void connectDatabase() {
-		mongo = new MongoClient("localhost", 27017);
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
 	}
