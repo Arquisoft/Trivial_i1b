@@ -2,6 +2,8 @@ package logic.tablero;
 
 import Model.TrivialQuestion.Categories;
 import logic.QuestionSelector;
+import logic.tablero.square.SimpleSquare;
+import logic.tablero.square.Square;
 
 public class Board {
 

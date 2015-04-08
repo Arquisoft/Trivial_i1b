@@ -1,5 +1,6 @@
-package logic.tablero;
+package logic.tablero.square;
 
+import logic.tablero.AbstractSquare;
 import Model.TrivialQuestion.Categories;
 
 

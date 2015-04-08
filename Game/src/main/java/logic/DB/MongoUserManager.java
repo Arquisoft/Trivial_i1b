@@ -1,7 +1,9 @@
-package logic;
+package logic.DB;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import logic.model.User;
 
 import org.bson.Document;
 

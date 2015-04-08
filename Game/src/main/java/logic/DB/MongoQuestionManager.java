@@ -1,4 +1,4 @@
-package logic;
+package logic.DB;
 
 import java.util.ArrayList;
 import java.util.List;

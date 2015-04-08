@@ -1,5 +1,6 @@
 package logic.tablero;
 
+import logic.tablero.square.Square;
 import Model.TrivialQuestion.Categories;
 
 public class AbstractSquare implements Square{
