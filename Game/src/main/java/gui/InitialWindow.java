@@ -29,6 +29,7 @@ public class InitialWindow extends JFrame {
 	private JButton btnBlue;
 	private JButton btnPink;
 	private JButton btnYellow;
+	private JButton btnAboutTheProject;
 	
 
 	/**
@@ -148,6 +149,7 @@ public class InitialWindow extends JFrame {
 		pnFondo.add(getBtnBlue());
 		pnFondo.add(getBtnPink());
 		pnFondo.add(getBtnYellow());
+		pnFondo.add(getBtnAboutTheProject());
 	}
 	public JButton getBtnRed() {
 		if (btnRed == null) {
@@ -214,5 +216,18 @@ public class InitialWindow extends JFrame {
 			btnYellow.setBounds(70, 470, 89, 23);
 		}
 		return btnYellow;
+	}
+	private JButton getBtnAboutTheProject() {
+		if (btnAboutTheProject == null) {
+			btnAboutTheProject = new JButton("About the project");
+			btnAboutTheProject.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					AboutTrivial about = new AboutTrivial();
+					about.setVisible(true);
+				}
+			});
+			btnAboutTheProject.setBounds(1131, 663, 161, 23);
+		}
+		return btnAboutTheProject;
 	}
 }
