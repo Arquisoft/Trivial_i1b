@@ -1,7 +1,6 @@
 package logic.tablero;
 
 import logic.QuestionSelector;
-import logic.model.Player;
 import logic.model.Position;
 import logic.tablero.square.CompositeSquare;
 import logic.tablero.square.SimpleSquare;
@@ -50,7 +49,7 @@ public class Board {
 	private Square getSquare(Position position){
 		if(position.getWalk() == 0)
 			return board[position.getIndex()];
-		return ((CompositeSquare)board[position.getIndex()%Categories.values().length]).getWalk()[position.getIndex()];
+		return ((CompositeSquare)board[position.getWalk()*Categories.values().length]).getArrayWalk()[position.getIndex()];
 	}
 	
 
