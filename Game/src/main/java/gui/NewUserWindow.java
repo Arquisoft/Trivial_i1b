@@ -143,6 +143,16 @@ public class NewUserWindow extends JFrame {
 	private JButton getBtnOk() {
 		if (btnOk == null) {
 			btnOk = new JButton("OK");
+			btnOk.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (textField.getText().equals("") || textField_1.getText().equals("") || textField_2.getText().equals("")){
+						JOptionPane.showMessageDialog(null, "You must fill all the information to create a new user");
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "New user created");
+					}
+				}
+			});
 			btnOk.setBounds(221, 522, 89, 23);
 		}
 		return btnOk;
