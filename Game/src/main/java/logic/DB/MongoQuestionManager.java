@@ -15,7 +15,7 @@ public class MongoQuestionManager extends AbstractMongoManager{
 	private static final String COLLECTION_NAME = "questions";
 	private static final String DATABASE_NAME = "game";
 	
-	private static List<Question> getQuestions() {
+	public static List<Question> getQuestions() {
 		try {
 			connectDatabase();
 			List<Question> questions = new ArrayList<Question>();
