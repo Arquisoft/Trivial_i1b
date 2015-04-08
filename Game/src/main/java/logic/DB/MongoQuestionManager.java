@@ -8,8 +8,6 @@ import org.bson.Document;
 import Model.Question;
 import Model.TrivialQuestion;
 
-import com.mongodb.MongoClient;
-
 public class MongoQuestionManager extends AbstractMongoManager {
 
 	private static final String COLLECTION_NAME = "questions";
@@ -42,12 +40,8 @@ public class MongoQuestionManager extends AbstractMongoManager {
 	}
 
 	private static void connectDatabase() {
-		mongo = new MongoClient("localhost", 27017);
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
 	}
 
-	private static void closeDatabase() {
-		mongo.close();
-	}
 }

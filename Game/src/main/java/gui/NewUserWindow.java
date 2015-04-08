@@ -3,11 +3,14 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -29,6 +32,7 @@ public class NewUserWindow extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JButton btnOk;
+	private JLabel label_1;
 
 	/**
 	 * Launch the application.
@@ -69,6 +73,7 @@ public class NewUserWindow extends JFrame {
 		contentPane.add(getTextField_1());
 		contentPane.add(getTextField_2());
 		contentPane.add(getBtnOk());
+		contentPane.add(getLabel_1());
 	}
 
 	private JLabel getLbTitle() {
@@ -141,8 +146,26 @@ public class NewUserWindow extends JFrame {
 	private JButton getBtnOk() {
 		if (btnOk == null) {
 			btnOk = new JButton("OK");
+			btnOk.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (textField.getText().equals("") || textField_1.getText().equals("") || textField_2.getText().equals("")){
+						JOptionPane.showMessageDialog(null, "You must fill all the information to create a new user");
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "New user created");
+					}
+				}
+			});
 			btnOk.setBounds(221, 522, 89, 23);
 		}
 		return btnOk;
+	}
+	private JLabel getLabel_1() {
+		if (label_1 == null) {
+			label_1 = new JLabel("");
+			label_1.setIcon(new ImageIcon(NewUserWindow.class.getResource("/Images/TEXTO.jpg")));
+			label_1.setBounds(469, 127, 854, 573);
+		}
+		return label_1;
 	}
 }

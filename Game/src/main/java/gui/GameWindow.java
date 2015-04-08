@@ -3,6 +3,7 @@ package gui;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
@@ -26,6 +27,8 @@ public class GameWindow extends JFrame {
 	private JButton btnPulsarDado;
 	private JLabel lblTurnoDelJugador;
 	private JTextField textField;
+	private JTextField txDado;
+	private JLabel label;
 
 	/**
 	 * Launch the application.
@@ -61,6 +64,8 @@ public class GameWindow extends JFrame {
 		contentPane.add(getBtnPulsarDado());
 		contentPane.add(getLblTurnoDelJugador());
 		contentPane.add(getTextField());
+		contentPane.add(getTxDado());
+		contentPane.add(getLabel());
 	}
 
 	private JLabel getLbTitle() {
@@ -74,6 +79,7 @@ public class GameWindow extends JFrame {
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
+			panel.setBackground(SystemColor.desktop);
 			panel.setBounds(79, 195, 760, 505);
 			panel.setLayout(null);
 			
@@ -141,8 +147,12 @@ public class GameWindow extends JFrame {
 	}
 	private JButton getBtnPulsarDado() {
 		if (btnPulsarDado == null) {
-			btnPulsarDado = new JButton("Pulsar dado");
-			btnPulsarDado.setBounds(810, 90, 89, 23);
+			btnPulsarDado = new JButton("");
+			btnPulsarDado.setContentAreaFilled(false);
+			btnPulsarDado.setBorderPainted(false);
+			btnPulsarDado.setOpaque(false);
+			btnPulsarDado.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/Dado.png")));
+			btnPulsarDado.setBounds(818, 107, 137, 85);
 		}
 		return btnPulsarDado;
 	}
@@ -163,5 +173,21 @@ public class GameWindow extends JFrame {
 			textField.setColumns(10);
 		}
 		return textField;
+	}
+		private JTextField getTxDado() {
+		if (txDado == null) {
+			txDado = new JTextField();
+			txDado.setBounds(949, 122, 86, 53);
+			txDado.setColumns(10);
+		}
+		return txDado;
+	}
+	private JLabel getLabel() {
+		if (label == null) {
+			label = new JLabel("");
+			label.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/tablero.jpg")));
+			label.setBounds(0, 0, 500, 473);
+		}
+		return label;
 	}
 }

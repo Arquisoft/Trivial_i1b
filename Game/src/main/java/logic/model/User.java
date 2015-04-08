@@ -5,11 +5,18 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
+	private Statistics statistics;
 
-	public User(String username, String password, String email) {
+
+	public User(String username, String password, String email, Statistics statistics) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.statistics = statistics;
+	}
+	
+	public Statistics getStatistics() {
+		return statistics;
 	}
 
 	public String getUsername() {
