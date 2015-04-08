@@ -1,12 +1,12 @@
 package logic.tablero.square;
 
-import logic.tablero.AbstractSquare;
+import logic.model.Position;
 import Model.TrivialQuestion.Categories;
 
 public class SimpleSquare extends AbstractSquare {
 
-	public SimpleSquare(Categories category) {
-		super(category);
+	public SimpleSquare(Categories category,Position position) {
+		super(category, position);
 	}
 
 

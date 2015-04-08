@@ -9,10 +9,21 @@ public class Player {
 	 * with all the wedges with false value.
 	 */
 	private boolean[] wedges;
+	
+	private Position position;
 
 	public Player(User user, int numberOfWedges) {
 		this.user = user;
+		this.position = new Position(0,1);
 		this.wedges = new boolean[numberOfWedges];
+	}
+
+	public Position getPosition() {
+		return position;
+	}
+
+	protected void setPosition(Position position) {
+		this.position = position;
 	}
 
 	public String getUsername() {

@@ -12,7 +12,7 @@ public class QuestionSelector {
 
 	private Map<Categories, List<Question>> categories;
 
-	private QuestionSelector(List<Question> questions) {
+	public QuestionSelector(List<Question> questions) {
 		createMap(questions);
 	}
 
@@ -56,6 +56,11 @@ public class QuestionSelector {
 
 	public void setCategories(Map<Categories, List<Question>> categories) {
 		this.categories = categories;
+	}
+	
+	public Question getQuestion(Categories category){
+		List<Question> list = categories.get(category);
+		return list.get((int) (Math.random() * list.size()));
 	}
 
 }
