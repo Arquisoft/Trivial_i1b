@@ -30,7 +30,7 @@ import java.awt.Color;
 
 import org.junit.Test;
 
-import Interface.InitialWindow;
+import gui.InitialWindow;
 
 public class InitialWindowTest {
 

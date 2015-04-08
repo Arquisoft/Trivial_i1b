@@ -10,11 +10,11 @@ import Model.TrivialQuestion;
 
 import com.mongodb.MongoClient;
 
-public class MongoQuestionManager extends AbstractMongoManager{
-	
+public class MongoQuestionManager extends AbstractMongoManager {
+
 	private static final String COLLECTION_NAME = "questions";
 	private static final String DATABASE_NAME = "game";
-	
+
 	public static List<Question> getQuestions() {
 		try {
 			connectDatabase();
@@ -40,13 +40,13 @@ public class MongoQuestionManager extends AbstractMongoManager{
 				answers, doc.getInteger("correct", -1));
 		return question;
 	}
-	
+
 	private static void connectDatabase() {
 		mongo = new MongoClient("localhost", 27017);
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
 	}
-	
+
 	private static void closeDatabase() {
 		mongo.close();
 	}
