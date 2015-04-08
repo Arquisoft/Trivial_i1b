@@ -29,6 +29,8 @@ public class NewUserWindow extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JButton btnOk;
+	
+	private JLabel label_1;
 
 	/**
 	 * Launch the application.
@@ -69,6 +71,7 @@ public class NewUserWindow extends JFrame {
 		contentPane.add(getTextField_1());
 		contentPane.add(getTextField_2());
 		contentPane.add(getBtnOk());
+		contentPane.add(getLabel_1());
 	}
 
 	private JLabel getLbTitle() {
@@ -144,5 +147,13 @@ public class NewUserWindow extends JFrame {
 			btnOk.setBounds(221, 522, 89, 23);
 		}
 		return btnOk;
+	}
+	private JLabel getLabel_1() {
+		if (label_1 == null) {
+			label_1 = new JLabel("");
+			label_1.setIcon(new ImageIcon(NewUserWindow.class.getResource("/Images/TEXTO.jpg")));
+			label_1.setBounds(469, 127, 854, 573);
+		}
+		return label_1;
 	}
 }
