@@ -21,8 +21,9 @@ public class TrivialQuestion implements Question {
 	
 	private Categories category;
 
-	public TrivialQuestion(String question, List<String> answers,
+	public TrivialQuestion(Categories category, String question, List<String> answers,
 			int positionTrue) {
+		this.category = category;
 		this.question = question;
 		this.answers = answers;
 		this.positionTrue = positionTrue;
