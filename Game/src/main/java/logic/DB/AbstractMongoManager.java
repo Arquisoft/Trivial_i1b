@@ -1,4 +1,4 @@
-package logic;
+package logic.DB;
 
 import org.bson.Document;
 
