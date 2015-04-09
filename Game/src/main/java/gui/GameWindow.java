@@ -65,7 +65,8 @@ public class GameWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 0, 139));
+		InitialWindow in = new InitialWindow();
+		contentPane.setBackground(in.getBackground());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -130,7 +131,7 @@ public class GameWindow extends JFrame {
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
-			panel.setBackground(SystemColor.desktop);
+			panel.setBackground(new Color(0,0,139));
 			panel.setBounds(162, 196, 502, 459);
 			panel.setLayout(null);
 		}
@@ -179,7 +180,6 @@ public class GameWindow extends JFrame {
 			label.setBounds(164, 195, 500, 473);
 			label.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/tablero.jpg")));
 		}
-		return label;}
 		return label;
 	}
 		private JButton getBtnAddPlayer() {
@@ -198,7 +198,7 @@ public class GameWindow extends JFrame {
 					btnNewUser.setVisible(true);
 				}
 			});
-			btnAddPlayer.setBounds(949, 243, 160, 23);
+			btnAddPlayer.setBounds(867, 203, 160, 23);
 		}
 		return btnAddPlayer;
 	}
