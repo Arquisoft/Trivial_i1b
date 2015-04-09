@@ -151,7 +151,7 @@ public class GameWindow extends JFrame {
 	}
 	private JLabel getLblTurnoDelJugador() {
 		if (lblTurnoDelJugador == null) {
-			lblTurnoDelJugador = new JLabel("Turno del jugador :");
+			lblTurnoDelJugador = new JLabel("Turn of player:");
 			lblTurnoDelJugador.setForeground(new Color(255, 255, 255));
 			lblTurnoDelJugador.setFont(new Font("Arial", Font.PLAIN, 16));
 			lblTurnoDelJugador.setBounds(792, 47, 143, 32);
