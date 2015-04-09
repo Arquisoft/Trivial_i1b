@@ -12,6 +12,7 @@ import org.w3c.dom.NodeList;
 
 import Model.Question;
 import Model.TrivialQuestion;
+import Model.TrivialQuestion.Categories;
 
 public class XMLParser implements Parser {
 
@@ -45,7 +46,27 @@ public class XMLParser implements Parser {
 				if(answer.getAttribute("correctAnswer") != null)
 					correctAnswer = j;
 			}
-			questions.add(new TrivialQuestion(node.getAttribute("question"), answers, correctAnswer));
+			Categories cat = getCategory(node.getAttribute("question"));
+			questions.add(new TrivialQuestion(cat, node.getAttribute("question"), answers, correctAnswer));
+		}
+	}
+
+	private Categories getCategory(String attribute) {
+		switch (attribute) {
+		case "geography":
+			return Categories.GEOGRAPHY;
+		case "entertainment":
+			return Categories.ENTERTAINMENT;
+		case "history":
+			return Categories.HISTORY;
+		case "art":
+			return Categories.ART;
+		case "science":
+			return Categories.SCIENCE;
+		case "sport":
+			return Categories.SPORT;
+		default:
+			return null;
 		}
 	}
 
