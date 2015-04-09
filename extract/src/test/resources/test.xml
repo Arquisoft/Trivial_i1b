@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <questions>
-	<question question="What is the position of this question in the list?">
+	<question question="What is the position of this question in the list?" category="science">
 		<answer correctanswer="true" value = "0"/>
 		<answer value = "1"/>
 		<answer value = "2"/>
 		<answer value = "3"/>
 	</question>
-	<question question="Which band plays the song 'Wet Sand'?">
+	<question question="Which band plays the song 'Wet Sand'?" category="entertainment">
 		<answer correctanswer="true" value = "Red Hot Chili Peppers"/>
 		<answer value = "Metallica"/>
 		<answer value = "Rage Against The Machine"/>

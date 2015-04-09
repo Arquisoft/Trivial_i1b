@@ -1,14 +1,14 @@
-package logic.tablero;
+package logic.board;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import logic.QuestionSelector;
+import logic.board.square.CompositeSquare;
+import logic.board.square.SimpleSquare;
+import logic.board.square.Square;
 import logic.model.Player;
 import logic.model.Position;
-import logic.tablero.square.CompositeSquare;
-import logic.tablero.square.SimpleSquare;
-import logic.tablero.square.Square;
 import Model.TrivialQuestion.Categories;
 
 public class Board {
@@ -52,7 +52,9 @@ public class Board {
 		}
 	}
 
-	private Square getSquare(Position position) {
+	
+	//Revisar su uso para borrar.
+	public Square getSquare(Position position) {
 		if (position.getWalk() == 0)
 			return board[position.getIndex()];
 		return ((CompositeSquare) board[position.getWalk()
@@ -79,8 +81,6 @@ public class Board {
 					.values().length) {
 				posibleMovements.add(board[player.getPosition().getIndex()
 						+ movements]);
-			} else {
-				// TODO There are no free squares so it changes turn
 			}
 		}
 
@@ -96,7 +96,8 @@ public class Board {
 		return questions;
 	}
 
-	private boolean validPosition(Position position) {
+	//Revisar para borrar.
+	public boolean validPosition(Position position) {
 		if (position.getWalk() == 0) {
 			if (position.getIndex() <= DEFAULT_SIZE && position.getIndex() >= 0)
 				return true;
