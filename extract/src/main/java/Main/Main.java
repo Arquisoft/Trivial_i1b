@@ -12,7 +12,7 @@ import Parser.XMLParser;
 
 public class Main {
 	
-	static DBConnector connector = new MongoDBConnector();
+	private static DBConnector connector = new MongoDBConnector();
 
 	public static void main(String[] args) {
 		
@@ -37,9 +37,10 @@ public class Main {
 						System.out.println("Name of file not introduced");
 				}else if(line[0].equals("help")){
 					showHelp();
-				} else if (line[0].equals("exit"))
+				} else if (line[0].equals("exit")){
 					connector.closeConnection();
 					return ;	
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -74,7 +75,6 @@ public class Main {
 		System.out.println("Introduce save and the name of the file to save the contentsn of the file on the database");
 		System.out.println("Introduce help to show the help");		
 		System.out.println("Introduce exit to exit the program");
-		
 	}
 
 }

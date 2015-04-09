@@ -14,7 +14,7 @@ import Model.Question;
 import Model.TrivialQuestion;
 import Model.TrivialQuestion.Categories;
 
-public class XMLParser extends AbstractParser {
+public class XMLParser implements Parser {
 
 	private List<Question> questions;
 	private Document doc;
@@ -46,7 +46,7 @@ public class XMLParser extends AbstractParser {
 				if(answer.getAttribute("correctAnswer") != null)
 					correctAnswer = j;
 			}
-			Categories cat = getCategory(node.getAttribute("question"));
+			Categories cat = Utils.getCategory(node.getAttribute("question"));
 			questions.add(new TrivialQuestion(cat, node.getAttribute("question"), answers, correctAnswer));
 		}
 	}

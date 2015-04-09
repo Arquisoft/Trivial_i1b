@@ -9,7 +9,6 @@ public class MongoDBConnector implements DBConnector {
 
 	private void createConnection() {
 		mongo = new MongoClient("localhost", 27017);
-
 	}
 
 	public MongoClient getConnection() {

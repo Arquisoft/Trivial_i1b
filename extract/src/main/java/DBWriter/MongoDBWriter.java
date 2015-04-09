@@ -6,6 +6,7 @@ import org.bson.Document;
 
 import DataBase.MongoDBConnector;
 import Model.Question;
+import Parser.Utils;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -50,7 +51,7 @@ public class MongoDBWriter implements DBWriter {
 	private Document createEntrie(Question question) {
 		Document questionToInsert = new Document();
 
-		questionToInsert.put("category", question.getCategory());
+		questionToInsert.put("category", Utils.getStringCategory(question.getCategory()));
 		questionToInsert.put("question", question.getQuestion());
 		List<String> answers = question.getAnswers();
 

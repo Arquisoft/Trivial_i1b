@@ -2,9 +2,9 @@ package Parser;
 
 import Model.TrivialQuestion.Categories;
 
-public abstract class AbstractParser implements Parser{
-
-	protected Categories getCategory(String attribute) {
+public class Utils {
+	
+	public static Categories getCategory(String attribute) {
 		switch (attribute.toLowerCase()) {
 		case "geography":
 			return Categories.GEOGRAPHY;
@@ -23,4 +23,22 @@ public abstract class AbstractParser implements Parser{
 		}
 	}
 	
+	public static String getStringCategory(Categories category) {
+		switch (category) {
+		case GEOGRAPHY:
+			return "geography";
+		case ENTERTAINMENT:
+			return "entertainment";
+		case HISTORY:
+			return "history";
+		case ART:
+			return "art";
+		case SCIENCE:
+			return "science";
+		case SPORT:
+			return "sport";
+		default:
+			return null;
+		}
+	}
 }

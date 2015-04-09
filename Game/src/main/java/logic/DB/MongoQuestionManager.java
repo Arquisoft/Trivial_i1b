@@ -7,7 +7,7 @@ import org.bson.Document;
 
 import Model.Question;
 import Model.TrivialQuestion;
-import Model.TrivialQuestion.Categories;
+import Parser.Utils;
 
 public class MongoQuestionManager extends AbstractMongoManager {
 
@@ -36,7 +36,7 @@ public class MongoQuestionManager extends AbstractMongoManager {
 				answers.add(doc.getString(key));
 
 		Question question = new TrivialQuestion(
-				(Categories) doc.get("category"), doc.getString("question"),
+				Utils.getCategory(doc.getString("category")), doc.getString("question"),
 				answers, doc.getInteger("correct", -1));
 		return question;
 	}

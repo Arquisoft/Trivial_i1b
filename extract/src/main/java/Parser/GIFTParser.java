@@ -10,7 +10,7 @@ import java.util.List;
 import Model.Question;
 import Model.TrivialQuestion;
 
-public class GIFTParser extends AbstractParser {
+public class GIFTParser implements Parser {
 
 	private List<Question> questions;
 	private BufferedReader reader;
@@ -44,7 +44,7 @@ public class GIFTParser extends AbstractParser {
 					answers.add(line.replace("=", "").trim());
 					correctAnswer = counter;
 				} else if (line.startsWith("}")) {
-					questions.add(new TrivialQuestion(getCategory(category), question,
+					questions.add(new TrivialQuestion(Utils.getCategory(category), question,
 							new ArrayList<String>(answers), correctAnswer));
 					question = "";
 					answers.clear();
