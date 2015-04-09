@@ -50,7 +50,7 @@ public class MongoDBWriter implements DBWriter {
 	private Document createEntrie(Question question) {
 		Document questionToInsert = new Document();
 
-		questionToInsert.put("category", question.getCategory());
+		questionToInsert.put("category", Utility.getCategory(question.getCategory()));
 		questionToInsert.put("question", question.getQuestion());
 		List<String> answers = question.getAnswers();
 
