@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import logic.DB.MongoQuestionManager;
+import logic.DB.MongoUserManager;
 import logic.board.Board;
 import logic.model.Player;
+import logic.model.User;
+
 import Model.Question;
 
 public class Game {
@@ -46,6 +49,13 @@ public class Game {
 
 	public boolean trueAnswer(Question question, int answer) {
 		return question.getPositionTrue() == answer;
+	}
+	
+	public boolean login(String username, String password) {
+		User user = new MongoUserManager().getUser(username);
+		if(user != null && user.getPassword().equals(password))
+			return true;
+		return false;
 	}
 
 	public List<Player> getPlayers() {

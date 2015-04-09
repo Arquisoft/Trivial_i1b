@@ -31,7 +31,9 @@ public class InitialWindow extends JFrame {
 	private JButton btnPink;
 	private JButton btnYellow;
 	private JButton btnAboutTheProject;
-	
+	private JTextField txtEmail;
+	private JButton btnStatistics;
+
 
 	/**
 	 * Launch the application.
@@ -53,8 +55,7 @@ public class InitialWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public InitialWindow() {
-		final JTextField textField=new JTextField();
-		final JTextField textField_1 = new JTextField();
+		final JTextField txtPassword = new JTextField();
 		
 
 		final JLabel lblEmail = new JLabel("Email:");
@@ -62,14 +63,17 @@ public class InitialWindow extends JFrame {
 		final JButton btnLogIn = new JButton("Log in");
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (textField.getText().equals("") || textField_1.getText().equals("")){
+				if (txtEmail.getText().equals("") || txtPassword.getText().equals("")){
 					JOptionPane.showMessageDialog(null, "You must fill all the information to log in");
-					
 				}
 				else{
-				
 					GameWindow game = new GameWindow();
 					game.setVisible(true);
+					game.getContentPane().add(btnStatistics);
+					if (txtEmail.getText().equals("admin")) {
+						StatisticsWindow statsWin = new StatisticsWindow();
+						statsWin.setVisible(true);
+					}
 				}
 			}
 		});
@@ -94,8 +98,8 @@ public class InitialWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				lblEmail.setVisible(true);
 				lblPassword.setVisible(true);
-				textField_1.setVisible(true);
-				textField.setVisible(true);
+				txtPassword.setVisible(true);
+				txtEmail.setVisible(true);
 				btnLogIn.setVisible(true);
 			}
 		});
@@ -139,15 +143,10 @@ public class InitialWindow extends JFrame {
 		lblPassword.setBounds(889, 348, 123, 14);
 		pnFondo.add(lblPassword);
 		
-		textField.setVisible(false);
-		textField.setBounds(1003, 303, 192, 20);
-		pnFondo.add(textField);
-		textField.setColumns(10);
-		
-		textField_1.setVisible(false);
-		textField_1.setBounds(1002, 347, 193, 20);
-		pnFondo.add(textField_1);
-		textField_1.setColumns(10);
+		txtPassword.setVisible(false);
+		txtPassword.setBounds(1002, 347, 193, 20);
+		pnFondo.add(txtPassword);
+		txtPassword.setColumns(10);
 		
 		btnLogIn.setVisible(false);
 		btnLogIn.setBounds(987, 399, 89, 23);
@@ -158,7 +157,19 @@ public class InitialWindow extends JFrame {
 		pnFondo.add(getBtnPink());
 		pnFondo.add(getBtnYellow());
 		pnFondo.add(getBtnAboutTheProject());
+		pnFondo.add(getTxtEmail());
 	}
+	
+	public JTextField getTxtEmail() {
+		if (txtEmail == null) {
+			txtEmail = new JTextField();
+			txtEmail.setBounds(1002, 303, 193, 20);
+			txtEmail.setColumns(10);
+			txtEmail.setVisible(false);
+		}
+		return txtEmail;
+	}
+	
 	public JButton getBtnRed() {
 		if (btnRed == null) {
 			btnRed = new JButton("Red");
@@ -237,5 +248,23 @@ public class InitialWindow extends JFrame {
 			btnAboutTheProject.setBounds(1131, 663, 161, 23);
 		}
 		return btnAboutTheProject;
+	}
+	
+	private JButton getBtnStatistics() {
+		if (btnStatistics == null) {
+			btnStatistics = new JButton("Show statistics");
+			/*btnStatistics.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (textField.getText().equals("") || textField_1.getText().equals("") || textField_2.getText().equals("")){
+						JOptionPane.showMessageDialog(null, "You must fill all the information to create a new user");
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "New user created");
+					}
+				}
+			});*/
+			btnStatistics.setBounds(221, 522, 89, 23);
+		}
+		return btnStatistics;
 	}
 }
