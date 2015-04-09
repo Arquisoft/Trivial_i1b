@@ -60,7 +60,7 @@ public class NewUserWindow extends JFrame {
 		setBounds(0, 0, 1500, 750);
 		
 		contentPane = new JPanel();
-		contentPane.setBackground(InitialWindow.pnFondo.getBackground());
+		contentPane.setBackground(new Color(50,205,50));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
