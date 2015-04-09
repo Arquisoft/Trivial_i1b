@@ -5,8 +5,8 @@ import java.util.List;
 
 import Model.Question;
 import logic.DB.MongoQuestionManager;
+import logic.board.Board;
 import logic.model.Player;
-import logic.tablero.Board;
 
 public class Game {
 	
