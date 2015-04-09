@@ -1,7 +1,6 @@
 
 package gui;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
@@ -24,6 +23,8 @@ public class GameWindow extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	
 	private JPanel contentPane;
 	private JLabel lbTitle;
 	private JPanel panel;
