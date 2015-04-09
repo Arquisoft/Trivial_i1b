@@ -12,7 +12,7 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 	private static final String COLLECTION_NAME = "statistics";
 	private static final String DATABASE_NAME = "game";
 	
-	public static boolean saveStatistics(User user) {
+	public boolean saveStatistics(User user) {
 		try {
 			connectDatabase();
 			if (getStatistics(user.getUsername()) != null)
@@ -28,7 +28,7 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 		}
 	}
 
-	public static Statistics getStatistics(String username) {
+	public Statistics getStatistics(String username) {
 		try {
 			connectDatabase();
 			BasicDBObject query = new BasicDBObject().append("username",
@@ -44,7 +44,7 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 		}
 	}
 	
-	public static boolean updateStatistics(User user) {
+	public boolean updateStatistics(User user) {
 		try {
 			connectDatabase();
 			BasicDBObject query = new BasicDBObject().append("username",
@@ -60,7 +60,7 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 		}
 	}
 	
-	private static Document createDocument(User user) {
+	private Document createDocument(User user) {
 		Document doc = new Document();
 		doc.put("timesPlayed", user.getStatistics().getTimesPlayed());
 		doc.put("questionsAnswered", user.getStatistics().getQuestionsAnswered());
@@ -68,14 +68,14 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 		return doc;
 	}
 
-	private static Statistics createStats(Document doc) {
+	private Statistics createStats(Document doc) {
 		Statistics stat = new Statistics(doc.getInteger("timesPlayed", 0),
 				doc.getInteger("questionsAnswered", 0), doc.getInteger(
 						"questionsMatched", 0));
 		return stat;
 	}
 
-	private static void connectDatabase() {
+	private void connectDatabase() {
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
 	}

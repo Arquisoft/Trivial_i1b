@@ -11,7 +11,7 @@ public class AbstractSquare implements Square{
 	
 	public AbstractSquare(Categories category,Position position){
 		this.position = position;
-			this.category=category;
+		this.category=category;
 	}
 
 

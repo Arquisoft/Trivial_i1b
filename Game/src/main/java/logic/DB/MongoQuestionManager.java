@@ -14,7 +14,7 @@ public class MongoQuestionManager extends AbstractMongoManager {
 	private static final String COLLECTION_NAME = "questions";
 	private static final String DATABASE_NAME = "game";
 
-	public static List<Question> getQuestions() {
+	public List<Question> getQuestions() {
 		try {
 			connectDatabase();
 			List<Question> questions = new ArrayList<Question>();
@@ -28,7 +28,7 @@ public class MongoQuestionManager extends AbstractMongoManager {
 		}
 	}
 
-	private static Question createQuestion(Document doc) {
+	private Question createQuestion(Document doc) {
 		List<String> answers = new ArrayList<String>();
 
 		for (String key : doc.keySet())
@@ -41,7 +41,7 @@ public class MongoQuestionManager extends AbstractMongoManager {
 		return question;
 	}
 
-	private static void connectDatabase() {
+	private void connectDatabase() {
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
 	}

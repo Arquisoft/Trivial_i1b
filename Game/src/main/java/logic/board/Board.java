@@ -34,24 +34,29 @@ public class Board {
 	}
 
 	public void initializeBoard() {
-		board = new Square[size];
+		board = new Square[size + 1];
 		// The square in the position 0,0 is the Central Square.
 		board[0] = new SimpleSquare(
 				Categories.values()[(int) (Math.random() * Categories.values().length)],
 				new Position(0, 0));
-		for (int i = 1; i < size + 1; i += Categories.values().length) {
+		for (int i = 1; i < size; i += (Categories.values().length+1)) {
 			int j = i;
 			for (Categories c : Categories.values()) {
 				board[j] = new SimpleSquare(c, new Position(0, j));
 				j++;
 			}
-			if (j % Categories.values().length == 0)
-				board[j] = new CompositeSquare(Categories.values()[j
-						/ Categories.values().length], new Position(0, j),
-						Categories.values().length - 1);
+			if (j % (Categories.values().length+1) == 0){
+				Categories c = Categories.values()[(j / (Categories.values().length+1))-1];
+				Position p = new Position(0,j);
+				int s =  Categories.values().length ; 
+				board[j] = new CompositeSquare(c,p,s);
+			}
 		}
 	}
 
+	public Square[] getBoardA() {
+		return board;
+		}
 	
 	//Revisar su uso para borrar.
 	public Square getSquare(Position position) {

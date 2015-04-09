@@ -18,7 +18,7 @@ public class Game {
 	
 	public Game(int numPlayers){
 		
-		List<Question> questions = MongoQuestionManager.getQuestions();
+		List<Question> questions = new MongoQuestionManager().getQuestions();
 		board = new Board(new QuestionSelector(questions));
 		players = new Player[numPlayers];
 		activePlayer = players[0];
