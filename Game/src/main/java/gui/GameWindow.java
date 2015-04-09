@@ -180,6 +180,8 @@ public class GameWindow extends JFrame {
 			label.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/tablero.jpg")));
 		}
 		return label;}
+		return label;
+	}
 		private JButton getBtnAddPlayer() {
 		if (btnAddPlayer == null) {
 			btnAddPlayer = new JButton("Add player");

@@ -1,7 +1,5 @@
 package logic.model;
 
-import Model.TrivialQuestion.Categories;
-import logic.tablero.Board;
 
 public class Position {
 
@@ -30,16 +28,14 @@ public class Position {
 		return index;
 	}
 
-	public boolean validPosition() {
-		if (this.walk == 0){
-			if(this.index < Board.DEFAULT_SIZE)
-				return true;
-		}
-		else{ 
-			if(this.index < Categories.values().length)
-				return true; 
-		}
-		return false; 
+	public void setWalk(int walk) {
+		this.walk = walk;
 	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	
 
 }
