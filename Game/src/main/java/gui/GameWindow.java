@@ -83,12 +83,20 @@ public class GameWindow extends JFrame {
 		
 		btnOk = new JButton("OK");
 		btnOk.setVisible(false);
+		
+		btnOk.setBounds(978, 370, 89, 23);
 		btnOk.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnOk.setForeground(Color.WHITE);
 		btnOk.setBackground(SystemColor.activeCaption);
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "New user added");			
+				if (txEmail.getText().equals("")|| txPassword.getText().equals("")){
+
+					JOptionPane.showMessageDialog(null, "You must fill all the information to add the player");			
+					
+				}
+				else{
+				JOptionPane.showMessageDialog(null, "New user: "+txEmail.getText().toUpperCase()+" added to the game");	}		
 				}
 		});
 		contentPane.add(btnOk);
