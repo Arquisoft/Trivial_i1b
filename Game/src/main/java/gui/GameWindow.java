@@ -5,11 +5,14 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -67,16 +70,16 @@ public class GameWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getLbTitle());
-		contentPane.add(getPanel());
 		contentPane.add(getBtnPulsarDado());
 		contentPane.add(getLblTurnoDelJugador());
 		contentPane.add(getTextField());
 		contentPane.add(getTxDado());
-		contentPane.add(getLabel());
 		
 		contentPane.add(getBtnAddPlayer());
 		contentPane.add(getTxPassword());
 		contentPane.add(getTxEmail());
+		contentPane.add(getLabel());
+		contentPane.add(getPanel());
 		contentPane.add(getLblEmail());
 		contentPane.add(getLblPassword());
 		
@@ -84,7 +87,7 @@ public class GameWindow extends JFrame {
 		btnOk = new JButton("OK");
 		btnOk.setVisible(false);
 		
-		btnOk.setBounds(978, 370, 89, 23);
+		btnOk.setBounds(949, 367, 89, 23);
 		btnOk.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnOk.setForeground(Color.WHITE);
 		btnOk.setBackground(SystemColor.activeCaption);
@@ -128,68 +131,8 @@ public class GameWindow extends JFrame {
 		if (panel == null) {
 			panel = new JPanel();
 			panel.setBackground(SystemColor.desktop);
-			panel.setBounds(79, 195, 760, 505);
+			panel.setBounds(162, 196, 502, 459);
 			panel.setLayout(null);
-			
-			JButton btAmarillo1 = new JButton("New button");
-			btAmarillo1.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/casillaAmarillo.png")));
-			btAmarillo1.setBounds(211, 60, 59, 34);
-			panel.add(btAmarillo1);
-			
-			JButton btAzul1 = new JButton("New button");
-			btAzul1.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/casillaAzul.png")));
-			btAzul1.setBounds(270, 60, 59, 34);
-			panel.add(btAzul1);
-			
-			JButton btMarron1 = new JButton("New button");
-			btMarron1.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/casillaMarron.png")));
-			btMarron1.setBounds(327, 60, 59, 34);
-			panel.add(btMarron1);
-			
-			JButton btNaranja1 = new JButton("New button");
-			btNaranja1.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/casillaNaranja.png")));
-			btNaranja1.setBounds(383, 60, 59, 34);
-			panel.add(btNaranja1);
-			
-			JButton btRosa1 = new JButton("New button");
-			btRosa1.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/casillaRosa.png")));
-			btRosa1.setBounds(440, 60, 59, 34);
-			panel.add(btRosa1);
-			
-			JButton btVerde1 = new JButton("New button");
-			btVerde1.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/casillaVerde.png")));
-			btVerde1.setBounds(497, 60, 59, 34);
-			panel.add(btVerde1);
-			
-			JButton btVerde4 = new JButton("New button");
-			btVerde4.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/casillaVerde.png")));
-			btVerde4.setBounds(211, 406, 59, 34);
-			panel.add(btVerde4);
-			
-			JButton btRosa4 = new JButton("New button");
-			btRosa4.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/casillaRosa.png")));
-			btRosa4.setBounds(270, 406, 59, 34);
-			panel.add(btRosa4);
-			
-			JButton btNaranja4 = new JButton("New button");
-			btNaranja4.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/casillaNaranja.png")));
-			btNaranja4.setBounds(327, 406, 59, 34);
-			panel.add(btNaranja4);
-			
-			JButton btMarron4 = new JButton("New button");
-			btMarron4.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/casillaMarron.png")));
-			btMarron4.setBounds(383, 406, 59, 34);
-			panel.add(btMarron4);
-			
-			JButton btAzul4 = new JButton("New button");
-			btAzul4.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/casillaAzul.png")));
-			btAzul4.setBounds(440, 406, 59, 34);
-			panel.add(btAzul4);
-			
-			JButton btAmarillo4 = new JButton("New button");
-			btAmarillo4.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/casillaAmarillo.png")));
-			btAmarillo4.setBounds(497, 406, 59, 34);
-			panel.add(btAmarillo4);
 		}
 		return panel;
 	}
@@ -233,10 +176,10 @@ public class GameWindow extends JFrame {
 	private JLabel getLabel() {
 		if (label == null) {
 			label = new JLabel("");
+			label.setBounds(164, 195, 500, 473);
 			label.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/tablero.jpg")));
-			label.setBounds(0, 0, 500, 473);
 		}
-		return label;
+		return label;}
 		private JButton getBtnAddPlayer() {
 		if (btnAddPlayer == null) {
 			btnAddPlayer = new JButton("Add player");
