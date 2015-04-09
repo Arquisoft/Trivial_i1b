@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.Assert;
-import logic.model.Dice;
+import logic.model.Die;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
@@ -16,7 +16,7 @@ public class StepDefinitions {
 	public void roll_the_dice_time(int arg1) throws Throwable {
 	    rolls = new ArrayList<Integer>();
 	    for (int i = 0; i <= arg1; i++) {
-			rolls.add(Dice.drop());
+			rolls.add(Die.drop());
 		}
 	}
 
