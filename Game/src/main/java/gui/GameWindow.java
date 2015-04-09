@@ -124,6 +124,19 @@ public class GameWindow extends JFrame {
 		btnNewUser.setForeground(Color.WHITE);
 		btnNewUser.setBounds(1046, 367, 89, 23);
 		contentPane.add(btnNewUser);
+		
+		JButton btnStart = new JButton("Start");
+		btnStart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btnOk.setEnabled(false);
+				btnAddPlayer.setEnabled(false);
+			}
+		});
+		btnStart.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnStart.setBackground(SystemColor.activeCaption);
+		btnStart.setForeground(Color.WHITE);
+		btnStart.setBounds(1037, 203, 143, 23);
+		contentPane.add(btnStart);
 	}
 
 	private JLabel getLbTitle() {

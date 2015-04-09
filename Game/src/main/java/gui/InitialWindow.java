@@ -54,7 +54,7 @@ public class InitialWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public InitialWindow() {
-		game = new Game(0);
+		game = new Game();
 		final JTextField tfUsername = new JTextField();
 		final JTextField tfPassword = new JTextField();
 
