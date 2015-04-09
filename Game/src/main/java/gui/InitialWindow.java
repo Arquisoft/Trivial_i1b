@@ -24,7 +24,7 @@ public class InitialWindow extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public JPanel pnFondo;
+	public static JPanel pnFondo;
 	private JButton btnRed;
 	private JButton btnG;
 	private JButton btnBlue;
@@ -68,8 +68,8 @@ public class InitialWindow extends JFrame {
 				}
 				else{
 				
-				GameWindow game = new GameWindow();
-				game.setVisible(true);
+					GameWindow game = new GameWindow();
+					game.setVisible(true);
 				}
 			}
 		});
