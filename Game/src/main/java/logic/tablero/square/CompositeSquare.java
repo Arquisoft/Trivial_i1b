@@ -21,16 +21,11 @@ public class CompositeSquare extends AbstractSquare {
 		}
 	}
 
-	/**
-	 * @return the walk
-	 */
+	
 	public Square[] getArrayWalk() {
 		return arrayWalk;
 	}
 
-	/**
-	 * @param walk the walk to set
-	 */
 	public void setArrayWalk(Square[] arrayWalk) {
 		this.arrayWalk = arrayWalk;
 	}
