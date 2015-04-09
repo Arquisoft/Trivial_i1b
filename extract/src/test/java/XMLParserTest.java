@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import Model.Question;
 import Model.TrivialQuestion;
+import Model.TrivialQuestion.Categories;
 import Parser.Parser;
 import Parser.XMLParser;
 
@@ -24,13 +25,13 @@ public class XMLParserTest {
 		values.add("1");
 		values.add("2");
 		values.add("3");
-		expectedValues.add(new TrivialQuestion("What is the position of this question in the list?", new ArrayList<String>(values), 0));
+		expectedValues.add(new TrivialQuestion(Categories.SCIENCE, "What is the position of this question in the list?", new ArrayList<String>(values), 0));
 		values = new ArrayList<String>();
 		values.add("Red Hot Chili Peppers");
 		values.add("Metallica");
 		values.add("Rage Against The Machine");
 		values.add("Lynyrd Skynyrd");
-		expectedValues.add(new TrivialQuestion("Which band plays the song 'Wet Sand'?", new ArrayList<String>(values), 0));
+		expectedValues.add(new TrivialQuestion(Categories.ENTERTAINMENT, "Which band plays the song 'Wet Sand'?", new ArrayList<String>(values), 0));
 	}
 
 	@Test
