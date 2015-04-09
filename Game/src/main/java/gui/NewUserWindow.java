@@ -140,7 +140,8 @@ public class NewUserWindow extends JFrame {
 						JOptionPane.showMessageDialog(null, "You must fill all the information to create a new user");
 					}
 					else{
-						if(game.register(tfUsername.getText(), tfEmail.getText(), tfPassword.getText()))
+						if(game.register(tfUsername.getText(), tfEmail.getText(), tfPassword.getText()) == null)
+							
 						JOptionPane.showMessageDialog(null, "New user created");
 					}
 				}
