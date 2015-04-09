@@ -15,6 +15,11 @@
 			<version>3.0.0-beta3</version>
 		</dependency>
 		<dependency>
+			<groupId>Trivial_i1b</groupId>
+			<artifactId>extract</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
