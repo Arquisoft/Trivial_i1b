@@ -5,11 +5,14 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -237,6 +240,7 @@ public class GameWindow extends JFrame {
 			label.setBounds(0, 0, 500, 473);
 		}
 		return label;
+	}
 		private JButton getBtnAddPlayer() {
 		if (btnAddPlayer == null) {
 			btnAddPlayer = new JButton("Add player");
