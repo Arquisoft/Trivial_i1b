@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import logic.QuestionSelector;
+import logic.board.square.CompositeSquare;
+import logic.board.square.SimpleSquare;
+import logic.board.square.Square;
 import logic.model.Player;
 import logic.model.Position;
-import logic.tablero.square.CompositeSquare;
-import logic.tablero.square.SimpleSquare;
-import logic.tablero.square.Square;
 import Model.TrivialQuestion.Categories;
 
 public class Board {

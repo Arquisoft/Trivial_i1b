@@ -1,4 +1,4 @@
-package logic.tablero.square;
+package logic.board.square;
 
 import logic.model.Position;
 import Model.TrivialQuestion.Categories;
