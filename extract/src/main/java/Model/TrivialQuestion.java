@@ -52,7 +52,7 @@ public class TrivialQuestion implements Question {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		
+		builder.append(this.getCategory().toString() + "\n");
 		builder.append(question + "\n");
 		for (String answer : answers)
 			builder.append("\t" + answer.toString() + "\n");

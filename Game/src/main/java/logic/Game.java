@@ -38,5 +38,8 @@ public class Game {
 			}
 		}
 	}
-
+	
+	public boolean trueAnswer(Question question,int answer){
+		return question.getPositionTrue() == answer; 
+	}
 }

@@ -1,281 +1,37 @@
-﻿::Tema 10 - 001::El software libre...: {
+
+::ART::El software libre...: {
      =No siempre es software gratis
      ~Se puede modificar pero nunca redistribuir esas modificaciones
      ~Basa su principio fundamental en que “el hombre debe aprovecharse siempre del trabajo de otros”
 }
 
-::Tema 10 - 002::En el contexto de software libre, es falso que en la licencia GPL {
+::SPORT::En el contexto de software libre, es falso que en la licencia GPL {
      =Las modificaciones son posibles, pero con restricciones
      ~Se permite la redistribución binaria
      ~En caso de redistribución binaria, es obligada la redistribución de los fuentes
 }
 
-::Tema 10 - 003::Cual de las siguientes afirmaciones es incorrecta: {
+::SCIENCE::Cual de las siguientes afirmaciones es incorrecta: {
      =Un autor no puede distribuir varias obras con distintas licencias
      ~Shareware es una forma de licenciar el software comercial
      ~GPL y BSD permiten la redistribución fuente y binaria
 }
 
-::Tema 10 - 004::¿Cuál de las siguientes afirmaciones no permite la licencia BSD (Berkeley Software Distribution)? {
+::ENTERTAINMENT::¿Cuál de las siguientes afirmaciones no permite la licencia BSD (Berkeley Software Distribution)? {
      =Modificaciones e integración sin restricciones
      ~Redistribución binaria
      ~Redistribución fuente
 }
 
-::Tema 10 - 005::Indica cual de las siguientes conjuntos de características del software libre es incorrecta: {
+::HISTORY::Indica cual de las siguientes conjuntos de características del software libre es incorrecta: {
      =Es gratis y se puede modificar su código fuente
      ~Permite el visionado de su código fuente y su modificación
      ~Se puede distribuir libremente y adaptarlo a las necesidades de cada usuario
 }
 
-::Tema 10 - 006::¿Cuál es la principal diferencia entre la LGPL y la GPL? {
+::GEOGRAPHY::¿Cuál es la principal diferencia entre la LGPL y la GPL? {
      =La GPL tiene una licencia de tipo copyleft mas “fuerte” que la LGPL
      ~La LGPL solo se puede utilizar para licenciar bibliotecas mientras que la GPL se utiliza para el resto de los programas
      ~La LGPL no fue realizada por la FSF (Free Software Foundation)
 }
 
-::Tema 10 - 007::Indique la respuesta correcta: {
-     =Cualquier cambio en las variables de entrada (recursos, objetivos, etc.) repercute en la planificación
-     ~El aumento de personal implica una reducción de tiempos proporcional
-     ~Cuando hay que utilizar recursos puede ocurrir que sean ilimitados y que tres tareas necesiten el recurso al mismo tiempo
-}
-
-::Tema 10 - 008::El software libre...: {
-     =Es un modelo de negocio que ofrece ciertas libertades al usuario que el software privativo no
-     ~Se basa en unos principios morales y éticos que promueven su desarrollo como un acto de filantropía
-     ~Es gratis
-}
-
-::Tema 10 - 009::En las licencias LGPL se permite: {
-     =Integración con cualquier otro software. En este caso, no hay prácticamente limitaciones
-     ~Modificaciones sin restricciones y la integridad completa sólo con software cubierto por la GPL
-     ~Permite modificaciones y la integración casi sin restricciones
-}
-
-::Tema 10 - 010::¿Cuál de las siguientes afirmaciones sobre la BSD es falsa? {
-     =Obliga a la redistribución fuente
-     ~Obliga a dar crédito a los autores
-     ~Permite la redistribución binaria
-}
-
-::Tema 10 - 011::RedHat comenzó dedicándose fundamentalmente a su distribución, a día de hoy hace... {
-     =Consultoría, formación, certificación, etc.
-     ~Planifica recursos y tareas de proyectos
-     ~Controles de calidad mediante los modelos ISO 9000, CMM, Bootstrap y sobre todo con SPICE
-}
-
-::Tema 10 - 012::Referente a software libre, la LGPL: {
-     =Está pensada para permitir el uso de bibliotecas libres con software propietario
-     ~Permite la redistribución binaria
-     ~Permite las modificaciones sin restricciones
-}
-
-::Tema 10 - 013::¿Cual de las siguientes afirmaciones es correcta? {
-     =Podemos redistribuir el software a quien queramos y como queramos
-     ~No disponemos del código fuente
-     ~Software libre es lo mismo que software gratis
-}
-
-::Tema 10 - 014::El Public Domain Software consiste en: {
-     =El autor cede sus derechos a la comunidad
-     ~El software es distribuido varias veces y se mantienen las garantías de libertad para quien lo recibe
-     ~Una forma diferente de licenciar el software propietario
-}
-
-::Tema 10 - 015::¿Cuál de las siguientes afirmaciones es correcta? {
-     =El software libre es open source
-     ~El Shareware es software libre
-     ~Software libre es sinónimo de software gratuito
-}
-
-::Tema 10 - 016::¿Cuál es el tipo de modelo de negocio seguido por la mayoría de las empresas? {
-     =Modelo mixto
-     ~Negocio autofinanciado basado en el mejor conocimiento de un producto
-     ~Negocio con financiación externa
-}
-
-::Tema 10 - 017::¿Cuál de los siguientes NO es un modelo de negocio? {
-     =Con financiación interna.
-     ~Autofinanciado.
-     ~Con financiación externa.
-}
-
-::Tema 10 - 018::La licencia BSD: {
-     =Permite la redistribución binaria y la redistribución fuente pero no obliga a ella en ningún caso
-     ~Permite la redistribución binaria y este caso obliga a la redistribución fuente
-     ~Permite las modificaciones y la integración con restricciones comerciales
-}
-
-::Tema 10 - 019::¿De las siguientes afirmaciones cual es la cierta? {
-     =Las licencias de Software libre dan al usuario, en general, permiso para modificar el código fuente 
-     ~Los modelos de Software libre son pocos y concisos
-     ~Pocas empresas usan modelos mixtos
-}
-
-::Tema 10 - 020::Eres director de informática de banco y tienes que encargar un producto software. ¿En cual de estos casos sería posible que el producto fuese software libre? {
-     =Si el conocimiento del código fuente no implica una ventaja a la competencia
-     ~Que fuera Software de gestión de recursos humanos
-     ~Si es el Sistema Operativo de los escritorios
-}
-
-::Tema 10 - 021::Indique cual de las siguientes respuestas no siempre se cumple en relación con el software libre: {
-     =Software gratis
-     ~Disponibilidad de código fuente
-     ~Libre distribución
-}
-
-::Tema 10 - 022::La licencia GPL(GNU Public License)  {
-     =Permite la redistribución binaria y en este caso obliga la redistribución fuente
-     ~Permite la redistribución binaria, las modificaciones, pero no permite la redistribución fuente
-     ~Permite la redistribución binaria, la redistribución fuente pero no permite realizar modificaciones
-}
-
-::Tema 10 - 023::El software libre implica que: {
-     =Puedo modificar, adaptar y mejorar el software
-     ~Si el software tiene errores solo su fabricante puede repararlos
-     ~El software es gratis
-}
-
-::Tema 10 - 024::Un caso de desarrollo de software libre con financiación indirecta es: {
-     =Mediante una donación
-     ~La financiación pública por parte de un ministerio
-     ~Financiación por parte de nuestra empresa
-}
-
-::Tema 10 - 025::¿En que se basan los modelos de negocio autofinanciados? {
-     =Los ingresos provienen de actividades de la empresa
-     ~Quien financia normalmente decide cómo y en qué se gastan los recursos
-     ~Suele ser un tipo de patrocinio
-}
-
-::Tema 10 - 026::El software libre te permite {
-     =Modificarlo y redistribuirlo a quien y como tu quieras
-     ~Usarlo de forma gratuita, pero no te permite modificarlo
-     ~Modificarlo, pero no distribuirlo libremente
-}
-
-::Tema 10 - 027::¿Que tipo de licencia es la que el autor cede sus derechos a la comunidad? {
-     =Public domain Software
-     ~Open Source Software
-     ~ShareWare
-}
-
-::Tema 10 - 028::Cuales de los siguientes elementos son licencias de software: {
-     =GPL, LGPL, BSD
-     ~GPL, SS, DOOM
-     ~DOM, GPL, BSD
-}
-
-::Tema 10 - 029::Para que podamos hablar de software libre, ¿debe ser gratuito? {
-     =No, el software libre no es lo mismo que el software gratuito.
-     ~Sí, sino estaríamos hablando de software comercial.
-     ~Sí, las fuentes de ingresos no provienen de la venta, sino de otros modelos de negocio.
-}
-
-::Tema 10 - 030::Los negocios con Financiación externa indirecta se basan en...: {
-     =...que el software produzca estos beneficios
-     ~...que el estado aporte dinero para su financiación
-     ~...que se reciba dinero de organizaciones no gubernamentales
-}
-
-::Tema 10 - 031::Elige cuál de estos NO es un Modelo de Negocio del Software Libre, según Hecker {
-     =Loss sellers
-     ~Widget Frosting
-     ~Service enabler
-}
-
-::Tema 10 - 032::La principal característica del software libre es que... {
-     =Se puede ver y modificar el código.
-     ~Es gratuito.
-     ~Se puede ver y modificar el código, y además es gratuito.
-}
-
-::Tema 10 - 033::Cual de estas no es una de las principales características del sw libre: {
-     =Es totalmente gratis.
-     ~Fomenta la verdadera competencia.
-     ~Se usan modelos de desarrollo totalmente novedosos.
-}
-
-::Tema 10 - 034::Cuál de las siguientes no es un tipo de licencia? {
-     =LDPG.
-     ~BSD.
-     ~GPL.
-}
-
-::Tema 10 - 035::¿Qué permite la licencia GPL? {
-     =Permite modificaciones sin restricciones.
-     ~No permite la modificación del código.
-     ~Permite la modificación  código con restricciones.
-}
-
-::Tema 10 - 036::¿Cuál de las siguientes afirmaciones es cierta? {
-     =El software libre no siempre es software gratis
-     ~El término “shareware” es un sinónimo de “software libre”.
-     ~Sólo existe un modelo de negocio basado en software libre: cobrar por servicios basados en el conocimiento de un producto
-}
-
-::Tema 10 - 037::Con respecto al software libre. ¿Cuál de las siguientes afirmaciones es cierta? {
-     =Copylefted software, se trata de un tipo de software que al ser redistribuido varias veces mantiene las garantías de 'software libre' para quien lo recibe.
-     ~El modelo de software libre se adapta perfectamente a todos los modelos de producción.
-     ~Las licencias de software libre no dan ningún tipo de permiso.
-}
-
-::Tema 10 - 038::¿Es lo mismo decir que el software es libre y decir que es gratis? {
-     =No, aunque sea Opensource
-     ~No, a no ser que sea Opensource
-     ~Sí, pero sólo si es Opensource
-}
-
-::Tema 10 - 039::Si nos fijamos en los tipos de licencias software {
-     =La licencia BSD obliga a dar crédito a los autores
-     ~GPL no obliga a la redistribución del fuente en caso de distribuir el binario
-     ~GPL permite la modificación con alguna restricción
-}
-
-::Tema 10 - 040::Sobre la financiación externa que respuesta es FALSA {
-     =Realizada por empresas para su financiación
-     ~Las ventajas son mayores cuanto mayor es la cuota de mercado
-     ~Mecanismos similares a la financiación publica
-}
-
-::Tema 10 - 041::Software libre es un concepto... {
-     =Económico, técnico y filosófico
-     ~Económico y técnico
-     ~Filosófico
-}
-
-::Tema 10 - 042::¿Cuál de las siguientes afirmaciones es la correcta? {
-     =El software libre es un concepto económico, técnico y filosófico
-     ~Las licencias de software libre no dan permisos explícitos
-     ~Un programa libre no lo puedes distribuir aunque la licencia te lo permita
-}
-
-::Tema 10 - 043::Respecto a los modelos de desarrollo de software libre y el software libre en general: {
-     =Se basa en el principio de aprovechamiento en el trabajo de los demás y en la compartición del conocimiento.
-     ~Se ha extendido a muchos ámbitos, excepto en la Administración, donde se encuentra con muchas dificultades.
-     ~Que un programa sea software libre, no quiere decir que sea gratis, pero tampoco quiere decir que podamos obtener el código fuente y modificarlo.
-}
-
-::Tema 10 - 044::Es un tipo de licencia de Software Libre: {
-     =GPL
-     ~RTF
-     ~CMM
-}
-
-::Tema 10 - 045::Señale la respuesta correcta...  {
-     =El software libre se ha convertido en un serio competidor de otros modelos
-     ~El software libre no se adapta a otros modelos de producción 
-     ~Los modelos de software libre son muy escasos 
-}
-
-::Tema 10 - 046::Si fueras una empresa y necesitas realizar mejoras en un  producto libre, ¿A que tipo de modelo de negocio te adaptarías mejor? {
-     =Desarrollo para uso interno
-     ~Negocio autofinanciado
-     ~Negocio con financiación interna
-}
-
-::Tema 10 - 047::En conclusión el software libre... {
-     =Puede tener algunos aspectos que no están maduros
-     ~Se adapta a todos los modelos de producción
-     ~Es una "panacea"
-}
