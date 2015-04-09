@@ -29,9 +29,9 @@ public class NewUserWindow extends JFrame {
 	private JLabel lblName;
 	private JLabel lblEmail;
 	private JLabel lblPassword;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField tfUsername;
+	private JTextField tfEmail;
+	private JTextField tfPassword;
 	private JButton btnOk;
 	private JLabel label_1;
 	
@@ -57,9 +57,9 @@ public class NewUserWindow extends JFrame {
 		contentPane.add(getLblName());
 		contentPane.add(getLblEmail());
 		contentPane.add(getLblPassword());
-		contentPane.add(getTextField());
-		contentPane.add(getTextField_1());
-		contentPane.add(getTextField_2());
+		contentPane.add(getTfUsername());
+		contentPane.add(getTfEmail());
+		contentPane.add(getTfPassword());
 		contentPane.add(getBtnOk());
 		contentPane.add(getLabel_1());
 	}
@@ -107,39 +107,40 @@ public class NewUserWindow extends JFrame {
 		}
 		return lblPassword;
 	}
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setBounds(230, 366, 172, 20);
-			textField.setColumns(10);
+	private JTextField getTfUsername() {
+		if (tfUsername == null) {
+			tfUsername = new JTextField();
+			tfUsername.setBounds(230, 366, 172, 20);
+			tfUsername.setColumns(10);
 		}
-		return textField;
+		return tfUsername;
 	}
-	private JTextField getTextField_1() {
-		if (textField_1 == null) {
-			textField_1 = new JTextField();
-			textField_1.setBounds(230, 414, 172, 20);
-			textField_1.setColumns(10);
+	private JTextField getTfEmail() {
+		if (tfEmail == null) {
+			tfEmail = new JTextField();
+			tfEmail.setBounds(230, 414, 172, 20);
+			tfEmail.setColumns(10);
 		}
-		return textField_1;
+		return tfEmail;
 	}
-	private JTextField getTextField_2() {
-		if (textField_2 == null) {
-			textField_2 = new JTextField();
-			textField_2.setBounds(230, 454, 172, 20);
-			textField_2.setColumns(10);
+	private JTextField getTfPassword() {
+		if (tfPassword == null) {
+			tfPassword = new JTextField();
+			tfPassword.setBounds(230, 454, 172, 20);
+			tfPassword.setColumns(10);
 		}
-		return textField_2;
+		return tfPassword;
 	}
 	private JButton getBtnOk() {
 		if (btnOk == null) {
 			btnOk = new JButton("OK");
 			btnOk.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					if (textField.getText().equals("") || textField_1.getText().equals("") || textField_2.getText().equals("")){
+					if (tfUsername.getText().equals("") || tfEmail.getText().equals("") || tfPassword.getText().equals("")){
 						JOptionPane.showMessageDialog(null, "You must fill all the information to create a new user");
 					}
 					else{
+						if(game.register(tfUsername.getText(), tfEmail.getText(), tfPassword.getText()))
 						JOptionPane.showMessageDialog(null, "New user created");
 					}
 				}

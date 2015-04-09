@@ -17,7 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import Model.TrivialQuestion.Categories;
 import logic.Game;
+import logic.model.Player;
+import logic.model.User;
 
 public class InitialWindow extends JFrame {
 
@@ -68,7 +71,10 @@ public class InitialWindow extends JFrame {
 					JOptionPane.showMessageDialog(null,
 							"You must fill all the information to log in");
 				} else {
-					if (game.login(tfUsername.getText(), tfPassword.getText())) {
+					User user = game.login(tfUsername.getText(),
+							tfPassword.getText());
+					if (user != null) {
+						game.addPlayer(new Player(user, Categories.values().length));
 						GameWindow game = new GameWindow(getGame());
 						game.setVisible(true);
 					}

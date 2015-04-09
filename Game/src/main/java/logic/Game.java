@@ -8,8 +8,8 @@ import logic.DB.MongoQuestionManager;
 import logic.DB.MongoUserManager;
 import logic.board.Board;
 import logic.model.Player;
+import logic.model.Statistics;
 import logic.model.User;
-
 import Model.Question;
 
 public class Game {
@@ -54,11 +54,19 @@ public class Game {
 		return question.getPositionTrue() == answer; 
 	}
 	
-	public boolean login(String username, String password) {
+	public User login(String username, String password) {
 		User user = new MongoUserManager().getUser(username);
 		if(user != null && user.getPassword().equals(password))
-			return true;
-		return false;
+			return user;
+		return null;
+	}
+	
+	public User register(String username, String email, String password){
+		User user = new User(username, password, email, new Statistics(0, 0, 0));
+		if(new MongoUserManager().saveUser(user))
+			return user;
+		return null;
+		
 	}
 
 	public List<Player> getPlayers() {
