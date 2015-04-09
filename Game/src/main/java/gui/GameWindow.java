@@ -43,7 +43,7 @@ public class GameWindow extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -54,7 +54,7 @@ public class GameWindow extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
@@ -65,8 +65,7 @@ public class GameWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
 		contentPane = new JPanel();
-		InitialWindow in = new InitialWindow();
-		contentPane.setBackground(in.getBackground());
+		contentPane.setBackground(InitialWindow.pnFondo.getBackground());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -131,7 +130,7 @@ public class GameWindow extends JFrame {
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
-			panel.setBackground(new Color(0,0,139));
+			panel.setBackground(InitialWindow.pnFondo.getBackground());
 			panel.setBounds(162, 196, 502, 459);
 			panel.setLayout(null);
 		}
