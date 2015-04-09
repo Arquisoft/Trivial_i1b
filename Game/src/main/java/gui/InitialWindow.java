@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import logic.Game;
 
 public class InitialWindow extends JFrame {
 
@@ -31,7 +32,7 @@ public class InitialWindow extends JFrame {
 	private JButton btnPink;
 	private JButton btnYellow;
 	private JButton btnAboutTheProject;
-	
+	private Game game;
 
 	/**
 	 * Launch the application.
@@ -53,29 +54,31 @@ public class InitialWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public InitialWindow() {
-		final JTextField textField=new JTextField();
-		final JTextField textField_1 = new JTextField();
-		
+		game = new Game(0);
+		final JTextField tfUsername = new JTextField();
+		final JTextField tfPassword = new JTextField();
 
-		final JLabel lblEmail = new JLabel("Email:");
+		final JLabel lblEmail = new JLabel("Username:");
 
 		final JButton btnLogIn = new JButton("Log in");
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (textField.getText().equals("") || textField_1.getText().equals("")){
-					JOptionPane.showMessageDialog(null, "You must fill all the information to log in");
-					
-				}
-				else{
-				
-					GameWindow game = new GameWindow();
-					game.setVisible(true);
+				if (tfUsername.getText().equals("")
+						|| tfPassword.getText().equals("")) {
+					JOptionPane.showMessageDialog(null,
+							"You must fill all the information to log in");
+				} else {
+					if (game.login(tfUsername.getText(), tfPassword.getText())) {
+						GameWindow game = new GameWindow(getGame());
+						game.setVisible(true);
+					}
 				}
 			}
 		});
 
 		final JLabel lblPassword = new JLabel("Password:");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(InitialWindow.class.getResource("/Images/icono.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(
+				InitialWindow.class.getResource("/Images/icono.png")));
 		setTitle("Trivial - Software Architecture");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
@@ -84,9 +87,10 @@ public class InitialWindow extends JFrame {
 		pnFondo.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(pnFondo);
 		pnFondo.setLayout(null);
-		
+
 		JLabel lbTitulo = new JLabel("");
-		lbTitulo.setIcon(new ImageIcon(InitialWindow.class.getResource("/Images/titulo.png")));
+		lbTitulo.setIcon(new ImageIcon(InitialWindow.class
+				.getResource("/Images/titulo.png")));
 		lbTitulo.setBounds(74, 38, 1334, 183);
 		pnFondo.add(lbTitulo);
 		JButton btLog = new JButton("");
@@ -94,8 +98,8 @@ public class InitialWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				lblEmail.setVisible(true);
 				lblPassword.setVisible(true);
-				textField_1.setVisible(true);
-				textField.setVisible(true);
+				tfPassword.setVisible(true);
+				tfUsername.setVisible(true);
 				btnLogIn.setVisible(true);
 			}
 		});
@@ -105,19 +109,21 @@ public class InitialWindow extends JFrame {
 		btLog.setBorderPainted(false);
 		btLog.setBorder(null);
 		btLog.setOpaque(false);
-		btLog.setIcon(new ImageIcon(InitialWindow.class.getResource("/Images/loginn.png")));
+		btLog.setIcon(new ImageIcon(InitialWindow.class
+				.getResource("/Images/loginn.png")));
 		btLog.setBounds(456, 248, 302, 159);
 		pnFondo.add(btLog);
-		
+
 		JButton button = new JButton("");
 		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewUserWindow ventana = new NewUserWindow();
+				NewUserWindow ventana = new NewUserWindow(getGame());
 				ventana.setVisible(true);
 			}
 		});
-		button.setIcon(new ImageIcon(InitialWindow.class.getResource("/Images/newuser.png")));
+		button.setIcon(new ImageIcon(InitialWindow.class
+				.getResource("/Images/newuser.png")));
 		button.setOpaque(false);
 		button.setFocusPainted(false);
 		button.setContentAreaFilled(false);
@@ -125,30 +131,29 @@ public class InitialWindow extends JFrame {
 		button.setBorder(null);
 		button.setBounds(439, 436, 310, 164);
 		pnFondo.add(button);
-		
-		
+
 		lblEmail.setVisible(false);
 		lblEmail.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblEmail.setForeground(new Color(255, 255, 255));
-		lblEmail.setBounds(889, 304, 46, 14);
+		lblEmail.setBounds(889, 304, 89, 14);
 		pnFondo.add(lblEmail);
-		
+
 		lblPassword.setVisible(false);
 		lblPassword.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblPassword.setForeground(new Color(255, 255, 255));
 		lblPassword.setBounds(889, 348, 123, 14);
 		pnFondo.add(lblPassword);
-		
-		textField.setVisible(false);
-		textField.setBounds(1003, 303, 192, 20);
-		pnFondo.add(textField);
-		textField.setColumns(10);
-		
-		textField_1.setVisible(false);
-		textField_1.setBounds(1002, 347, 193, 20);
-		pnFondo.add(textField_1);
-		textField_1.setColumns(10);
-		
+
+		tfUsername.setVisible(false);
+		tfUsername.setBounds(1003, 303, 192, 20);
+		pnFondo.add(tfUsername);
+		tfUsername.setColumns(10);
+
+		tfPassword.setVisible(false);
+		tfPassword.setBounds(1002, 347, 193, 20);
+		pnFondo.add(tfPassword);
+		tfPassword.setColumns(10);
+
 		btnLogIn.setVisible(false);
 		btnLogIn.setBounds(987, 399, 89, 23);
 		pnFondo.add(btnLogIn);
@@ -159,6 +164,7 @@ public class InitialWindow extends JFrame {
 		pnFondo.add(getBtnYellow());
 		pnFondo.add(getBtnAboutTheProject());
 	}
+
 	public JButton getBtnRed() {
 		if (btnRed == null) {
 			btnRed = new JButton("Red");
@@ -166,19 +172,20 @@ public class InitialWindow extends JFrame {
 			btnRed.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					pnFondo.setBackground(Color.RED);
-					
+
 				}
 			});
 			btnRed.setBounds(70, 324, 89, 23);
 		}
 		return btnRed;
 	}
+
 	private JButton getBtnG() {
 		if (btnG == null) {
 			btnG = new JButton("Green");
 			btnG.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					pnFondo.setBackground(new Color(50,205,50));
+					pnFondo.setBackground(new Color(50, 205, 50));
 				}
 			});
 			btnG.setBackground(new Color(50, 205, 50));
@@ -186,12 +193,13 @@ public class InitialWindow extends JFrame {
 		}
 		return btnG;
 	}
+
 	private JButton getBtnBlue() {
 		if (btnBlue == null) {
 			btnBlue = new JButton("Blue");
 			btnBlue.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					pnFondo.setBackground(new Color (0, 0, 205));
+					pnFondo.setBackground(new Color(0, 0, 205));
 				}
 			});
 			btnBlue.setBackground(new Color(0, 0, 205));
@@ -199,6 +207,7 @@ public class InitialWindow extends JFrame {
 		}
 		return btnBlue;
 	}
+
 	private JButton getBtnPink() {
 		if (btnPink == null) {
 			btnPink = new JButton("Pink");
@@ -212,6 +221,7 @@ public class InitialWindow extends JFrame {
 		}
 		return btnPink;
 	}
+
 	private JButton getBtnYellow() {
 		if (btnYellow == null) {
 			btnYellow = new JButton("Yellow");
@@ -225,6 +235,7 @@ public class InitialWindow extends JFrame {
 		}
 		return btnYellow;
 	}
+
 	private JButton getBtnAboutTheProject() {
 		if (btnAboutTheProject == null) {
 			btnAboutTheProject = new JButton("About the project");
@@ -237,5 +248,9 @@ public class InitialWindow extends JFrame {
 			btnAboutTheProject.setBounds(1131, 663, 161, 23);
 		}
 		return btnAboutTheProject;
+	}
+
+	public Game getGame() {
+		return game;
 	}
 }
