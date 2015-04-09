@@ -48,7 +48,7 @@ public class AboutTrivial extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(50,205,50));
+		contentPane.setBackground(InitialWindow.pnFondo.getBackground());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -69,7 +69,7 @@ public class AboutTrivial extends JFrame {
 			txtrThisProjectIs = new JTextArea();
 			txtrThisProjectIs.setFont(new Font("Arial Black", Font.BOLD, 13));
 			txtrThisProjectIs.setForeground(new Color(255, 255, 255));
-			txtrThisProjectIs.setBackground(new Color(50,205,50));
+			txtrThisProjectIs.setBackground(InitialWindow.pnFondo.getBackground());
 			txtrThisProjectIs.setEditable(false);
 			txtrThisProjectIs.setLineWrap(true);
 			txtrThisProjectIs.setWrapStyleWord(true);
