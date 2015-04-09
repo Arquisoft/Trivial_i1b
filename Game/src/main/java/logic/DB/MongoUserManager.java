@@ -1,5 +1,8 @@
 package logic.DB;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import logic.model.User;
 
 import org.bson.Document;
@@ -56,6 +59,20 @@ public class MongoUserManager extends AbstractMongoManager {
 			for (Document doc : table.find(query))
 				user = createUser(doc);
 			return user;
+		} catch (Exception e) {
+			return null;
+		} finally {
+			closeDatabase();
+		}
+	}
+	
+	public static List<User> getAllUsers() {
+		try {
+			connectDatabase();
+			List<User> users = new ArrayList<User>();
+			for (Document doc : table.find())
+				users.add(createUser(doc));
+			return users;
 		} catch (Exception e) {
 			return null;
 		} finally {
