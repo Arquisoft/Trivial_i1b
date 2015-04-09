@@ -50,6 +50,7 @@ public class MongoDBWriter implements DBWriter {
 	private Document createEntrie(Question question) {
 		Document questionToInsert = new Document();
 
+		questionToInsert.put("category", question.getCategory());
 		questionToInsert.put("question", question.getQuestion());
 		List<String> answers = question.getAnswers();
 
@@ -58,12 +59,6 @@ public class MongoDBWriter implements DBWriter {
 				questionToInsert.put("correct", i);
 			questionToInsert.put("answer" + i, answers.get(i));
 		}
-
-		// questionToInsert.put("correct",
-		// answers.remove(question.getPositionTrue()));
-		// questionToInsert.put("wrong1", answers.get(0));
-		// questionToInsert.put("wrong2", answers.get(1));
-
 		return questionToInsert;
 	}
 }

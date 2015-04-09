@@ -29,6 +29,13 @@ public class GameWindow extends JFrame {
 	private JTextField textField;
 	private JTextField txDado;
 	private JLabel label;
+	private JButton btnAddPlayer;
+	private JTextField txPassword;
+	private JTextField txEmail;
+	private JLabel lblEmail;
+	private JLabel lblPassword;
+	private JButton btnOk ;
+	private JButton btnNewUser;
 
 	/**
 	 * Launch the application.
@@ -66,6 +73,47 @@ public class GameWindow extends JFrame {
 		contentPane.add(getTextField());
 		contentPane.add(getTxDado());
 		contentPane.add(getLabel());
+		
+		contentPane.add(getBtnAddPlayer());
+		contentPane.add(getTxPassword());
+		contentPane.add(getTxEmail());
+		contentPane.add(getLblEmail());
+		contentPane.add(getLblPassword());
+		
+		
+		btnOk = new JButton("OK");
+		btnOk.setVisible(false);
+		
+		btnOk.setBounds(978, 370, 89, 23);
+		btnOk.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnOk.setForeground(Color.WHITE);
+		btnOk.setBackground(SystemColor.activeCaption);
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (txEmail.getText().equals("")|| txPassword.getText().equals("")){
+
+					JOptionPane.showMessageDialog(null, "You must fill all the information to add the player");			
+					
+				}
+				else{
+				JOptionPane.showMessageDialog(null, "New user: "+txEmail.getText().toUpperCase()+" added to the game");	}		
+				}
+		});
+		contentPane.add(btnOk);
+		
+		btnNewUser = new JButton("New user");
+		btnNewUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NewUserWindow newu = new NewUserWindow();
+				newu.setVisible(true);
+			}
+		});
+		btnNewUser.setVisible(false);
+		btnNewUser.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewUser.setBackground(SystemColor.activeCaption);
+		btnNewUser.setForeground(Color.WHITE);
+		btnNewUser.setBounds(1046, 367, 89, 23);
+		contentPane.add(btnNewUser);
 	}
 
 	private JLabel getLbTitle() {
@@ -189,5 +237,63 @@ public class GameWindow extends JFrame {
 			label.setBounds(0, 0, 500, 473);
 		}
 		return label;
+		private JButton getBtnAddPlayer() {
+		if (btnAddPlayer == null) {
+			btnAddPlayer = new JButton("Add player");
+			btnAddPlayer.setFont(new Font("Tahoma", Font.BOLD, 11));
+			btnAddPlayer.setForeground(Color.WHITE);
+			btnAddPlayer.setBackground(SystemColor.activeCaption);
+			btnAddPlayer.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					txPassword.setVisible(true);
+					txEmail.setVisible(true);
+					lblEmail.setVisible(true);
+					lblPassword.setVisible(true);
+					btnOk.setVisible(true);
+					btnNewUser.setVisible(true);
+				}
+			});
+			btnAddPlayer.setBounds(949, 243, 160, 23);
+		}
+		return btnAddPlayer;
+	}
+	private JTextField getTxPassword() {
+		if (txPassword == null) {
+			txPassword = new JTextField();
+			txPassword.setVisible(false);
+			txPassword.setBounds(934, 327, 288, 20);
+			txPassword.setColumns(10);
+		}
+		return txPassword;
+	}
+	private JTextField getTxEmail() {
+		if (txEmail == null) {
+			txEmail = new JTextField();
+			txEmail.setVisible(false);
+			txEmail.setBounds(934, 296, 288, 20);
+			txEmail.setColumns(10);
+		}
+		return txEmail;
+	}
+	private JLabel getLblEmail() {
+		if (lblEmail == null) {
+			lblEmail = new JLabel("Email:");
+			lblEmail.setVisible(false);
+			lblEmail.setForeground(Color.WHITE);
+			lblEmail.setFont(new Font("Arial", Font.PLAIN, 13));
+			lblEmail.setBounds(812, 299, 112, 14);
+		}
+		return lblEmail;
+	}
+	private JLabel getLblPassword() {
+		if (lblPassword == null) {
+			lblPassword = new JLabel("Password:");
+			lblPassword.setVisible(false);
+			lblPassword.setForeground(Color.WHITE);
+			lblPassword.setFont(new Font("Arial", Font.PLAIN, 13));
+			lblPassword.setBounds(802, 330, 122, 14);
+		}
+		return lblPassword;
 	}
 }
+

@@ -61,8 +61,15 @@ public class InitialWindow extends JFrame {
 		final JButton btnLogIn = new JButton("Log in");
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (textField.getText().equals("") || textField_1.getText().equals("")){
+					JOptionPane.showMessageDialog(null, "You must fill all the information to log in");
+					
+				}
+				else{
+				
 				GameWindow game = new GameWindow();
 				game.setVisible(true);
+				}
 			}
 		});
 
