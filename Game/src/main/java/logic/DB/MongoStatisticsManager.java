@@ -6,31 +6,33 @@ import logic.model.User;
 import org.bson.Document;
 
 import com.mongodb.BasicDBObject;
+import com.mongodb.MongoClient;
 
 public class MongoStatisticsManager extends AbstractMongoManager {
 
 	private static final String COLLECTION_NAME = "statistics";
 	private static final String DATABASE_NAME = "game";
 	
+	public MongoStatisticsManager() {
+		connectDatabase();
+	}
+	
 	public boolean saveStatistics(User user) {
 		try {
-			connectDatabase();
-			if (getStatistics(user.getUsername()) != null)
+			if (getStatistics(user.getUsername()) == null)
 				table.insertOne(createDocument(user));
 			else
 				System.err.println("Statistics with username " + user.getUsername()
 						+ " alredy exists.");
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace(System.err);
 			return false;
-		} finally {
-			closeDatabase();
 		}
 	}
 
 	public Statistics getStatistics(String username) {
 		try {
-			connectDatabase();
 			BasicDBObject query = new BasicDBObject().append("username",
 					username);
 			Statistics stat = null;
@@ -38,15 +40,13 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 				stat = createStats(doc);
 			return stat;
 		} catch (Exception e) {
+			e.printStackTrace(System.err);
 			return null;
-		} finally {
-			closeDatabase();
 		}
 	}
 	
 	public boolean updateStatistics(User user) {
 		try {
-			connectDatabase();
 			BasicDBObject query = new BasicDBObject().append("username",
 					user.getUsername());
 			Document document = new Document().append("$inc",
@@ -54,9 +54,8 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 			table.updateOne(query, document);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace(System.err);
 			return false;
-		} finally {
-			closeDatabase();
 		}
 	}
 	
@@ -76,6 +75,7 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 	}
 
 	private void connectDatabase() {
+		mongo = new MongoClient("localhost", 27017);
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
 	}

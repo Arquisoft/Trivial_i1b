@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.bson.Document;
 
+import com.mongodb.MongoClient;
+
 import Model.Question;
 import Model.TrivialQuestion;
 import Parser.Utils;
@@ -13,18 +15,20 @@ public class MongoQuestionManager extends AbstractMongoManager {
 
 	private static final String COLLECTION_NAME = "questions";
 	private static final String DATABASE_NAME = "game";
+	
+	public MongoQuestionManager() {
+		connectDatabase();
+	}
 
 	public List<Question> getQuestions() {
 		try {
-			connectDatabase();
 			List<Question> questions = new ArrayList<Question>();
 			for (Document doc : table.find())
 				questions.add(createQuestion(doc));
 			return questions;
 		} catch (Exception e) {
+			e.printStackTrace(System.err);
 			return null;
-		} finally {
-			closeDatabase();
 		}
 	}
 
@@ -42,6 +46,7 @@ public class MongoQuestionManager extends AbstractMongoManager {
 	}
 
 	private void connectDatabase() {
+		mongo = new MongoClient("localhost", 27017);
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
 	}

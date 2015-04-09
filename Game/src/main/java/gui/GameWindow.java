@@ -1,5 +1,5 @@
-
 package gui;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -18,15 +18,13 @@ import javax.swing.border.EmptyBorder;
 
 import logic.Game;
 
-
 public class GameWindow extends JFrame {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	private JPanel contentPane;
 	private JLabel lbTitle;
 	private JPanel panel;
@@ -37,30 +35,23 @@ public class GameWindow extends JFrame {
 	private JLabel label;
 	private JButton btnAddPlayer;
 	private JTextField txPassword;
-	private JTextField txEmail;
+	private JTextField txUsername;
 	private JLabel lblUsername;
 	private JLabel lblPassword;
-	private JButton btnOk ;
+	private JButton btnOk;
 	private JButton btnNewUser;
 
 	private Game game;
 
-
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GameWindow frame = new GameWindow();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
+	/*
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() { public void run() { try { GameWindow frame = new
+	 * GameWindow(); frame.setVisible(true); } catch (Exception e) {
+	 * e.printStackTrace(); } } }); }
+	 */
 
 	/**
 	 * Create the frame.
@@ -68,7 +59,8 @@ public class GameWindow extends JFrame {
 	public GameWindow(Game game) {
 		this.game = game;
 		setTitle("Trivial - Software Architecture");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GameWindow.class.getResource("/Images/icono.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(
+				GameWindow.class.getResource("/Images/icono.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 750);
 		contentPane = new JPanel();
@@ -81,36 +73,40 @@ public class GameWindow extends JFrame {
 		contentPane.add(getLblTurnoDelJugador());
 		contentPane.add(getTextField());
 		contentPane.add(getTxDado());
-		
+
 		contentPane.add(getBtnAddPlayer());
 		contentPane.add(getTxPassword());
-		contentPane.add(getTxEmail());
+		contentPane.add(getTxUsername());
 		contentPane.add(getLabel());
 		contentPane.add(getPanel());
 		contentPane.add(getLblUsername());
 		contentPane.add(getLblPassword());
-		
-		
+
 		btnOk = new JButton("OK");
 		btnOk.setVisible(false);
-		
+
 		btnOk.setBounds(949, 367, 89, 23);
 		btnOk.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnOk.setForeground(Color.WHITE);
 		btnOk.setBackground(SystemColor.activeCaption);
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (txEmail.getText().equals("")|| txPassword.getText().equals("")){
+				if (txUsername.getText().equals("")
+						|| txPassword.getText().equals("")) {
 
-					JOptionPane.showMessageDialog(null, "You must fill all the information to add the player");			
-					
+					JOptionPane
+							.showMessageDialog(null,
+									"You must fill all the information to add the player");
+
+				} else {
+					JOptionPane.showMessageDialog(null, "New user: "
+							+ txUsername.getText().toUpperCase()
+							+ " added to the game");
 				}
-				else{
-				JOptionPane.showMessageDialog(null, "New user: "+txEmail.getText().toUpperCase()+" added to the game");	}		
-				}
+			}
 		});
 		contentPane.add(btnOk);
-		
+
 		btnNewUser = new JButton("New user");
 		btnNewUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -124,7 +120,7 @@ public class GameWindow extends JFrame {
 		btnNewUser.setForeground(Color.WHITE);
 		btnNewUser.setBounds(1046, 367, 89, 23);
 		contentPane.add(btnNewUser);
-		
+
 		JButton btnStart = new JButton("Start");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -142,11 +138,13 @@ public class GameWindow extends JFrame {
 	private JLabel getLbTitle() {
 		if (lbTitle == null) {
 			lbTitle = new JLabel("");
-			lbTitle.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/tituloSmall.png")));
+			lbTitle.setIcon(new ImageIcon(GameWindow.class
+					.getResource("/Images/tituloSmall.png")));
 			lbTitle.setBounds(68, 28, 678, 114);
 		}
 		return lbTitle;
 	}
+
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
@@ -156,17 +154,20 @@ public class GameWindow extends JFrame {
 		}
 		return panel;
 	}
+
 	private JButton getBtnPulsarDado() {
 		if (btnPulsarDado == null) {
 			btnPulsarDado = new JButton("");
 			btnPulsarDado.setContentAreaFilled(false);
 			btnPulsarDado.setBorderPainted(false);
 			btnPulsarDado.setOpaque(false);
-			btnPulsarDado.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/Dado.png")));
+			btnPulsarDado.setIcon(new ImageIcon(GameWindow.class
+					.getResource("/Images/Dado.png")));
 			btnPulsarDado.setBounds(818, 107, 137, 85);
 		}
 		return btnPulsarDado;
 	}
+
 	private JLabel getLblTurnoDelJugador() {
 		if (lblTurnoDelJugador == null) {
 			lblTurnoDelJugador = new JLabel("Turn of player:");
@@ -176,6 +177,7 @@ public class GameWindow extends JFrame {
 		}
 		return lblTurnoDelJugador;
 	}
+
 	private JTextField getTextField() {
 		if (textField == null) {
 			textField = new JTextField();
@@ -185,7 +187,8 @@ public class GameWindow extends JFrame {
 		}
 		return textField;
 	}
-		private JTextField getTxDado() {
+
+	private JTextField getTxDado() {
 		if (txDado == null) {
 			txDado = new JTextField();
 			txDado.setBounds(949, 122, 86, 53);
@@ -193,15 +196,18 @@ public class GameWindow extends JFrame {
 		}
 		return txDado;
 	}
+
 	private JLabel getLabel() {
 		if (label == null) {
 			label = new JLabel("");
 			label.setBounds(164, 195, 500, 473);
-			label.setIcon(new ImageIcon(GameWindow.class.getResource("/Images/tablero.jpg")));
+			label.setIcon(new ImageIcon(GameWindow.class
+					.getResource("/Images/tablero.jpg")));
 		}
 		return label;
 	}
-		private JButton getBtnAddPlayer() {
+
+	private JButton getBtnAddPlayer() {
 		if (btnAddPlayer == null) {
 			btnAddPlayer = new JButton("Add player");
 			btnAddPlayer.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -210,7 +216,7 @@ public class GameWindow extends JFrame {
 			btnAddPlayer.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					txPassword.setVisible(true);
-					txEmail.setVisible(true);
+					txUsername.setVisible(true);
 					lblUsername.setVisible(true);
 					lblPassword.setVisible(true);
 					btnOk.setVisible(true);
@@ -221,6 +227,7 @@ public class GameWindow extends JFrame {
 		}
 		return btnAddPlayer;
 	}
+
 	private JTextField getTxPassword() {
 		if (txPassword == null) {
 			txPassword = new JTextField();
@@ -230,15 +237,17 @@ public class GameWindow extends JFrame {
 		}
 		return txPassword;
 	}
-	private JTextField getTxEmail() {
-		if (txEmail == null) {
-			txEmail = new JTextField();
-			txEmail.setVisible(false);
-			txEmail.setBounds(934, 296, 288, 20);
-			txEmail.setColumns(10);
+
+	private JTextField getTxUsername() {
+		if (txUsername == null) {
+			txUsername = new JTextField();
+			txUsername.setVisible(false);
+			txUsername.setBounds(934, 296, 288, 20);
+			txUsername.setColumns(10);
 		}
-		return txEmail;
+		return txUsername;
 	}
+
 	private JLabel getLblUsername() {
 		if (lblUsername == null) {
 			lblUsername = new JLabel("Username:");
@@ -249,6 +258,7 @@ public class GameWindow extends JFrame {
 		}
 		return lblUsername;
 	}
+
 	private JLabel getLblPassword() {
 		if (lblPassword == null) {
 			lblPassword = new JLabel("Password:");
@@ -264,4 +274,3 @@ public class GameWindow extends JFrame {
 		return game;
 	}
 }
-
