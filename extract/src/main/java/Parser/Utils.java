@@ -4,19 +4,26 @@ import Model.TrivialQuestion.Categories;
 
 public class Utils {
 	
+	private static final String SPORT = "sport";
+	private static final String SCIENCE = "science";
+	private static final String ART = "art";
+	private static final String HISTORY = "history";
+	private static final String ENTERTAINMENT = "entertainment";
+	private static final String GEOGRAPHY = "geography";
+
 	public static Categories getCategory(String attribute) {
 		switch (attribute.toLowerCase()) {
-		case "geography":
+		case GEOGRAPHY:
 			return Categories.GEOGRAPHY;
-		case "entertainment":
+		case ENTERTAINMENT:
 			return Categories.ENTERTAINMENT;
-		case "history":
+		case HISTORY:
 			return Categories.HISTORY;
-		case "art":
+		case ART:
 			return Categories.ART;
-		case "science":
+		case SCIENCE:
 			return Categories.SCIENCE;
-		case "sport":
+		case SPORT:
 			return Categories.SPORT;
 		default:
 			return null;
@@ -26,17 +33,17 @@ public class Utils {
 	public static String getStringCategory(Categories category) {
 		switch (category) {
 		case GEOGRAPHY:
-			return "geography";
+			return GEOGRAPHY;
 		case ENTERTAINMENT:
-			return "entertainment";
+			return ENTERTAINMENT;
 		case HISTORY:
-			return "history";
+			return HISTORY;
 		case ART:
-			return "art";
+			return ART;
 		case SCIENCE:
-			return "science";
+			return SCIENCE;
 		case SPORT:
-			return "sport";
+			return SPORT;
 		default:
 			return null;
 		}
