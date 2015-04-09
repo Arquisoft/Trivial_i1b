@@ -40,6 +40,7 @@ public class GameWindow extends JFrame {
 	private JButton btnOk ;
 	private JButton btnNewUser;
 
+
 	/**
 	 * Launch the application.
 	 */
