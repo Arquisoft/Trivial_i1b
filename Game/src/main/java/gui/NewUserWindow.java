@@ -1,6 +1,5 @@
 package gui;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -14,6 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import logic.Game;
 
 
 public class NewUserWindow extends JFrame {
@@ -33,27 +34,14 @@ public class NewUserWindow extends JFrame {
 	private JTextField textField_2;
 	private JButton btnOk;
 	private JLabel label_1;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NewUserWindow frame = new NewUserWindow();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
+	private Game game;
 
 	/**
 	 * Create the frame.
 	 */
-	public NewUserWindow() {
+	public NewUserWindow(Game game) {
+		this.game = game;
 		setIconImage(Toolkit.getDefaultToolkit().getImage(GameWindow.class.getResource("/Images/icono.png")));
 		setTitle("Trivial - Software Architecture");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -167,5 +155,9 @@ public class NewUserWindow extends JFrame {
 			label_1.setBounds(469, 127, 854, 573);
 		}
 		return label_1;
+	}
+
+	public Game getGame() {
+		return game;
 	}
 }

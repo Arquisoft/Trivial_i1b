@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import logic.Game;
+
 
 public class GameWindow extends JFrame {
 
@@ -36,10 +38,12 @@ public class GameWindow extends JFrame {
 	private JButton btnAddPlayer;
 	private JTextField txPassword;
 	private JTextField txEmail;
-	private JLabel lblEmail;
+	private JLabel lblUsername;
 	private JLabel lblPassword;
 	private JButton btnOk ;
 	private JButton btnNewUser;
+
+	private Game game;
 
 
 	/**
@@ -61,7 +65,8 @@ public class GameWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GameWindow() {
+	public GameWindow(Game game) {
+		this.game = game;
 		setTitle("Trivial - Software Architecture");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(GameWindow.class.getResource("/Images/icono.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,7 +87,7 @@ public class GameWindow extends JFrame {
 		contentPane.add(getTxEmail());
 		contentPane.add(getLabel());
 		contentPane.add(getPanel());
-		contentPane.add(getLblEmail());
+		contentPane.add(getLblUsername());
 		contentPane.add(getLblPassword());
 		
 		
@@ -109,7 +114,7 @@ public class GameWindow extends JFrame {
 		btnNewUser = new JButton("New user");
 		btnNewUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				NewUserWindow newu = new NewUserWindow();
+				NewUserWindow newu = new NewUserWindow(getGame());
 				newu.setVisible(true);
 			}
 		});
@@ -206,7 +211,7 @@ public class GameWindow extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					txPassword.setVisible(true);
 					txEmail.setVisible(true);
-					lblEmail.setVisible(true);
+					lblUsername.setVisible(true);
 					lblPassword.setVisible(true);
 					btnOk.setVisible(true);
 					btnNewUser.setVisible(true);
@@ -234,15 +239,15 @@ public class GameWindow extends JFrame {
 		}
 		return txEmail;
 	}
-	private JLabel getLblEmail() {
-		if (lblEmail == null) {
-			lblEmail = new JLabel("Email:");
-			lblEmail.setVisible(false);
-			lblEmail.setForeground(Color.WHITE);
-			lblEmail.setFont(new Font("Arial", Font.PLAIN, 13));
-			lblEmail.setBounds(812, 299, 112, 14);
+	private JLabel getLblUsername() {
+		if (lblUsername == null) {
+			lblUsername = new JLabel("Username:");
+			lblUsername.setVisible(false);
+			lblUsername.setForeground(Color.WHITE);
+			lblUsername.setFont(new Font("Arial", Font.PLAIN, 13));
+			lblUsername.setBounds(812, 299, 112, 14);
 		}
-		return lblEmail;
+		return lblUsername;
 	}
 	private JLabel getLblPassword() {
 		if (lblPassword == null) {
@@ -250,9 +255,13 @@ public class GameWindow extends JFrame {
 			lblPassword.setVisible(false);
 			lblPassword.setForeground(Color.WHITE);
 			lblPassword.setFont(new Font("Arial", Font.PLAIN, 13));
-			lblPassword.setBounds(802, 330, 122, 14);
+			lblPassword.setBounds(812, 329, 112, 14);
 		}
 		return lblPassword;
+	}
+
+	public Game getGame() {
+		return game;
 	}
 }
 
