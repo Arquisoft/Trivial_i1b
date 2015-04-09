@@ -1,6 +1,5 @@
 package logic;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,26 +9,24 @@ import logic.model.Player;
 import Model.Question;
 
 public class Game {
-	
-	private Board board;
-	
-	private List<Player> players;
 
+	private Board board;
+	private List<Player> players;
 	private Player activePlayer;
-	
-	public Game(){
-		
+
+	public Game() {
+
 		List<Question> questions = new MongoQuestionManager().getQuestions();
 		board = new Board(new QuestionSelector(questions));
 		players = new ArrayList<Player>();
 	}
-	
+
 	public Board getBoard() {
 		return board;
 	}
-	
-	public void addPlayer(Player player){
-		if(players.isEmpty()){
+
+	public void addPlayer(Player player) {
+		if (players.isEmpty()) {
 			activePlayer = player;
 		}
 		players.add(player);
@@ -46,9 +43,9 @@ public class Game {
 		}
 		return activePlayer;
 	}
-	
-	public boolean trueAnswer(Question question,int answer){
-		return question.getPositionTrue() == answer; 
+
+	public boolean trueAnswer(Question question, int answer) {
+		return question.getPositionTrue() == answer;
 	}
 
 	public List<Player> getPlayers() {
