@@ -1,8 +1,11 @@
 package gui;
 
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -25,11 +28,12 @@ public class ListPlayers extends JFrame {
 	private MongoUserManager mongo = new MongoUserManager();
 	
 	private List<User> users;
+	private JButton btnClose;
 	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -40,29 +44,26 @@ public class ListPlayers extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
 	public ListPlayers() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 532, 340);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0,0,139));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getSpUsers());
+		contentPane.add(getBtnClose());
 		
-		JTable tabUsers = new JTable();
-		DefaultTableModel model = (DefaultTableModel)tabUsers.getModel();
-		users = mongo.getAllUsers();
-		Object[] row = new Object[model.getColumnCount()];
-		for (int i = 0; i < users.size(); i++) {
-			row[1] = users.get(i).getUsername();
-			row[2] = users.get(i).getEmail();
-			model.addRow(row);
-		}
+		JButton btnSeeStatistics = new JButton("See statistics");
+		btnSeeStatistics.setBounds(357, 42, 123, 23);
+		contentPane.add(btnSeeStatistics);
+	
 	}
 	private JScrollPane getSpUsers() {
 		if (spUsers == null) {
@@ -77,12 +78,39 @@ public class ListPlayers extends JFrame {
 			tabUsers = new JTable();
 			tabUsers.setModel(new DefaultTableModel(
 				new Object[][] {
+					
 				},
 				new String[] {
 					"Username", "Email"
 				}
 			));
 		}
+		DefaultTableModel model = (DefaultTableModel)tabUsers.getModel();
+		listUsers(model);
+
 		return tabUsers;
+	}
+	private JButton getBtnClose() {
+		if (btnClose == null) {
+			btnClose = new JButton("Close");
+			btnClose.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					System.exit(0);
+				}
+			});
+			btnClose.setBounds(378, 230, 76, 23);
+		}
+		return btnClose;
+	}
+	
+	private void listUsers(DefaultTableModel model) {
+		users = mongo.getAllUsers();
+		Object[] row = new Object[2];
+		for (int i = 0; i < users.size(); i++) {
+			row[0] = users.get(i).getUsername();
+			row[1] = users.get(i).getEmail();
+			
+			model.addRow(row);
+		}
 	}
 }
