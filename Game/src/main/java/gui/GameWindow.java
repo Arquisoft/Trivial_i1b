@@ -25,12 +25,13 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import logic.Game;
+import logic.board.square.Square;
 import logic.model.Player;
 import logic.model.Position;
 import logic.model.User;
 import Model.TrivialQuestion.Categories;
 
-public class GameWindow extends JFrame {
+public class GameWindow extends JFrame implements ActionListener {
 
 	/**
 	 * 
@@ -236,7 +237,6 @@ public class GameWindow extends JFrame {
 				btnNewUser.setVisible(false);
 				startGame();
 				getBtnPulsarDado().setEnabled(true);
-				
 			}
 		});
 		btnStart.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -264,6 +264,12 @@ public class GameWindow extends JFrame {
 		PnAnswer.add(getBtnNewButton_2());
 		PnAnswer.add(getBtnNewButton_3());
 	}
+	
+	public void actionPerformed(ActionEvent e) {
+		//Show question and move player
+		
+		updatePlayers(game.getPlayers());
+    }  
 
 	private JLabel getLbTitle() {
 		if (lbTitle == null) {
@@ -289,77 +295,149 @@ public class GameWindow extends JFrame {
 			b0_1.setActionCommand("0_1");
 			b0_1.setBounds(152, 24, 14, 23);
 			BoardPanel.add(b0_1);
+			b0_1.addActionListener(this);
 			BoardPanel.add(getB0_2());
+			getB0_2().addActionListener(this);
 			BoardPanel.add(getB0_3());
+			getB0_3().addActionListener(this);
 			BoardPanel.add(getB0_4());
+			getB0_4().addActionListener(this);
 			BoardPanel.add(getB0_5());
+			getB0_5().addActionListener(this);
 			BoardPanel.add(getB0_6());
+			getB0_6().addActionListener(this);
 			BoardPanel.add(getB0_7());
-			BoardPanel.add(get0_42());
-			BoardPanel.add(getB0_41());
-			BoardPanel.add(getB0_40());
+			getB0_7().addActionListener(this);
 			BoardPanel.add(getB0_39());
+			getB0_39().addActionListener(this);
+			BoardPanel.add(getB0_40());
+			getB0_40().addActionListener(this);
+			BoardPanel.add(getB0_41());
+			getB0_41().addActionListener(this);
+			BoardPanel.add(getB0_42());
+			getB0_42().addActionListener(this);
 			BoardPanel.add(getB0_38());
+			getB0_38().addActionListener(this);
 			BoardPanel.add(getB0_37());
+			getB0_37().addActionListener(this);
 			BoardPanel.add(getB0_36());
+			getB0_36().addActionListener(this);
 			BoardPanel.add(getB0_35());
+			getB0_35().addActionListener(this);
 			BoardPanel.add(getB0_34());
+			getB0_34().addActionListener(this);
 			BoardPanel.add(getB0_33());
+			getB0_33().addActionListener(this);
 			BoardPanel.add(getB0_32());
+			getB0_32().addActionListener(this);
 			BoardPanel.add(getB0_31());
+			getB0_31().addActionListener(this);
 			BoardPanel.add(getB0_30());
+			getB0_30().addActionListener(this);
 			BoardPanel.add(getB0_29());
+			getB0_29().addActionListener(this);
 			BoardPanel.add(getB0_28());
+			getB0_28().addActionListener(this);
 			BoardPanel.add(getB0_27());
+			getB0_27().addActionListener(this);
 			BoardPanel.add(getB0_26());
+			getB0_26().addActionListener(this);
 			BoardPanel.add(getB0_25());
+			getB0_25().addActionListener(this);
 			BoardPanel.add(getB0_24());
+			getB0_24().addActionListener(this);
 			BoardPanel.add(getB0_23());
+			getB0_23().addActionListener(this);
 			BoardPanel.add(getB0_22());
+			getB0_22().addActionListener(this);
 			BoardPanel.add(getB0_21());
+			getB0_21().addActionListener(this);
 			BoardPanel.add(getB0_20());
+			getB0_20().addActionListener(this);
 			BoardPanel.add(getB0_19());
+			getB0_19().addActionListener(this);
 			BoardPanel.add(getB0_18());
+			getB0_18().addActionListener(this);
 			BoardPanel.add(getB0_17());
+			getB0_17().addActionListener(this);
 			BoardPanel.add(getB0_16());
+			getB0_16().addActionListener(this);
 			BoardPanel.add(getB0_15());
+			getB0_15().addActionListener(this);
 			BoardPanel.add(getB0_14());
+			getB0_14().addActionListener(this);
 			BoardPanel.add(getB0_13());
+			getB0_13().addActionListener(this);
 			BoardPanel.add(getB0_12());
+			getB0_12().addActionListener(this);
 			BoardPanel.add(getB0_11());
+			getB0_11().addActionListener(this);
 			BoardPanel.add(getB0_10());
+			getB0_10().addActionListener(this);
 			BoardPanel.add(getB0_9());
+			getB0_9().addActionListener(this);
 			BoardPanel.add(getB0_8());
+			getB0_8().addActionListener(this);
 			BoardPanel.add(getB5_1());
+			getB5_1().addActionListener(this);
 			BoardPanel.add(getB5_2());
+			getB5_2().addActionListener(this);
 			BoardPanel.add(getB5_3());
+			getB5_3().addActionListener(this);
 			BoardPanel.add(getB5_4());
+			getB5_4().addActionListener(this);
 			BoardPanel.add(getB5_5());
+			getB5_5().addActionListener(this);
 			BoardPanel.add(getB2_5());
+			getB2_5().addActionListener(this);
 			BoardPanel.add(getB2_4());
+			getB2_4().addActionListener(this);
 			BoardPanel.add(getB2_3());
+			getB2_3().addActionListener(this);
 			BoardPanel.add(getB2_2());
+			getB2_2().addActionListener(this);
 			BoardPanel.add(getB2_1());
+			getB2_1().addActionListener(this);
 			BoardPanel.add(getB6_5());
+			getB6_5().addActionListener(this);
 			BoardPanel.add(getB6_4());
+			getB6_4().addActionListener(this);
 			BoardPanel.add(getB6_3());
+			getB6_3().addActionListener(this);
 			BoardPanel.add(getB6_2());
+			getB6_2().addActionListener(this);
 			BoardPanel.add(getB6_1());
+			getB6_1().addActionListener(this);
 			BoardPanel.add(getB3_5());
+			getB3_5().addActionListener(this);
 			BoardPanel.add(getB3_4());
+			getB3_4().addActionListener(this);
 			BoardPanel.add(getB3_3());
+			getB3_3().addActionListener(this);
 			BoardPanel.add(getB3_2());
+			getB3_2().addActionListener(this);
 			BoardPanel.add(getB4_1());
+			getB4_1().addActionListener(this);
 			BoardPanel.add(getB4_2());
+			getB4_2().addActionListener(this);
 			BoardPanel.add(getB4_3());
+			getB4_3().addActionListener(this);
 			BoardPanel.add(getB4_4());
+			getB4_4().addActionListener(this);
 			BoardPanel.add(getB4_5());
+			getB4_5().addActionListener(this);
 			BoardPanel.add(getB1_5());
+			getB1_5().addActionListener(this);
 			BoardPanel.add(getB1_4());
+			getB1_4().addActionListener(this);
 			BoardPanel.add(getB1_3());
+			getB1_3().addActionListener(this);
 			BoardPanel.add(getB1_2());
+			getB1_2().addActionListener(this);
 			BoardPanel.add(getB1_1());
+			getB1_1().addActionListener(this);
 			BoardPanel.add(getB3_1());
+			getB3_1().addActionListener(this);
 			BoardPanel.add(getLabel());
 		}
 		return BoardPanel;
@@ -370,8 +448,14 @@ public class GameWindow extends JFrame {
 			btnPulsarDado = new JButton("");
 			btnPulsarDado.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					getTxDado().setText(String.valueOf(getGame().throwDie()));
-					getTxDado().setEnabled(false);
+					int movements = getGame().throwDie();
+					getTxDado().setText(String.valueOf(movements));
+					getBtnPulsarDado().setEnabled(false);
+					Square[] squares = getGame().getBoard().mover(getGame().getActivePlayer(), movements);
+					for(Square s : squares){
+						JButton button = getButton(s.getPosition());
+						button.setEnabled(true);
+					}
 				}
 			});
 			btnPulsarDado.setContentAreaFilled(false);
@@ -602,7 +686,7 @@ public class GameWindow extends JFrame {
 		}
 		return b0_7;
 	}
-	private JButton get0_42() {
+	private JButton getB0_42() {
 		if (b0_42 == null) {
 			b0_42 = new JButton("");
 			b0_42.setContentAreaFilled(false);

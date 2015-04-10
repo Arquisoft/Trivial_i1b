@@ -91,7 +91,7 @@ public class Board {
 			}
 		}
 
-		return (Square[]) posibleMovements.toArray();
+		return posibleMovements.toArray(new Square[posibleMovements.size()]);
 
 	}
 
@@ -117,7 +117,7 @@ public class Board {
 	}
 
 	private int newExternalPosition(Position position, int movement) {
-		int newPosition = position.getIndex();
+		int newPosition = position.getIndex() + movement;
 		if ((position.getIndex() + movement) > DEFAULT_SIZE)
 			newPosition = DEFAULT_SIZE - (position.getIndex() + movement);
 		return newPosition;
