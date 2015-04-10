@@ -15,8 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+
 public class StatisticsWindow extends JFrame {
 
+	
 	/**
 	 * 
 	 */
@@ -27,6 +29,7 @@ public class StatisticsWindow extends JFrame {
 	private JScrollPane spTable;
 	private JTable tabStatistics;
 	private JButton btnClose;
+
 
 	/**
 	 * Launch the application.
@@ -59,6 +62,8 @@ public class StatisticsWindow extends JFrame {
 		contentPane.add(getTxPlayer());
 		contentPane.add(getSpTable());
 		contentPane.add(getBtnClose());
+		
+		
 	}
 
 	private JLabel getLblPlayer() {
@@ -94,7 +99,7 @@ public class StatisticsWindow extends JFrame {
 					{null, null, null, null},
 				},
 				new String[] {
-					"Incorrect answers", "Correct answers", "Lost games", "Won games"
+					"Won games", "Lost games", "Correct answers", "Incorrect answers"
 				}
 			));
 		}
