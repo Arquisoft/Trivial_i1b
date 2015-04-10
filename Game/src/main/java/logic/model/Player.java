@@ -5,6 +5,7 @@ import java.util.Random;
 public class Player {
 
 	private User user;
+
 	/*
 	 * From 0 to n wedges assigned to each player at the start of the game true
 	 * if the player has match the question, false otherwise, all players start
@@ -41,5 +42,9 @@ public class Player {
 			if (!bool)
 				return false;
 		return true;
+	}
+	
+	public User getUser() {
+		return user;
 	}
 }

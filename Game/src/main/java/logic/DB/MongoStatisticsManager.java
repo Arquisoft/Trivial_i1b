@@ -60,6 +60,7 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 
 	private Document createDocument(User user) {
 		Document doc = new Document();
+		doc.put("username", user.getUsername());
 		doc.put("timesPlayed", user.getStatistics().getTimesPlayed());
 		doc.put("questionsAnswered", user.getStatistics()
 				.getQuestionsAnswered());
