@@ -12,7 +12,7 @@ public abstract class AbstractMongoManager implements MongoManager{
 	protected MongoDatabase db;
 	protected MongoCollection<Document> table;
 	
-	protected void closeDatabase() {
+	public void closeDatabase() {
 		mongo.close();
 	}
 }

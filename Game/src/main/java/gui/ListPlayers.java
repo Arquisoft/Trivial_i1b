@@ -75,7 +75,7 @@ public class ListPlayers extends JFrame {
 			tabUsers = new JTable();
 			tabUsers.setModel(new DefaultTableModel(
 				new Object[][] {
-					//{null, null},
+					{null, null},
 					
 				},
 				new String[] {

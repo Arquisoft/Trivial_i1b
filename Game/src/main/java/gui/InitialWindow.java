@@ -37,12 +37,17 @@ public class InitialWindow extends JFrame {
 	private JButton btnAboutTheProject;
 	private JTextField txtUsername;
 
-	private Game game;
+	private static Game game;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+			public void run() {
+				getGame().closeDatabase();
+			}
+		}, "Shutdown-thread"));
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -78,11 +83,11 @@ public class InitialWindow extends JFrame {
 						game.addPlayer(new Player(user,
 								Categories.values().length));
 						if (txtUsername.getText().equals("admin")) {
-							/*StatisticsWindow statsWin = new StatisticsWindow(getGame());
-							statsWin.setVisible(true);*/
-							
-						}
-						else {
+							GameWindow game = new GameWindow(getGame());
+							game.setVisible(true);
+							ListPlayers players = new ListPlayers();
+							players.setVisible(true);
+						} else {
 							GameWindow game = new GameWindow(getGame());
 							game.setVisible(true);
 						}
@@ -274,8 +279,7 @@ public class InitialWindow extends JFrame {
 		return btnAboutTheProject;
 	}
 
-
-	public Game getGame() {
+	public static Game getGame() {
 		return game;
 	}
 }
