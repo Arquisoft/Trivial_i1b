@@ -1,12 +1,19 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,29 +23,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import Model.TrivialQuestion.Categories;
 import logic.Game;
-import javax.swing.JTable;
-import java.awt.Panel;
-
 import logic.model.Player;
+import logic.model.Position;
 import logic.model.User;
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
-import javax.swing.BoxLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.CardLayout;
-import java.awt.ComponentOrientation;
-import javax.swing.JRadioButton;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import net.miginfocom.swing.MigLayout;
+import Model.TrivialQuestion.Categories;
 
 public class GameWindow extends JFrame {
 
@@ -64,6 +53,8 @@ public class GameWindow extends JFrame {
 	private JButton btnNewUser;
 
 	private Game game;
+	
+	private Map<Player,Icon> colorsPlayers;
 	
 	private JButton btCentro;
 	private JButton b0_2;
@@ -137,8 +128,6 @@ public class GameWindow extends JFrame {
 	private JButton b1_3;
 	private JButton b1_2;
 	private JButton b1_1;
-	private final Action action = new SwingAction();
-	private final Action action_1 = new SwingAction_1();
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
 	private JButton btnNewButton_2;
@@ -257,19 +246,20 @@ public class GameWindow extends JFrame {
 		QuestionPn.setBounds(714, 415, 622, 252);
 		contentPane.add(QuestionPn);
 		QuestionPn.setLayout(new BorderLayout(0, 0));
+		QuestionPn.setVisible(false);
 		
 		JLabel lbQuestion = new JLabel("Question");
 		lbQuestion.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lbQuestion.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
 		QuestionPn.add(lbQuestion, BorderLayout.NORTH);
 		
-		JPanel panel = new JPanel();
-		QuestionPn.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[622px]", "[216px]"));
-		panel.add(getBtnNewButton(), "flowx,cell 0 0");
-		panel.add(getBtnNewButton_1(), "cell 0 0");
-		panel.add(getBtnNewButton_2(), "cell 0 0");
-		panel.add(getBtnNewButton_3(), "cell 0 0");
+		JPanel PnAnswer = new JPanel();
+		QuestionPn.add(PnAnswer, BorderLayout.CENTER);
+		PnAnswer.setLayout(new GridLayout(2,2));
+		PnAnswer.add(getBtnNewButton());
+		PnAnswer.add(getBtnNewButton_1());
+		PnAnswer.add(getBtnNewButton_2());
+		PnAnswer.add(getBtnNewButton_3());
 	}
 
 	private JLabel getLbTitle() {
@@ -301,8 +291,8 @@ public class GameWindow extends JFrame {
 			BoardPanel.add(getB0_4());
 			BoardPanel.add(getB0_5());
 			BoardPanel.add(getB0_6());
-			BoardPanel.add(getButton_5_1());
-			BoardPanel.add(getButton_6_1());
+			BoardPanel.add(getB0_7());
+			BoardPanel.add(get0_42());
 			BoardPanel.add(getB0_41());
 			BoardPanel.add(getB0_40());
 			BoardPanel.add(getB0_39());
@@ -438,6 +428,7 @@ public class GameWindow extends JFrame {
 					lblPassword.setVisible(true);
 					btnOk.setVisible(true);
 					btnNewUser.setVisible(true);
+					startGame();
 				}
 			});
 			btnAddPlayer.setBounds(867, 203, 160, 23);
@@ -491,6 +482,46 @@ public class GameWindow extends JFrame {
 		return game;
 	}
 	
+	private void createMapPlayers(List<Player> players){
+		colorsPlayers = new HashMap<Player,Icon>();
+		int i = 1;
+		for(Player p: players){
+			colorsPlayers.put(p, new ImageIcon(GameWindow.class.getResource("/Images/player"+i+".png")));
+			i++;
+		}			
+	}
+	
+	private void startGame(){
+		createMapPlayers(game.getPlayers());
+		updatePlayers(game.getPlayers());
+	}
+	
+	private void updatePlayers(List<Player> players) {
+		for(Player p: players){
+			
+			JButton b = getButton(p.getPosition());
+			b.setContentAreaFilled(true);
+			b.setEnabled(true);
+			b.setIcon(colorsPlayers.get(p));
+		}
+			
+	}
+	
+	private JButton getButton(Position position){
+		Component[] buttons = BoardPanel.getComponents();
+		for (Component comp : buttons) {
+			if(comp instanceof JButton){
+				JButton button = (JButton) comp;
+				if(String.valueOf(position.getWalk() + "_" + position.getIndex()).equals(button.getActionCommand())){
+					return button;
+				}
+			}
+		}
+		return null;
+	}
+
+	
+
 	private JButton getBtCentro() {
 		if (btCentro == null) {
 			btCentro = new JButton("");
@@ -551,7 +582,7 @@ public class GameWindow extends JFrame {
 		}
 		return b0_6;
 	}
-	private JButton getButton_5_1() {
+	private JButton getB0_7() {
 		if (b0_7 == null) {
 			b0_7 = new JButton("");
 			b0_7.setContentAreaFilled(false);
@@ -561,7 +592,7 @@ public class GameWindow extends JFrame {
 		}
 		return b0_7;
 	}
-	private JButton getButton_6_1() {
+	private JButton get0_42() {
 		if (b0_42 == null) {
 			b0_42 = new JButton("");
 			b0_42.setContentAreaFilled(false);
@@ -1222,25 +1253,31 @@ public class GameWindow extends JFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("New button");
+			btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 22));
 		}
 		return btnNewButton;
 	}
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("New button");
+			btnNewButton_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 22));
 		}
 		return btnNewButton_1;
 	}
 	private JButton getBtnNewButton_2() {
 		if (btnNewButton_2 == null) {
 			btnNewButton_2 = new JButton("New button");
+			btnNewButton_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 22));
 		}
 		return btnNewButton_2;
 	}
 	private JButton getBtnNewButton_3() {
 		if (btnNewButton_3 == null) {
 			btnNewButton_3 = new JButton("New button");
+			btnNewButton_3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 22));
 		}
 		return btnNewButton_3;
 	}
+	
+	
 }
