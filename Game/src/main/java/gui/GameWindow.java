@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -247,10 +248,11 @@ public class GameWindow extends JFrame {
 		
 		JPanel panel = new JPanel();
 		QuestionPn.add(panel, BorderLayout.CENTER);
+		panel.setLayout(new GridLayout(2, 2));
 		panel.add(getBtnNewButton(), "flowx,cell 0 0");
-		panel.add(getBtnNewButton_1(), "cell 0 0");
-		panel.add(getBtnNewButton_2(), "cell 0 0");
-		panel.add(getBtnNewButton_3(), "cell 0 0");
+		panel.add(getBtnNewButton_1());
+		panel.add(getBtnNewButton_2());
+		panel.add(getBtnNewButton_3());
 	}
 
 	private JLabel getLbTitle() {

@@ -21,9 +21,10 @@ public class ListPlayers extends JFrame {
 	private JPanel contentPane;
 	private JScrollPane spUsers;
 	private JTable tabUsers;
-	private MongoUserManager mongo;
 	
-	private List<User> users = mongo.getAllUsers();
+	private MongoUserManager mongo = new MongoUserManager();
+	
+	private List<User> users;
 	
 	/**
 	 * Launch the application.
@@ -55,9 +56,10 @@ public class ListPlayers extends JFrame {
 		
 		JTable tabUsers = new JTable();
 		DefaultTableModel model = (DefaultTableModel)tabUsers.getModel();
+		users = mongo.getAllUsers();
 		Object[] row = new Object[model.getColumnCount()];
 		for (int i = 0; i < users.size(); i++) {
-			row[0] = users.get(i).getUsername();
+			row[1] = users.get(i).getUsername();
 			row[2] = users.get(i).getEmail();
 			model.addRow(row);
 		}
@@ -75,8 +77,6 @@ public class ListPlayers extends JFrame {
 			tabUsers = new JTable();
 			tabUsers.setModel(new DefaultTableModel(
 				new Object[][] {
-					//{null, null},
-					
 				},
 				new String[] {
 					"Username", "Email"

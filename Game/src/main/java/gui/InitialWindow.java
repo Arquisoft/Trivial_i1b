@@ -17,10 +17,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import Model.TrivialQuestion.Categories;
 import logic.Game;
+import logic.DB.MongoUserManager;
 import logic.model.Player;
 import logic.model.User;
+import Model.TrivialQuestion.Categories;
 
 public class InitialWindow extends JFrame {
 
@@ -66,7 +67,7 @@ public class InitialWindow extends JFrame {
 	public InitialWindow() {
 		game = new Game();
 		final JTextField txtPassword = new JTextField();
-
+		System.out.println(new MongoUserManager().getAllUsers());
 		final JLabel lblUsername = new JLabel("Username:");
 
 		final JButton btnLogIn = new JButton("Log in");
@@ -83,10 +84,10 @@ public class InitialWindow extends JFrame {
 						game.addPlayer(new Player(user,
 								Categories.values().length));
 						if (txtUsername.getText().equals("admin")) {
-							/*
-							 * StatisticsWindow statsWin = new StatisticsWindow(getGame());
-							 * statsWin.setVisible(true);
-							 */
+							GameWindow game = new GameWindow(getGame());
+							game.setVisible(true);
+							ListPlayers players = new ListPlayers();
+							players.setVisible(true);
 						} else {
 							GameWindow game = new GameWindow(getGame());
 							game.setVisible(true);
