@@ -15,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 
 import logic.DB.MongoUserManager;
 import logic.model.User;
+import javax.swing.JLabel;
+import java.awt.Font;
 public class ListPlayers extends JFrame {
 
 	/**
@@ -29,6 +31,7 @@ public class ListPlayers extends JFrame {
 	
 	private List<User> users;
 	private JButton btnClose;
+	private JLabel lbListUsers;
 	
 	/**
 	 * Launch the application.
@@ -59,6 +62,7 @@ public class ListPlayers extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(getSpUsers());
 		contentPane.add(getBtnClose());
+		contentPane.setBackground(InitialWindow.pnFondo.getBackground());
 		
 		JButton btnSeeStatistics = new JButton("See statistics");
 		btnSeeStatistics.addActionListener(new ActionListener() {
@@ -79,13 +83,16 @@ public class ListPlayers extends JFrame {
 		});
 		btnSeeStatistics.setBounds(357, 42, 123, 23);
 		contentPane.add(btnSeeStatistics);
+		contentPane.add(getLbListUsers());
 	
 	}
 	private JScrollPane getSpUsers() {
 		if (spUsers == null) {
 			spUsers = new JScrollPane();
-			spUsers.setBounds(41, 26, 306, 188);
+			spUsers.setBounds(42, 103, 306, 128);
 			spUsers.setViewportView(getTabUsers());
+			spUsers.setBackground(InitialWindow.pnFondo.getBackground());
+
 		}
 		return spUsers;
 	}
@@ -128,5 +135,13 @@ public class ListPlayers extends JFrame {
 			
 			model.addRow(row);
 		}
+	}
+	private JLabel getLbListUsers() {
+		if (lbListUsers == null) {
+			lbListUsers = new JLabel("List of users:");
+			lbListUsers.setFont(new Font("Arial", Font.PLAIN, 25));
+			lbListUsers.setBounds(142, 32, 195, 32);
+		}
+		return lbListUsers;
 	}
 }
