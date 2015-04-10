@@ -83,10 +83,10 @@ public class InitialWindow extends JFrame {
 						game.addPlayer(new Player(user,
 								Categories.values().length));
 						if (txtUsername.getText().equals("admin")) {
-							/*
-							 * StatisticsWindow statsWin = new StatisticsWindow(getGame());
-							 * statsWin.setVisible(true);
-							 */
+							GameWindow game = new GameWindow(getGame());
+							game.setVisible(true);
+							ListPlayers players = new ListPlayers();
+							players.setVisible(true);
 						} else {
 							GameWindow game = new GameWindow(getGame());
 							game.setVisible(true);
