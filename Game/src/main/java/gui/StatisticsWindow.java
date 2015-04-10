@@ -1,10 +1,11 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class StatisticsWindow extends JFrame {
@@ -14,6 +15,7 @@ public class StatisticsWindow extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -35,12 +37,21 @@ public class StatisticsWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public StatisticsWindow() {
+		setTitle("Statistics of players");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 712, 402);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblPlayerName = new JLabel("Player:");
+		lblPlayerName.setBounds(56, 31, 54, 14);
+		contentPane.add(lblPlayerName);
+		
+		textField = new JTextField();
+		textField.setBounds(120, 28, 197, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
 	}
-
 }
