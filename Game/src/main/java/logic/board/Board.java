@@ -19,7 +19,9 @@ public class Board {
 	private int size;
 
 	private Square[] board;
-
+	
+	private Categories[] special = new Categories[]{Categories.GEOGRAPHY,Categories.SPORT,Categories.HISTORY,Categories.ENTERTAINMENT,Categories.SCIENCE,Categories.ART};
+		
 	public Board(QuestionSelector questions) {
 		this.size = DEFAULT_SIZE;
 		this.questions = questions;
@@ -46,7 +48,7 @@ public class Board {
 				j++;
 			}
 			if (j % (Categories.values().length+1) == 0){
-				Categories c = Categories.values()[(j / (Categories.values().length+1))-1];
+				Categories c = special[(j / (Categories.values().length+1))-1];
 				Position p = new Position(0,j);
 				int s =  Categories.values().length ; 
 				board[j] = new CompositeSquare(c,p,s);

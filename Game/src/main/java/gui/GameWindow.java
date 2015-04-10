@@ -23,6 +23,22 @@ import java.awt.Panel;
 
 import logic.model.Player;
 import logic.model.User;
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import javax.swing.BoxLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.Component;
+import java.awt.FlowLayout;
+import java.awt.CardLayout;
+import java.awt.ComponentOrientation;
+import javax.swing.JRadioButton;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import net.miginfocom.swing.MigLayout;
 
 public class GameWindow extends JFrame {
 
@@ -33,7 +49,7 @@ public class GameWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lbTitle;
-	private JPanel panel;
+	private JPanel BoardPanel;
 	private JButton btnPulsarDado;
 	private JLabel lblTurnoDelJugador;
 	private JTextField textField;
@@ -49,80 +65,84 @@ public class GameWindow extends JFrame {
 
 	private Game game;
 	
-	private JTable table;
-	
 	private JButton btCentro;
-	private JButton button;
-	private JButton button_1;
-	private JButton button_2;
-	private JButton button_3;
-	private JButton button_4;
-	private JButton button_5;
-	private JButton button_6;
-	private JButton button_7;
-	private JButton button_8;
-	private JButton button_9;
-	private JButton button_10;
-	private JButton button_11;
-	private JButton button_12;
-	private JButton button_13;
-	private JButton button_14;
-	private JButton button_15;
-	private JButton button_16;
-	private JButton button_17;
-	private JButton button_18;
-	private JButton button_19;
-	private JButton button_20;
-	private JButton button_21;
-	private JButton button_22;
-	private JButton button_23;
-	private JButton button_24;
-	private JButton button_25;
-	private JButton button_26;
-	private JButton button_27;
-	private JButton button_28;
-	private JButton button_29;
-	private JButton button_30;
-	private JButton button_31;
-	private JButton button_32;
-	private JButton button_33;
-	private JButton button_34;
-	private JButton button_35;
-	private JButton button_36;
-	private JButton button_37;
-	private JButton button_38;
-	private JButton button_39;
-	private JButton button_40;
-	private JButton button_41;
-	private JButton button_42;
-	private JButton button_43;
-	private JButton button_44;
-	private JButton button_45;
-	private JButton button_46;
-	private JButton button_47;
-	private JButton button_48;
-	private JButton button_49;
-	private JButton button_50;
-	private JButton button_51;
-	private JButton button_52;
-	private JButton button_53;
-	private JButton button_54;
-	private JButton button_55;
-	private JButton button_56;
-	private JButton button_57;
-	private JButton button_58;
-	private JButton button_59;
-	private JButton button_60;
-	private JButton button_61;
-	private JButton button_62;
-	private JButton button_63;
-	private JButton button_64;
-	private JButton button_65;
-	private JButton button_66;
-	private JButton button_67;
-	private JButton button_68;
-	private JButton button_69;
-	private JButton button_70;
+	private JButton b0_2;
+	private JButton b0_3;
+	private JButton b0_4;
+	private JButton b0_5;
+	private JButton b0_6;
+	private JButton b0_7;
+	private JButton b0_42;
+	private JButton b0_41;
+	private JButton b0_40;
+	private JButton b0_39;
+	private JButton b0_38;
+	private JButton b0_37;
+	private JButton b0_36;
+	private JButton b0_35;
+	private JButton b0_34;
+	private JButton b0_33;
+	private JButton b0_32;
+	private JButton b0_31;
+	private JButton b0_30;
+	private JButton b0_29;
+	private JButton b0_28;
+	private JButton b0_27;
+	private JButton b0_26;
+	private JButton b0_25;
+	private JButton b0_24;
+	private JButton b0_23;
+	private JButton b0_22;
+	private JButton b0_21;
+	private JButton b0_20;
+	private JButton b0_19;
+	private JButton b0_18;
+	private JButton b0_17;
+	private JButton b0_16;
+	private JButton b0_15;
+	private JButton b0_14;
+	private JButton b0_13;
+	private JButton b0_12;
+	private JButton b0_11;
+	private JButton b0_10;
+	private JButton b0_9;
+	private JButton b0_8;
+	private JButton b5_1;
+	private JButton b5_2;
+	private JButton b5_3;
+	private JButton b5_4;
+	private JButton b5_5;
+	private JButton b2_5;
+	private JButton b2_4;
+	private JButton b2_3;
+	private JButton b2_2;
+	private JButton b2_1;
+	private JButton b6_5;
+	private JButton b6_4;
+	private JButton b6_3;
+	private JButton b6_2;
+	private JButton b6_1;
+	private JButton b3_5;
+	private JButton b3_4;
+	private JButton b3_3;
+	private JButton b3_2;
+	private JButton b3_1;
+	private JButton b4_1;
+	private JButton b4_2;
+	private JButton b4_3;
+	private JButton b4_4;
+	private JButton b4_5;
+	private JButton b1_5;
+	private JButton b1_4;
+	private JButton b1_3;
+	private JButton b1_2;
+	private JButton b1_1;
+	private final Action action = new SwingAction();
+	private final Action action_1 = new SwingAction_1();
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+	private JButton btnNewButton_2;
+	private JButton btnNewButton_3;
 
 	/**
 	 * Launch the application.
@@ -158,7 +178,7 @@ public class GameWindow extends JFrame {
 		contentPane.add(getBtnAddPlayer());
 		contentPane.add(getTxPassword());
 		contentPane.add(getTxUsername());
-		contentPane.add(getPanel());
+		contentPane.add(getBoardPanel());
 		contentPane.add(getLblUsername());
 		contentPane.add(getLblPassword());
 
@@ -217,8 +237,14 @@ public class GameWindow extends JFrame {
 		JButton btnStart = new JButton("Start");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				btnOk.setEnabled(false);
 				btnAddPlayer.setEnabled(false);
+				txPassword.setVisible(false);
+				txUsername.setVisible(false);
+				lblUsername.setVisible(false);
+				lblPassword.setVisible(false);
+				btnOk.setVisible(false);
+				btnNewUser.setVisible(false);
+				
 			}
 		});
 		btnStart.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -227,10 +253,23 @@ public class GameWindow extends JFrame {
 		btnStart.setBounds(1037, 203, 143, 23);
 		contentPane.add(btnStart);
 		
-		Panel panel_1 = new Panel();
-		panel_1.setBounds(1193, 47, 143, 216);
-		contentPane.add(panel_1);
-		panel_1.add(getTable());
+		JPanel QuestionPn = new JPanel();
+		QuestionPn.setBounds(714, 415, 622, 252);
+		contentPane.add(QuestionPn);
+		QuestionPn.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lbQuestion = new JLabel("Question");
+		lbQuestion.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lbQuestion.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
+		QuestionPn.add(lbQuestion, BorderLayout.NORTH);
+		
+		JPanel panel = new JPanel();
+		QuestionPn.add(panel, BorderLayout.CENTER);
+		panel.setLayout(new MigLayout("", "[622px]", "[216px]"));
+		panel.add(getBtnNewButton(), "flowx,cell 0 0");
+		panel.add(getBtnNewButton_1(), "cell 0 0");
+		panel.add(getBtnNewButton_2(), "cell 0 0");
+		panel.add(getBtnNewButton_3(), "cell 0 0");
 	}
 
 	private JLabel getLbTitle() {
@@ -243,91 +282,94 @@ public class GameWindow extends JFrame {
 		return lbTitle;
 	}
 
-	private JPanel getPanel() {
-		if (panel == null) {
-			panel = new JPanel();
-			panel.setBackground(InitialWindow.pnFondo.getBackground());
-			panel.setBounds(162, 196, 502, 459);
-			panel.setLayout(null);
-			panel.add(getBtCentro());
+	private JPanel getBoardPanel() {
+		if (BoardPanel == null) {
+			BoardPanel = new JPanel();
+			BoardPanel.setBackground(InitialWindow.pnFondo.getBackground());
+			BoardPanel.setBounds(162, 196, 502, 459);
+			BoardPanel.setLayout(null);
+			BoardPanel.add(getBtCentro());
 			
-			JButton btAzul1 = new JButton("New button");
-			btAzul1.setBounds(152, 24, 14, 23);
-			panel.add(btAzul1);
-			panel.add(getButton());
-			panel.add(getButton_1());
-			panel.add(getButton_2());
-			panel.add(getButton_3());
-			panel.add(getButton_4());
-			panel.add(getButton_5_1());
-			panel.add(getButton_6_1());
-			panel.add(getButton_7());
-			panel.add(getButton_8());
-			panel.add(getButton_9());
-			panel.add(getButton_10());
-			panel.add(getButton_11());
-			panel.add(getButton_12());
-			panel.add(getButton_13());
-			panel.add(getButton_14());
-			panel.add(getButton_15());
-			panel.add(getButton_16());
-			panel.add(getButton_17());
-			panel.add(getButton_18());
-			panel.add(getButton_19());
-			panel.add(getButton_20());
-			panel.add(getButton_21());
-			panel.add(getButton_22());
-			panel.add(getButton_23());
-			panel.add(getButton_24());
-			panel.add(getButton_25());
-			panel.add(getButton_26());
-			panel.add(getButton_27());
-			panel.add(getButton_28());
-			panel.add(getButton_29());
-			panel.add(getButton_30());
-			panel.add(getButton_31());
-			panel.add(getButton_32());
-			panel.add(getButton_33());
-			panel.add(getButton_34());
-			panel.add(getButton_35());
-			panel.add(getButton_36());
-			panel.add(getButton_37());
-			panel.add(getButton_38());
-			panel.add(getButton_39());
-			panel.add(getButton_40());
-			panel.add(getButton_41());
-			panel.add(getButton_42());
-			panel.add(getButton_43());
-			panel.add(getButton_44());
-			panel.add(getButton_45());
-			panel.add(getButton_46());
-			panel.add(getButton_47());
-			panel.add(getButton_48());
-			panel.add(getButton_49());
-			panel.add(getButton_50());
-			panel.add(getButton_51());
-			panel.add(getButton_52());
-			panel.add(getButton_53());
-			panel.add(getButton_54());
-			panel.add(getButton_55());
-			panel.add(getButton_56());
-			panel.add(getButton_57());
-			panel.add(getButton_58());
-			panel.add(getButton_59());
-			panel.add(getButton_61());
-			panel.add(getButton_62());
-			panel.add(getButton_63());
-			panel.add(getButton_64());
-			panel.add(getButton_65());
-			panel.add(getButton_66());
-			panel.add(getButton_67());
-			panel.add(getButton_68());
-			panel.add(getButton_69());
-			panel.add(getButton_70());
-			panel.add(getButton_60());
-			panel.add(getLabel());
+			JButton b0_1 = new JButton("");
+			b0_1.setContentAreaFilled(false);
+			b0_1.setEnabled(false);
+			b0_1.setActionCommand("0_1");
+			b0_1.setBounds(152, 24, 14, 23);
+			BoardPanel.add(b0_1);
+			BoardPanel.add(getB0_2());
+			BoardPanel.add(getB0_3());
+			BoardPanel.add(getB0_4());
+			BoardPanel.add(getB0_5());
+			BoardPanel.add(getB0_6());
+			BoardPanel.add(getButton_5_1());
+			BoardPanel.add(getButton_6_1());
+			BoardPanel.add(getB0_41());
+			BoardPanel.add(getB0_40());
+			BoardPanel.add(getB0_39());
+			BoardPanel.add(getB0_38());
+			BoardPanel.add(getB0_37());
+			BoardPanel.add(getB0_36());
+			BoardPanel.add(getB0_35());
+			BoardPanel.add(getB0_34());
+			BoardPanel.add(getB0_33());
+			BoardPanel.add(getB0_32());
+			BoardPanel.add(getB0_31());
+			BoardPanel.add(getB0_30());
+			BoardPanel.add(getB0_29());
+			BoardPanel.add(getB0_28());
+			BoardPanel.add(getB0_27());
+			BoardPanel.add(getB0_26());
+			BoardPanel.add(getB0_25());
+			BoardPanel.add(getB0_24());
+			BoardPanel.add(getB0_23());
+			BoardPanel.add(getB0_22());
+			BoardPanel.add(getB0_21());
+			BoardPanel.add(getB0_20());
+			BoardPanel.add(getB0_19());
+			BoardPanel.add(getB0_18());
+			BoardPanel.add(getB0_17());
+			BoardPanel.add(getB0_16());
+			BoardPanel.add(getB0_15());
+			BoardPanel.add(getB0_14());
+			BoardPanel.add(getB0_13());
+			BoardPanel.add(getB0_12());
+			BoardPanel.add(getB0_11());
+			BoardPanel.add(getB0_10());
+			BoardPanel.add(getB0_9());
+			BoardPanel.add(getB0_8());
+			BoardPanel.add(getB5_1());
+			BoardPanel.add(getB5_2());
+			BoardPanel.add(getB5_3());
+			BoardPanel.add(getB5_4());
+			BoardPanel.add(getB5_5());
+			BoardPanel.add(getB2_5());
+			BoardPanel.add(getB2_4());
+			BoardPanel.add(getB2_3());
+			BoardPanel.add(getB2_2());
+			BoardPanel.add(getB2_1());
+			BoardPanel.add(getB6_5());
+			BoardPanel.add(getB6_4());
+			BoardPanel.add(getB6_3());
+			BoardPanel.add(getB6_2());
+			BoardPanel.add(getB6_1());
+			BoardPanel.add(getB3_5());
+			BoardPanel.add(getB3_4());
+			BoardPanel.add(getB3_3());
+			BoardPanel.add(getB3_2());
+			BoardPanel.add(getB4_1());
+			BoardPanel.add(getB4_2());
+			BoardPanel.add(getB4_3());
+			BoardPanel.add(getB4_4());
+			BoardPanel.add(getB4_5());
+			BoardPanel.add(getB1_5());
+			BoardPanel.add(getB1_4());
+			BoardPanel.add(getB1_3());
+			BoardPanel.add(getB1_2());
+			BoardPanel.add(getB1_1());
+			BoardPanel.add(getB3_1());
+			BoardPanel.add(getLabel());
 		}
-		return panel;
+		return BoardPanel;
 	}
 
 	private JButton getBtnPulsarDado() {
@@ -449,577 +491,756 @@ public class GameWindow extends JFrame {
 		return game;
 	}
 	
-	private JTable getTable() {
-		if (table == null) {
-			table = new JTable();
-		}
-		return table;
-	}
-	
 	private JButton getBtCentro() {
 		if (btCentro == null) {
 			btCentro = new JButton("");
+			btCentro.setContentAreaFilled(false);
+			btCentro.setEnabled(false);
+			btCentro.setActionCommand("0_0");
 			btCentro.setBounds(202, 201, 49, 40);
 		}
 		return btCentro;
 	}
-	private JButton getButton() {
-		if (button == null) {
-			button = new JButton("New button");
-			button.setBounds(176, 11, 14, 23);
+	private JButton getB0_2() {
+		if (b0_2 == null) {
+			b0_2 = new JButton("");
+			b0_2.setContentAreaFilled(false);
+			b0_2.setEnabled(false);
+			b0_2.setActionCommand("0_0");
+			b0_2.setBounds(176, 11, 14, 23);
 		}
-		return button;
+		return b0_2;
 	}
-	private JButton getButton_1() {
-		if (button_1 == null) {
-			button_1 = new JButton("New button");
-			button_1.setBounds(202, 11, 14, 23);
+	private JButton getB0_3() {
+		if (b0_3 == null) {
+			b0_3 = new JButton("");
+			b0_3.setContentAreaFilled(false);
+			b0_3.setEnabled(false);
+			b0_3.setActionCommand("0_3");
+			b0_3.setBounds(202, 11, 14, 23);
 		}
-		return button_1;
+		return b0_3;
 	}
-	private JButton getButton_2() {
-		if (button_2 == null) {
-			button_2 = new JButton("New button");
-			button_2.setBounds(226, 11, 14, 23);
+	private JButton getB0_4() {
+		if (b0_4 == null) {
+			b0_4 = new JButton("");
+			b0_4.setContentAreaFilled(false);
+			b0_4.setEnabled(false);
+			b0_4.setActionCommand("0_4");
+			b0_4.setBounds(226, 11, 14, 23);
 		}
-		return button_2;
+		return b0_4;
 	}
-	private JButton getButton_3() {
-		if (button_3 == null) {
-			button_3 = new JButton("New button");
-			button_3.setBounds(259, 11, 14, 23);
+	private JButton getB0_5() {
+		if (b0_5 == null) {
+			b0_5 = new JButton("");
+			b0_5.setContentAreaFilled(false);
+			b0_5.setEnabled(false);
+			b0_5.setActionCommand("0_5");
+			b0_5.setBounds(259, 11, 14, 23);
 		}
-		return button_3;
+		return b0_5;
 	}
-	private JButton getButton_4() {
-		if (button_4 == null) {
-			button_4 = new JButton("New button");
-			button_4.setBounds(283, 11, 14, 23);
+	private JButton getB0_6() {
+		if (b0_6 == null) {
+			b0_6 = new JButton("");
+			b0_6.setContentAreaFilled(false);
+			b0_6.setEnabled(false);
+			b0_6.setActionCommand("0_6");
+			b0_6.setBounds(283, 11, 14, 23);
 		}
-		return button_4;
+		return b0_6;
 	}
 	private JButton getButton_5_1() {
-		if (button_5 == null) {
-			button_5 = new JButton("New button");
-			button_5.setBounds(320, 35, 14, 23);
+		if (b0_7 == null) {
+			b0_7 = new JButton("");
+			b0_7.setContentAreaFilled(false);
+			b0_7.setEnabled(false);
+			b0_7.setActionCommand("0_7");
+			b0_7.setBounds(320, 35, 14, 23);
 		}
-		return button_5;
+		return b0_7;
 	}
 	private JButton getButton_6_1() {
-		if (button_6 == null) {
-			button_6 = new JButton("New button");
-			button_6.setBounds(115, 35, 14, 23);
-		}
-		return button_6;
-	}
-	private JButton getButton_7() {
-		if (button_7 == null) {
-			button_7 = new JButton("New button");
-			button_7.setBounds(82, 58, 14, 23);
-		}
-		return button_7;
-	}
-	private JButton getButton_8() {
-		if (button_8 == null) {
-			button_8 = new JButton("New button");
-			button_8.setBounds(69, 76, 14, 23);
-		}
-		return button_8;
-	}
-	private JButton getButton_9() {
-		if (button_9 == null) {
-			button_9 = new JButton("New button");
-			button_9.setBounds(45, 98, 14, 23);
-		}
-		return button_9;
-	}
-	private JButton getButton_10() {
-		if (button_10 == null) {
-			button_10 = new JButton("New button");
-			button_10.setBounds(31, 118, 14, 23);
-		}
-		return button_10;
-	}
-	private JButton getButton_11() {
-		if (button_11 == null) {
-			button_11 = new JButton("New button");
-			button_11.setBounds(20, 140, 14, 23);
-		}
-		return button_11;
-	}
-	private JButton getButton_12() {
-		if (button_12 == null) {
-			button_12 = new JButton("New button");
-			button_12.setBounds(20, 174, 14, 23);
-		}
-		return button_12;
-	}
-	private JButton getButton_13() {
-		if (button_13 == null) {
-			button_13 = new JButton("New button");
-			button_13.setBounds(20, 210, 14, 23);
-		}
-		return button_13;
-	}
-	private JButton getButton_14() {
-		if (button_14 == null) {
-			button_14 = new JButton("New button");
-			button_14.setBounds(20, 250, 14, 23);
-		}
-		return button_14;
-	}
-	private JButton getButton_15() {
-		if (button_15 == null) {
-			button_15 = new JButton("New button");
-			button_15.setBounds(20, 270, 14, 23);
-		}
-		return button_15;
-	}
-	private JButton getButton_16() {
-		if (button_16 == null) {
-			button_16 = new JButton("New button");
-			button_16.setBounds(31, 304, 14, 23);
-		}
-		return button_16;
-	}
-	private JButton getButton_17() {
-		if (button_17 == null) {
-			button_17 = new JButton("New button");
-			button_17.setBounds(45, 327, 14, 23);
-		}
-		return button_17;
-	}
-	private JButton getButton_18() {
-		if (button_18 == null) {
-			button_18 = new JButton("New button");
-			button_18.setBounds(55, 345, 14, 23);
-		}
-		return button_18;
-	}
-	private JButton getButton_19() {
-		if (button_19 == null) {
-			button_19 = new JButton("New button");
-			button_19.setBounds(82, 364, 14, 23);
-		}
-		return button_19;
-	}
-	private JButton getButton_20() {
-		if (button_20 == null) {
-			button_20 = new JButton("New button");
-			button_20.setBounds(115, 390, 14, 23);
-		}
-		return button_20;
-	}
-	private JButton getButton_21() {
-		if (button_21 == null) {
-			button_21 = new JButton("New button");
-			button_21.setBounds(152, 402, 14, 23);
-		}
-		return button_21;
-	}
-	private JButton getButton_22() {
-		if (button_22 == null) {
-			button_22 = new JButton("New button");
-			button_22.setBounds(176, 402, 14, 23);
-		}
-		return button_22;
-	}
-	private JButton getButton_23() {
-		if (button_23 == null) {
-			button_23 = new JButton("New button");
-			button_23.setBounds(202, 413, 14, 23);
-		}
-		return button_23;
-	}
-	private JButton getButton_24() {
-		if (button_24 == null) {
-			button_24 = new JButton("New button");
-			button_24.setBounds(226, 413, 14, 23);
-		}
-		return button_24;
-	}
-	private JButton getButton_25() {
-		if (button_25 == null) {
-			button_25 = new JButton("New button");
-			button_25.setBounds(259, 413, 14, 23);
-		}
-		return button_25;
-	}
-	private JButton getButton_26() {
-		if (button_26 == null) {
-			button_26 = new JButton("New button");
-			button_26.setBounds(283, 402, 14, 23);
-		}
-		return button_26;
-	}
-	private JButton getButton_27() {
-		if (button_27 == null) {
-			button_27 = new JButton("New button");
-			button_27.setBounds(320, 390, 14, 23);
-		}
-		return button_27;
-	}
-	private JButton getButton_28() {
-		if (button_28 == null) {
-			button_28 = new JButton("New button");
-			button_28.setBounds(358, 364, 14, 23);
-		}
-		return button_28;
-	}
-	private JButton getButton_29() {
-		if (button_29 == null) {
-			button_29 = new JButton("New button");
-			button_29.setBounds(371, 345, 14, 23);
-		}
-		return button_29;
-	}
-	private JButton getButton_30() {
-		if (button_30 == null) {
-			button_30 = new JButton("New button");
-			button_30.setBounds(396, 327, 14, 23);
-		}
-		return button_30;
-	}
-	private JButton getButton_31() {
-		if (button_31 == null) {
-			button_31 = new JButton("New button");
-			button_31.setBounds(396, 293, 14, 23);
-		}
-		return button_31;
-	}
-	private JButton getButton_32() {
-		if (button_32 == null) {
-			button_32 = new JButton("New button");
-			button_32.setBounds(415, 270, 14, 23);
-		}
-		return button_32;
-	}
-	private JButton getButton_33() {
-		if (button_33 == null) {
-			button_33 = new JButton("New button");
-			button_33.setBounds(425, 250, 14, 23);
-		}
-		return button_33;
-	}
-	private JButton getButton_34() {
-		if (button_34 == null) {
-			button_34 = new JButton("New button");
-			button_34.setBounds(415, 210, 14, 23);
-		}
-		return button_34;
-	}
-	private JButton getButton_35() {
-		if (button_35 == null) {
-			button_35 = new JButton("New button");
-			button_35.setBounds(415, 174, 14, 23);
-		}
-		return button_35;
-	}
-	private JButton getButton_36() {
-		if (button_36 == null) {
-			button_36 = new JButton("New button");
-			button_36.setBounds(415, 140, 14, 23);
-		}
-		return button_36;
-	}
-	private JButton getButton_37() {
-		if (button_37 == null) {
-			button_37 = new JButton("New button");
-			button_37.setBounds(396, 118, 14, 23);
-		}
-		return button_37;
-	}
-	private JButton getButton_38() {
-		if (button_38 == null) {
-			button_38 = new JButton("New button");
-			button_38.setBounds(383, 98, 14, 23);
-		}
-		return button_38;
-	}
-	private JButton getButton_39() {
-		if (button_39 == null) {
-			button_39 = new JButton("New button");
-			button_39.setBounds(371, 76, 14, 23);
-		}
-		return button_39;
-	}
-	private JButton getButton_40() {
-		if (button_40 == null) {
-			button_40 = new JButton("New button");
-			button_40.setOpaque(false);
-			button_40.setIcon(null);
-			button_40.setBounds(345, 58, 14, 23);
-		}
-		return button_40;
-	}
-	private JButton getButton_41() {
-		if (button_41 == null) {
-			button_41 = new JButton("New button");
-			button_41.setOpaque(false);
-			button_41.setIcon(null);
-			button_41.setBounds(45, 210, 14, 23);
-		}
-		return button_41;
-	}
-	private JButton getButton_42() {
-		if (button_42 == null) {
-			button_42 = new JButton("New button");
-			button_42.setOpaque(false);
-			button_42.setIcon(null);
-			button_42.setBounds(82, 210, 14, 23);
-		}
-		return button_42;
-	}
-	private JButton getButton_43() {
-		if (button_43 == null) {
-			button_43 = new JButton("New button");
-			button_43.setOpaque(false);
-			button_43.setIcon(null);
-			button_43.setBounds(106, 210, 14, 23);
-		}
-		return button_43;
-	}
-	private JButton getButton_44() {
-		if (button_44 == null) {
-			button_44 = new JButton("New button");
-			button_44.setOpaque(false);
-			button_44.setIcon(null);
-			button_44.setBounds(134, 210, 14, 23);
-		}
-		return button_44;
-	}
-	private JButton getButton_45() {
-		if (button_45 == null) {
-			button_45 = new JButton("New button");
-			button_45.setOpaque(false);
-			button_45.setIcon(null);
-			button_45.setBounds(158, 210, 14, 23);
-		}
-		return button_45;
-	}
-	private JButton getButton_46() {
-		if (button_46 == null) {
-			button_46 = new JButton("New button");
-			button_46.setOpaque(false);
-			button_46.setIcon(null);
-			button_46.setBounds(272, 210, 14, 23);
-		}
-		return button_46;
-	}
-	private JButton getButton_47() {
-		if (button_47 == null) {
-			button_47 = new JButton("New button");
-			button_47.setOpaque(false);
-			button_47.setIcon(null);
-			button_47.setBounds(296, 210, 14, 23);
-		}
-		return button_47;
-	}
-	private JButton getButton_48() {
-		if (button_48 == null) {
-			button_48 = new JButton("New button");
-			button_48.setOpaque(false);
-			button_48.setIcon(null);
-			button_48.setBounds(334, 210, 14, 23);
-		}
-		return button_48;
-	}
-	private JButton getButton_49() {
-		if (button_49 == null) {
-			button_49 = new JButton("New button");
-			button_49.setOpaque(false);
-			button_49.setIcon(null);
-			button_49.setBounds(358, 210, 14, 23);
-		}
-		return button_49;
-	}
-	private JButton getButton_50() {
-		if (button_50 == null) {
-			button_50 = new JButton("New button");
-			button_50.setOpaque(false);
-			button_50.setIcon(null);
-			button_50.setBounds(391, 210, 14, 23);
-		}
-		return button_50;
-	}
-	private JButton getButton_51() {
-		if (button_51 == null) {
-			button_51 = new JButton("New button");
-			button_51.setOpaque(false);
-			button_51.setIcon(null);
-			button_51.setBounds(190, 167, 14, 23);
-		}
-		return button_51;
-	}
-	private JButton getButton_52() {
-		if (button_52 == null) {
-			button_52 = new JButton("New button");
-			button_52.setOpaque(false);
-			button_52.setIcon(null);
-			button_52.setBounds(176, 140, 14, 23);
-		}
-		return button_52;
-	}
-	private JButton getButton_53() {
-		if (button_53 == null) {
-			button_53 = new JButton("New button");
-			button_53.setOpaque(false);
-			button_53.setIcon(null);
-			button_53.setBounds(152, 118, 14, 23);
-		}
-		return button_53;
-	}
-	private JButton getButton_54() {
-		if (button_54 == null) {
-			button_54 = new JButton("New button");
-			button_54.setOpaque(false);
-			button_54.setIcon(null);
-			button_54.setBounds(152, 84, 14, 23);
-		}
-		return button_54;
-	}
-	private JButton getButton_55() {
-		if (button_55 == null) {
-			button_55 = new JButton("New button");
-			button_55.setOpaque(false);
-			button_55.setIcon(null);
-			button_55.setBounds(134, 58, 14, 23);
-		}
-		return button_55;
-	}
-	private JButton getButton_56() {
-		if (button_56 == null) {
-			button_56 = new JButton("New button");
-			button_56.setOpaque(false);
-			button_56.setIcon(null);
-			button_56.setBounds(246, 252, 14, 23);
-		}
-		return button_56;
-	}
-	private JButton getButton_57() {
-		if (button_57 == null) {
-			button_57 = new JButton("New button");
-			button_57.setOpaque(false);
-			button_57.setIcon(null);
-			button_57.setBounds(259, 282, 14, 23);
-		}
-		return button_57;
-	}
-	private JButton getButton_58() {
-		if (button_58 == null) {
-			button_58 = new JButton("New button");
-			button_58.setOpaque(false);
-			button_58.setIcon(null);
-			button_58.setBounds(283, 304, 14, 23);
-		}
-		return button_58;
-	}
-	private JButton getButton_59() {
-		if (button_59 == null) {
-			button_59 = new JButton("New button");
-			button_59.setOpaque(false);
-			button_59.setIcon(null);
-			button_59.setBounds(283, 327, 14, 23);
-		}
-		return button_59;
-	}
-	private JButton getButton_60() {
-		if (button_60 == null) {
-			button_60 = new JButton("New button");
-			button_60.setOpaque(false);
-			button_60.setIcon(null);
-			button_60.setBounds(307, 364, 14, 23);
-		}
-		return button_60;
-	}
-	private JButton getButton_61() {
-		if (button_61 == null) {
-			button_61 = new JButton("New button");
-			button_61.setOpaque(false);
-			button_61.setIcon(null);
-			button_61.setBounds(134, 364, 14, 23);
-		}
-		return button_61;
-	}
-	private JButton getButton_62() {
-		if (button_62 == null) {
-			button_62 = new JButton("New button");
-			button_62.setOpaque(false);
-			button_62.setIcon(null);
-			button_62.setBounds(152, 327, 14, 23);
-		}
-		return button_62;
-	}
-	private JButton getButton_63() {
-		if (button_63 == null) {
-			button_63 = new JButton("New button");
-			button_63.setOpaque(false);
-			button_63.setIcon(null);
-			button_63.setBounds(158, 304, 14, 23);
-		}
-		return button_63;
-	}
-	private JButton getButton_64() {
-		if (button_64 == null) {
-			button_64 = new JButton("New button");
-			button_64.setOpaque(false);
-			button_64.setIcon(null);
-			button_64.setBounds(176, 282, 14, 23);
-		}
-		return button_64;
-	}
-	private JButton getButton_65() {
-		if (button_65 == null) {
-			button_65 = new JButton("New button");
-			button_65.setOpaque(false);
-			button_65.setIcon(null);
-			button_65.setBounds(190, 250, 14, 23);
-		}
-		return button_65;
-	}
-	private JButton getButton_66() {
-		if (button_66 == null) {
-			button_66 = new JButton("New button");
-			button_66.setOpaque(false);
-			button_66.setIcon(null);
-			button_66.setBounds(246, 167, 14, 23);
-		}
-		return button_66;
-	}
-	private JButton getButton_67() {
-		if (button_67 == null) {
-			button_67 = new JButton("New button");
-			button_67.setOpaque(false);
-			button_67.setIcon(null);
-			button_67.setBounds(259, 140, 14, 23);
-		}
-		return button_67;
-	}
-	private JButton getButton_68() {
-		if (button_68 == null) {
-			button_68 = new JButton("New button");
-			button_68.setOpaque(false);
-			button_68.setIcon(null);
-			button_68.setBounds(283, 118, 14, 23);
-		}
-		return button_68;
-	}
-	private JButton getButton_69() {
-		if (button_69 == null) {
-			button_69 = new JButton("New button");
-			button_69.setOpaque(false);
-			button_69.setIcon(null);
-			button_69.setBounds(283, 84, 14, 23);
-		}
-		return button_69;
-	}
-	private JButton getButton_70() {
-		if (button_70 == null) {
-			button_70 = new JButton("New button");
-			button_70.setOpaque(false);
-			button_70.setIcon(null);
-			button_70.setBounds(296, 58, 14, 23);
-		}
-		return button_70;
+		if (b0_42 == null) {
+			b0_42 = new JButton("");
+			b0_42.setContentAreaFilled(false);
+			b0_42.setEnabled(false);
+			b0_42.setActionCommand("0_42");
+			b0_42.setBounds(115, 35, 14, 23);
+		}
+		return b0_42;
+	}
+	private JButton getB0_41() {
+		if (b0_41 == null) {
+			b0_41 = new JButton("");
+			b0_41.setContentAreaFilled(false);
+			b0_41.setEnabled(false);
+			b0_41.setActionCommand("0_41");
+			b0_41.setBounds(82, 58, 14, 23);
+		}
+		return b0_41;
+	}
+	private JButton getB0_40() {
+		if (b0_40 == null) {
+			b0_40 = new JButton("");
+			b0_40.setContentAreaFilled(false);
+			b0_40.setEnabled(false);
+			b0_40.setActionCommand("0_40");
+			b0_40.setBounds(69, 76, 14, 23);
+		}
+		return b0_40;
+	}
+	private JButton getB0_39() {
+		if (b0_39 == null) {
+			b0_39 = new JButton("");
+			b0_39.setContentAreaFilled(false);
+			b0_39.setEnabled(false);
+			b0_39.setActionCommand("0_39");
+			b0_39.setBounds(45, 98, 14, 23);
+		}
+		return b0_39;
+	}
+	private JButton getB0_38() {
+		if (b0_38 == null) {
+			b0_38 = new JButton("");
+			b0_38.setContentAreaFilled(false);
+			b0_38.setEnabled(false);
+			b0_38.setActionCommand("0_38");
+			b0_38.setBounds(31, 118, 14, 23);
+		}
+		return b0_38;
+	}
+	private JButton getB0_37() {
+		if (b0_37 == null) {
+			b0_37 = new JButton("");
+			b0_37.setContentAreaFilled(false);
+			b0_37.setEnabled(false);
+			b0_37.setActionCommand("0_37");
+			b0_37.setBounds(20, 140, 14, 23);
+		}
+		return b0_37;
+	}
+	private JButton getB0_36() {
+		if (b0_36 == null) {
+			b0_36 = new JButton("");
+			b0_36.setContentAreaFilled(false);
+			b0_36.setEnabled(false);
+			b0_36.setActionCommand("0_36");
+			b0_36.setBounds(20, 174, 14, 23);
+		}
+		return b0_36;
+	}
+	private JButton getB0_35() {
+		if (b0_35 == null) {
+			b0_35 = new JButton("");
+			b0_35.setContentAreaFilled(false);
+			b0_35.setEnabled(false);
+			b0_35.setActionCommand("0_35");
+			b0_35.setBounds(20, 210, 14, 23);
+		}
+		return b0_35;
+	}
+	private JButton getB0_34() {
+		if (b0_34 == null) {
+			b0_34 = new JButton("");
+			b0_34.setContentAreaFilled(false);
+			b0_34.setEnabled(false);
+			b0_34.setActionCommand("0_34");
+			b0_34.setBounds(20, 250, 14, 23);
+		}
+		return b0_34;
+	}
+	private JButton getB0_33() {
+		if (b0_33 == null) {
+			b0_33 = new JButton("");
+			b0_33.setContentAreaFilled(false);
+			b0_33.setEnabled(false);
+			b0_33.setActionCommand("0_33");
+			b0_33.setBounds(20, 270, 14, 23);
+		}
+		return b0_33;
+	}
+	private JButton getB0_32() {
+		if (b0_32 == null) {
+			b0_32 = new JButton("");
+			b0_32.setContentAreaFilled(false);
+			b0_32.setEnabled(false);
+			b0_32.setActionCommand("0_32");
+			b0_32.setBounds(31, 304, 14, 23);
+		}
+		return b0_32;
+	}
+	private JButton getB0_31() {
+		if (b0_31 == null) {
+			b0_31 = new JButton("");
+			b0_31.setContentAreaFilled(false);
+			b0_31.setEnabled(false);
+			b0_31.setActionCommand("0_31");
+			b0_31.setBounds(45, 327, 14, 23);
+		}
+		return b0_31;
+	}
+	private JButton getB0_30() {
+		if (b0_30 == null) {
+			b0_30 = new JButton("");
+			b0_30.setContentAreaFilled(false);
+			b0_30.setEnabled(false);
+			b0_30.setActionCommand("0_30");
+			b0_30.setBounds(55, 345, 14, 23);
+		}
+		return b0_30;
+	}
+	private JButton getB0_29() {
+		if (b0_29 == null) {
+			b0_29 = new JButton("");
+			b0_29.setContentAreaFilled(false);
+			b0_29.setEnabled(false);
+			b0_29.setActionCommand("0_29");
+			b0_29.setBounds(82, 364, 14, 23);
+		}
+		return b0_29;
+	}
+	private JButton getB0_28() {
+		if (b0_28 == null) {
+			b0_28 = new JButton("");
+			b0_28.setContentAreaFilled(false);
+			b0_28.setEnabled(false);
+			b0_28.setActionCommand("0_28");
+			b0_28.setBounds(115, 390, 14, 23);
+		}
+		return b0_28;
+	}
+	private JButton getB0_27() {
+		if (b0_27 == null) {
+			b0_27 = new JButton("");
+			b0_27.setContentAreaFilled(false);
+			b0_27.setEnabled(false);
+			b0_27.setActionCommand("0_27");
+			b0_27.setBounds(152, 402, 14, 23);
+		}
+		return b0_27;
+	}
+	private JButton getB0_26() {
+		if (b0_26 == null) {
+			b0_26 = new JButton("");
+			b0_26.setContentAreaFilled(false);
+			b0_26.setEnabled(false);
+			b0_26.setActionCommand("0_26");
+			b0_26.setBounds(176, 402, 14, 23);
+		}
+		return b0_26;
+	}
+	private JButton getB0_25() {
+		if (b0_25 == null) {
+			b0_25 = new JButton("");
+			b0_25.setContentAreaFilled(false);
+			b0_25.setEnabled(false);
+			b0_25.setActionCommand("0_25");
+			b0_25.setBounds(202, 413, 14, 23);
+		}
+		return b0_25;
+	}
+	private JButton getB0_24() {
+		if (b0_24 == null) {
+			b0_24 = new JButton("");
+			b0_24.setContentAreaFilled(false);
+			b0_24.setEnabled(false);
+			b0_24.setActionCommand("0_24");
+			b0_24.setBounds(226, 413, 14, 23);
+		}
+		return b0_24;
+	}
+	private JButton getB0_23() {
+		if (b0_23 == null) {
+			b0_23 = new JButton("");
+			b0_23.setContentAreaFilled(false);
+			b0_23.setEnabled(false);
+			b0_23.setActionCommand("0_23");
+			b0_23.setBounds(259, 413, 14, 23);
+		}
+		return b0_23;
+	}
+	private JButton getB0_22() {
+		if (b0_22 == null) {
+			b0_22 = new JButton("");
+			b0_22.setContentAreaFilled(false);
+			b0_22.setEnabled(false);
+			b0_22.setActionCommand("0_22");
+			b0_22.setBounds(283, 402, 14, 23);
+		}
+		return b0_22;
+	}
+	private JButton getB0_21() {
+		if (b0_21 == null) {
+			b0_21 = new JButton("");
+			b0_21.setContentAreaFilled(false);
+			b0_21.setEnabled(false);
+			b0_21.setActionCommand("0_21");
+			b0_21.setBounds(320, 390, 14, 23);
+		}
+		return b0_21;
+	}
+	private JButton getB0_20() {
+		if (b0_20 == null) {
+			b0_20 = new JButton("");
+			b0_20.setContentAreaFilled(false);
+			b0_20.setEnabled(false);
+			b0_20.setActionCommand("0_20");
+			b0_20.setBounds(358, 364, 14, 23);
+		}
+		return b0_20;
+	}
+	private JButton getB0_19() {
+		if (b0_19 == null) {
+			b0_19 = new JButton("");
+			b0_19.setContentAreaFilled(false);
+			b0_19.setEnabled(false);
+			b0_19.setActionCommand("0_19");
+			b0_19.setBounds(371, 345, 14, 23);
+		}
+		return b0_19;
+	}
+	private JButton getB0_18() {
+		if (b0_18 == null) {
+			b0_18 = new JButton("");
+			b0_18.setContentAreaFilled(false);
+			b0_18.setEnabled(false);
+			b0_18.setActionCommand("0_18");
+			b0_18.setBounds(396, 327, 14, 23);
+		}
+		return b0_18;
+	}
+	private JButton getB0_17() {
+		if (b0_17 == null) {
+			b0_17 = new JButton("");
+			b0_17.setContentAreaFilled(false);
+			b0_17.setEnabled(false);
+			b0_17.setActionCommand("0_17");
+			b0_17.setBounds(396, 293, 14, 23);
+		}
+		return b0_17;
+	}
+	private JButton getB0_16() {
+		if (b0_16 == null) {
+			b0_16 = new JButton("");
+			b0_16.setContentAreaFilled(false);
+			b0_16.setEnabled(false);
+			b0_16.setActionCommand("0_16");
+			b0_16.setBounds(415, 270, 14, 23);
+		}
+		return b0_16;
+	}
+	private JButton getB0_15() {
+		if (b0_15 == null) {
+			b0_15 = new JButton("");
+			b0_15.setContentAreaFilled(false);
+			b0_15.setEnabled(false);
+			b0_15.setActionCommand("0_15");
+			b0_15.setBounds(425, 250, 14, 23);
+		}
+		return b0_15;
+	}
+	private JButton getB0_14() {
+		if (b0_14 == null) {
+			b0_14 = new JButton("");
+			b0_14.setContentAreaFilled(false);
+			b0_14.setEnabled(false);
+			b0_14.setActionCommand("0_14");
+			b0_14.setBounds(415, 210, 14, 23);
+		}
+		return b0_14;
+	}
+	private JButton getB0_13() {
+		if (b0_13 == null) {
+			b0_13 = new JButton("");
+			b0_13.setContentAreaFilled(false);
+			b0_13.setEnabled(false);
+			b0_14.setActionCommand("0_13");
+			b0_13.setBounds(415, 174, 14, 23);
+		}
+		return b0_13;
+	}
+	private JButton getB0_12() {
+		if (b0_12 == null) {
+			b0_12 = new JButton("");
+			b0_12.setContentAreaFilled(false);
+			b0_12.setEnabled(false);
+			b0_14.setActionCommand("0_12");
+			b0_12.setBounds(415, 140, 14, 23);
+		}
+		return b0_12;
+	}
+	private JButton getB0_11() {
+		if (b0_11 == null) {
+			b0_11 = new JButton("");
+			b0_11.setContentAreaFilled(false);
+			b0_11.setEnabled(false);
+			b0_14.setActionCommand("0_11");
+			b0_11.setBounds(396, 118, 14, 23);
+		}
+		return b0_11;
+	}
+	private JButton getB0_10() {
+		if (b0_10 == null) {
+			b0_10 = new JButton("");
+			b0_10.setContentAreaFilled(false);
+			b0_10.setEnabled(false);
+			b0_14.setActionCommand("0_10");
+			b0_10.setBounds(383, 98, 14, 23);
+		}
+		return b0_10;
+	}
+	private JButton getB0_9() {
+		if (b0_9 == null) {
+			b0_9 = new JButton("");
+			b0_9.setContentAreaFilled(false);
+			b0_9.setEnabled(false);
+			b0_9.setActionCommand("0_9");
+			b0_9.setBounds(371, 76, 14, 23);
+		}
+		return b0_9;
+	}
+	private JButton getB0_8() {
+		if (b0_8 == null) {
+			b0_8 = new JButton("");
+			b0_8.setContentAreaFilled(false);
+			b0_8.setEnabled(false);
+			b0_8.setActionCommand("0_8");
+			b0_8.setBounds(345, 58, 14, 23);
+		}
+		return b0_8;
+	}
+	private JButton getB5_1() {
+		if (b5_1 == null) {
+			b5_1 = new JButton("");
+			b5_1.setContentAreaFilled(false);
+			b5_1.setEnabled(false);
+			b5_1.setActionCommand("5_1");	
+			b5_1.setBounds(45, 210, 14, 23);
+		}
+		return b5_1;
+	}
+	private JButton getB5_2() {
+		if (b5_2 == null) {
+			b5_2 = new JButton("");
+			b5_2.setContentAreaFilled(false);
+			b5_2.setEnabled(false);
+			b5_2.setActionCommand("5_2");
+			b5_2.setBounds(82, 210, 14, 23);
+		}
+		return b5_2;
+	}
+	private JButton getB5_3() {
+		if (b5_3 == null) {
+			b5_3 = new JButton("");
+			b5_3.setContentAreaFilled(false);
+			b5_3.setEnabled(false);
+			b5_3.setActionCommand("5_3");
+			b5_3.setBounds(106, 210, 14, 23);
+		}
+		return b5_3;
+	}
+	private JButton getB5_4() {
+		if (b5_4 == null) {
+			b5_4 = new JButton("");
+			b5_4.setContentAreaFilled(false);
+			b5_4.setEnabled(false);
+			b5_4.setActionCommand("5_4");
+			b5_4.setBounds(134, 210, 14, 23);
+		}
+		return b5_4;
+	}
+	private JButton getB5_5() {
+		if (b5_5 == null) {
+			b5_5 = new JButton("");
+			b5_5.setContentAreaFilled(false);
+			b5_5.setEnabled(false);
+			b5_5.setActionCommand("5_5");
+			b5_5.setBounds(158, 210, 14, 23);
+		}
+		return b5_5;
+	}
+	private JButton getB2_5() {
+		if (b2_5 == null) {
+			b2_5 = new JButton("");
+			b2_5.setContentAreaFilled(false);
+			b2_5.setEnabled(false);
+			b2_5.setActionCommand("2_5");
+			b2_5.setBounds(272, 210, 14, 23);
+		}
+		return b2_5;
+	}
+	private JButton getB2_4() {
+		if (b2_4 == null) {
+			b2_4 = new JButton("");
+			b2_4.setContentAreaFilled(false);
+			b2_4.setEnabled(false);
+			b2_4.setActionCommand("2_4");
+			b2_4.setBounds(296, 210, 14, 23);
+		}
+		return b2_4;
+	}
+	private JButton getB2_3() {
+		if (b2_3 == null) {
+			b2_3 = new JButton("");
+			b2_3.setContentAreaFilled(false);
+			b2_3.setEnabled(false);
+			b2_3.setActionCommand("2_3");
+			b2_3.setBounds(334, 210, 14, 23);
+		}
+		return b2_3;
+	}
+	private JButton getB2_2() {
+		if (b2_2 == null) {
+			b2_2 = new JButton("");
+			b2_2.setContentAreaFilled(false);
+			b2_2.setEnabled(false);
+			b2_2.setActionCommand("2_2");
+			b2_2.setBounds(358, 210, 14, 23);
+		}
+		return b2_2;
+	}
+	private JButton getB2_1() {
+		if (b2_1 == null) {
+			b2_1 = new JButton("");
+			b2_1.setContentAreaFilled(false);
+			b2_1.setEnabled(false);
+			b2_1.setActionCommand("2_1");
+			b2_1.setBounds(391, 210, 14, 23);
+		}
+		return b2_1;
+	}
+	private JButton getB6_5() {
+		if (b6_5 == null) {
+			b6_5 = new JButton("");
+			b6_5.setContentAreaFilled(false);
+			b6_5.setEnabled(false);
+			b6_5.setActionCommand("6_5");
+			b6_5.setBounds(190, 167, 14, 23);
+		}
+		return b6_5;
+	}
+	private JButton getB6_4() {
+		if (b6_4 == null) {
+			b6_4 = new JButton("");
+			b6_4.setContentAreaFilled(false);
+			b6_4.setEnabled(false);
+			b6_4.setActionCommand("6_4");
+			b6_4.setBounds(176, 140, 14, 23);
+		}
+		return b6_4;
+	}
+	private JButton getB6_3() {
+		if (b6_3 == null) {
+			b6_3 = new JButton("");
+			b6_3.setContentAreaFilled(false);
+			b6_3.setEnabled(false);
+			b6_3.setActionCommand("6_3");
+			b6_3.setBounds(152, 118, 14, 23);
+		}
+		return b6_3;
+	}
+	private JButton getB6_2() {
+		if (b6_2 == null) {
+			b6_2 = new JButton("");
+			b6_2.setContentAreaFilled(false);
+			b6_2.setEnabled(false);
+			b6_2.setActionCommand("6_2");
+			b6_2.setBounds(152, 84, 14, 23);
+		}
+		return b6_2;
+	}
+	private JButton getB6_1() {
+		if (b6_1 == null) {
+			b6_1 = new JButton("");
+			b6_1.setContentAreaFilled(false);
+			b6_1.setEnabled(false);
+			b6_1.setActionCommand("6_1");
+			b6_1.setBounds(134, 58, 14, 23);
+		}
+		return b6_1;
+	}
+	private JButton getB3_5() {
+		if (b3_5 == null) {
+			b3_5 = new JButton("");
+			b3_5.setContentAreaFilled(false);
+			b3_5.setEnabled(false);
+			b3_5.setActionCommand("3_5");
+			b3_5.setBounds(246, 252, 14, 23);
+		}
+		return b3_5;
+	}
+	private JButton getB3_4() {
+		if (b3_4 == null) {
+			b3_4 = new JButton("");
+			b3_4.setContentAreaFilled(false);
+			b3_4.setEnabled(false);
+			b3_4.setActionCommand("3_4");
+			b3_4.setBounds(259, 282, 14, 23);
+		}
+		return b3_4;
+	}
+	private JButton getB3_3() {
+		if (b3_3 == null) {
+			b3_3 = new JButton("");
+			b3_3.setContentAreaFilled(false);
+			b3_3.setEnabled(false);
+			b3_3.setActionCommand("3_3");
+			b3_3.setBounds(283, 304, 14, 23);
+		}
+		return b3_3;
+	}
+	private JButton getB3_2() {
+		if (b3_2 == null) {
+			b3_2 = new JButton("");
+			b3_2.setContentAreaFilled(false);
+			b3_2.setEnabled(false);
+			b3_2.setActionCommand("3_2");
+			b3_2.setBounds(283, 327, 14, 23);
+		}
+		return b3_2;
+	}
+	private JButton getB3_1() {
+		if (b3_1 == null) {
+			b3_1 = new JButton("");
+			b3_1.setContentAreaFilled(false);
+			b3_1.setEnabled(false);
+			b3_1.setActionCommand("3_1");
+			b3_1.setBounds(307, 364, 14, 23);
+		}
+		return b3_1;
+	}
+	private JButton getB4_1() {
+		if (b4_1 == null) {
+			b4_1 = new JButton("");
+			b4_1.setContentAreaFilled(false);
+			b4_1.setEnabled(false);
+			b4_1.setActionCommand("4_1");
+			b4_1.setBounds(134, 364, 14, 23);
+		}
+		return b4_1;
+	}
+	private JButton getB4_2() {
+		if (b4_2 == null) {
+			b4_2 = new JButton("");
+			b4_2.setContentAreaFilled(false);
+			b4_2.setEnabled(false);
+			b4_2.setActionCommand("4_2");
+			b4_2.setBounds(152, 327, 14, 23);
+		}
+		return b4_2;
+	}
+	private JButton getB4_3() {
+		if (b4_3 == null) {
+			b4_3 = new JButton("");
+			b4_3.setContentAreaFilled(false);
+			b4_3.setEnabled(false);
+			b4_3.setActionCommand("4_3");
+			b4_3.setBounds(158, 304, 14, 23);
+		}
+		return b4_3;
+	}
+	private JButton getB4_4() {
+		if (b4_4 == null) {
+			b4_4 = new JButton("");
+			b4_4.setContentAreaFilled(false);
+			b4_4.setEnabled(false);
+			b4_4.setActionCommand("4_4");
+			b4_4.setBounds(176, 282, 14, 23);
+		}
+		return b4_4;
+	}
+	private JButton getB4_5() {
+		if (b4_5 == null) {
+			b4_5 = new JButton("");
+			b4_5.setContentAreaFilled(false);
+			b4_5.setEnabled(false);
+			b4_5.setActionCommand("4_5");
+			b4_5.setBounds(190, 250, 14, 23);
+		}
+		return b4_5;
+	}
+	private JButton getB1_5() {
+		if (b1_5 == null) {
+			b1_5 = new JButton("");
+			b1_5.setContentAreaFilled(false);
+			b1_5.setEnabled(false);
+			b1_5.setActionCommand("1_5");
+			b1_5.setBounds(246, 167, 14, 23);
+		}
+		return b1_5;
+	}
+	private JButton getB1_4() {
+		if (b1_4 == null) {
+			b1_4 = new JButton("");
+			b1_4.setContentAreaFilled(false);
+			b1_4.setEnabled(false);
+			b1_4.setActionCommand("1_4");
+			b1_4.setOpaque(false);
+			b1_4.setIcon(null);
+			b1_4.setBounds(259, 140, 14, 23);
+		}
+		return b1_4;
+	}
+	private JButton getB1_3() {
+		if (b1_3 == null) {
+			b1_3 = new JButton("");
+			b1_3.setContentAreaFilled(false);
+			b1_3.setEnabled(false);
+			b1_3.setActionCommand("1_3");
+			b1_3.setOpaque(false);
+			b1_3.setIcon(null);
+			b1_3.setBounds(283, 118, 14, 23);
+		}
+		return b1_3;
+	}
+	private JButton getB1_2() {
+		if (b1_2 == null) {
+			b1_2 = new JButton("");
+			b1_2.setContentAreaFilled(false);
+			b1_2.setEnabled(false);
+			b1_2.setActionCommand("1_2");
+			b1_2.setOpaque(false);
+			b1_2.setIcon(null);
+			b1_2.setBounds(283, 84, 14, 23);
+		}
+		return b1_2;
+	}
+	private JButton getB1_1() {
+		if (b1_1 == null) {
+			b1_1 = new JButton("");
+			b1_1.setContentAreaFilled(false);
+			b1_1.setEnabled(false);
+			b1_1.setActionCommand("1_1");
+			b1_1.setOpaque(false);
+			b1_1.setIcon(null);
+			b1_1.setBounds(296, 58, 14, 23);
+		}
+		return b1_1;
+	}
+	private JButton getBtnNewButton() {
+		if (btnNewButton == null) {
+			btnNewButton = new JButton("New button");
+		}
+		return btnNewButton;
+	}
+	private JButton getBtnNewButton_1() {
+		if (btnNewButton_1 == null) {
+			btnNewButton_1 = new JButton("New button");
+		}
+		return btnNewButton_1;
+	}
+	private JButton getBtnNewButton_2() {
+		if (btnNewButton_2 == null) {
+			btnNewButton_2 = new JButton("New button");
+		}
+		return btnNewButton_2;
+	}
+	private JButton getBtnNewButton_3() {
+		if (btnNewButton_3 == null) {
+			btnNewButton_3 = new JButton("New button");
+		}
+		return btnNewButton_3;
 	}
 }
