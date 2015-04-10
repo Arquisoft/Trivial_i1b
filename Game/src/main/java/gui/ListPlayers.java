@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -50,13 +51,18 @@ public class ListPlayers extends JFrame {
 	 */
 	public ListPlayers() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 532, 340);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0,0,139));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getSpUsers());
 		contentPane.add(getBtnClose());
+		
+		JButton btnSeeStatistics = new JButton("See statistics");
+		btnSeeStatistics.setBounds(357, 42, 123, 23);
+		contentPane.add(btnSeeStatistics);
 	
 	}
 	private JScrollPane getSpUsers() {
@@ -92,7 +98,7 @@ public class ListPlayers extends JFrame {
 					System.exit(0);
 				}
 			});
-			btnClose.setBounds(348, 225, 76, 23);
+			btnClose.setBounds(378, 230, 76, 23);
 		}
 		return btnClose;
 	}
