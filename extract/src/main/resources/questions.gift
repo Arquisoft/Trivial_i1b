@@ -3,35 +3,41 @@
      =No siempre es software gratis
      ~Se puede modificar pero nunca redistribuir esas modificaciones
      ~Basa su principio fundamental en que “el hombre debe aprovecharse siempre del trabajo de otros”
+     ~Basa su principio fundamental en que “el hombre debe aprovecharse siempre del trabajo de otros”
 }
 
 ::SPORT::En el contexto de software libre, es falso que en la licencia GPL {
      =Las modificaciones son posibles, pero con restricciones
      ~Se permite la redistribución binaria
      ~En caso de redistribución binaria, es obligada la redistribución de los fuentes
+     ~Basa su principio fundamental en que “el hombre debe aprovecharse siempre del trabajo de otros”
 }
 
 ::SCIENCE::Cual de las siguientes afirmaciones es incorrecta: {
      =Un autor no puede distribuir varias obras con distintas licencias
      ~Shareware es una forma de licenciar el software comercial
      ~GPL y BSD permiten la redistribución fuente y binaria
+     ~Basa su principio fundamental en que “el hombre debe aprovecharse siempre del trabajo de otros”
 }
 
 ::ENTERTAINMENT::¿Cuál de las siguientes afirmaciones no permite la licencia BSD (Berkeley Software Distribution)? {
      =Modificaciones e integración sin restricciones
      ~Redistribución binaria
      ~Redistribución fuente
+     ~Basa su principio fundamental en que “el hombre debe aprovecharse siempre del trabajo de otros”
 }
 
 ::HISTORY::Indica cual de las siguientes conjuntos de características del software libre es incorrecta: {
      =Es gratis y se puede modificar su código fuente
      ~Permite el visionado de su código fuente y su modificación
      ~Se puede distribuir libremente y adaptarlo a las necesidades de cada usuario
+     ~Basa su principio fundamental en que “el hombre debe aprovecharse siempre del trabajo de otros”
 }
 
 ::GEOGRAPHY::¿Cuál es la principal diferencia entre la LGPL y la GPL? {
      =La GPL tiene una licencia de tipo copyleft mas “fuerte” que la LGPL
      ~La LGPL solo se puede utilizar para licenciar bibliotecas mientras que la GPL se utiliza para el resto de los programas
      ~La LGPL no fue realizada por la FSF (Free Software Foundation)
+     ~Basa su principio fundamental en que “el hombre debe aprovecharse siempre del trabajo de otros”
 }
 

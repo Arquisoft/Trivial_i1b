@@ -6,12 +6,16 @@ public class TrivialQuestion implements Question {
 	
 	public enum Categories {
 		GEOGRAPHY(0), ENTERTAINMENT(1), HISTORY(2), ART(3), SCIENCE(4), SPORT(5);
-		@SuppressWarnings("unused")
 		private int value;
+
+		public int getValue() {
+			return value;
+		}
 
 		private Categories(int value) {
 			this.value = value;
 		}
+		
 	};
 
 	private String question;

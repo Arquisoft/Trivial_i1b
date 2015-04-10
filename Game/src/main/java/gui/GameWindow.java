@@ -55,9 +55,9 @@ public class GameWindow extends JFrame implements ActionListener {
 	private JButton btnNewUser;
 
 	private Game game;
-	
-	private Map<Player,Icon> colorsPlayers;
-	
+
+	private Map<Player, Icon> colorsPlayers;
+
 	private JButton btCentro;
 	private JButton b0_2;
 	private JButton b0_3;
@@ -135,6 +135,7 @@ public class GameWindow extends JFrame implements ActionListener {
 	private JButton btAnswer3;
 	private JButton btAnswer4;
 	private JTextField txtQuestion;
+	JPanel questionPn;
 
 	/**
 	 * Launch the application.
@@ -198,9 +199,11 @@ public class GameWindow extends JFrame implements ActionListener {
 										+ " already logued in.");
 							} else {
 								getGame().addPlayer(
-										new Player(user, Categories.values().length));
+										new Player(user,
+												Categories.values().length));
 								JOptionPane.showMessageDialog(null, "User "
 										+ user.getUsername() + " logued in.");
+								break;
 							}
 						}
 					} else
@@ -226,7 +229,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		btnNewUser.setBounds(1046, 367, 89, 23);
 		contentPane.add(btnNewUser);
 
-		JButton btnStart = new JButton("Start");
+		final JButton btnStart = new JButton("Start");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				btnAddPlayer.setEnabled(false);
@@ -238,6 +241,7 @@ public class GameWindow extends JFrame implements ActionListener {
 				btnNewUser.setVisible(false);
 				startGame();
 				getBtnPulsarDado().setEnabled(true);
+				btnStart.setEnabled(false);
 			}
 		});
 		btnStart.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -245,28 +249,45 @@ public class GameWindow extends JFrame implements ActionListener {
 		btnStart.setForeground(Color.WHITE);
 		btnStart.setBounds(1037, 203, 143, 23);
 		contentPane.add(btnStart);
-		
-		JPanel QuestionPn = new JPanel();
-		QuestionPn.setBounds(714, 415, 622, 252);
-		contentPane.add(QuestionPn);
-		QuestionPn.setLayout(new BorderLayout(0, 0));
-		QuestionPn.setVisible(false);
-		QuestionPn.add(getTxtQuestion(), BorderLayout.NORTH);
-		
+
+		questionPn = new JPanel();
+		questionPn.setBounds(714, 415, 622, 252);
+		contentPane.add(questionPn);
+		questionPn.setLayout(new BorderLayout(0, 0));
+		questionPn.setVisible(false);
+		questionPn.add(getTxtQuestion(), BorderLayout.NORTH);
+
 		JPanel PnAnswer = new JPanel();
-		QuestionPn.add(PnAnswer, BorderLayout.CENTER);
-		PnAnswer.setLayout(new GridLayout(2,2));
+		questionPn.add(PnAnswer, BorderLayout.CENTER);
+		PnAnswer.setLayout(new GridLayout(2, 2));
 		PnAnswer.add(getBtAnswer1());
 		PnAnswer.add(getBtAnswer2());
 		PnAnswer.add(getBtAnswer3());
 		PnAnswer.add(getBtAnswer4());
 	}
-	
+
+	public JPanel getQuestionPn() {
+		return questionPn;
+	}
+
 	public void actionPerformed(ActionEvent e) {
-		//Show question and move player
-		
+		// Show question and move player
+		getButton(getGame().getActivePlayer().getPosition()).setIcon(null);
+		getGame().changePositionPlayer(getGame().getActivePlayer(),
+				e.getActionCommand());
+		this.fillQuestions(getGame()
+				.getBoard()
+				.getQuestions()
+				.getQuestion(
+						getGame()
+								.getBoard()
+								.getSquare(
+										getGame().getActivePlayer()
+												.getPosition()).getCategories()));
+		getQuestionPn().setVisible(true);
 		updatePlayers(game.getPlayers());
-    }  
+		((Component) e.getSource()).setEnabled(false);
+	}
 
 	private JLabel getLbTitle() {
 		if (lbTitle == null) {
@@ -285,7 +306,7 @@ public class GameWindow extends JFrame implements ActionListener {
 			BoardPanel.setBounds(162, 196, 502, 459);
 			BoardPanel.setLayout(null);
 			BoardPanel.add(getBtCentro());
-			
+
 			JButton b0_1 = new JButton("");
 			b0_1.setContentAreaFilled(false);
 			b0_1.setEnabled(false);
@@ -448,8 +469,9 @@ public class GameWindow extends JFrame implements ActionListener {
 					int movements = getGame().throwDie();
 					getTxDado().setText(String.valueOf(movements));
 					getBtnPulsarDado().setEnabled(false);
-					Square[] squares = getGame().getBoard().mover(getGame().getActivePlayer(), movements);
-					for(Square s : squares){
+					Square[] squares = getGame().getBoard().mover(
+							getGame().getActivePlayer(), movements);
+					for (Square s : squares) {
 						JButton button = getButton(s.getPosition());
 						button.setEnabled(true);
 					}
@@ -489,6 +511,7 @@ public class GameWindow extends JFrame implements ActionListener {
 	private JTextField getTxDado() {
 		if (txDado == null) {
 			txDado = new JTextField();
+			txDado.setEditable(false);
 			txDado.setBounds(949, 122, 86, 53);
 			txDado.setColumns(10);
 		}
@@ -571,60 +594,63 @@ public class GameWindow extends JFrame implements ActionListener {
 	public Game getGame() {
 		return game;
 	}
-	
-	public boolean isWin(Player player){
+
+	public boolean isWin(Player player) {
 		return player.allQuestionsMatched();
 	}
-	
-	public void fillQuestions(Question question){
+
+	public void fillQuestions(Question question) {
 		txtQuestion.setText(question.getQuestion());
 		List<String> answers = question.getAnswers();
 		btAnswer1.setText(answers.get(0));
 		btAnswer2.setText(answers.get(1));
 		btAnswer3.setText(answers.get(2));
 		btAnswer4.setText(answers.get(3));
-		
+
 	}
-	
-	private void createMapPlayers(List<Player> players){
-		colorsPlayers = new HashMap<Player,Icon>();
+
+	private void createMapPlayers(List<Player> players) {
+		colorsPlayers = new HashMap<Player, Icon>();
 		int i = 1;
-		for(Player p: players){
-			colorsPlayers.put(p, new ImageIcon(GameWindow.class.getResource("/Images/player"+i+".png")));
+		for (Player p : players) {
+			colorsPlayers.put(
+					p,
+					new ImageIcon(GameWindow.class.getResource("/Images/player"
+							+ i + ".png")));
 			i++;
-		}			
+		}
 	}
-	
-	private void startGame(){
+
+	private void startGame() {
 		createMapPlayers(game.getPlayers());
 		updatePlayers(game.getPlayers());
-		
+
 	}
-	
+
 	private void updatePlayers(List<Player> players) {
 		txActivePlayer.setText(game.getActivePlayer().getUsername());
-		for(Player p: players){
+		for (Player p : players) {
 			JButton b = getButton(p.getPosition());
-			b.setEnabled(true);
 			b.setIcon(colorsPlayers.get(p));
+			b.setDisabledIcon(colorsPlayers.get(p));
 		}
-			
+
 	}
-	
-	private JButton getButton(Position position){
+
+	private JButton getButton(Position position) {
 		Component[] buttons = BoardPanel.getComponents();
 		for (Component comp : buttons) {
-			if(comp instanceof JButton){
+			if (comp instanceof JButton) {
 				JButton button = (JButton) comp;
-				if(String.valueOf(position.getWalk() + "_" + position.getIndex()).equals(button.getActionCommand())){
+				if (String.valueOf(
+						position.getWalk() + "_" + position.getIndex()).equals(
+						button.getActionCommand())) {
 					return button;
 				}
 			}
 		}
 		return null;
 	}
-
-	
 
 	private JButton getBtCentro() {
 		if (btCentro == null) {
@@ -636,6 +662,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return btCentro;
 	}
+
 	private JButton getB0_2() {
 		if (b0_2 == null) {
 			b0_2 = new JButton("");
@@ -646,6 +673,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_2;
 	}
+
 	private JButton getB0_3() {
 		if (b0_3 == null) {
 			b0_3 = new JButton("");
@@ -656,6 +684,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_3;
 	}
+
 	private JButton getB0_4() {
 		if (b0_4 == null) {
 			b0_4 = new JButton("");
@@ -666,6 +695,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_4;
 	}
+
 	private JButton getB0_5() {
 		if (b0_5 == null) {
 			b0_5 = new JButton("");
@@ -676,6 +706,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_5;
 	}
+
 	private JButton getB0_6() {
 		if (b0_6 == null) {
 			b0_6 = new JButton("");
@@ -686,6 +717,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_6;
 	}
+
 	private JButton getB0_7() {
 		if (b0_7 == null) {
 			b0_7 = new JButton("");
@@ -696,6 +728,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_7;
 	}
+
 	private JButton getB0_42() {
 		if (b0_42 == null) {
 			b0_42 = new JButton("");
@@ -706,6 +739,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_42;
 	}
+
 	private JButton getB0_41() {
 		if (b0_41 == null) {
 			b0_41 = new JButton("");
@@ -716,6 +750,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_41;
 	}
+
 	private JButton getB0_40() {
 		if (b0_40 == null) {
 			b0_40 = new JButton("");
@@ -726,6 +761,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_40;
 	}
+
 	private JButton getB0_39() {
 		if (b0_39 == null) {
 			b0_39 = new JButton("");
@@ -736,6 +772,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_39;
 	}
+
 	private JButton getB0_38() {
 		if (b0_38 == null) {
 			b0_38 = new JButton("");
@@ -746,6 +783,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_38;
 	}
+
 	private JButton getB0_37() {
 		if (b0_37 == null) {
 			b0_37 = new JButton("");
@@ -756,6 +794,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_37;
 	}
+
 	private JButton getB0_36() {
 		if (b0_36 == null) {
 			b0_36 = new JButton("");
@@ -766,6 +805,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_36;
 	}
+
 	private JButton getB0_35() {
 		if (b0_35 == null) {
 			b0_35 = new JButton("");
@@ -776,6 +816,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_35;
 	}
+
 	private JButton getB0_34() {
 		if (b0_34 == null) {
 			b0_34 = new JButton("");
@@ -786,6 +827,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_34;
 	}
+
 	private JButton getB0_33() {
 		if (b0_33 == null) {
 			b0_33 = new JButton("");
@@ -796,6 +838,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_33;
 	}
+
 	private JButton getB0_32() {
 		if (b0_32 == null) {
 			b0_32 = new JButton("");
@@ -806,6 +849,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_32;
 	}
+
 	private JButton getB0_31() {
 		if (b0_31 == null) {
 			b0_31 = new JButton("");
@@ -816,6 +860,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_31;
 	}
+
 	private JButton getB0_30() {
 		if (b0_30 == null) {
 			b0_30 = new JButton("");
@@ -826,6 +871,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_30;
 	}
+
 	private JButton getB0_29() {
 		if (b0_29 == null) {
 			b0_29 = new JButton("");
@@ -836,6 +882,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_29;
 	}
+
 	private JButton getB0_28() {
 		if (b0_28 == null) {
 			b0_28 = new JButton("");
@@ -846,6 +893,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_28;
 	}
+
 	private JButton getB0_27() {
 		if (b0_27 == null) {
 			b0_27 = new JButton("");
@@ -856,6 +904,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_27;
 	}
+
 	private JButton getB0_26() {
 		if (b0_26 == null) {
 			b0_26 = new JButton("");
@@ -866,6 +915,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_26;
 	}
+
 	private JButton getB0_25() {
 		if (b0_25 == null) {
 			b0_25 = new JButton("");
@@ -876,6 +926,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_25;
 	}
+
 	private JButton getB0_24() {
 		if (b0_24 == null) {
 			b0_24 = new JButton("");
@@ -886,6 +937,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_24;
 	}
+
 	private JButton getB0_23() {
 		if (b0_23 == null) {
 			b0_23 = new JButton("");
@@ -896,6 +948,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_23;
 	}
+
 	private JButton getB0_22() {
 		if (b0_22 == null) {
 			b0_22 = new JButton("");
@@ -906,6 +959,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_22;
 	}
+
 	private JButton getB0_21() {
 		if (b0_21 == null) {
 			b0_21 = new JButton("");
@@ -916,6 +970,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_21;
 	}
+
 	private JButton getB0_20() {
 		if (b0_20 == null) {
 			b0_20 = new JButton("");
@@ -926,6 +981,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_20;
 	}
+
 	private JButton getB0_19() {
 		if (b0_19 == null) {
 			b0_19 = new JButton("");
@@ -936,6 +992,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_19;
 	}
+
 	private JButton getB0_18() {
 		if (b0_18 == null) {
 			b0_18 = new JButton("");
@@ -946,6 +1003,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_18;
 	}
+
 	private JButton getB0_17() {
 		if (b0_17 == null) {
 			b0_17 = new JButton("");
@@ -956,6 +1014,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_17;
 	}
+
 	private JButton getB0_16() {
 		if (b0_16 == null) {
 			b0_16 = new JButton("");
@@ -966,6 +1025,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_16;
 	}
+
 	private JButton getB0_15() {
 		if (b0_15 == null) {
 			b0_15 = new JButton("");
@@ -976,6 +1036,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_15;
 	}
+
 	private JButton getB0_14() {
 		if (b0_14 == null) {
 			b0_14 = new JButton("");
@@ -986,6 +1047,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_14;
 	}
+
 	private JButton getB0_13() {
 		if (b0_13 == null) {
 			b0_13 = new JButton("");
@@ -996,6 +1058,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_13;
 	}
+
 	private JButton getB0_12() {
 		if (b0_12 == null) {
 			b0_12 = new JButton("");
@@ -1006,6 +1069,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_12;
 	}
+
 	private JButton getB0_11() {
 		if (b0_11 == null) {
 			b0_11 = new JButton("");
@@ -1016,6 +1080,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_11;
 	}
+
 	private JButton getB0_10() {
 		if (b0_10 == null) {
 			b0_10 = new JButton("");
@@ -1026,6 +1091,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_10;
 	}
+
 	private JButton getB0_9() {
 		if (b0_9 == null) {
 			b0_9 = new JButton("");
@@ -1036,6 +1102,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_9;
 	}
+
 	private JButton getB0_8() {
 		if (b0_8 == null) {
 			b0_8 = new JButton("");
@@ -1046,16 +1113,18 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b0_8;
 	}
+
 	private JButton getB5_1() {
 		if (b5_1 == null) {
 			b5_1 = new JButton("");
 			b5_1.setContentAreaFilled(false);
 			b5_1.setEnabled(false);
-			b5_1.setActionCommand("5_1");	
+			b5_1.setActionCommand("5_1");
 			b5_1.setBounds(45, 210, 14, 23);
 		}
 		return b5_1;
 	}
+
 	private JButton getB5_2() {
 		if (b5_2 == null) {
 			b5_2 = new JButton("");
@@ -1066,6 +1135,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b5_2;
 	}
+
 	private JButton getB5_3() {
 		if (b5_3 == null) {
 			b5_3 = new JButton("");
@@ -1076,6 +1146,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b5_3;
 	}
+
 	private JButton getB5_4() {
 		if (b5_4 == null) {
 			b5_4 = new JButton("");
@@ -1086,6 +1157,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b5_4;
 	}
+
 	private JButton getB5_5() {
 		if (b5_5 == null) {
 			b5_5 = new JButton("");
@@ -1096,6 +1168,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b5_5;
 	}
+
 	private JButton getB2_5() {
 		if (b2_5 == null) {
 			b2_5 = new JButton("");
@@ -1106,6 +1179,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b2_5;
 	}
+
 	private JButton getB2_4() {
 		if (b2_4 == null) {
 			b2_4 = new JButton("");
@@ -1116,6 +1190,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b2_4;
 	}
+
 	private JButton getB2_3() {
 		if (b2_3 == null) {
 			b2_3 = new JButton("");
@@ -1126,6 +1201,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b2_3;
 	}
+
 	private JButton getB2_2() {
 		if (b2_2 == null) {
 			b2_2 = new JButton("");
@@ -1136,6 +1212,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b2_2;
 	}
+
 	private JButton getB2_1() {
 		if (b2_1 == null) {
 			b2_1 = new JButton("");
@@ -1146,6 +1223,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b2_1;
 	}
+
 	private JButton getB6_5() {
 		if (b6_5 == null) {
 			b6_5 = new JButton("");
@@ -1156,6 +1234,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b6_5;
 	}
+
 	private JButton getB6_4() {
 		if (b6_4 == null) {
 			b6_4 = new JButton("");
@@ -1166,6 +1245,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b6_4;
 	}
+
 	private JButton getB6_3() {
 		if (b6_3 == null) {
 			b6_3 = new JButton("");
@@ -1176,6 +1256,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b6_3;
 	}
+
 	private JButton getB6_2() {
 		if (b6_2 == null) {
 			b6_2 = new JButton("");
@@ -1186,6 +1267,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b6_2;
 	}
+
 	private JButton getB6_1() {
 		if (b6_1 == null) {
 			b6_1 = new JButton("");
@@ -1196,6 +1278,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b6_1;
 	}
+
 	private JButton getB3_5() {
 		if (b3_5 == null) {
 			b3_5 = new JButton("");
@@ -1206,6 +1289,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b3_5;
 	}
+
 	private JButton getB3_4() {
 		if (b3_4 == null) {
 			b3_4 = new JButton("");
@@ -1216,6 +1300,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b3_4;
 	}
+
 	private JButton getB3_3() {
 		if (b3_3 == null) {
 			b3_3 = new JButton("");
@@ -1226,6 +1311,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b3_3;
 	}
+
 	private JButton getB3_2() {
 		if (b3_2 == null) {
 			b3_2 = new JButton("");
@@ -1236,6 +1322,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b3_2;
 	}
+
 	private JButton getB3_1() {
 		if (b3_1 == null) {
 			b3_1 = new JButton("");
@@ -1246,6 +1333,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b3_1;
 	}
+
 	private JButton getB4_1() {
 		if (b4_1 == null) {
 			b4_1 = new JButton("");
@@ -1256,6 +1344,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b4_1;
 	}
+
 	private JButton getB4_2() {
 		if (b4_2 == null) {
 			b4_2 = new JButton("");
@@ -1266,6 +1355,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b4_2;
 	}
+
 	private JButton getB4_3() {
 		if (b4_3 == null) {
 			b4_3 = new JButton("");
@@ -1276,6 +1366,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b4_3;
 	}
+
 	private JButton getB4_4() {
 		if (b4_4 == null) {
 			b4_4 = new JButton("");
@@ -1286,6 +1377,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b4_4;
 	}
+
 	private JButton getB4_5() {
 		if (b4_5 == null) {
 			b4_5 = new JButton("");
@@ -1296,6 +1388,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b4_5;
 	}
+
 	private JButton getB1_5() {
 		if (b1_5 == null) {
 			b1_5 = new JButton("");
@@ -1306,6 +1399,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b1_5;
 	}
+
 	private JButton getB1_4() {
 		if (b1_4 == null) {
 			b1_4 = new JButton("");
@@ -1318,6 +1412,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b1_4;
 	}
+
 	private JButton getB1_3() {
 		if (b1_3 == null) {
 			b1_3 = new JButton("");
@@ -1330,6 +1425,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b1_3;
 	}
+
 	private JButton getB1_2() {
 		if (b1_2 == null) {
 			b1_2 = new JButton("");
@@ -1342,6 +1438,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b1_2;
 	}
+
 	private JButton getB1_1() {
 		if (b1_1 == null) {
 			b1_1 = new JButton("");
@@ -1354,48 +1451,90 @@ public class GameWindow extends JFrame implements ActionListener {
 		}
 		return b1_1;
 	}
+
 	private JButton getBtAnswer1() {
 		if (btAnswer1 == null) {
 			btAnswer1 = new JButton("answer 1");
+			btAnswer1.addActionListener(new questionActionListener());
 			btAnswer1.setActionCommand("0");
-			btAnswer1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
+			btAnswer1
+					.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		}
 		return btAnswer1;
 	}
+
 	private JButton getBtAnswer2() {
 		if (btAnswer2 == null) {
 			btAnswer2 = new JButton("answer 2");
+			btAnswer2.addActionListener(new questionActionListener());
 			btAnswer2.setActionCommand("1");
-			btAnswer2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
+			btAnswer2
+					.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		}
 		return btAnswer2;
 	}
+
 	private JButton getBtAnswer3() {
 		if (btAnswer3 == null) {
 			btAnswer3 = new JButton("answer 3");
+			btAnswer3.addActionListener(new questionActionListener());
 			btAnswer3.setActionCommand("2");
-			btAnswer3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
+			btAnswer3
+					.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		}
 		return btAnswer3;
 	}
+
 	private JButton getBtAnswer4() {
 		if (btAnswer4 == null) {
 			btAnswer4 = new JButton("answer 4");
+			btAnswer4.addActionListener(new questionActionListener());
 			btAnswer4.setActionCommand("3");
-			btAnswer4.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
+			btAnswer4
+					.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		}
 		return btAnswer4;
 	}
-	
-	
+
 	private JTextField getTxtQuestion() {
 		if (txtQuestion == null) {
 			txtQuestion = new JTextField();
-			txtQuestion.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
+			txtQuestion.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN,
+					24));
 			txtQuestion.setText("Question");
 			txtQuestion.setEditable(false);
 			txtQuestion.setColumns(10);
 		}
 		return txtQuestion;
+	}
+
+	class questionActionListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Question question = getGame()
+					.getBoard()
+					.getQuestions()
+					.getQuestion(
+							getGame()
+									.getBoard()
+									.getSquare(
+											getGame().getActivePlayer()
+													.getPosition())
+									.getCategories());
+			if (question.getPositionTrue() == Integer.parseInt(e
+					.getActionCommand())) {
+				game.getActivePlayer().getWedges()[question.getCategory()
+						.getValue()] = true;
+				JOptionPane.showMessageDialog(null, "Your answer is right");
+			} else {
+				JOptionPane.showMessageDialog(null, "You failed the question");
+				getGame().nextPlayer();
+			}
+			getBtnPulsarDado().setEnabled(true);
+			getQuestionPn().setVisible(false);
+			isWin(getGame().getActivePlayer());
+		}
+
 	}
 }
