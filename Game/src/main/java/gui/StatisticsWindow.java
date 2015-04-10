@@ -15,7 +15,7 @@ public class StatisticsWindow extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txtPlayer;
 
 	/**
 	 * Launch the application.
@@ -49,9 +49,9 @@ public class StatisticsWindow extends JFrame {
 		lblPlayerName.setBounds(56, 31, 54, 14);
 		contentPane.add(lblPlayerName);
 		
-		textField = new JTextField();
-		textField.setBounds(120, 28, 197, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtPlayer = new JTextField();
+		txtPlayer.setBounds(120, 28, 197, 20);
+		contentPane.add(txtPlayer);
+		txtPlayer.setColumns(10);
 	}
 }
