@@ -21,6 +21,7 @@ import logic.model.User;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.Toolkit;
 public class ListPlayers extends JFrame {
 
 	/**
@@ -57,6 +58,7 @@ public class ListPlayers extends JFrame {
 	 * Create the frame.
 	 */
 	public ListPlayers() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Raquel\\Desktop\\ASWProject\\Trivial_i1b\\Game\\src\\main\\resources\\Images\\icono.png"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 532, 340);
 		contentPane = new JPanel();
