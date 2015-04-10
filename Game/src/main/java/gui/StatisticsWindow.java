@@ -97,10 +97,10 @@ public class StatisticsWindow extends JFrame {
 			tabStatistics = new JTable();
 			tabStatistics.setModel(new DefaultTableModel(
 				new Object[][] {
-					{null, null, null, null},
+					{null, null, null},
 				},
 				new String[] {
-					"Won games", "Lost games", "Correct answers", "Incorrect answers"
+					"Questions right", "Total questions", "Total games"
 				}
 			));
 		}

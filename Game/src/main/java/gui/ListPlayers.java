@@ -74,6 +74,14 @@ public class ListPlayers extends JFrame {
 				int row = tabUsers.getSelectedRow();
 				for (User u : users){
 					if (u.getEmail().equals(tabUsers.getValueAt(row, 1))){
+						Statistics s = u.getStatistics();
+						statistics.tabStatistics.setValueAt(s.getQuestionsMatched(), row, 0);
+						statistics.tabStatistics.setValueAt(s.getQuestionsAnswered(), row, 1);
+						statistics.tabStatistics.setValueAt(s.getTimesPlayed(), row, 2);
+						
+						
+					
+
 						
 					}
 				}
