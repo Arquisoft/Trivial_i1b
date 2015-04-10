@@ -36,7 +36,6 @@ public class InitialWindow extends JFrame {
 	private JButton btnYellow;
 	private JButton btnAboutTheProject;
 	private JTextField txtUsername;
-	private JButton btnStatistics;
 
 	private static Game game;
 
@@ -84,8 +83,10 @@ public class InitialWindow extends JFrame {
 						game.addPlayer(new Player(user,
 								Categories.values().length));
 						if (txtUsername.getText().equals("admin")) {
-							StatisticsWindow statsWin = new StatisticsWindow();
-							statsWin.setVisible(true);
+							/*
+							 * StatisticsWindow statsWin = new StatisticsWindow(getGame());
+							 * statsWin.setVisible(true);
+							 */
 						} else {
 							GameWindow game = new GameWindow(getGame());
 							game.setVisible(true);
@@ -276,25 +277,6 @@ public class InitialWindow extends JFrame {
 			btnAboutTheProject.setBounds(1131, 663, 161, 23);
 		}
 		return btnAboutTheProject;
-	}
-
-	private JButton getBtnStatistics() {
-		if (btnStatistics == null) {
-			btnStatistics = new JButton("Show statistics");
-			/*
-			 * btnStatistics.addActionListener(new ActionListener() { public
-			 * void actionPerformed(ActionEvent arg0) { if
-			 * (textField.getText().equals("") ||
-			 * textField_1.getText().equals("") ||
-			 * textField_2.getText().equals("")){
-			 * JOptionPane.showMessageDialog(null,
-			 * "You must fill all the information to create a new user"); }
-			 * else{ JOptionPane.showMessageDialog(null, "New user created"); }
-			 * } });
-			 */
-			btnStatistics.setBounds(221, 522, 89, 23);
-		}
-		return btnStatistics;
 	}
 
 	public static Game getGame() {
