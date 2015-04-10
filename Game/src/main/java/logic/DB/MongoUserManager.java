@@ -8,7 +8,6 @@ import logic.model.User;
 import org.bson.Document;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.MongoClient;
 
 public class MongoUserManager extends AbstractMongoManager {
 
@@ -23,7 +22,6 @@ public class MongoUserManager extends AbstractMongoManager {
 		try{
 			if (getUser(user.getUsername()) == null) {
 				table.insertOne(createDocument(user));
-				closeDatabase();
 				return true;
 			}
 			System.err.println("User with username " + user.getUsername()
@@ -93,7 +91,6 @@ public class MongoUserManager extends AbstractMongoManager {
 	}
 
 	private void connectDatabase() {
-		mongo = new MongoClient("localhost", 27017);
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
 	}

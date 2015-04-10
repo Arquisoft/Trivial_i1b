@@ -6,11 +6,10 @@ import java.util.List;
 import logic.DB.MongoQuestionManager;
 import logic.DB.MongoUserManager;
 import logic.board.Board;
+import logic.model.Die;
 import logic.model.Player;
 import logic.model.Statistics;
 import logic.model.User;
-import DataBase.DBConnector;
-import DataBase.MongoDBConnector;
 import Model.Question;
 
 public class Game {
@@ -20,7 +19,6 @@ public class Game {
 	private Player activePlayer;
 
 	public Game() {
-
 		List<Question> questions = new MongoQuestionManager().getQuestions();
 		board = new Board(new QuestionSelector(questions));
 		players = new ArrayList<Player>();
@@ -77,6 +75,10 @@ public class Game {
 	}
 	
 	public void closeDatabase(){
-		new MongoDBConnector().closeConnection();
+		 
+	}
+	
+	public int throwDie() {
+		return Die.drop();
 	}
 }

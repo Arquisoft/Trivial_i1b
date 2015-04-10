@@ -8,11 +8,8 @@ import com.mongodb.client.MongoDatabase;
 
 public abstract class AbstractMongoManager implements MongoManager{
 	
-	protected MongoClient mongo;
+	protected MongoClient mongo = new MongoClient("localhost",27017);
 	protected MongoDatabase db;
 	protected MongoCollection<Document> table;
 	
-	public void closeDatabase() {
-		mongo.close();
-	}
 }
