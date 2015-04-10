@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.bson.Document;
 
-import com.mongodb.MongoClient;
-
 import Model.Question;
 import Model.TrivialQuestion;
 import Parser.Utils;
@@ -46,7 +44,6 @@ public class MongoQuestionManager extends AbstractMongoManager {
 	}
 
 	private void connectDatabase() {
-		mongo = new MongoClient("localhost", 27017);
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
 	}

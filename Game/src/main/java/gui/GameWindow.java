@@ -233,6 +233,7 @@ public class GameWindow extends JFrame {
 				lblPassword.setVisible(false);
 				btnOk.setVisible(false);
 				btnNewUser.setVisible(false);
+				getBtnPulsarDado().setEnabled(true);
 				
 			}
 		});
@@ -365,12 +366,19 @@ public class GameWindow extends JFrame {
 	private JButton getBtnPulsarDado() {
 		if (btnPulsarDado == null) {
 			btnPulsarDado = new JButton("");
+			btnPulsarDado.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					getTxDado().setText(String.valueOf(getGame().throwDie()));
+					getTxDado().setEnabled(false);
+				}
+			});
 			btnPulsarDado.setContentAreaFilled(false);
 			btnPulsarDado.setBorderPainted(false);
 			btnPulsarDado.setOpaque(false);
 			btnPulsarDado.setIcon(new ImageIcon(GameWindow.class
 					.getResource("/Images/Dado.png")));
 			btnPulsarDado.setBounds(818, 107, 137, 85);
+			btnPulsarDado.setEnabled(false);
 		}
 		return btnPulsarDado;
 	}
