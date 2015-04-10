@@ -452,7 +452,7 @@ public class GameWindow extends JFrame {
 	
 	private JButton getBtCentro() {
 		if (btCentro == null) {
-			btCentro = new JButton("New button");
+			btCentro = new JButton("");
 			btCentro.setBounds(202, 201, 49, 40);
 		}
 		return btCentro;

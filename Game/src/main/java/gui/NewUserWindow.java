@@ -68,7 +68,7 @@ public class NewUserWindow extends JFrame {
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					this.finalize();
+					dispose();
 				} catch (Throwable e) {
 					e.printStackTrace();
 				}
