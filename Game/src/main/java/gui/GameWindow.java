@@ -17,6 +17,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import logic.Game;
+import javax.swing.JTable;
+import javax.swing.JMenuItem;
+import java.awt.Panel;
 
 public class GameWindow extends JFrame {
 
@@ -42,6 +45,7 @@ public class GameWindow extends JFrame {
 	private JButton btnNewUser;
 
 	private Game game;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -133,6 +137,11 @@ public class GameWindow extends JFrame {
 		btnStart.setForeground(Color.WHITE);
 		btnStart.setBounds(1037, 203, 143, 23);
 		contentPane.add(btnStart);
+		
+		Panel panel_1 = new Panel();
+		panel_1.setBounds(1193, 47, 143, 216);
+		contentPane.add(panel_1);
+		panel_1.add(getTable());
 	}
 
 	private JLabel getLbTitle() {
@@ -272,5 +281,11 @@ public class GameWindow extends JFrame {
 
 	public Game getGame() {
 		return game;
+	}
+	private JTable getTable() {
+		if (table == null) {
+			table = new JTable();
+		}
+		return table;
 	}
 }
