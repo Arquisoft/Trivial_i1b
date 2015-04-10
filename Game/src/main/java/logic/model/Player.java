@@ -1,5 +1,7 @@
 package logic.model;
 
+import java.util.Random;
+
 public class Player {
 
 	private User user;
@@ -14,7 +16,7 @@ public class Player {
 
 	public Player(User user, int numberOfWedges) {
 		this.user = user;
-		this.position = new Position(0,1);
+		this.position = new Position(0,new Random().nextInt(42)+1);
 		this.wedges = new boolean[numberOfWedges];
 	}
 

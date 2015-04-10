@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -41,7 +42,7 @@ public class GameWindow extends JFrame {
 	private JPanel BoardPanel;
 	private JButton btnPulsarDado;
 	private JLabel lblTurnoDelJugador;
-	private JTextField textField;
+	private JTextField txActivePlayer;
 	private JTextField txDado;
 	private JLabel label;
 	private JButton btnAddPlayer;
@@ -161,7 +162,7 @@ public class GameWindow extends JFrame {
 		contentPane.add(getLbTitle());
 		contentPane.add(getBtnPulsarDado());
 		contentPane.add(getLblTurnoDelJugador());
-		contentPane.add(getTextField());
+		contentPane.add(getTxActivePlayer());
 		contentPane.add(getTxDado());
 
 		contentPane.add(getBtnAddPlayer());
@@ -233,6 +234,7 @@ public class GameWindow extends JFrame {
 				lblPassword.setVisible(false);
 				btnOk.setVisible(false);
 				btnNewUser.setVisible(false);
+				startGame();
 				getBtnPulsarDado().setEnabled(true);
 				
 			}
@@ -393,14 +395,14 @@ public class GameWindow extends JFrame {
 		return lblTurnoDelJugador;
 	}
 
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setEditable(false);
-			textField.setBounds(934, 55, 86, 20);
-			textField.setColumns(10);
+	private JTextField getTxActivePlayer() {
+		if (txActivePlayer == null) {
+			txActivePlayer = new JTextField();
+			txActivePlayer.setEditable(false);
+			txActivePlayer.setBounds(934, 55, 86, 20);
+			txActivePlayer.setColumns(10);
 		}
-		return textField;
+		return txActivePlayer;
 	}
 
 	private JTextField getTxDado() {
@@ -436,7 +438,6 @@ public class GameWindow extends JFrame {
 					lblPassword.setVisible(true);
 					btnOk.setVisible(true);
 					btnNewUser.setVisible(true);
-					startGame();
 				}
 			});
 			btnAddPlayer.setBounds(867, 203, 160, 23);
@@ -502,13 +503,14 @@ public class GameWindow extends JFrame {
 	private void startGame(){
 		createMapPlayers(game.getPlayers());
 		updatePlayers(game.getPlayers());
+		
 	}
 	
 	private void updatePlayers(List<Player> players) {
+		txActivePlayer.setText(game.getActivePlayer().getUsername());
 		for(Player p: players){
-			
 			JButton b = getButton(p.getPosition());
-			b.setContentAreaFilled(true);
+			//b.setContentAreaFilled(true);
 			b.setEnabled(true);
 			b.setIcon(colorsPlayers.get(p));
 		}
