@@ -596,7 +596,12 @@ public class GameWindow extends JFrame implements ActionListener {
 	}
 
 	public boolean isWin(Player player) {
-		return player.allQuestionsMatched();
+		if(player.allQuestionsMatched()){
+			JOptionPane.showMessageDialog(null, "You win, Congratulations" + player.getUsername() + "!");
+			this.dispose();
+			return true;
+		}
+		return false;
 	}
 
 	public void fillQuestions(Question question) {
@@ -668,7 +673,7 @@ public class GameWindow extends JFrame implements ActionListener {
 			b0_2 = new JButton("");
 			b0_2.setContentAreaFilled(false);
 			b0_2.setEnabled(false);
-			b0_2.setActionCommand("0_0");
+			b0_2.setActionCommand("0_2");
 			b0_2.setBounds(176, 11, 14, 23);
 		}
 		return b0_2;
@@ -1051,9 +1056,9 @@ public class GameWindow extends JFrame implements ActionListener {
 	private JButton getB0_13() {
 		if (b0_13 == null) {
 			b0_13 = new JButton("");
+			b0_13.setActionCommand("0_13");
 			b0_13.setContentAreaFilled(false);
 			b0_13.setEnabled(false);
-			b0_14.setActionCommand("0_13");
 			b0_13.setBounds(415, 174, 14, 23);
 		}
 		return b0_13;
@@ -1062,9 +1067,9 @@ public class GameWindow extends JFrame implements ActionListener {
 	private JButton getB0_12() {
 		if (b0_12 == null) {
 			b0_12 = new JButton("");
+			b0_12.setActionCommand("0_12");
 			b0_12.setContentAreaFilled(false);
 			b0_12.setEnabled(false);
-			b0_14.setActionCommand("0_12");
 			b0_12.setBounds(415, 140, 14, 23);
 		}
 		return b0_12;
@@ -1073,9 +1078,9 @@ public class GameWindow extends JFrame implements ActionListener {
 	private JButton getB0_11() {
 		if (b0_11 == null) {
 			b0_11 = new JButton("");
+			b0_11.setActionCommand("0_11");
 			b0_11.setContentAreaFilled(false);
 			b0_11.setEnabled(false);
-			b0_14.setActionCommand("0_11");
 			b0_11.setBounds(396, 118, 14, 23);
 		}
 		return b0_11;
@@ -1086,7 +1091,7 @@ public class GameWindow extends JFrame implements ActionListener {
 			b0_10 = new JButton("");
 			b0_10.setContentAreaFilled(false);
 			b0_10.setEnabled(false);
-			b0_14.setActionCommand("0_10");
+			b0_10.setActionCommand("0_10");
 			b0_10.setBounds(383, 98, 14, 23);
 		}
 		return b0_10;
@@ -1458,7 +1463,7 @@ public class GameWindow extends JFrame implements ActionListener {
 			btAnswer1.addActionListener(new questionActionListener());
 			btAnswer1.setActionCommand("0");
 			btAnswer1
-					.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
+					.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		}
 		return btAnswer1;
 	}
@@ -1469,7 +1474,7 @@ public class GameWindow extends JFrame implements ActionListener {
 			btAnswer2.addActionListener(new questionActionListener());
 			btAnswer2.setActionCommand("1");
 			btAnswer2
-					.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
+					.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		}
 		return btAnswer2;
 	}
@@ -1480,7 +1485,7 @@ public class GameWindow extends JFrame implements ActionListener {
 			btAnswer3.addActionListener(new questionActionListener());
 			btAnswer3.setActionCommand("2");
 			btAnswer3
-					.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
+					.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		}
 		return btAnswer3;
 	}
@@ -1491,7 +1496,7 @@ public class GameWindow extends JFrame implements ActionListener {
 			btAnswer4.addActionListener(new questionActionListener());
 			btAnswer4.setActionCommand("3");
 			btAnswer4
-					.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
+					.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
 		}
 		return btAnswer4;
 	}
@@ -1499,8 +1504,7 @@ public class GameWindow extends JFrame implements ActionListener {
 	private JTextField getTxtQuestion() {
 		if (txtQuestion == null) {
 			txtQuestion = new JTextField();
-			txtQuestion.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN,
-					24));
+			txtQuestion.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 			txtQuestion.setText("Question");
 			txtQuestion.setEditable(false);
 			txtQuestion.setColumns(10);

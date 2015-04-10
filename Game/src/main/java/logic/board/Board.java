@@ -82,7 +82,7 @@ public class Board {
 				}
 			}
 			posibleMovements.add(board[newExternalPosition(player.getPosition() ,movements)]);
-			posibleMovements.add(board[newExternalPosition(player.getPosition(), -movements)]);
+			posibleMovements.add(board[newExternalPosition(player.getPosition(), - movements)]);
 		} else {
 			if (player.getPosition().getIndex() + movements < Categories
 					.values().length) {
@@ -120,6 +120,8 @@ public class Board {
 		int newPosition = position.getIndex() + movement;
 		if ((position.getIndex() + movement) > DEFAULT_SIZE)
 			newPosition = DEFAULT_SIZE - (position.getIndex() + movement);
+		if((position.getIndex() + movement)<= 0)
+			newPosition = DEFAULT_SIZE - position.getIndex();
 		return newPosition;
 	}
 
