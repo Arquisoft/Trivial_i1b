@@ -38,12 +38,17 @@ public class InitialWindow extends JFrame {
 	private JTextField txtUsername;
 	private JButton btnStatistics;
 
-	private Game game;
+	private static Game game;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+			public void run() {
+				getGame().closeDatabase();
+			}
+		}, "Shutdown-thread"));
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -81,8 +86,7 @@ public class InitialWindow extends JFrame {
 						if (txtUsername.getText().equals("admin")) {
 							StatisticsWindow statsWin = new StatisticsWindow();
 							statsWin.setVisible(true);
-						}
-						else {
+						} else {
 							GameWindow game = new GameWindow(getGame());
 							game.setVisible(true);
 						}
@@ -293,7 +297,7 @@ public class InitialWindow extends JFrame {
 		return btnStatistics;
 	}
 
-	public Game getGame() {
+	public static Game getGame() {
 		return game;
 	}
 }

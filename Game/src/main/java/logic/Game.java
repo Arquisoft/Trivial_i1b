@@ -9,6 +9,8 @@ import logic.board.Board;
 import logic.model.Player;
 import logic.model.Statistics;
 import logic.model.User;
+import DataBase.DBConnector;
+import DataBase.MongoDBConnector;
 import Model.Question;
 
 public class Game {
@@ -72,5 +74,9 @@ public class Game {
 
 	public Player getActivePlayer() {
 		return activePlayer;
+	}
+	
+	public void closeDatabase(){
+		new MongoDBConnector().closeConnection();
 	}
 }
