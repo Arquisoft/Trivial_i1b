@@ -153,7 +153,7 @@ public class InitialWindow extends JFrame {
 		lblUsername.setVisible(false);
 		lblUsername.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblUsername.setForeground(new Color(255, 255, 255));
-		lblUsername.setBounds(889, 304, 76, 14);
+		lblUsername.setBounds(889, 304, 89, 14);
 		pnFondo.add(lblUsername);
 
 		lblPassword.setVisible(false);

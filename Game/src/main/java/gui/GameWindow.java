@@ -180,11 +180,18 @@ public class GameWindow extends JFrame {
 					User user = getGame().login(txUsername.getText(),
 							txPassword.getText());
 					if (user != null) {
-						getGame().addPlayer(new Player(user,
-								Categories.values().length));
-						JOptionPane
-						.showMessageDialog(null,
-								"User " + user.getUsername() + " logued in.");
+						for (Player p : getGame().getPlayers()) {
+							if (p.getUsername().equals(user.getUsername())) {
+								JOptionPane.showMessageDialog(null, "User "
+										+ user.getUsername()
+										+ " already logued in.");
+							} else {
+								getGame().addPlayer(
+										new Player(user, Categories.values().length));
+								JOptionPane.showMessageDialog(null, "User "
+										+ user.getUsername() + " logued in.");
+							}
+						}
 					} else
 						JOptionPane
 								.showMessageDialog(null,
