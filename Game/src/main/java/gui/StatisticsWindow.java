@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Toolkit;
 
 
 public class StatisticsWindow extends JFrame {
@@ -51,11 +52,12 @@ public class StatisticsWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public StatisticsWindow() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Raquel\\Desktop\\ASWProject\\Trivial_i1b\\Game\\src\\main\\resources\\Images\\icono.png"));
 		setTitle("Statistics of the player");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 606, 336);
 		contentPane = new JPanel();
-		//contentPane.setBackground(InitialWindow.pnFondo.getBackground());
+		contentPane.setBackground(InitialWindow.pnFondo.getBackground());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -114,7 +116,7 @@ public class StatisticsWindow extends JFrame {
 					System.exit(0);
 				}
 			});
-			btnClose.setBounds(444, 248, 89, 23);
+			btnClose.setBounds(461, 245, 89, 23);
 		}
 		return btnClose;
 	}

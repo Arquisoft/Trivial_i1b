@@ -14,8 +14,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import logic.DB.MongoUserManager;
+import logic.model.Statistics;
 import logic.model.User;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
 public class ListPlayers extends JFrame {
 
@@ -77,16 +80,9 @@ public class ListPlayers extends JFrame {
 						Statistics s = u.getStatistics();
 						statistics.tabStatistics.setValueAt(s.getQuestionsMatched(), row, 0);
 						statistics.tabStatistics.setValueAt(s.getQuestionsAnswered(), row, 1);
-						statistics.tabStatistics.setValueAt(s.getTimesPlayed(), row, 2);
-						
-						
-					
-
-						
+						statistics.tabStatistics.setValueAt(s.getTimesPlayed(), row, 2);	
 					}
 				}
-			
-				
 			}
 		});
 		btnSeeStatistics.setBounds(357, 42, 123, 23);
