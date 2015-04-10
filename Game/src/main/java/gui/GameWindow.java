@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
-import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -28,6 +27,7 @@ import logic.Game;
 import logic.model.Player;
 import logic.model.Position;
 import logic.model.User;
+import Model.Question;
 import Model.TrivialQuestion.Categories;
 
 public class GameWindow extends JFrame {
@@ -129,10 +129,11 @@ public class GameWindow extends JFrame {
 	private JButton b1_3;
 	private JButton b1_2;
 	private JButton b1_1;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
-	private JButton btnNewButton_3;
+	private JButton btAnswer1;
+	private JButton btAnswer2;
+	private JButton btAnswer3;
+	private JButton btAnswer4;
+	private JTextField txtQuestion;
 
 	/**
 	 * Launch the application.
@@ -250,19 +251,15 @@ public class GameWindow extends JFrame {
 		contentPane.add(QuestionPn);
 		QuestionPn.setLayout(new BorderLayout(0, 0));
 		QuestionPn.setVisible(false);
-		
-		JLabel lbQuestion = new JLabel("Question");
-		lbQuestion.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lbQuestion.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
-		QuestionPn.add(lbQuestion, BorderLayout.NORTH);
+		QuestionPn.add(getTxtQuestion(), BorderLayout.NORTH);
 		
 		JPanel PnAnswer = new JPanel();
 		QuestionPn.add(PnAnswer, BorderLayout.CENTER);
 		PnAnswer.setLayout(new GridLayout(2,2));
-		PnAnswer.add(getBtnNewButton());
-		PnAnswer.add(getBtnNewButton_1());
-		PnAnswer.add(getBtnNewButton_2());
-		PnAnswer.add(getBtnNewButton_3());
+		PnAnswer.add(getBtAnswer1());
+		PnAnswer.add(getBtAnswer2());
+		PnAnswer.add(getBtAnswer3());
+		PnAnswer.add(getBtAnswer4());
 	}
 
 	private JLabel getLbTitle() {
@@ -491,6 +488,20 @@ public class GameWindow extends JFrame {
 		return game;
 	}
 	
+	public boolean isWin(Player player){
+		return player.allQuestionsMatched();
+	}
+	
+	public void fillQuestions(Question question){
+		txtQuestion.setText(question.getQuestion());
+		List<String> answers = question.getAnswers();
+		btAnswer1.setText(answers.get(0));
+		btAnswer2.setText(answers.get(1));
+		btAnswer3.setText(answers.get(2));
+		btAnswer4.setText(answers.get(3));
+		
+	}
+	
 	private void createMapPlayers(List<Player> players){
 		colorsPlayers = new HashMap<Player,Icon>();
 		int i = 1;
@@ -510,7 +521,6 @@ public class GameWindow extends JFrame {
 		txActivePlayer.setText(game.getActivePlayer().getUsername());
 		for(Player p: players){
 			JButton b = getButton(p.getPosition());
-			//b.setContentAreaFilled(true);
 			b.setEnabled(true);
 			b.setIcon(colorsPlayers.get(p));
 		}
@@ -1260,34 +1270,48 @@ public class GameWindow extends JFrame {
 		}
 		return b1_1;
 	}
-	private JButton getBtnNewButton() {
-		if (btnNewButton == null) {
-			btnNewButton = new JButton("New button");
-			btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 22));
+	private JButton getBtAnswer1() {
+		if (btAnswer1 == null) {
+			btAnswer1 = new JButton("answer 1");
+			btAnswer1.setActionCommand("1");
+			btAnswer1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		}
-		return btnNewButton;
+		return btAnswer1;
 	}
-	private JButton getBtnNewButton_1() {
-		if (btnNewButton_1 == null) {
-			btnNewButton_1 = new JButton("New button");
-			btnNewButton_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 22));
+	private JButton getBtAnswer2() {
+		if (btAnswer2 == null) {
+			btAnswer2 = new JButton("answer 2");
+			btAnswer2.setActionCommand("2");
+			btAnswer2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		}
-		return btnNewButton_1;
+		return btAnswer2;
 	}
-	private JButton getBtnNewButton_2() {
-		if (btnNewButton_2 == null) {
-			btnNewButton_2 = new JButton("New button");
-			btnNewButton_2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 22));
+	private JButton getBtAnswer3() {
+		if (btAnswer3 == null) {
+			btAnswer3 = new JButton("answer 3");
+			btAnswer3.setActionCommand("3");
+			btAnswer3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		}
-		return btnNewButton_2;
+		return btAnswer3;
 	}
-	private JButton getBtnNewButton_3() {
-		if (btnNewButton_3 == null) {
-			btnNewButton_3 = new JButton("New button");
-			btnNewButton_3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 22));
+	private JButton getBtAnswer4() {
+		if (btAnswer4 == null) {
+			btAnswer4 = new JButton("answer 4");
+			btAnswer4.setActionCommand("4");
+			btAnswer4.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		}
-		return btnNewButton_3;
+		return btAnswer4;
 	}
 	
 	
+	private JTextField getTxtQuestion() {
+		if (txtQuestion == null) {
+			txtQuestion = new JTextField();
+			txtQuestion.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 24));
+			txtQuestion.setText("Question");
+			txtQuestion.setEditable(false);
+			txtQuestion.setColumns(10);
+		}
+		return txtQuestion;
+	}
 }
