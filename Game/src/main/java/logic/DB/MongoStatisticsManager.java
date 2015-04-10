@@ -6,7 +6,6 @@ import logic.model.User;
 import org.bson.Document;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.MongoClient;
 
 public class MongoStatisticsManager extends AbstractMongoManager {
 
@@ -75,7 +74,6 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 	}
 
 	private void connectDatabase() {
-		mongo = new MongoClient("localhost", 27017);
 		db = mongo.getDatabase(DATABASE_NAME);
 		table = db.getCollection(COLLECTION_NAME);
 	}

@@ -1,6 +1,8 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
@@ -16,29 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import Model.TrivialQuestion.Categories;
 import logic.Game;
-import javax.swing.JTable;
-import java.awt.Panel;
-
 import logic.model.Player;
 import logic.model.User;
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
-import javax.swing.BoxLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.CardLayout;
-import java.awt.ComponentOrientation;
-import javax.swing.JRadioButton;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import net.miginfocom.swing.MigLayout;
+import Model.TrivialQuestion.Categories;
 
 public class GameWindow extends JFrame {
 
@@ -137,8 +120,6 @@ public class GameWindow extends JFrame {
 	private JButton b1_3;
 	private JButton b1_2;
 	private JButton b1_1;
-	private final Action action = new SwingAction();
-	private final Action action_1 = new SwingAction_1();
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
 	private JButton btnNewButton_2;
@@ -244,6 +225,7 @@ public class GameWindow extends JFrame {
 				lblPassword.setVisible(false);
 				btnOk.setVisible(false);
 				btnNewUser.setVisible(false);
+				getBtnPulsarDado().setEnabled(true);
 				
 			}
 		});
@@ -265,7 +247,6 @@ public class GameWindow extends JFrame {
 		
 		JPanel panel = new JPanel();
 		QuestionPn.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[622px]", "[216px]"));
 		panel.add(getBtnNewButton(), "flowx,cell 0 0");
 		panel.add(getBtnNewButton_1(), "cell 0 0");
 		panel.add(getBtnNewButton_2(), "cell 0 0");
@@ -375,12 +356,19 @@ public class GameWindow extends JFrame {
 	private JButton getBtnPulsarDado() {
 		if (btnPulsarDado == null) {
 			btnPulsarDado = new JButton("");
+			btnPulsarDado.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					getTxDado().setText(String.valueOf(getGame().throwDie()));
+					getTxDado().setEnabled(false);
+				}
+			});
 			btnPulsarDado.setContentAreaFilled(false);
 			btnPulsarDado.setBorderPainted(false);
 			btnPulsarDado.setOpaque(false);
 			btnPulsarDado.setIcon(new ImageIcon(GameWindow.class
 					.getResource("/Images/Dado.png")));
 			btnPulsarDado.setBounds(818, 107, 137, 85);
+			btnPulsarDado.setEnabled(false);
 		}
 		return btnPulsarDado;
 	}
