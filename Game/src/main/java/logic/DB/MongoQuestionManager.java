@@ -15,7 +15,7 @@ public class MongoQuestionManager extends AbstractMongoManager {
 	private static final String DATABASE_NAME = "game";
 	
 	public MongoQuestionManager() {
-		connectDatabase();
+		connectDatabase(DATABASE_NAME, COLLECTION_NAME);
 	}
 
 	public List<Question> getQuestions() {
@@ -41,11 +41,6 @@ public class MongoQuestionManager extends AbstractMongoManager {
 				Utils.getCategory(doc.getString("category")), doc.getString("question"),
 				answers, doc.getInteger("correct", -1));
 		return question;
-	}
-
-	private void connectDatabase() {
-		db = mongo.getDatabase(DATABASE_NAME);
-		table = db.getCollection(COLLECTION_NAME);
 	}
 
 }

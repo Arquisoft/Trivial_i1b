@@ -11,18 +11,18 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 
 	private static final String COLLECTION_NAME = "statistics";
 	private static final String DATABASE_NAME = "game";
-	
+
 	public MongoStatisticsManager() {
-		connectDatabase();
+		connectDatabase(DATABASE_NAME, COLLECTION_NAME);
 	}
-	
+
 	public boolean saveStatistics(User user) {
 		try {
 			if (getStatistics(user.getUsername()) == null)
 				table.insertOne(createDocument(user));
 			else
-				System.err.println("Statistics with username " + user.getUsername()
-						+ " alredy exists.");
+				System.err.println("Statistics with username "
+						+ user.getUsername() + " alredy exists.");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
@@ -43,7 +43,7 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 			return null;
 		}
 	}
-	
+
 	public boolean updateStatistics(User user) {
 		try {
 			BasicDBObject query = new BasicDBObject().append("username",
@@ -57,11 +57,12 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 			return false;
 		}
 	}
-	
+
 	private Document createDocument(User user) {
 		Document doc = new Document();
 		doc.put("timesPlayed", user.getStatistics().getTimesPlayed());
-		doc.put("questionsAnswered", user.getStatistics().getQuestionsAnswered());
+		doc.put("questionsAnswered", user.getStatistics()
+				.getQuestionsAnswered());
 		doc.put("questionsMatched", user.getStatistics().getQuestionsMatched());
 		return doc;
 	}
@@ -71,10 +72,5 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 				doc.getInteger("questionsAnswered", 0), doc.getInteger(
 						"questionsMatched", 0));
 		return stat;
-	}
-
-	private void connectDatabase() {
-		db = mongo.getDatabase(DATABASE_NAME);
-		table = db.getCollection(COLLECTION_NAME);
 	}
 }
