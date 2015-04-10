@@ -1273,7 +1273,7 @@ public class GameWindow extends JFrame {
 	private JButton getBtAnswer1() {
 		if (btAnswer1 == null) {
 			btAnswer1 = new JButton("answer 1");
-			btAnswer1.setActionCommand("1");
+			btAnswer1.setActionCommand("0");
 			btAnswer1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		}
 		return btAnswer1;
@@ -1281,7 +1281,7 @@ public class GameWindow extends JFrame {
 	private JButton getBtAnswer2() {
 		if (btAnswer2 == null) {
 			btAnswer2 = new JButton("answer 2");
-			btAnswer2.setActionCommand("2");
+			btAnswer2.setActionCommand("1");
 			btAnswer2.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		}
 		return btAnswer2;
@@ -1289,7 +1289,7 @@ public class GameWindow extends JFrame {
 	private JButton getBtAnswer3() {
 		if (btAnswer3 == null) {
 			btAnswer3 = new JButton("answer 3");
-			btAnswer3.setActionCommand("3");
+			btAnswer3.setActionCommand("2");
 			btAnswer3.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		}
 		return btAnswer3;
@@ -1297,7 +1297,7 @@ public class GameWindow extends JFrame {
 	private JButton getBtAnswer4() {
 		if (btAnswer4 == null) {
 			btAnswer4 = new JButton("answer 4");
-			btAnswer4.setActionCommand("4");
+			btAnswer4.setActionCommand("3");
 			btAnswer4.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		}
 		return btAnswer4;

@@ -74,6 +74,17 @@ public class Game {
 		return activePlayer;
 	}
 	
+	public void changePositionPlayer(Player player,String string){
+		String[] position = string.split("_");
+		player.getPosition().setWalk(Integer.valueOf(position[0]));
+		player.getPosition().setIndex(Integer.valueOf(position[1]));
+		for(Player p: players){
+			if(player.getUsername().equals(p.getUsername()))
+					p.setPosition(player.getPosition());
+		}
+		
+	}
+	
 	public void closeDatabase(){
 		 
 	}
