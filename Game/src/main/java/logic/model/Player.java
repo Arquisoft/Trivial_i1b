@@ -22,10 +22,6 @@ public class Player {
 		return position;
 	}
 
-	protected void setPosition(Position position) {
-		this.position = position;
-	}
-
 	public String getUsername() {
 		return user.getUsername();
 	}
