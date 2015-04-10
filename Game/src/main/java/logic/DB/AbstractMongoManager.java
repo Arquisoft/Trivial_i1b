@@ -12,4 +12,8 @@ public abstract class AbstractMongoManager implements MongoManager{
 	protected MongoDatabase db;
 	protected MongoCollection<Document> table;
 	
+	protected void connectDatabase(String dbName,String CollectionName) {
+		db = mongo.getDatabase(dbName);
+		table = db.getCollection(CollectionName);
+	}
 }

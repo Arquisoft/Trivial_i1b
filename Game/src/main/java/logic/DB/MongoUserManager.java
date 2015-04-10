@@ -13,21 +13,21 @@ public class MongoUserManager extends AbstractMongoManager {
 
 	private static final String COLLECTION_NAME = "users";
 	private static final String DATABASE_NAME = "game";
-	
-	public MongoUserManager(){
-		connectDatabase();
+
+	public MongoUserManager() {
+		connectDatabase(DATABASE_NAME, COLLECTION_NAME);
 	}
 
 	public boolean saveUser(User user) {
-		try{
+		try {
 			if (getUser(user.getUsername()) == null) {
 				table.insertOne(createDocument(user));
 				return true;
 			}
 			System.err.println("User with username " + user.getUsername()
-				+ " alredy exists.");
+					+ " alredy exists.");
 			return false;
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace(System.err);
 			return false;
 		}
@@ -88,10 +88,5 @@ public class MongoUserManager extends AbstractMongoManager {
 		doc.put("password", user.getPassword());
 		doc.put("email", user.getEmail());
 		return doc;
-	}
-
-	private void connectDatabase() {
-		db = mongo.getDatabase(DATABASE_NAME);
-		table = db.getCollection(COLLECTION_NAME);
 	}
 }
