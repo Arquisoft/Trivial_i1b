@@ -25,7 +25,7 @@ public class StatisticsWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblPlayer;
-	private JTextField txPlayer;
+	public JTextField txPlayer;
 	private JScrollPane spTable;
 	private JTable tabStatistics;
 	private JButton btnClose;
@@ -55,6 +55,7 @@ public class StatisticsWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 606, 336);
 		contentPane = new JPanel();
+		//contentPane.setBackground(InitialWindow.pnFondo.getBackground());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
