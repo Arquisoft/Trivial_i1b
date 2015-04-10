@@ -25,7 +25,7 @@ public class StatisticsWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblPlayer;
-	private JTextField txPlayer;
+	public JTextField txPlayer;
 	private JScrollPane spTable;
 	private JTable tabStatistics;
 	private JButton btnClose;

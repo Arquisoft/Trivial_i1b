@@ -61,6 +61,13 @@ public class ListPlayers extends JFrame {
 		contentPane.add(getBtnClose());
 		
 		JButton btnSeeStatistics = new JButton("See statistics");
+		btnSeeStatistics.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				StatisticsWindow statistics = new StatisticsWindow();
+				statistics.setVisible(true);
+				statistics.txPlayer.setText((String) tabUsers.getValueAt(tabUsers.getSelectedRow(), 0));
+			}
+		});
 		btnSeeStatistics.setBounds(357, 42, 123, 23);
 		contentPane.add(btnSeeStatistics);
 	
