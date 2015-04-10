@@ -63,6 +63,19 @@ public class NewUserWindow extends JFrame {
 		contentPane.add(getTfPassword());
 		contentPane.add(getBtnOk());
 		contentPane.add(getLabel_1());
+		
+		JButton btnGoBack = new JButton("Go back");
+		btnGoBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					this.finalize();
+				} catch (Throwable e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		btnGoBack.setBounds(221, 556, 89, 23);
+		contentPane.add(btnGoBack);
 	}
 
 	private JLabel getLbTitle() {
