@@ -16,7 +16,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import Model.TrivialQuestion.Categories;
 import logic.Game;
+import logic.model.Player;
+import logic.model.User;
 
 public class GameWindow extends JFrame {
 
@@ -93,15 +96,21 @@ public class GameWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (txUsername.getText().equals("")
 						|| txPassword.getText().equals("")) {
-
-					JOptionPane
-							.showMessageDialog(null,
-									"You must fill all the information to add the player");
-
+					JOptionPane.showMessageDialog(null,
+							"You must fill all the information to log in");
 				} else {
-					JOptionPane.showMessageDialog(null, "New user: "
-							+ txUsername.getText().toUpperCase()
-							+ " added to the game");
+					User user = getGame().login(txUsername.getText(),
+							txPassword.getText());
+					if (user != null) {
+						getGame().addPlayer(new Player(user,
+								Categories.values().length));
+						JOptionPane
+						.showMessageDialog(null,
+								"User " + user.getUsername() + " logued in.");
+					} else
+						JOptionPane
+								.showMessageDialog(null,
+										"There is no user with that username and password");
 				}
 			}
 		});
