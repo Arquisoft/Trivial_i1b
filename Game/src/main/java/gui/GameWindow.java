@@ -19,7 +19,6 @@ import javax.swing.border.EmptyBorder;
 import Model.TrivialQuestion.Categories;
 import logic.Game;
 import javax.swing.JTable;
-import javax.swing.JMenuItem;
 import java.awt.Panel;
 
 import logic.model.Player;
