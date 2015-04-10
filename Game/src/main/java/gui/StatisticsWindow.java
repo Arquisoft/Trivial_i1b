@@ -32,21 +32,21 @@ public class StatisticsWindow extends JFrame {
 	private JButton btnClose;
 
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					StatisticsWindow frame = new StatisticsWindow();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	/**
+//	 * Launch the application.
+//	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					StatisticsWindow frame = new StatisticsWindow();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -113,7 +113,7 @@ public class StatisticsWindow extends JFrame {
 			btnClose = new JButton("Close");
 			btnClose.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					System.exit(0);
+					dispose();
 				}
 			});
 			btnClose.setBounds(461, 245, 89, 23);

@@ -1512,6 +1512,7 @@ public class GameWindow extends JFrame implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			User activeUser = getGame().getActivePlayer().getUser();
 			Question question = getGame()
 					.getBoard()
 					.getQuestions()
@@ -1527,6 +1528,7 @@ public class GameWindow extends JFrame implements ActionListener {
 				game.getActivePlayer().getWedges()[question.getCategory()
 						.getValue()] = true;
 				JOptionPane.showMessageDialog(null, "Your answer is right");
+				activeUser.getStatistics().setQuestionsMatched(activeUser.getStatistics().getQuestionsMatched() + 1);
 			} else {
 				JOptionPane.showMessageDialog(null, "You failed the question");
 				getGame().nextPlayer();
@@ -1534,6 +1536,7 @@ public class GameWindow extends JFrame implements ActionListener {
 			getBtnPulsarDado().setEnabled(true);
 			getQuestionPn().setVisible(false);
 			isWin(getGame().getActivePlayer());
+			activeUser.getStatistics().setQuestionsAnswered(activeUser.getStatistics().getQuestionsAnswered() + 1);
 		}
 
 	}

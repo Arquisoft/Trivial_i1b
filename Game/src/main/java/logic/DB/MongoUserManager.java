@@ -22,6 +22,7 @@ public class MongoUserManager extends AbstractMongoManager {
 		try {
 			if (getUser(user.getUsername()) == null) {
 				table.insertOne(createDocument(user));
+				new MongoStatisticsManager().saveStatistics(user);
 				return true;
 			}
 			System.err.println("User with username " + user.getUsername()

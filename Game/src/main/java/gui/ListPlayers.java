@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -56,7 +57,7 @@ public class ListPlayers extends JFrame {
 	 * Create the frame.
 	 */
 	public ListPlayers() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 532, 340);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0,0,139));
@@ -75,12 +76,14 @@ public class ListPlayers extends JFrame {
 				statistics.setVisible(true);
 				statistics.txPlayer.setText((String) tabUsers.getValueAt(tabUsers.getSelectedRow(), 0));
 				int row = tabUsers.getSelectedRow();
+				int newRow = 0;
 				for (User u : users){
 					if (u.getEmail().equals(tabUsers.getValueAt(row, 1))){
 						Statistics s = u.getStatistics();
-						statistics.tabStatistics.setValueAt(s.getQuestionsMatched(), row, 0);
-						statistics.tabStatistics.setValueAt(s.getQuestionsAnswered(), row, 1);
-						statistics.tabStatistics.setValueAt(s.getTimesPlayed(), row, 2);	
+						statistics.tabStatistics.setValueAt(s.getQuestionsMatched(), newRow, 0);
+						statistics.tabStatistics.setValueAt(s.getQuestionsAnswered(), newRow, 1);
+						statistics.tabStatistics.setValueAt(s.getTimesPlayed(), newRow, 2);	
+						newRow++;
 					}
 				}
 			}
@@ -103,6 +106,7 @@ public class ListPlayers extends JFrame {
 	private JTable getTabUsers() {
 		if (tabUsers == null) {
 			tabUsers = new JTable();
+			tabUsers.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			tabUsers.setModel(new DefaultTableModel(
 				new Object[][] {
 					
@@ -122,7 +126,7 @@ public class ListPlayers extends JFrame {
 			btnClose = new JButton("Close");
 			btnClose.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					System.exit(0);
+					dispose();
 				}
 			});
 			btnClose.setBounds(378, 230, 76, 23);
