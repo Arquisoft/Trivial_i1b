@@ -27,7 +27,7 @@ public class StatisticsWindow extends JFrame {
 	private JLabel lblPlayer;
 	public JTextField txPlayer;
 	private JScrollPane spTable;
-	private JTable tabStatistics;
+	public JTable tabStatistics;
 	private JButton btnClose;
 
 

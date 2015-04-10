@@ -63,9 +63,18 @@ public class ListPlayers extends JFrame {
 		JButton btnSeeStatistics = new JButton("See statistics");
 		btnSeeStatistics.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				users = mongo.getAllUsers();
 				StatisticsWindow statistics = new StatisticsWindow();
 				statistics.setVisible(true);
 				statistics.txPlayer.setText((String) tabUsers.getValueAt(tabUsers.getSelectedRow(), 0));
+				int row = tabUsers.getSelectedRow();
+				for (User u : users){
+					if (u.getEmail().equals(tabUsers.getValueAt(row, 1))){
+						
+					}
+				}
+			
+				
 			}
 		});
 		btnSeeStatistics.setBounds(357, 42, 123, 23);
