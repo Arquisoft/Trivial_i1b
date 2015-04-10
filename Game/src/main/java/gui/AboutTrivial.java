@@ -73,7 +73,7 @@ public class AboutTrivial extends JFrame {
 			txtrThisProjectIs.setEditable(false);
 			txtrThisProjectIs.setLineWrap(true);
 			txtrThisProjectIs.setWrapStyleWord(true);
-			txtrThisProjectIs.setText("This project is developed for the Software Architecture course.\r\nIt's developed by:\r\n-Ana Areces Gonz\u00E1lez\r\n-Mar\u00EDa Gonz\u00E1lez Gonz\u00E1lez\r\n-\u00C1lvaro Palanco Lorenzo\r\n-David Casado Corona\r\n-Iv\u00E1n S\u00E1nchez Vald\u00E9s\r\n-Raquel Arrojo L\u00F3pez\r\n\r\n\r\n\r\n\r\n\r\n\r\nMore information about the project can be found on:\r\nhttps://github.com/Arquisoft/Trivial_i1b    and     http://arquisoft.github.io/Trivial_i1b/\r\n");
+			txtrThisProjectIs.setText("This project is developed for the Software Architecture course.\r\nIt's developed by:\r\n-Ana Areces Gonz\u00E1lez\r\n-Raquel Arrojo L\u00F3pez\r\n-Mar\u00EDa Gonz\u00E1lez Gonz\u00E1lez\r\n-\u00C1lvaro Palanco Lorenzo\r\n-David Casado Corona\r\n-Iv\u00E1n S\u00E1nchez Vald\u00E9s\r\n\r\n\r\n\r\n\r\n\r\n\r\nMore information about the project can be found on:\r\nhttps://github.com/Arquisoft/Trivial_i1b    and     http://arquisoft.github.io/Trivial_i1b/\r\n");
 			txtrThisProjectIs.setBounds(62, 201, 933, 401);
 		}
 		return txtrThisProjectIs;
