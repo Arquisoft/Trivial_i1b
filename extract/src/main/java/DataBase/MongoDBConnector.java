@@ -3,7 +3,7 @@ package DataBase;
 import com.mongodb.MongoClient;
 
 public class MongoDBConnector implements DBConnector {
-	private MongoClient mongo = null;
+	private static MongoClient mongo = null;
 	
 	public MongoDBConnector(){}
 
