@@ -4,7 +4,7 @@
     <link type="text/css" href="init-download-style.css" />
     <link type="text/css" href="init-toolbar.css" rel="stylesheet" />
 </head>
-<body background='images\icono.png'>
+<body id='general' background='images\icono.png'>
     <div style="width:750px;left:140px;background-repeat:no-repeat;height:400px;">
         
         <div class="IMAGE " style="z_index: 997; top: 10px; height: 83; width: 658; position: absolute; left: 0px; ">
@@ -18,6 +18,7 @@
                 <button  style="background-image:url('images/yellow.jpg');width: 100%; height:100%;" >
                     
                         YELLOW
+						
                     
                 </button>
             
@@ -106,9 +107,9 @@
         <div class="BUTTON " style="z_index: auto; top: 325px; height: 78; width: 208; position: absolute; left: 465px; ">
             
                 <button  style="width: 100%; height:100%;" >
-                    
+						<a href="board.html">
                         START
-                    
+                        </a>
                 </button>
             
         </div>
@@ -153,19 +154,10 @@
             
         </div>
         
-        <div class="TEXT text-underline text-center text-bold" style="z_index: 1000; top: 175px; height: 18; width: 158; position: absolute; left: 95px; ">
-            
-                <p  style="padding: 2px; width: 100%; height:100%;" >
-                    
-                        Change backgroud
-                    
-                </p>
-            
-        </div>
         
         <div class="BUTTON " style="z_index: 1001; top: 215px; height: 33; width: 88; position: absolute; left: 130px; ">
             
-                <button  style="background-image:url('images/red.jpg');width: 100%; height:100%;" >
+                <button  id = 'red' style="background-image:url('images/red.jpg');width: 100%; height:100%;" onClick="changeBackground(this)">
                     
                         RED
                     
@@ -175,4 +167,24 @@
         
     </div>
 </body>
+
+<script>
+function changeBackground(boton)
+{
+	var campo=boton.id;	 
+	var general=document.getElementById("general");
+	switch (campo) {
+	case 'red': general.background="#FF0000";
+		break;
+	case 'blue': general.style.background="#00CCFF";
+		break;
+	case 'green': general.style.background="#33FF33";
+		break;
+	case 'yellow': general.style.background="#FFFF33";
+		break;
+	case 'pink': general.style.background="#FF33CC";
+		break;
+		
+}
+</script>
 </html>
