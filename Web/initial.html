@@ -156,7 +156,6 @@
         
         
         <div class="BUTTON " style="z_index: 1001; top: 215px; height: 33; width: 88; position: absolute; left: 130px; ">
-            
                 <button  id = 'red' style="background-image:url('images/red.jpg');width: 100%; height:100%;" onclick="changeBackground(this)">
                     
                         RED
@@ -168,25 +167,23 @@
     </div>
 </body>
 <script>
-
 function changeBackground(boton)
 {
 	var campo=boton.id;	 
 	var general=document.getElementById("general");
 	switch (campo) {
-	case 'red': general.background="#00CCFF";
+	case 'red': general.background='images/red.jpg';
 		break;
-	case 'blue': general.background="#00CCFF";
+	case 'blue': general.style.background='images/blue.jpg';
 		break;
-	case 'green': general.background="#33FF33";
+	case 'green': general.style.background='images/green.jpg';
 		break;
-	case 'yellow': general.background="#FFFF33";
+	case 'yellow': general.style.background='images/yellow.jpg';
 		break;
-	case 'pink': general.style.background="#FF33CC";
+	case 'pink': general.style.background='images/pink.jpg';
 		break;
-	}	
-};
-
+	}		
+}
 </script>
-
 </html>
+
