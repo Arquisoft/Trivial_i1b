@@ -15,7 +15,7 @@
         
         <div class="BUTTON " style="z_index: 1002; top: 265px; height: 33; width: 88; position: absolute; left: 130px; ">
             
-                <button  style="background-image:url('images/yellow.jpg');width: 100%; height:100%;" >
+                <button  id='yellow' style="background-image:url('images/yellow.jpg');width: 100%; height:100%;"onclick="changeBackground(this)" >
                     
                         YELLOW
 						
@@ -26,7 +26,7 @@
         
         <div class="BUTTON " style="z_index: auto; top: 365px; height: 33; width: 88; position: absolute; left: 130px; ">
             
-                <button  style="background-image:url('images/pink.jpg');width: 100%; height:100%;" >
+                <button  id='pink' style="background-image:url('images/pink.jpg');width: 100%; height:100%;"onclick="changeBackground(this)" >
                     
                         PINK
                     
@@ -36,7 +36,7 @@
         
         <div class="BUTTON " style="z_index: auto; top: 315px; height: 33; width: 88; position: absolute; left: 130px; ">
             
-                <button  style="background-image:url('images/blue.jpg');width: 100%; height:100%;" >
+                <button  id='blue' style="background-image:url('images/blue.jpg');width: 100%; height:100%;"onclick="changeBackground(this)" >
                     
                         BLUE
                     
@@ -46,7 +46,7 @@
         
         <div class="BUTTON " style="z_index: auto; top: 415px; height: 33; width: 88; position: absolute; left: 130px; ">
             
-                <button  style="background-image:url('images/green.jpg');width: 100%; height:100%;" >
+                <button  id='green' style="background-image:url('images/green.jpg');width: 100%; height:100%;" onclick="changeBackground(this)" >
                     
                         GREEN
                     
@@ -174,13 +174,13 @@ function changeBackground(boton)
 	switch (campo) {
 	case 'red': general.background='images/red.jpg';
 		break;
-	case 'blue': general.style.background='images/blue.jpg';
+	case 'blue': general.background='images/blue.jpg';
 		break;
-	case 'green': general.style.background='images/green.jpg';
+	case 'green': general.background='images/green.jpg';
 		break;
-	case 'yellow': general.style.background='images/yellow.jpg';
+	case 'yellow': general.background='images/yellow.jpg';
 		break;
-	case 'pink': general.style.background='images/pink.jpg';
+	case 'pink': general.background='images/pink.jpg';
 		break;
 	}		
 }
