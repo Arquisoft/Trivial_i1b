@@ -1,13 +1,13 @@
 package controllers;
 
-import logic.Game;
+//import logic.Game;
 import play.*;
 import play.mvc.*;
 import views.html.*;
 
 public class Application extends Controller {
 	
-	//private Game game; 
+	//private static Game game; 
 
     public static Result index() {
         return ok(index.render("Your new application is ready."));
@@ -28,6 +28,6 @@ public class Application extends Controller {
     }
     
     public static Result move(String id){
-    	return ok(initial.render());
+    	return ok(board.render());
     }
 }
