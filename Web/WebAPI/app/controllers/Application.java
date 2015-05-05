@@ -1,13 +1,13 @@
 package controllers;
 
-import logic.Game;
+import model.Game;
 import play.*;
 import play.mvc.*;
 import views.html.*;
 
 public class Application extends Controller {
 	
-	//private Game game; 
+	private Game game = new Game(); 
 
     public static Result index() {
         return ok(index.render("Your new application is ready."));
