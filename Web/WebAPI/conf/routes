@@ -5,8 +5,9 @@
 # Home page
 GET     /                           controllers.Application.initial()
 	
-GET /initial						controllers.Application.board()
+GET 	/initial					controllers.Application.initialize()
 
+GET		/:id						controllers.Application.move(id : String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
