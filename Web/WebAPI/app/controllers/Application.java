@@ -1,25 +1,27 @@
 package controllers;
 
 import model.Game;
+import model.board.square.Square;
+import model.model.Player;
+import model.model.Position;
+import model.model.Statistics;
+import model.model.User;
 import play.*;
 import play.mvc.*;
 import views.html.*;
 
 public class Application extends Controller {
 
-	private Game game; 
-
-	public static Result index() {
-        return ok(index.render("Your new application is ready."));
-    }
-    
-
+	private static Game game = new Game();
+	private static Square[] squares;
+	private static Player player;
+	
     public static Result initial() {
         return ok(initial.render());
     }
     
-    public static Result initialize(){
-    	//game = new Game();
+    public static Result initializeBoard(){
+    	player = new Player(new User("Ana", "yoTK", "ani@yotk.es", new Statistics(1, 90000, 90000)), 6);
     	return ok(board.render());
     }
     
@@ -28,6 +30,14 @@ public class Application extends Controller {
     }
     
     public static Result move(String id){
+//    	game.addPlayer(new Player(new User("Ana", "yoTK", "ani@yotk.es", new Statistics(1, 90000, 90000)), 6));
+    	player = new Player(new User("Ana", "yoTK", "ani@yotk.es", new Statistics(1, 90000, 90000)), 6);
+    	new Game().changePositionPlayer(player, "2_5");
+    	return ok(board.render());
+    }
+    
+    public static Result throwDie(){
+    	squares = game.getBoard().move(player, game.throwDie());
     	return ok(board.render());
     }
 }

@@ -69,7 +69,7 @@ public class Board {
 				.getIndex()];
 	}
 
-	public Square[] mover(Player player, int movements) {
+	public Square[] move(Player player, int movements) {
 		List<Square> posibleMovements = new ArrayList<Square>();
 		if (player.getPosition().getWalk() == 0) {
 			for (int i = 0; i < movements; i++) {

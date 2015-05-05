@@ -81,17 +81,12 @@ public class Game {
 		String[] position = string.split("_");
 		player.getPosition().setWalk(Integer.valueOf(position[0]));
 		player.getPosition().setIndex(Integer.valueOf(position[1]));
-		for (Player p : players) {
-			if (player.getUsername().equals(p.getUsername()))
-				p.setPosition(player.getPosition());
-		}
-
+//		for (Player p : players) {
+//			if (player.getUsername().equals(p.getUsername()))
+//				p.setPosition(player.getPosition());
+//		}
 	}
-
-	public void closeDatabase() {
-
-	}
-
+	
 	public int throwDie() {
 		return Die.drop();
 	}
