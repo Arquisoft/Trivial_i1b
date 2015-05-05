@@ -3,12 +3,12 @@ package controllers;
 import model.Game;
 import model.board.square.Square;
 import model.model.Player;
-import model.model.Position;
 import model.model.Statistics;
 import model.model.User;
-import play.*;
-import play.mvc.*;
-import views.html.*;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.board;
+import views.html.initial;
 
 public class Application extends Controller {
 
@@ -18,6 +18,11 @@ public class Application extends Controller {
 	
     public static Result initial() {
         return ok(initial.render());
+    }
+    
+    public static Result register() {
+
+    	return ok(board.render());
     }
     
     public static Result initializeBoard(){
