@@ -21,7 +21,7 @@ public class Application extends Controller {
     }
     
     public static Result initializeBoard(){
-    	player = new Player(new User("Ana", "yoTK", "ani@yotk.es", new Statistics(1, 90000, 90000)), 6);
+    	player = new Player(new User("user", "passwd", "user@email.es", new Statistics(1, 90000, 90000)), 6);
     	return ok(board.render());
     }
     
@@ -30,8 +30,8 @@ public class Application extends Controller {
     }
     
     public static Result move(String id){
-//    	game.addPlayer(new Player(new User("Ana", "yoTK", "ani@yotk.es", new Statistics(1, 90000, 90000)), 6));
-    	player = new Player(new User("Ana", "yoTK", "ani@yotk.es", new Statistics(1, 90000, 90000)), 6);
+//    	game.addPlayer(new Player(new User("user", "passwd", "user@email.es", new Statistics(1, 90000, 90000)), 6));
+    	player = new Player(new User("user", "passwd", "user@email.es", new Statistics(1, 90000, 90000)), 6);
     	new Game().changePositionPlayer(player, "2_5");
     	return ok(board.render());
     }
