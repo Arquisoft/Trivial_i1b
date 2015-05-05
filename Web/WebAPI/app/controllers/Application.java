@@ -7,7 +7,7 @@ import views.html.*;
 
 public class Application extends Controller {
 
-	private Game game; 
+	static Game game; 
 
 	public static Result index() {
         return ok(index.render("Your new application is ready."));
@@ -19,7 +19,7 @@ public class Application extends Controller {
     }
     
     public static Result initialize(){
-    	//game = new Game();
+    	game = new Game();
     	return ok(board.render());
     }
     
