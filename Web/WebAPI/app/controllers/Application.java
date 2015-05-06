@@ -19,7 +19,8 @@ public class Application extends Controller {
         return ok(initial.render());
     }
     
-    public static Result register() {
+    public static Result register(String username, String email, String password) {
+    	game.register(username,email, password);
     	return ok(board.render(0));
     }
     
