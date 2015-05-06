@@ -35,6 +35,10 @@ public class Position {
 	public void setIndex(int index) {
 		this.index = index;
 	}
+	
+	public String toString(){
+		return walk+"_"+index;
+	}
 
 	
 
