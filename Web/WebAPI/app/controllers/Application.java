@@ -1,6 +1,7 @@
 package controllers;
 
 import model.Game;
+import model.board.square.SimpleSquare;
 import model.board.square.Square;
 import model.model.Player;
 import model.model.Position;
@@ -42,5 +43,14 @@ public class Application extends Controller {
     	int dieNumber = game.throwDie();
     	squares = game.getBoard().move(player, dieNumber);
     	return ok(board.render(dieNumber));
+    }
+    
+    public boolean isActive(String id){
+    	for(Square s: squares){
+    		System.out.println(s.toString()+ "HOLIIIIIIIIIIII");
+    		if(s.toString().equals(id))
+    			return true;
+    	}
+		return false;	
     }
 }
