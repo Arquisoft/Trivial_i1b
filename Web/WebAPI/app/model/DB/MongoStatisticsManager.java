@@ -1,26 +1,30 @@
 package model.DB;
 
+import org.h2.engine.DbObject;
+
 import model.DB.AbstractMongoManager;
 import model.model.Statistics;
 import model.model.User;
 
-import org.bson.Document;
-
 import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
 
 public class MongoStatisticsManager extends AbstractMongoManager {
 
 	private static final String COLLECTION_NAME = "statistics";
-	private static final String DATABASE_NAME = "game";
 
 	public MongoStatisticsManager() {
-		connectDatabase(DATABASE_NAME, COLLECTION_NAME);
+		connectDatabase(COLLECTION_NAME);
 	}
 
 	public boolean saveStatistics(User user) {
 		try {
 			if (getStatistics(user.getUsername()) == null)
-				table.insertOne(createDocument(user));
+				table.insert(createDocument(user));
 			else
 				System.err.println("Statistics with username "
 						+ user.getUsername() + " alredy exists.");
@@ -36,8 +40,9 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 			BasicDBObject query = new BasicDBObject().append("username",
 					username);
 			Statistics stat = null;
-			for (Document doc : table.find(query))
-				stat = createStats(doc);
+			DBCursor cursor = table.find(query);
+			while (cursor.hasNext())
+				stat = createStats(cursor.next());
 			return stat;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
@@ -49,9 +54,9 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 		try {
 			BasicDBObject query = new BasicDBObject().append("username",
 					user.getUsername());
-			Document document = new Document().append("$inc",
+			DBObject document = new BasicDBObject().append("$inc",
 					createDocument(user));
-			table.updateOne(query, document);
+			table.update(query, document);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
@@ -59,8 +64,8 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 		}
 	}
 
-	private Document createDocument(User user) {
-		Document doc = new Document();
+	private DBObject createDocument(User user) {
+		DBObject doc = new BasicDBObject();
 		doc.put("username", user.getUsername());
 		doc.put("timesPlayed", user.getStatistics().getTimesPlayed());
 		doc.put("questionsAnswered", user.getStatistics()
@@ -69,10 +74,10 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 		return doc;
 	}
 
-	private Statistics createStats(Document doc) {
-		Statistics stat = new Statistics(doc.getInteger("timesPlayed", 0),
-				doc.getInteger("questionsAnswered", 0), doc.getInteger(
-						"questionsMatched", 0));
+	private Statistics createStats(DBObject doc) {
+		Statistics stat = new Statistics((int) doc.get("timesPlayed"),
+				(int) doc.get("questionsAnswered"), (int) doc.get(
+						"questionsMatched"));
 		return stat;
 	}
 }
