@@ -7,7 +7,7 @@ GET     /                           controllers.Application.initial()
 	
 GET 	/initial					controllers.Application.initializeBoard()
 
-GET		/:id						controllers.Application.move(id : String)
+GET		/b:id					controllers.Application.move(id : String)
 
 GET		/die						controllers.Application.throwDie()
 
