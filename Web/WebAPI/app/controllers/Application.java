@@ -20,7 +20,7 @@ public class Application extends Controller {
     }
     
     public static Result register() {
-    	return ok(board.render(0));
+    	return ok(board.render());
     }
     
     public static Result initializeBoard(){
