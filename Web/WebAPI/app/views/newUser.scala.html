@@ -66,14 +66,20 @@ all the fields below.
             
         </div>
         
-        <form action=register>
-        <div class="BUTTON " style="z_index: 1000; top: 380px; height: 33; width: 88; position: absolute; left: 555px; ">
+        @form(action = routes.Application.register(username, email, password)) {
+        	@inputText("username"))
+       	 	@inputText("email")) 
+        	@inputPassword("password")) 
+        
+        	<input type="submit" value="Add">
+        }
+        <!--<div class="BUTTON " style="z_index: 1000; top: 380px; height: 33; width: 88; position: absolute; left: 555px; ">
             
                 <button id=register style="width: 100%; height:100%;" >
 						REGISTER
                 </button>
             
-        </div></form>
+        </div></form>-->
         
     </div>
 </body>

@@ -3,17 +3,12 @@ package model.DB;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.DB.AbstractMongoManager;
-
+import model.Utils;
 import model.model.Question;
 import model.model.TrivialQuestion;
-import model.Utils;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
+
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
 
 public class MongoQuestionManager extends AbstractMongoManager {
 

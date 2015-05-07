@@ -1,17 +1,11 @@
 package model.DB;
 
-import org.h2.engine.DbObject;
-
-import model.DB.AbstractMongoManager;
 import model.model.Statistics;
 import model.model.User;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
 
 public class MongoStatisticsManager extends AbstractMongoManager {
 
