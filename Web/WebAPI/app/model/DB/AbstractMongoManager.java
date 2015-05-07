@@ -15,12 +15,12 @@ public abstract class AbstractMongoManager implements MongoManager {
 	protected void connectDatabase(String CollectionName) {
 		MongoClientURI uri = new MongoClientURI(
 				"mongodb://user:pass@ds029979.mongolab.com:29979/triviali1b");
-		/*try {*/
+		try {
 			db = new MongoClient(uri).getDB(uri.getDatabase());
-		/*} catch (UnknownHostException e) {
+		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		table = db.getCollection(CollectionName);
 	}
 }
