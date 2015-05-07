@@ -4,7 +4,7 @@
     <link type="text/css" href="init-download-style.css" />
     <link type="text/css" href="init-toolbar.css" rel="stylesheet" />
 </head>
-<body background='images\icono.png'>
+<body id="general" style="background-color:9933FF;">
     <div style="width:750px;left:140px;background-repeat:no-repeat;height:400px;">
         
         <div class="IMAGE " style="z_index: 997; top: 10px; height: 83; width: 658; position: absolute; left: 0px; ">
@@ -193,7 +193,7 @@
         
         <div class="BUTTON " style="z_index: 1001; top: 215px; height: 33; width: 88; position: absolute; left: 130px; ">
             
-                <button  style="background-image:url('images/red.jpg');width: 100%; height:100%;" >
+                <button  id='red' style="background-image:url('images/red.jpg');width: 100%; height:100%;"onclick="changeBackground(this)">
                     
                         RED
                     
@@ -203,4 +203,26 @@
         
     </div>
 </body>
+
+<script>
+
+function changeBackground(boton)
+{
+	var campo=boton.id;	 
+	var general=document.getElementById("general");
+	switch (campo) {
+		case 'red': general.style.background-color="FF0000";
+			break;
+		case 'blue': general.style.background-color="#00CCFF";
+			break;
+		case 'green': general.style.background-color="#33FF33";
+			break;
+		case 'yellow': general.style.background-color="#FFFF33";
+			break;
+		case 'pink': general.style.background-color="#FF33CC";
+			break;
+	}	
+}
+
+</script>
 </html>
