@@ -7,7 +7,7 @@
 <body>
     <div style="background-image:url('data:image/jpg;base64,');width:800px;left:140px;background-repeat:no-repeat;height:1070px;">
         
-        <div class="INPUT " style="z_index: 1000; top: 185px; height: 33; width: 283; position: absolute; left: 360px; ">
+        <div class="INPUT " name="username" style="z_index: 1000; top: 185px; height: 33; width: 283; position: absolute; left: 360px; ">
             
                 <input  style="width: 100%; height:100%;"  type="text"  />
             
@@ -23,7 +23,7 @@
             
         </div>
         
-        <div class="INPUT " style="z_index: auto; top: 310px; height: 33; width: 283; position: absolute; left: 360px; ">
+        <div class="INPUT " name="email" style="z_index: auto; top: 310px; height: 33; width: 283; position: absolute; left: 360px; ">
             
                 <input  style="width: 100%; height:100%;"  type="text"  />
             
@@ -39,7 +39,7 @@
             
         </div>
         
-        <div class="INPUT " style="z_index: auto; top: 245px; height: 33; width: 283; position: absolute; left: 360px; ">
+        <div class="INPUT " name=password" style="z_index: auto; top: 245px; height: 33; width: 283; position: absolute; left: 360px; ">
             
                 <input  style="width: 100%; height:100%;"  type="text"  />
             
@@ -66,20 +66,25 @@ all the fields below.
             
         </div>
         
-        @form(action = routes.Application.register(username, email, password)) {
-        	@inputText("username"))
-       	 	@inputText("email")) 
-        	@inputPassword("password")) 
-        
-        	<input type="submit" value="Add">
-        }
+       
         <!--<div class="BUTTON " style="z_index: 1000; top: 380px; height: 33; width: 88; position: absolute; left: 555px; ">
             
                 <button id=register style="width: 100%; height:100%;" >
 						REGISTER
                 </button>
             
-        </div></form>-->
+        </div>--></form>
+        
+        <div class="BUTTON " style="z_index: 1005; top: 395px; height: 58; width: 208; position: absolute; left: 465px; ">
+            
+                <button style="width: 100%; height:100%;" >
+                    <a href="board.scala.html">
+                        Register
+					</a>
+                    
+                </button>
+            
+        </div>
         
     </div>
 </body>
