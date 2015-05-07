@@ -28,7 +28,7 @@ public class Application extends Controller {
     
     public static Result login(String username, String password){
    // 	String name = login.getElementById("usernameInput");
-    	game.login(username, password);
+    	game.login("usernameLogin", "passwordLogin");
     	return ok(board.render(0));
     }
     
