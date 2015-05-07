@@ -5,14 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import DBWriter.MongoDBWriter;
-import DataBase.DBConnector;
-import DataBase.MongoDBConnector;
 import Parser.GIFTParser;
 import Parser.XMLParser;
 
 public class Main {
-	
-	private static DBConnector connector = new MongoDBConnector();
 
 	public static void main(String[] args) {
 		
@@ -38,7 +34,6 @@ public class Main {
 				}else if(line[0].equals("help")){
 					showHelp();
 				} else if (line[0].equals("exit")){
-					connector.closeConnection();
 					return ;	
 				}
 			} catch (IOException e) {
