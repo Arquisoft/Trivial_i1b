@@ -5,15 +5,24 @@
     <link type="text/css" href="login-toolbar.css" rel="stylesheet" />
 </head>
 <body>
-    <div style="background-image:url('data:image/jpg;base64,');width:800px;left:140px;background-repeat:no-repeat;height:1070px;">
+    <div style="background-image:images\icono.png;width:800px;left:140px;background-repeat:no-repeat;height:1070px;">
         
         <div class="INPUT " style="z_index: 1000; top: 185px; height: 33; width: 283; position: absolute; left: 360px; ">
             
                 <input  style="width: 100%; height:100%;"  type="text"  />
             
         </div>
+         <div class="TEXT text-center" style="z_index: 1000; top: 10px; height: 33; width: 168; position: absolute; left: 100px; ">
+            
+                <h1  style="padding: 2px; width: 100%; height:100%;" >
+                    
+                        LOG IN:
+                    
+                </h1>
+            
+        </div>
         
-        <div class="TEXT text-center" style="z_index: 1000; top: 185px; height: 33; width: 168; position: absolute; left: 100px; ">
+        <div class="TEXT text-center" style="z_index: 1000; top: 170px; height: 33; width: 168; position: absolute; left: 100px; ">
             
                 <p  style="padding: 2px; width: 100%; height:100%;" >
                     
@@ -23,13 +32,13 @@
             
         </div>
         
-        <div class="INPUT " style="z_index: auto; top: 255px; height: 33; width: 283; position: absolute; left: 360px; ">
+        <div class="INPUT " style="z_index: auto; top: 280px; height: 33; width: 283; position: absolute; left: 360px; ">
             
                 <input  style="width: 100%; height:100%;"  type="text"  />
             
         </div>
         
-        <div class="TEXT text-center" style="z_index: auto; top: 255px; height: 33; width: 168; position: absolute; left: 100px; ">
+        <div class="TEXT text-center" style="z_index: auto; top: 270px; height: 33; width: 168; position: absolute; left: 100px; ">
             
                 <p  style="padding: 2px; width: 100%; height:100%;" >
                     
@@ -37,28 +46,37 @@
                     
                 </p>
             
-        </div>
+       
         
-        <div class="TEXTBOX text-left text-bold text-italic" style="z_index: 1000; top: 105px; height: 48; width: 363; position: absolute; left: 140px; ">
+        <div class="TEXTBOX text-left text-bold text-italic" style="z_index: 1000; top: 100px; height: 48; width: 363; position: absolute; left: 100px; ">
             
                 <div  style="border: 2px solid rgb(72, 72, 72); height:100%; padding: 2px" >
                     
-                        Introduce username and password in
- order to play
-                    
+                        To Log In in the game, please fill your Username and your password. 
                 </div>
             
         </div>
         
-        <div class="BUTTON " style="z_index: 1000; top: 310px; height: 33; width: 88; position: absolute; left: 555px; ">
+          <div class="TEXTBOX text-left text-bold text-italic" style="z_index: 1000; top: 185px; height: 48; width: 363; position: absolute; left: 100px; ">
             
-                <button  style="width: 100%; height:100%;" >
+                <div  style=" height:100%; padding: 2px" >
                     
-                        PLAY
-                    
+                        If you are not registered, you have to create a new user.
+                </div>
+            
+		
+		
+           
+        <form action=login>
+        <div class="BUTTON " style="z_index: 1000; top: -70px; height: 33; width: 88; position: absolute; left: 465px; ">
+            
+                <button  style="background:red;width: 100%; height:100%;" >
+						<a href="board.scala.html">
+                        LOG IN
+						</a>
                 </button>
             
-        </div>
+        </div></form>
         
     </div>
 </body>

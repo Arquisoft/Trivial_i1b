@@ -23,7 +23,6 @@ public class Game {
 		board = new Board(new QuestionSelector(questions));
 		players = new ArrayList<Player>();
 	}
-
 	public Board getBoard() {
 		return board;
 	}

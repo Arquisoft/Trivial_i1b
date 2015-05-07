@@ -6,7 +6,7 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
   cache,
-  "org.mongodb" % "mongo-java-driver" % "3.0.0-beta3",
+  "org.mongodb" % "mongo-java-driver" % "2.13.0",
   "com.google.code.gson" % "gson" % "2.3.1"
 )     
 

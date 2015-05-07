@@ -3,27 +3,24 @@ package model.DB;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.DB.AbstractMongoManager;
-import model.DB.MongoStatisticsManager;
 import model.model.User;
 
-import org.bson.Document;
-
 import com.mongodb.BasicDBObject;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 
 public class MongoUserManager extends AbstractMongoManager {
 
 	private static final String COLLECTION_NAME = "users";
-	private static final String DATABASE_NAME = "game";
 
 	public MongoUserManager() {
-		connectDatabase(DATABASE_NAME, COLLECTION_NAME);
+		connectDatabase(COLLECTION_NAME);
 	}
 
 	public boolean saveUser(User user) {
 		try {
 			if (getUser(user.getUsername()) == null) {
-				table.insertOne(createDocument(user));
+				table.insert(createDocument(user));
 				new MongoStatisticsManager().saveStatistics(user);
 				return true;
 			}
@@ -41,8 +38,9 @@ public class MongoUserManager extends AbstractMongoManager {
 			BasicDBObject query = new BasicDBObject().append("username",
 					username);
 			User user = null;
-			for (Document doc : table.find(query))
-				user = createUser(doc);
+			DBCursor cursor = table.find(query);
+			while (cursor.hasNext())
+				user = createUser(cursor.next());
 			if (user != null)
 				return user;
 			return null;
@@ -55,8 +53,9 @@ public class MongoUserManager extends AbstractMongoManager {
 	public List<User> getAllUsers() {
 		try {
 			List<User> users = new ArrayList<User>();
-			for (Document doc : table.find())
-				users.add(createUser(doc));
+			DBCursor cursor = table.find();
+			while (cursor.hasNext())
+				users.add(createUser(cursor.next()));
 			return users;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
@@ -68,25 +67,25 @@ public class MongoUserManager extends AbstractMongoManager {
 		try {
 			BasicDBObject query = new BasicDBObject().append("username",
 					user.getUsername());
-			Document document = new Document().append("$set",
+			BasicDBObject document = new BasicDBObject().append("$set",
 					createDocument(user));
-			table.updateOne(query, document);
+			table.update(query, document);
 			return true;
 		} catch (Exception e) {
 			return false;
 		}
 	}
 
-	private User createUser(Document doc) {
-		User user = new User(doc.getString("username"),
-				doc.getString("password"), doc.getString("email"),
-				new MongoStatisticsManager().getStatistics(doc
-						.getString("username")));
+	private User createUser(DBObject doc) {
+		User user = new User((String) doc.get("username"),
+				(String) doc.get("password"), (String) doc.get("email"),
+				new MongoStatisticsManager().getStatistics((String) doc
+						.get("username")));
 		return user;
 	}
 
-	private Document createDocument(User user) {
-		Document doc = new Document();
+	private DBObject createDocument(User user) {
+		DBObject doc = new BasicDBObject();
 		doc.put("username", user.getUsername());
 		doc.put("password", user.getPassword());
 		doc.put("email", user.getEmail());

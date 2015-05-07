@@ -26,6 +26,11 @@ public class Application extends Controller {
     	return ok(board.render(0));
     }
     
+    public static Result login(String username, String password){
+    	game.login(username, password);
+    	return ok(board.render(0));
+    }
+    
     public static Result initializeBoard(){
     	game.addPlayer(new Player(new User("user", "passwd", "user@email.es", new Statistics(1, 90000, 90000)), 6));
     	return ok(board.render(0));

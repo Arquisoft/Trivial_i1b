@@ -1,14 +1,17 @@
 package DataBase;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 
 public class MongoDBConnector implements DBConnector {
-	private static MongoClient mongo = null;
+	private MongoClientURI uri = new MongoClientURI(
+			"mongodb://user:pass@ds029979.mongolab.com:29979/triviali1b");
+	private MongoClient mongo = null;
 	
 	public MongoDBConnector(){}
 
 	private void createConnection() {
-		mongo = new MongoClient("localhost", 27017);
+		mongo = new MongoClient(uri);
 	}
 
 	public MongoClient getConnection() {
@@ -20,4 +23,9 @@ public class MongoDBConnector implements DBConnector {
 	public void closeConnection() {
 		mongo.close();
 	}
+	
+	public MongoClientURI getUri() {
+		return uri;
+	}
+
 }
