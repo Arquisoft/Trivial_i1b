@@ -2,12 +2,10 @@ package model.DB;
 
 import java.net.UnknownHostException;
 
-import model.DB.MongoManager;
-
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 
 public abstract class AbstractMongoManager implements MongoManager {
 
