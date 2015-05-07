@@ -18,7 +18,6 @@ public abstract class AbstractMongoManager implements MongoManager {
 		try {
 			db = new MongoClient(uri).getDB(uri.getDatabase());
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		table = db.getCollection(CollectionName);
