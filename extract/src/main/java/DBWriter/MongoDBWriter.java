@@ -2,27 +2,28 @@ package DBWriter;
 
 import java.util.List;
 
-import org.bson.Document;
-
 import DataBase.MongoDBConnector;
 import Model.Question;
 import Parser.Utils;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 
 public class MongoDBWriter implements DBWriter {
 
-	private final static String DATABASE_NAME = "game";
 	private static final String QUESTIONS_COLLECTION = "questions";
 
+	private MongoDBConnector connector;
 	private MongoClient mongo;
-	private MongoDatabase database;
-	private MongoCollection<Document> table;
+	private DB database;
+	private DBCollection table;
 
 	public MongoDBWriter() {
-		mongo = new MongoDBConnector().getConnection();
+		connector = new MongoDBConnector();
+		mongo = connector.getConnection();
 	}
 
 	public void insertQuestions(List<Question> trivialQuestions) {
@@ -36,20 +37,20 @@ public class MongoDBWriter implements DBWriter {
 	}
 
 	private void createElements() {
-		database = mongo.getDatabase(DATABASE_NAME);
+		database = mongo.getDB(connector.getUri().getDatabase());
 		table = database.getCollection(QUESTIONS_COLLECTION);
 	}
 
 	private void addQuestions(List<Question> trivialQuestions) {
-		Document trivialQuestion;
+		DBObject trivialQuestion;
 		for (Question question : trivialQuestions) {
 			trivialQuestion = createEntrie(question);
-			table.insertOne(trivialQuestion);
+			table.insert(trivialQuestion);
 		}
 	}
 
-	private Document createEntrie(Question question) {
-		Document questionToInsert = new Document();
+	private DBObject createEntrie(Question question) {
+		DBObject questionToInsert = new BasicDBObject();
 
 		questionToInsert.put("category", Utils.getStringCategory(question.getCategory()));
 		questionToInsert.put("question", question.getQuestion());
