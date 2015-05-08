@@ -11,6 +11,9 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.board;
 import views.html.initial;
+import views.html.login;
+import views.html.newUser;
+import views.html.statistics;
 
 public class Application extends Controller {
 
@@ -25,9 +28,20 @@ public class Application extends Controller {
     	if (!(username.isEmpty() && email.isEmpty() && password.isEmpty())) {
     		game.register("username", "email", "password");
     	}
-    	
     	return ok(board.render(0));
     }
+    
+    public static Result gotoLogin() {
+		return ok(login.render());
+	}
+    
+    public static Result gotoNewUser() {
+		return ok(newUser.render());
+	}
+    
+    public static Result gotoStatistics() {
+		return ok(statistics.render());
+	}
     
     public static Result login(String username, String password){
    // 	String name = login.getElementById("usernameInput");
