@@ -35,24 +35,27 @@ public class Application extends Controller {
     }
     
     public static Result gotoLogin() {
-		return ok(login.render());
+		return ok(login.render(null,null));//No information have to be already written
 	}
     
     public static Result gotoNewUser() {
 		return ok(newUser.render(null, null, null));
 	}
+    public static Result login(String username, String password){
+    	if (!(username.isEmpty() && password.isEmpty())) {
+    		game.login(username, password);
+    		return ok(board.render(0));
+    	}
+    	else{
+    		return ok(login.render(null,null));
+    	}
+    }
     
     public static Result gotoStatistics() {
 		return ok(statistics.render());
 	}
     
-    public static Result login(String username, String password){
-   // 	String name = login.getElementById("usernameInput");
-    	if (!(username.isEmpty() && password.isEmpty())) {
-    		game.login("usernameLogin", "passwordLogin");
-    	}
-    	return ok(board.render(0));
-    }
+   
     
     public static Result initializeBoard(){
     	game.addPlayer(new Player(new User("user", "passwd", "user@email.es", new Statistics(1, 90000, 90000)), 6));
