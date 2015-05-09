@@ -15,11 +15,13 @@ GET 	/register					controllers.Application.register(username : String, email : S
 
 GET		/login						controllers.Application.login(username : String, password : String)
 
-GET		/gotoLogin					controllers.Application.gotoLogin()
-
 GET		/gotoNewUser				controllers.Application.gotoNewUser()
 
+GET		/gotoLogin					controllers.Application.gotoLogin()
+
 GET		/gotoStatistics				controllers.Application.gotoStatistics()
+
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /public/*file          		controllers.Assets.at(path="/public", file)

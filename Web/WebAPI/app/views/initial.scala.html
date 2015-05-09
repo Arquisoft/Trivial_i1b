@@ -1,10 +1,11 @@
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href='@routes.Assets.at("stylesheets/init-download-style.css")' />
     <link rel="stylesheet" type="text/css" href='@routes.Assets.at("stylesheets/init-toolbar.css")' />
 </head>
-<body id="general" bgcolor="#AAAA31">
+<body id="general" bgcolor="violet">
     <div style="width:750px;left:140px;background-repeat:no-repeat;height:400px;">
         
         <div class="IMAGE " style="z_index: 997; top: 10px; height: 83; width: 658; position: absolute; left: 0px; ">
@@ -15,7 +16,7 @@
         
         <div class="BUTTON " style="z_index: 1002; top: 265px; height: 33; width: 88; position: absolute; left: 130px; ">
             
-                <button style="background-color:FFFF00; width: 100%; height:100%;" >
+                <button id="yellow" onClick="changeBackground(id)" style="background-color:FFFF00; width: 100%; height:100%;" >
                     
                         YELLOW
                     
@@ -25,7 +26,7 @@
         
         <div class="BUTTON " style="z_index: auto; top: 365px; height: 33; width: 88; position: absolute; left: 130px; ">
             
-                <button  style="background-color:FF4791;width: 100%; height:100%;" >
+                <button id="pink" onClick="changeBackground(id)" style="background-color:FF4791;width: 100%; height:100%;" >
                     
                         PINK
                     
@@ -35,7 +36,7 @@
         
         <div class="BUTTON " style="z_index: auto; top: 315px; height: 33; width: 88; position: absolute; left: 130px; ">
             
-                <button  style="background-color:6699FF; width: 100%; height:100%;" >
+                <button id="blue" onClick="changeBackground(id)" style="background-color:6699FF; width: 100%; height:100%;" >
                     
                         BLUE
                     
@@ -45,7 +46,7 @@
         
         <div class="BUTTON " style="z_index: auto; top: 415px; height: 33; width: 88; position: absolute; left: 130px; ">
             
-                <button  style="background-color:33CC33; width: 100%; height:100%;" >
+                <button id="green" onClick="changeBackground(id)" style="background-color:33CC33; width: 100%; height:100%;" >
                     
                         GREEN
                     
@@ -92,13 +93,16 @@
                 </div>
             
         </div>
-        <form action="login">
-        	<div style="z_index: 1005; top: 205px; height: 100; width: 208; position: absolute; left: 465px; ">
-					<a href="gotoNewUser">
-                        CREATE NEW USER
-					</a>
-			</div>
-		</form>
+        
+        <form action="gotoNewUser">
+        	<div style="z_index: 1005; top: 195px; height: 48; width: 208; position: absolute; left: 465px; ">
+					<button id = gotoNewUser style="width: 100%; height:100%;" >
+                        	CREATE NEW USER
+					</button>
+					
+			</div></form>
+		
+
 		<div class="BUTTON " style="z_index: 1005; top: 325px; height: 100; width: 208; position: absolute; left: 465px; ">
             
                 <button style="width: 100%; height:100%;" >
@@ -155,15 +159,14 @@
         <div class="TEXT text-underline text-center text-bold" style="z_index: 1000; top: 175px; height: 18; width: 158; position: absolute; left: 95px; ">
             
                 <p  style="padding: 2px; width: 100%; height:100%;" >       
-                        Change backgroud
-                    
+                        Change background   
                 </p>
             
         </div>
         
         <div class="BUTTON " style="z_index: 1001; top: 215px; height: 33; width: 88; position: absolute; left: 130px; ">
-          
-                <button style="background-color:FF0000;width: 100%; height:100%;">
+            
+                <button id="red" onClick="changeBackground(id)" id='red' style="background-color:FF0000;width: 100%; height:100%;">
                     
                         RED
                     
@@ -173,4 +176,22 @@
         
     </div>
 </body>
+
+<script>
+function changeBackground(id)
+{	 
+	switch (id) {
+		case 'red': document.body.style.background="#FF0000";
+			break;
+		case 'blue': document.body.style.background="#6699FF";
+			break;
+		case 'green': document.body.style.background="#33CC33";
+			break;
+		case 'yellow': document.body.style.background="#FFFF00";
+			break;
+		case 'pink': document.body.style.background="#FF4791";
+			break;
+	}
+}
+</script>
 </html>
