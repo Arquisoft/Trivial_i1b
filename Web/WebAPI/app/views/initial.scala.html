@@ -4,12 +4,12 @@
     <link rel="stylesheet" type="text/css" href='@routes.Assets.at("stylesheets/init-download-style.css")' />
     <link rel="stylesheet" type="text/css" href='@routes.Assets.at("stylesheets/init-toolbar.css")' />
 </head>
-<body id="general" bgcolor="violet">
+<body id="general" bgcolor="#AAAA31">
     <div style="width:750px;left:140px;background-repeat:no-repeat;height:400px;">
         
         <div class="IMAGE " style="z_index: 997; top: 10px; height: 83; width: 658; position: absolute; left: 0px; ">
             
-                <img src="@routes.Assets.at("images/titulo.png")" style="z_index: 997; top: 50px; height: 83; width: 658; position: absolute; left: 70px; "  />
+                <img src='@routes.Assets.at("images/titulo.png")' style="z_index: 997; top: 50px; height: 83; width: 658; position: absolute; left: 70px; "  />
             
         </div>
         
@@ -163,7 +163,7 @@
         
         <div class="BUTTON " style="z_index: 1001; top: 215px; height: 33; width: 88; position: absolute; left: 130px; ">
           
-                <button  id='red' style="background-color:FF0000;width: 100%; height:100%;"onclick="changeBackground(this)">
+                <button style="background-color:FF0000;width: 100%; height:100%;">
                     
                         RED
                     
@@ -173,12 +173,4 @@
         
     </div>
 </body>
-
-
-<script>
-function changeBackground(boton){
-	document.getElementById("general").bgcolor="yellow";
-	
-}
-</script>
 </html>
