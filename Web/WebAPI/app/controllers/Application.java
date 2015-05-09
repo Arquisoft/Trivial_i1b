@@ -26,18 +26,20 @@ public class Application extends Controller {
     
     public static Result register(String username, String email, String password) {
     	if (!(username.isEmpty() && email.isEmpty() && password.isEmpty())) {
-    		game.register("username", "email", "password");
-    	} 
-
-    	return ok(board.render(0));
+    		game.register(username, email, password);
+    	
+    	}
+    	return ok(newUser.render(username, email, password));
+    	
+    	//return ok(error.render("Error"));
     }
     
     public static Result gotoLogin() {
 		return ok(login.render());
 	}
     
-    public static Result gotoNewUser() {
-		return ok(newUser.render());
+    public static Result gotoNewUser(String username, String email, String password) {
+		return ok(newUser.render(username, email, password));
 	}
     
     public static Result gotoStatistics() {

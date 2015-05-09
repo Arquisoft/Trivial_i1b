@@ -17,7 +17,7 @@ GET		/login						controllers.Application.login(username : String, password : Str
 
 GET		/gotoLogin					controllers.Application.gotoLogin()
 
-GET		/gotoNewUser				controllers.Application.gotoNewUser()
+GET		/gotoNewUser				controllers.Application.gotoNewUser(username : String, email : String, password : String)
 
 GET		/gotoStatistics				controllers.Application.gotoStatistics()
 
