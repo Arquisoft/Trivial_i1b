@@ -27,7 +27,6 @@ public class Application extends Controller {
     public static Result register(String username, String email, String password) {
     	if (!(username.isEmpty() && email.isEmpty() && password.isEmpty())) {
     		game.register(username, email, password);
-    	
         	return ok(board.render(0));
     	}
     	else {
