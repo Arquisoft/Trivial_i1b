@@ -47,7 +47,7 @@ public class Application extends Controller {
     		return ok(board.render(0));
     	}
     	else{
-    		return ok(login.render(null,null));
+    		return gotoLogin();
     	}
     }
     

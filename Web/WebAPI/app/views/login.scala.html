@@ -10,7 +10,7 @@
 <form action="login">
     <div style="background-image:images\icono.png;width:800px;left:140px;background-repeat:no-repeat;height:1070px;">
         
-        <div class="INPUT " name ="usernameLogin" style="z_index: 1000; top: 185px; height: 33; width: 283; position: absolute; left: 360px; ">
+        <div class="INPUT" id="userNameInput"  name ="usernameLogin" style="z_index: 1000; top: 185px; height: 33; width: 283; position: absolute; left: 360px; ">
             
                 <input  style="width: 100%; height:100%;"  type="text"  />
             
@@ -35,7 +35,7 @@
             
         </div>
         
-        <div class="INPUT " name = "passwordLogin" style="z_index: auto; top: 280px; height: 33; width: 283; position: absolute; left: 360px; ">
+        <div class="INPUT "id="passwordInput" name = "passwordLogin" style="z_index: auto; top: 280px; height: 33; width: 283; position: absolute; left: 360px; ">
             
                 <input  style="width: 100%; height:100%;"  type="text"  />
             
@@ -72,7 +72,7 @@
            
         <div class="BUTTON" style="z_index: 1000; top: -70px; height: 33; width: 88; position: absolute; left: 465px; ">
             
-                <button id="login" style="background:red;width: 100%; height:100%;" >
+                <button id="login" onClick="getUserName(userNameInput)" style="background:red;width: 100%; height:100%;" >
 						
                         START
                 </button>
@@ -81,4 +81,17 @@
         
     </div></form>
 </body>
+<script>
+function getUserName(userNameInput, passwordInput){
+
+     document.form.action = userNameInput;
+     
+}
+
+function getPassword(passwordInput){
+
+document.form.action = passwordInput;
+ 
+}
+</script>
 </html>

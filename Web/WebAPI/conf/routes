@@ -13,7 +13,7 @@ GET		/die						controllers.Application.throwDie()
 
 GET 	/register					controllers.Application.register(username:String, email:String, password:String)
 
-GET		/login						controllers.Application.login(username : String, password : String)
+GET		/login						controllers.Application.login(username:String, password:String)
 
 GET		/gotoNewUser				controllers.Application.gotoNewUser()
 
