@@ -35,7 +35,7 @@ public class Application extends Controller {
     }
     
     public static Result gotoLogin() {
-		return ok(login.render(null, null, null));
+		return ok(login.render(null, null, null));//No information have to be already written
 	}
     
     public static Result gotoNewUser() {
