@@ -11,7 +11,7 @@ GET		/b:id						controllers.Application.move(id : String)
 
 GET		/die						controllers.Application.throwDie()
 
-GET 	/register					controllers.Application.register(username : String, email : String, password : String)
+GET 	/register					controllers.Application.register(username:String, email:String, password:String)
 
 GET		/login						controllers.Application.login(username : String, password : String)
 
