@@ -28,10 +28,11 @@ public class Application extends Controller {
     	if (!(username.isEmpty() && email.isEmpty() && password.isEmpty())) {
     		game.register(username, email, password);
     	
+        	return ok(board.render(0));
     	}
-    	return ok(newUser.render(username, email, password));
-    	
-    	//return ok(error.render("Error"));
+    	else {
+    		return ok(newUser.render(null, null, null));
+    	}
     }
     
     public static Result gotoLogin() {
