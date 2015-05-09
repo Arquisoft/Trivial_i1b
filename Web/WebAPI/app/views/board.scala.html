@@ -3,8 +3,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link type="text/css" href="download-style.css" />
-    <link type="text/css" href="text-toolbar.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href='@routes.Assets.at("stylesheets/download-style.css")' />
+    <link rel="stylesheet" type="text/css" href='@routes.Assets.at("stylesheets/text-toolbar.css")' />
 </head>
 <body>
 
@@ -21,29 +21,20 @@ return me.isActive(id);
 </script>
 
 <form action="die">
-<div class="BUTTON" style="z_index: 1000; top: 0px; height: 150; width: 150; position: absolute; left: 0px; ">
-	<h1>Number @dieNumber</h1>
-	<button id="btDie" style="background-image:url('images/center.jpg');width: 100%; height:100%;" ></button>
+<div>
+<h1>Number @dieNumber</h1>
+</div>
+<div class="BUTTON" style="z_index: 1000; top: 50px; height: 100; width: 100; position: absolute; left: 20px; ">
+	<button id="btDie" style="background:url('@routes.Assets.at("images/die.png")') no-repeat center; background-size: cover; width: 100%; height:100%; border:none; " ></button>
 </div>
 </form>
-
-<form name="login" action="login">
-<div class="BUTTON" style="z_index: 1000; top: 350px; height: 44; width: 88; position: absolute; left: 10px; ">
-	<button style="background-image:url('images/die.jpg');width: 100%; height:100%;" >
-			<a href="login.scala.html">
-				SELECT USER
-			</a>
-	</button>
-</div>
-</form>
-
 
 <form name="form" action="">
     <div class="BUTTON" style="background-image:url('data:image/jpg;base64,');width:3000px;left:-960px;background-repeat:no-repeat;height:1070px;">
         
         <div class="BUTTON " style="z_index: 1000; top: 365px; height: 253; width: 293; position: absolute; left: 1320px; ">
             
-                <button id="0_0"  onClick="getVal(id)" style="background-color:33CC33;width: 100%; height:100%;" >
+                <button id="0_0"  onClick="getVal(id)" style="background-color:33CC33; width: 100%; height:100%;" >
                 </button>
             
         </div>

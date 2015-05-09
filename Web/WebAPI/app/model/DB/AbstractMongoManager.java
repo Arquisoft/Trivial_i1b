@@ -13,6 +13,7 @@ public abstract class AbstractMongoManager implements MongoManager {
 	protected DBCollection table;
 
 	protected void connectDatabase(String CollectionName) {
+		//Conection to the database doesn't work on the university wifi
 		MongoClientURI uri = new MongoClientURI(
 				"mongodb://user:pass@ds029979.mongolab.com:29979/triviali1b");
 		try {
