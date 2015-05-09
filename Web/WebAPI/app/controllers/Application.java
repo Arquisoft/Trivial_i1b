@@ -38,8 +38,8 @@ public class Application extends Controller {
 		return ok(login.render());
 	}
     
-    public static Result gotoNewUser(String username, String email, String password) {
-		return ok(newUser.render(username, email, password));
+    public static Result gotoNewUser() {
+		return ok(newUser.render(null, null, null));
 	}
     
     public static Result gotoStatistics() {
