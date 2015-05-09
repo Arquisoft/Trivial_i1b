@@ -36,7 +36,7 @@ public class Application extends Controller {
     }
     
     public static Result gotoLogin() {
-		return ok(login.render(null, null, null));//No information have to be already written
+		return ok(login.render(null,null));//No information have to be already written
 	}
     
     public static Result gotoNewUser() {
@@ -44,9 +44,11 @@ public class Application extends Controller {
 	}
     public static Result login(String username, String password){
     	if (!(username.isEmpty() && password.isEmpty())) {
-    		game.login("usernameLogin", "passwordLogin");
+    		return ok(board.render(0));
     	}
-    	return ok(login.render());
+    	else{
+    		return ok(login.render(null,null));
+    	}
     }
     
     public static Result gotoStatistics() {
