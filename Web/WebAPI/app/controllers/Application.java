@@ -43,6 +43,7 @@ public class Application extends Controller {
 	}
     public static Result login(String username, String password){
     	if (!(username.isEmpty() && password.isEmpty())) {
+    		game.login(username, password);
     		return ok(board.render(0));
     	}
     	else{
