@@ -7,7 +7,7 @@ GET     /                           controllers.Application.initial()
 
 GET		/b:id						controllers.Application.move(id : String)
 
-GET		/die						controllers.Application.throwDie()
+GET		/die:username				controllers.Application.throwDie(username : String)
 
 GET 	/register:url				controllers.Application.register(url : String)
 
@@ -18,8 +18,6 @@ GET		/gotoNewUser				controllers.Application.gotoNewUser()
 GET		/gotoLogin					controllers.Application.gotoLogin()
 
 GET		/gotoStatistics				controllers.Application.gotoStatistics()
-
-GET 	/board						controllers.Application.board()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /public/*file          		controllers.Assets.at(path="/public", file)

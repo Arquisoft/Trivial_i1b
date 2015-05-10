@@ -71,23 +71,23 @@ public class Application extends Controller {
 
 	public static Result initializeBoard(User user) {
 		game.addPlayer(new Player(user, 6));
-		return ok(board.render(0));
+		return ok(board.render(0,user.getUsername()));
 	}
 
-	public static Result board() {
-		return ok(board.render(0));
+	public static Result board(String username) {
+		return ok(board.render(0, username));
 	}
 
 	public static Result move(String id) {
 		game.changePositionPlayer(game.getActivePlayer(),
 				id.substring(0, id.length()));
-		return board();
+		return board(game.getActivePlayer().getUsername());
 	}
 
-	public static Result throwDie() {
+	public static Result throwDie(String username) {
 		int dieNumber = game.throwDie();
 		squares = game.getBoard().move(game.getActivePlayer(), dieNumber);
-		return ok(board.render(dieNumber));
+		return ok(board.render(dieNumber,username));
 	}
 
 	public boolean isActive(String id) {
