@@ -13,6 +13,7 @@ import views.html.initial;
 import views.html.login;
 import views.html.newUser;
 import views.html.statistics;
+import views.html.boardImage;
 
 public class Application extends Controller {
 
@@ -71,11 +72,11 @@ public class Application extends Controller {
 
 	public static Result initializeBoard(User user) {
 		game.addPlayer(new Player(user, 6));
-		return ok(board.render(0,user.getUsername()));
+		return ok(boardImage.render(0,user.getUsername()));
 	}
 
 	public static Result board(String username) {
-		return ok(board.render(0, username));
+		return ok(boardImage.render(0, username));
 	}
 
 	public static Result move(String id) {
@@ -87,7 +88,7 @@ public class Application extends Controller {
 	public static Result throwDie(String username) {
 		int dieNumber = game.throwDie();
 		squares = game.getBoard().move(game.getActivePlayer(), dieNumber);
-		return ok(board.render(dieNumber,username));
+		return ok(boardImage.render(dieNumber,username));
 	}
 
 	public boolean isActive(String id) {
