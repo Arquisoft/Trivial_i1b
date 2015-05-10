@@ -1,4 +1,4 @@
-
+/*
 
 import static org.junit.Assert.*;
 
@@ -16,4 +16,4 @@ public class testf {
 		fail("Not yet implemented");
 	}
 
-}
+}*/

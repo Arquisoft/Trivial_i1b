@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import logic.Game;
+import javax.swing.JPasswordField;
 
 public class NewUserWindow extends JFrame {
 
@@ -31,11 +32,11 @@ public class NewUserWindow extends JFrame {
 	private JLabel lblPassword;
 	private JTextField tfUsername;
 	private JTextField tfEmail;
-	private JTextField tfPassword;
 	private JButton btnOk;
 	private JLabel label_1;
 
 	private Game game;
+	private JPasswordField passwordField;
 
 	/**
 	 * Create the frame.
@@ -60,7 +61,6 @@ public class NewUserWindow extends JFrame {
 		contentPane.add(getLblPassword());
 		contentPane.add(getTfUsername());
 		contentPane.add(getTfEmail());
-		contentPane.add(getTfPassword());
 		contentPane.add(getBtnOk());
 		contentPane.add(getLabel_1());
 		
@@ -76,6 +76,7 @@ public class NewUserWindow extends JFrame {
 		});
 		btnGoBack.setBounds(221, 556, 89, 23);
 		contentPane.add(btnGoBack);
+		contentPane.add(getPasswordField());
 	}
 
 	private JLabel getLbTitle() {
@@ -140,19 +141,10 @@ public class NewUserWindow extends JFrame {
 	private JTextField getTfEmail() {
 		if (tfEmail == null) {
 			tfEmail = new JTextField();
-			tfEmail.setBounds(230, 414, 172, 20);
+			tfEmail.setBounds(230, 415, 172, 19);
 			tfEmail.setColumns(10);
 		}
 		return tfEmail;
-	}
-
-	private JTextField getTfPassword() {
-		if (tfPassword == null) {
-			tfPassword = new JTextField();
-			tfPassword.setBounds(230, 454, 172, 20);
-			tfPassword.setColumns(10);
-		}
-		return tfPassword;
 	}
 
 	private JButton getBtnOk() {
@@ -162,12 +154,12 @@ public class NewUserWindow extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					if (tfUsername.getText().equals("")
 							|| tfEmail.getText().equals("")
-							|| tfPassword.getText().equals("")) {
+							|| passwordField.getText().equals("")) {
 						JOptionPane
 								.showMessageDialog(null,
 										"You must fill all the information to create a new user");
 					} else {
-						if (game.register(tfUsername.getText(), tfEmail.getText(), tfPassword.getText()) == null)
+						if (game.register(tfUsername.getText(), tfEmail.getText(), passwordField.getText()) == null)
 							JOptionPane.showMessageDialog(null,
 									"User was not created");
 						else
@@ -192,5 +184,12 @@ public class NewUserWindow extends JFrame {
 
 	public Game getGame() {
 		return game;
+	}
+	private JPasswordField getPasswordField() {
+		if (passwordField == null) {
+			passwordField = new JPasswordField();
+			passwordField.setBounds(230, 453, 172, 23);
+		}
+		return passwordField;
 	}
 }

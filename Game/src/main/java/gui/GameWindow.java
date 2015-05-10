@@ -30,6 +30,7 @@ import logic.model.Position;
 import logic.model.User;
 import Model.Question;
 import Model.TrivialQuestion.Categories;
+import javax.swing.JPasswordField;
 
 public class GameWindow extends JFrame implements ActionListener {
 
@@ -47,7 +48,6 @@ public class GameWindow extends JFrame implements ActionListener {
 	private JTextField txDado;
 	private JLabel label;
 	private JButton btnAddPlayer;
-	private JTextField txPassword;
 	private JTextField txUsername;
 	private JLabel lblUsername;
 	private JLabel lblPassword;
@@ -136,6 +136,7 @@ public class GameWindow extends JFrame implements ActionListener {
 	private JButton btAnswer4;
 	private JTextField txtQuestion;
 	JPanel questionPn;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -169,7 +170,6 @@ public class GameWindow extends JFrame implements ActionListener {
 		contentPane.add(getTxDado());
 
 		contentPane.add(getBtnAddPlayer());
-		contentPane.add(getTxPassword());
 		contentPane.add(getTxUsername());
 		contentPane.add(getBoardPanel());
 		contentPane.add(getLblUsername());
@@ -185,12 +185,12 @@ public class GameWindow extends JFrame implements ActionListener {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (txUsername.getText().equals("")
-						|| txPassword.getText().equals("")) {
+						|| passwordField.getText().equals("")) {
 					JOptionPane.showMessageDialog(null,
 							"You must fill all the information to log in");
 				} else {
 					User user = getGame().login(txUsername.getText(),
-							txPassword.getText());
+							passwordField.getText());
 					if (user != null) {
 						for (Player p : getGame().getPlayers()) {
 							if (p.getUsername().equals(user.getUsername())) {
@@ -233,7 +233,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				btnAddPlayer.setEnabled(false);
-				txPassword.setVisible(false);
+				passwordField.setVisible(false);
 				txUsername.setVisible(false);
 				lblUsername.setVisible(false);
 				lblPassword.setVisible(false);
@@ -264,6 +264,7 @@ public class GameWindow extends JFrame implements ActionListener {
 		PnAnswer.add(getBtAnswer2());
 		PnAnswer.add(getBtAnswer3());
 		PnAnswer.add(getBtAnswer4());
+		contentPane.add(getPasswordField());
 	}
 
 	public JPanel getQuestionPn() {
@@ -536,7 +537,7 @@ public class GameWindow extends JFrame implements ActionListener {
 			btnAddPlayer.setBackground(SystemColor.activeCaption);
 			btnAddPlayer.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					txPassword.setVisible(true);
+					passwordField.setVisible(true);
 					txUsername.setVisible(true);
 					lblUsername.setVisible(true);
 					lblPassword.setVisible(true);
@@ -547,16 +548,6 @@ public class GameWindow extends JFrame implements ActionListener {
 			btnAddPlayer.setBounds(867, 203, 160, 23);
 		}
 		return btnAddPlayer;
-	}
-
-	private JTextField getTxPassword() {
-		if (txPassword == null) {
-			txPassword = new JTextField();
-			txPassword.setVisible(false);
-			txPassword.setBounds(934, 327, 288, 20);
-			txPassword.setColumns(10);
-		}
-		return txPassword;
 	}
 
 	private JTextField getTxUsername() {
@@ -1543,5 +1534,13 @@ public class GameWindow extends JFrame implements ActionListener {
 			activeUser.getStatistics().setQuestionsAnswered(activeUser.getStatistics().getQuestionsAnswered() + 1);
 		}
 
+	}
+	private JPasswordField getPasswordField() {
+		if (passwordField == null) {
+			passwordField = new JPasswordField();
+			passwordField.setBounds(934, 329, 288, 20);
+			passwordField.setVisible(false);
+		}
+		return passwordField;
 	}
 }

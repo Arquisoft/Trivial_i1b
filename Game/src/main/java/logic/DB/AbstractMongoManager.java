@@ -1,20 +1,26 @@
 package logic.DB;
 
-import org.bson.Document;
+import java.net.UnknownHostException;
 
-import DataBase.MongoDBConnector;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+public abstract class AbstractMongoManager implements MongoManager {
 
-public abstract class AbstractMongoManager implements MongoManager{
-	
-	//protected MongoClient mongo = new MongoClient("localhost",27017);
-	protected MongoDatabase db;
-	protected MongoCollection<Document> table;
-	
-	protected void connectDatabase(String dbName,String CollectionName) {
-		db = new MongoDBConnector().getConnection().getDatabase(dbName);
+	protected DB db;
+	protected DBCollection table;
+
+	protected void connectDatabase(String CollectionName) {
+		//Conection to the database doesn't work on the university wifi
+		MongoClientURI uri = new MongoClientURI(
+				"mongodb://user:pass@ds029979.mongolab.com:29979/triviali1b");
+		//try {
+			db = new MongoClient(uri).getDB(uri.getDatabase());
+		/*} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}*/
 		table = db.getCollection(CollectionName);
 	}
 }

@@ -22,6 +22,7 @@ import logic.DB.MongoUserManager;
 import logic.model.Player;
 import logic.model.User;
 import Model.TrivialQuestion.Categories;
+import javax.swing.JPasswordField;
 
 public class InitialWindow extends JFrame {
 
@@ -39,6 +40,7 @@ public class InitialWindow extends JFrame {
 	private JTextField txtUsername;
 
 	private static Game game;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -66,7 +68,6 @@ public class InitialWindow extends JFrame {
 	 */
 	public InitialWindow() {
 		game = new Game();
-		final JTextField txtPassword = new JTextField();
 		System.out.println(new MongoUserManager().getAllUsers());
 		final JLabel lblUsername = new JLabel("Username:");
 
@@ -74,12 +75,12 @@ public class InitialWindow extends JFrame {
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (txtUsername.getText().equals("")
-						|| txtPassword.getText().equals("")) {
+						|| passwordField.getText().equals("")) {
 					JOptionPane.showMessageDialog(null,
 							"You must fill all the information to log in");
 				} else {
 					User user = game.login(txtUsername.getText(),
-							txtPassword.getText());
+							passwordField.getText());
 					if (user != null) {
 						game.addPlayer(new Player(user,
 								Categories.values().length));
@@ -122,7 +123,7 @@ public class InitialWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				lblUsername.setVisible(true);
 				lblPassword.setVisible(true);
-				txtPassword.setVisible(true);
+				passwordField.setVisible(true);
 				txtUsername.setVisible(true);
 				btnLogIn.setVisible(true);
 			}
@@ -168,11 +169,6 @@ public class InitialWindow extends JFrame {
 		lblPassword.setBounds(889, 348, 123, 14);
 		pnFondo.add(lblPassword);
 
-		txtPassword.setVisible(false);
-		txtPassword.setBounds(1002, 347, 193, 20);
-		pnFondo.add(txtPassword);
-		txtPassword.setColumns(10);
-
 		btnLogIn.setVisible(false);
 		btnLogIn.setBounds(987, 399, 89, 23);
 		pnFondo.add(btnLogIn);
@@ -183,6 +179,11 @@ public class InitialWindow extends JFrame {
 		pnFondo.add(getBtnYellow());
 		pnFondo.add(getBtnAboutTheProject());
 		pnFondo.add(getTxtUsername());
+		
+		passwordField = new JPasswordField();
+		passwordField.setVisible(false);
+		passwordField.setBounds(1002, 346, 193, 22);
+		pnFondo.add(passwordField);
 	}
 
 	public JTextField getTxtUsername() {
