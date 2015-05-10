@@ -4,16 +4,14 @@
 
 # Home page
 GET     /                           controllers.Application.initial()
-	
-GET 	/initial					controllers.Application.initializeBoard()
 
 GET		/b:id						controllers.Application.move(id : String)
 
 GET		/die						controllers.Application.throwDie()
 
-GET 	/register					controllers.Application.register(username:String, email:String, password:String)
+GET 	/register:url				controllers.Application.register(url : String)
 
-GET		/login						controllers.Application.login(username:String, password:String)
+GET		/login:url					controllers.Application.login(url : String)
 
 GET		/gotoNewUser				controllers.Application.gotoNewUser()
 

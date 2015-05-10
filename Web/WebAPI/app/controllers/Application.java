@@ -5,7 +5,6 @@ import model.board.square.SimpleSquare;
 import model.board.square.Square;
 import model.model.Player;
 import model.model.Position;
-import model.model.Statistics;
 import model.model.User;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -18,70 +17,84 @@ import views.html.statistics;
 public class Application extends Controller {
 
 	private static Game game = new Game();
-	private static Square[] squares = {new SimpleSquare(null,new Position(1,3)),new SimpleSquare(null,new Position(1,1)) };
-	
-    public static Result initial() {
-        return ok(initial.render());
-    }
-    
-    public static Result register(String username, String email, String password) {
-    	if (!(username.isEmpty() && email.isEmpty() && password.isEmpty())) {
-    		game.register(username, email, password);
-        	return ok(board.render(0));
-    	}
-    	else {
-    		return ok(newUser.render(null, null, null));
-    	}
-    }
-    
-    public static Result gotoLogin() {
-		return ok(login.render(null,null));//No information have to be already written
+	private static Square[] squares = {
+			new SimpleSquare(null, new Position(1, 3)),
+			new SimpleSquare(null, new Position(1, 1)) };
+
+	public static Result initial() {
+		return ok(initial.render());
 	}
-    
-    public static Result gotoNewUser() {
+
+	public static Result register(String url) {
+		String[] urlArray = url.split("&");
+		String username = urlArray[0];
+		String password = urlArray[1];
+		String email = urlArray[2];
+		User user = game.register(username, email, password);
+		if (user != null) {
+			if (user.getUsername().equals("admin"))
+				return ok(statistics.render());
+			else
+				return initializeBoard(user);
+		} else {
+			return gotoNewUser();
+		}
+	}
+
+	public static Result gotoLogin() {
+		return ok(login.render(null, null));// No information have to be already
+											// written
+	}
+
+	public static Result gotoNewUser() {
 		return ok(newUser.render(null, null, null));
 	}
-    public static Result login(String username, String password){
-    	if (!(username.isEmpty() && password.isEmpty())) {
-    		game.login(username, password);
-    		return ok(board.render(0));
-    	}
-    	else{
-    		return gotoLogin();
-    	}
-    }
-    
-    public static Result gotoStatistics() {
+
+	public static Result login(String url) {
+		String[] urlArray = url.split("&");
+		String username = urlArray[0];
+		String password = urlArray[1];
+		User user = game.login(username, password);
+		if (user != null) {
+			if (user.getUsername().equals("admin"))
+				return ok(statistics.render());
+			else
+				return initializeBoard(user);
+		} else {
+			return gotoLogin();
+		}
+	}
+
+	public static Result gotoStatistics() {
 		return ok(statistics.render());
 	}
-    
-   
-    
-    public static Result initializeBoard(){
-    	game.addPlayer(new Player(new User("user", "passwd", "user@email.es", new Statistics(1, 90000, 90000)), 6));
-    	return ok(board.render(0));
-    }
-    
-    public static Result board(){
-    	return ok(board.render(0));
-    }
-    
-    public static Result move(String id){
-    	game.changePositionPlayer(game.getActivePlayer(), id.substring(0, id.length()));
-    	return board();
-    }
-    
-    public static Result throwDie(){
-    	int dieNumber = game.throwDie();
-    	squares = game.getBoard().move(game.getActivePlayer(), dieNumber);
-    	return ok(board.render(dieNumber));
-    }
-    
-    public boolean isActive(String id){
-    	for(Square s: squares){
-    		if(s.toString().equals(id))
-    			return true;
-    	}
-		return false;	
-    }
+
+	public static Result initializeBoard(User user) {
+		game.addPlayer(new Player(user, 6));
+		return ok(board.render(0));
+	}
+
+	public static Result board() {
+		return ok(board.render(0));
+	}
+
+	public static Result move(String id) {
+		game.changePositionPlayer(game.getActivePlayer(),
+				id.substring(0, id.length()));
+		return board();
+	}
+
+	public static Result throwDie() {
+		int dieNumber = game.throwDie();
+		squares = game.getBoard().move(game.getActivePlayer(), dieNumber);
+		return ok(board.render(dieNumber));
+	}
+
+	public boolean isActive(String id) {
+		for (Square s : squares) {
+			if (s.toString().equals(id))
+				return true;
+		}
+		return false;
+	}
 }

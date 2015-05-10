@@ -6,14 +6,22 @@
     <link rel="stylesheet" type="text/css" href='@routes.Assets.at("stylesheets/newUser-style.css")' />
     <link rel="stylesheet" type="text/css" href='@routes.Assets.at("stylesheets/newUser-toolbar.css")' />
 </head>
+
 <body>
-	<form name=newUserForm" action="register">
+
+<script>
+function register(username, email, password){
+	document.newUserForm.action = "register" + username + ";" + email + ";" + password;
+}
+</script>
+
+	<form name="newUserForm" action="">
 	
     <div style="background-image:url('data:image/jpg;base64,');width:800px;left:140px;background-repeat:no-repeat;height:1070px;">
         
-        <div class="INPUT " name="usernameInput" style="z_index: 1000; top: 185px; height: 33; width: 283; position: absolute; left: 360px; " required>
+        <div class="INPUT " style="z_index: 1000; top: 185px; height: 33; width: 283; position: absolute; left: 360px; " required>
             
-                <input  style="width: 100%; height:100%;"  type="text"  />
+                <input id="usernameInput" style="width: 100%; height:100%;"  type="text"  />
             
         </div>
         
@@ -29,7 +37,7 @@
         
         <div class="INPUT " name="email" style="z_index: auto; top: 310px; height: 33; width: 283; position: absolute; left: 360px; " required>
             
-                <input  style="width: 100%; height:100%;"  type="text"  />
+                <input id="emailInput" style="width: 100%; height:100%;"  type="text"  />
             
         </div>
         
@@ -45,7 +53,7 @@
         
         <div class="INPUT " name="password" style="z_index: auto; top: 245px; height: 33; width: 283; position: absolute; left: 360px; " required>
             
-                <input  style="width: 100%; height:100%;"  type="text"  />
+                <input id="passwordInput" style="width: 100%; height:100%;"  type="text"  />
             
         </div>
         
@@ -69,7 +77,7 @@ all the fields below.
         
 
         <div class="BUTTON " style="z_index: 1005; top: 395px; height: 58; width: 208; position: absolute; left: 465px; ">
-                <button id="btRegister" style="width: 100%; height:100%;" >
+                <button id="btRegister" onClick="register(document.getElementById('usernameInput').value, document.getElementById('emailInput').value, document.getElementById('passwordInput').value)" style="width: 100%; height:100%;" >
                         Register                    
                 </button>
             
