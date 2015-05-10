@@ -21,7 +21,7 @@ GET		/gotoLogin					controllers.Application.gotoLogin()
 
 GET		/gotoStatistics				controllers.Application.gotoStatistics()
 
-
+GET 	/board						controllers.Application.board()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /public/*file          		controllers.Assets.at(path="/public", file)
