@@ -36,7 +36,7 @@ public class Application extends Controller {
 			if (user.getUsername().equals("admin"))
 				return ok(statistics.render());
 			else
-				return initializeBoard(user);
+				return ok(initial.render());
 		} else {
 			return gotoNewUser();
 		}
