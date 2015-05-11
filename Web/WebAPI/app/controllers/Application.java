@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.model.Question;
 import model.Game;
 import model.board.square.Square;
 import model.model.Player;
