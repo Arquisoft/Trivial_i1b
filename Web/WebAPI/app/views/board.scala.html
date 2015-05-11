@@ -1,5 +1,4 @@
-@(dieNumber: Integer, username : String, squares : List[String], position : String)
-
+@(dieNumber: Integer, player : model.model.Player, squares : List[String], message : String)
 
 <html>
 <head>
@@ -25,28 +24,33 @@ function getVal(id){
 </form>
 
 <div>
-<h1>Player @username</h1>
-<h1>Position @position</div>
-	
-<p id="movements"></p>
+<h1>Player @player.getUser().getUsername()</h1>
+<h1>Position @player.getPosition().toString()</h1>
+<h2>@message</h2>
+</div>
 
 <form name="posible" action="">
 @for(position <- squares){
-	<button id="@position" onClick="getVal(id)"> @position </button> <br>
+	<button id="@position" onClick="getVal(id)"> <h2>@position</h2> </button> <br>
 }
 </form>
 
-<div class="BUTTON" style="z_index: 1000;height: 75; width: 75;">
-	<button id="btQuestion">
-	Question</button>
-	</div>
+<div>
+<h2> Answered Categories</h2>
+	<h3> GEOGRAPHY @player.getWedges()(0)</h3>
+	<h3> ENTERTAINMENT @player.getWedges()(1)</h3>
+	<h3> HISTORY @player.getWedges()(2)</h3>
+	<h3> ART @player.getWedges()(3)</h3>
+	<h3> SCIENCE @player.getWedges()(4)</h3>
+	<h3> SPORT @player.getWedges()(5)</h3>
+</div>
 
-<form name="form" action="">
-    <div class="BUTTON" style="background-image:url('@routes.Assets.at("images/icono.jpg")') no-repeat center;width:3000px;left:-960px;background-repeat:no-repeat;height:1070px;">
+
+<div>
         
         <div class="BUTTON " style="z_index: 1000; top: 365px; height: 253; width: 293; position: absolute; left: 1320px; ">
             
-                <button id="0_0"  onClick="getVal(id)" style="background-color:33CC33; width: 100%; height:100%;" >
+                <button id="0_0" onClick="getVal(id)" style="background:url('@routes.Assets.at("images/icono.png")') no-repeat scroll center; width: 100%; height:100%;" >
 					0_0
                 </button>
             
@@ -62,7 +66,7 @@ function getVal(id){
         
         <div class="BUTTON"  style="z_index: auto; top: 115px; height: 53; width: 63; position: absolute; left: 1730px; ">
         
-                <button id="1_1" onClick="getVal(id)" disabled="getActive(id)" style="background-color:6699FF;width: 100%; height:100%;" >
+                <button id="1_1" onClick="getVal(id)" style="background-color:6699FF;width: 100%; height:100%;" >
 					1_1
 				</button>
             
@@ -606,29 +610,29 @@ function getVal(id){
         
         <div class="BUTTON"  style="z_index: auto; top: 820px; height: 63; width: 63; position: absolute; left: 965px; ">
             
-                <button id="0_22" onClick="getVal(id)"  style="background-color:6699FF;width: 100%; height:100%;" >   
-					0_22
+                <button id="0_29" onClick="getVal(id)"  style="background-color:6699FF;width: 100%; height:100%;" >   
+					0_29
 				</button>
             
         </div>
         
         <div class="BUTTON"  style="z_index: auto; top: 760px; height: 63; width: 63; position: absolute; left: 945px; ">
             
-                <button id="bid="0_23" onClick="getVal(id)"  style="background-color:FF3399;width: 100%; height:100%;" > 
-					0_23
+                <button id="bid="0_30" onClick="getVal(id)"  style="background-color:FF3399;width: 100%; height:100%;" > 
+					0_30
 				</button>
             
         </div>
         
         <div class="BUTTON"  style="z_index: auto; top: 690px; height: 73; width: 63; position: absolute; left: 920px; ">
             
-                <button id="0_24" onClick="getVal(id)"  style="background-color:FFFF00;width: 100%; height:100%;">     
-					0_24
+                <button id="0_31" onClick="getVal(id)"  style="background-color:FFFF00;width: 100%; height:100%;">     
+					0_31
 				</button>
             
         </div>
         
     </div>
-    </form>
+
 </body>
 </html>

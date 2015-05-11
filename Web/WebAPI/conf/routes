@@ -21,6 +21,8 @@ GET		/gotoStatistics				controllers.Application.gotoStatistics()
 
 GET		/answer:number				controllers.Application.checkAnswer(number : Integer)
 
+GET 	/gotoInitial				controllers.Application.initial()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /public/*file          		controllers.Assets.at(path="/public", file)

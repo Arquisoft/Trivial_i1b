@@ -70,19 +70,18 @@ public class Application extends Controller {
 
 	public static Result initializeBoard(User user) {
 		game.addPlayer(new Player(user, 6));
-		return ok(boardImage.render(0, game.getActivePlayer(), squares, ""));
+		return ok(board.render(0, game.getActivePlayer(), squares, ""));
 	}
 
 	public static Result board(String message) {
-		return ok(boardImage.render(0, game.getActivePlayer(),
-				squares, message));
+		return ok(board.render(0, game.getActivePlayer(), squares, message));
 	}
 
 	public static Result throwDie() {
 		int dieNumber = game.throwDie();
 		squares = getPosition(game.getBoard().move(game.getActivePlayer(),
 				dieNumber));
-		return ok(boardImage.render(dieNumber, game.getActivePlayer(), squares, ""));
+		return ok(board.render(dieNumber, game.getActivePlayer(), squares, ""));
 	}
 
 	private static List<String> getPosition(Square[] square) {
@@ -110,14 +109,19 @@ public class Application extends Controller {
 	}
 
 	public static Result checkAnswer(int i) {
-		if (game.getBoard()
+		Question question = game.getBoard()
 				.getQuestions()
 				.getQuestion(
 						game.getBoard()
 								.getSquare(game.getActivePlayer().getPosition())
-								.getCategories()).getPositionTrue() == i)
+								.getCategories());
+		if (question.getPositionTrue() == i) {
+			game.getActivePlayer().getWedges()[question.getCategory()
+			           						.getValue()] = true;
+			if (game.getActivePlayer().allQuestionsMatched())
+				return ok(win.render());
 			return board("Your answer was right");
-		else
-			return board("Your answer was wrong.\nTry again.");
+		} else
+			return board("Your answer was wrong. Try again.");
 	}
 }

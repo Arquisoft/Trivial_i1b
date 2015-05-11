@@ -1,0 +1,26 @@
+Merge branch 'web' of https://github.com/Arquisoft/Trivial_i1b into web
+
+Conflicts:
+	Web/WebAPI/app/controllers/Application.java
+	Web/WebAPI/app/views/questions.scala.html
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch web
+# Your branch and 'origin/web' have diverged,
+# and have 1 and 1 different commit each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   Web/WebAPI/app/controllers/Application.java
+#	modified:   Web/WebAPI/app/views/board.scala.html
+#	modified:   Web/WebAPI/app/views/questions.scala.html
+#
