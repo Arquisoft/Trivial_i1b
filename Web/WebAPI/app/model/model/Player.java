@@ -20,7 +20,7 @@ public class Player {
 
 	public Player(User user, int numberOfWedges) {
 		this.user = user;
-		this.position = new Position(0,9);//new Random().nextInt(42)+1);
+		this.position = new Position(0,new Random().nextInt(42)+1);
 		this.wedges = new boolean[numberOfWedges];
 	}
 
