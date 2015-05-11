@@ -1,4 +1,4 @@
-@(question : model.model.Question)
+@(question : String, answers: List[String])
 
 <html>
 <head>
@@ -13,8 +13,7 @@
             
                 <p  style="padding: 2px; width: 100%; height:100%;" >
                     
-                        
-Who discovered America?
+					@question
                     
                 </p>
             
@@ -22,9 +21,9 @@ Who discovered America?
         
         <div class="BUTTON " style="z_index: auto; top: 430px; height: 103; width: 373; position: absolute; left: 220px; ">
             
-                <button  style="width: 100%; height:100%;" >
+                <button  id='0' style="width: 100%; height:100%;" >
                     
-                        Mario Vaquerizo
+                        @answers.get(0)
                     
                 </button>
             
@@ -32,9 +31,9 @@ Who discovered America?
         
         <div class="BUTTON " style="z_index: auto; top: 535px; height: 103; width: 373; position: absolute; left: 220px; ">
             
-                <button  style="width: 100%; height:100%;" >
+                <button id='1' style="width: 100%; height:100%;" >
                     
-                        Mario Vaquerizo
+                        @answers.get(1)
                     
                 </button>
             
@@ -42,9 +41,9 @@ Who discovered America?
         
         <div class="BUTTON " style="z_index: 1000; top: 220px; height: 103; width: 373; position: absolute; left: 220px; ">
             
-                <button  style="width: 100%; height:100%;" >
+                <button id='2' style="width: 100%; height:100%;" >
                     
-                        Mario Vaquerizo
+                        @answers.get(2)
                     
                 </button>
             
@@ -52,9 +51,9 @@ Who discovered America?
         
         <div class="BUTTON " style="z_index: auto; top: 325px; height: 103; width: 373; position: absolute; left: 220px; ">
             
-                <button  style="width: 100%; height:100%;" >
+                <button id='3' style="width: 100%; height:100%;" >
                     
-                        Mario Vaquerizo
+                        @answers.get(3)
                     
                 </button>
             

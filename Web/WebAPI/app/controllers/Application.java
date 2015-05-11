@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.model.Question;
 import model.Game;
 import model.board.square.Square;
 import model.model.Player;
@@ -69,12 +70,12 @@ public class Application extends Controller {
 
 	public static Result initializeBoard(User user) {
 		game.addPlayer(new Player(user, 6));
-		return ok(boardImage.render(0, user.getUsername(), squares, game
+		return ok(board.render(0, user.getUsername(), squares, game
 				.getActivePlayer().getPosition().toString()));
 	}
 
 	public static Result board() {
-		return ok(boardImage.render(0, game.getActivePlayer().getUsername(),
+		return ok(board.render(0, game.getActivePlayer().getUsername(),
 				squares, game.getActivePlayer().getPosition().toString()));
 	}
 
@@ -88,7 +89,7 @@ public class Application extends Controller {
 		int dieNumber = game.throwDie();
 		squares = getPosition(game.getBoard().move(game.getActivePlayer(),
 				dieNumber));
-		return ok(boardImage.render(dieNumber, game.getActivePlayer()
+		return ok(board.render(dieNumber, game.getActivePlayer()
 				.getUsername(), squares, game.getActivePlayer().getPosition()
 				.toString()));
 	}
@@ -102,16 +103,11 @@ public class Application extends Controller {
 	}
 
 	public static Result showQuestion(String id) {
-		return ok(questions
-				.render(game
-						.getBoard()
-						.getQuestions()
-						.getQuestion(
-								game.getBoard()
-										.getSquare(
-												game.getActivePlayer()
-														.getPosition())
-										.getCategories())));
+		Question question=game.getBoard().getQuestions().getQuestion(
+								game.getBoard().getSquare(
+												game.getActivePlayer().getPosition()).getCategories());
+		return ok(questions.render(
+			question.getQuestion(), question.getAnswers()));
 	}
 
 	// public boolean isActive(String id) {

@@ -1,4 +1,5 @@
-@(dieNumber: Integer, username : String, position: String)
+@(dieNumber: Integer, username : String, squares : List[String], position : String)
+
 
 <html>
 <head>
@@ -10,30 +11,35 @@
 
 <script>
 function getVal(id){
-document.form.action = "b"+id;
-}
-
-function getActive(id){
-var me = new Packages.Application();
-return me.isActive(id);
- 
+	document.posible.action = "b"+id;
 }
 </script>
 
-<form action="die@username">
+<form name="dieForm" action="die">
 <div>
 <h1>Number @dieNumber</h1>
 </div>
-<div class="BUTTON" style="z_index: 1000;height: 100; width: 100;">
+<div class="BUTTON" style="z_index: 1000;height: 75; width: 75;">
 	<button id="btDie" style="background:url('@routes.Assets.at("images/die.png")') no-repeat center; background-size: cover; width: 100%; height:100%; border:none; " ></button>
 </div>
-<h1>Position @position</h1>
+</form>
 
 <div>
 <h1>Player @username</h1>
-</div>
+<h1>Position @position</div>
+	
+<p id="movements"></p>
 
+<form name="posible" action="">
+@for(position <- squares){
+	<button id="@position" onClick="getVal(id)"> @position </button> <br>
+}
 </form>
+
+<div class="BUTTON" style="z_index: 1000;height: 75; width: 75;">
+	<button id="btQuestion">
+	Question</button>
+	</div>
 
 <form name="form" action="">
     <div class="BUTTON" style="background-image:url('@routes.Assets.at("images/icono.jpg")') no-repeat center;width:3000px;left:-960px;background-repeat:no-repeat;height:1070px;">
