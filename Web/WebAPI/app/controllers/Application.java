@@ -69,28 +69,19 @@ public class Application extends Controller {
 
 	public static Result initializeBoard(User user) {
 		game.addPlayer(new Player(user, 6));
-		return ok(boardImage.render(0, user.getUsername(), squares, game
-				.getActivePlayer().getPosition().toString()));
+		return ok(boardImage.render(0, game.getActivePlayer(), squares, ""));
 	}
 
-	public static Result board() {
-		return ok(boardImage.render(0, game.getActivePlayer().getUsername(),
-				squares, game.getActivePlayer().getPosition().toString()));
-	}
-
-	public static Result move(String id) {
-		game.changePositionPlayer(game.getActivePlayer(),
-				id.substring(0, id.length()));
-		return board();
+	public static Result board(String message) {
+		return ok(boardImage.render(0, game.getActivePlayer(),
+				squares, message));
 	}
 
 	public static Result throwDie() {
 		int dieNumber = game.throwDie();
 		squares = getPosition(game.getBoard().move(game.getActivePlayer(),
 				dieNumber));
-		return ok(boardImage.render(dieNumber, game.getActivePlayer()
-				.getUsername(), squares, game.getActivePlayer().getPosition()
-				.toString()));
+		return ok(boardImage.render(dieNumber, game.getActivePlayer(), squares, ""));
 	}
 
 	private static List<String> getPosition(Square[] square) {
@@ -102,6 +93,9 @@ public class Application extends Controller {
 	}
 
 	public static Result showQuestion(String id) {
+		game.changePositionPlayer(game.getActivePlayer(),
+				id.substring(0, id.length()));
+		squares = new ArrayList<String>();
 		return ok(questions
 				.render(game
 						.getBoard()
@@ -114,11 +108,15 @@ public class Application extends Controller {
 										.getCategories())));
 	}
 
-	// public boolean isActive(String id) {
-	// for (Square s : squares) {
-	// if (s.toString().equals(id))
-	// return true;
-	// }
-	// return false;
-	// }
+	public static Result checkAnswer(int i) {
+		if (game.getBoard()
+				.getQuestions()
+				.getQuestion(
+						game.getBoard()
+								.getSquare(game.getActivePlayer().getPosition())
+								.getCategories()).getPositionTrue() == i)
+			return board("Your answer was right");
+		else
+			return board("Your answer was wrong.\nTry again.");
+	}
 }

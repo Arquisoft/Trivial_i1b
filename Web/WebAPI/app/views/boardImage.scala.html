@@ -1,4 +1,4 @@
-@(dieNumber: Integer, username : String, squares : List[String], position : String)
+@(dieNumber: Integer, player : model.model.Player, squares : List[String], message : String)
 
 <html>
 <head>
@@ -24,8 +24,10 @@ function getVal(id){
 </form>
 
 <div>
-<h1>Player @username</h1>
-<h1>Position @position</div>
+<h1>Player @player.getUser().getUsername()</h1>
+<h1>Position @player.getPosition().toString()</h1>
+<h2>@message</h2>
+</div>
 	
 <p id="movements"></p>
 
@@ -34,18 +36,6 @@ function getVal(id){
 	<button id="@position" onClick="getVal(id)"> @position </button> <br>
 }
 </form>
-
-<div class="BUTTON" style="z_index: 1000;height: 75; width: 75;">
-	<button id="btQuestion">
-	Question</button>
-	</div>
-
-
-
-
-
-
-
 
 <div class="IMAGE " style="z_index: 997; top: 10px; height: 83; width: 658; position: absolute; left: 0px; ">
             
