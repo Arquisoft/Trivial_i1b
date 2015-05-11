@@ -332,3 +332,4 @@ elif [[ -f "$java_opts_config_home" ]]; then
 fi
 
 run "$@"
+pause

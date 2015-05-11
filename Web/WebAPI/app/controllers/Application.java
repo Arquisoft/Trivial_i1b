@@ -13,7 +13,7 @@ import views.html.initial;
 import views.html.login;
 import views.html.newUser;
 import views.html.statistics;
-import views.html.boardImage;
+import views.html.board;
 
 public class Application extends Controller {
 
@@ -72,11 +72,15 @@ public class Application extends Controller {
 
 	public static Result initializeBoard(User user) {
 		game.addPlayer(new Player(user, 6));
-		return ok(boardImage.render(0,user.getUsername()));
+		Position pos=game.getActivePlayer().getPosition();
+		String position=pos.getWalk()+"_"+pos.getIndex();
+		return ok(board.render(0,user.getUsername(),position));
 	}
 
 	public static Result board(String username) {
-		return ok(boardImage.render(0, username));
+		Position pos=game.getActivePlayer().getPosition();
+		String position=pos.getWalk()+"_"+pos.getIndex();
+		return ok(board.render(0, username,position));
 	}
 
 	public static Result move(String id) {
@@ -88,7 +92,10 @@ public class Application extends Controller {
 	public static Result throwDie(String username) {
 		int dieNumber = game.throwDie();
 		squares = game.getBoard().move(game.getActivePlayer(), dieNumber);
-		return ok(boardImage.render(dieNumber,username));
+		game.getActivePlayer().setPosition(squares[0].getPosition());
+		Position pos=game.getActivePlayer().getPosition();
+		String position=pos.getWalk()+"_"+pos.getIndex();
+		return ok(board.render(dieNumber,username,position));
 	}
 
 	public boolean isActive(String id) {
