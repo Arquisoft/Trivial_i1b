@@ -79,7 +79,7 @@ public class Board {
 							.add(((CompositeSquare) board[player.getPosition()
 									.getIndex() + i]).getArrayWalk()[movements
 									- i]);
-				}
+					}
 			}
 			posibleMovements.add(board[newExternalPosition(player.getPosition() ,movements)]);
 			posibleMovements.add(board[newExternalPosition(player.getPosition(), - movements)]);
