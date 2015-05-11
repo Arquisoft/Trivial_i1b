@@ -1,26 +1,24 @@
 package controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.Game;
-import model.board.square.SimpleSquare;
 import model.board.square.Square;
 import model.model.Player;
-import model.model.Position;
 import model.model.User;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.board;
 import views.html.initial;
 import views.html.login;
 import views.html.newUser;
 import views.html.statistics;
-import views.html.boardImage;
+import views.html.*;
 
 public class Application extends Controller {
 
 	private static Game game = new Game();
-	private static Square[] squares = {
-			new SimpleSquare(null, new Position(1, 3)),
-			new SimpleSquare(null, new Position(1, 1)) };
+	private static List<String> squares = new ArrayList<String>();
 
 	public static Result initial() {
 		return ok(initial.render());
@@ -43,12 +41,11 @@ public class Application extends Controller {
 	}
 
 	public static Result gotoLogin() {
-		return ok(login.render(null, null));// No information have to be already
-											// written
+		return ok(login.render());
 	}
 
 	public static Result gotoNewUser() {
-		return ok(newUser.render(null, null, null));
+		return ok(newUser.render());
 	}
 
 	public static Result login(String url) {
@@ -72,30 +69,56 @@ public class Application extends Controller {
 
 	public static Result initializeBoard(User user) {
 		game.addPlayer(new Player(user, 6));
-		return ok(boardImage.render(0,user.getUsername()));
+		return ok(boardImage.render(0, user.getUsername(), squares, game
+				.getActivePlayer().getPosition().toString()));
 	}
 
-	public static Result board(String username) {
-		return ok(boardImage.render(0, username));
+	public static Result board() {
+		return ok(boardImage.render(0, game.getActivePlayer().getUsername(),
+				squares, game.getActivePlayer().getPosition().toString()));
 	}
 
 	public static Result move(String id) {
 		game.changePositionPlayer(game.getActivePlayer(),
 				id.substring(0, id.length()));
-		return board(game.getActivePlayer().getUsername());
+		return board();
 	}
 
-	public static Result throwDie(String username) {
+	public static Result throwDie() {
 		int dieNumber = game.throwDie();
-		squares = game.getBoard().move(game.getActivePlayer(), dieNumber);
-		return ok(boardImage.render(dieNumber,username));
+		squares = getPosition(game.getBoard().move(game.getActivePlayer(),
+				dieNumber));
+		return ok(boardImage.render(dieNumber, game.getActivePlayer()
+				.getUsername(), squares, game.getActivePlayer().getPosition()
+				.toString()));
 	}
 
-	public boolean isActive(String id) {
-		for (Square s : squares) {
-			if (s.toString().equals(id))
-				return true;
+	private static List<String> getPosition(Square[] square) {
+		List<String> list = new ArrayList<String>();
+		for (Square squ : square) {
+			list.add(squ.getPosition().toString());
 		}
-		return false;
+		return list;
 	}
+
+	public static Result showQuestion(String id) {
+		return ok(questions
+				.render(game
+						.getBoard()
+						.getQuestions()
+						.getQuestion(
+								game.getBoard()
+										.getSquare(
+												game.getActivePlayer()
+														.getPosition())
+										.getCategories())));
+	}
+
+	// public boolean isActive(String id) {
+	// for (Square s : squares) {
+	// if (s.toString().equals(id))
+	// return true;
+	// }
+	// return false;
+	// }
 }
