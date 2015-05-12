@@ -64,7 +64,7 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 		try {
 			BasicDBObject query = new BasicDBObject().append("username",
 					user.getUsername());
-			DBObject document = new BasicDBObject().append("$inc",
+			DBObject document = new BasicDBObject().append("$set",
 					createDocument(user));
 			table.update(query, document);
 			return true;
@@ -76,7 +76,6 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 
 	private DBObject createDocument(User user) {
 		DBObject doc = new BasicDBObject();
-		doc.put("username", user.getUsername());
 		doc.put("timesPlayed", user.getStatistics().getTimesPlayed());
 		doc.put("questionsAnswered", user.getStatistics()
 				.getQuestionsAnswered());
