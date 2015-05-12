@@ -108,16 +108,15 @@ public class Application extends Controller {
 										.getCategories())));
 	}
 
-	public static Result checkAnswer(int i) {
+	public static Result checkAnswer(int answer) {
 		Question question = game.getBoard()
 				.getQuestions()
 				.getQuestion(
 						game.getBoard()
 								.getSquare(game.getActivePlayer().getPosition())
 								.getCategories());
-		if (question.getPositionTrue() == i) {
-			game.getActivePlayer().getWedges()[question.getCategory()
-			           						.getValue()] = true;
+		if (game.trueAnswer(question, answer)) {
+			game.getActivePlayer().getWedges()[question.getCategory().getValue()] = true;
 			if (game.getActivePlayer().allQuestionsMatched())
 				return ok(win.render());
 			return board("Your answer was right");
