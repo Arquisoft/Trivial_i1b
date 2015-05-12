@@ -8,7 +8,6 @@ import model.Game;
 import model.board.square.Square;
 import model.model.Player;
 import model.model.User;
-import model.DB.MongoStatisticsManager;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.initial;
@@ -19,7 +18,6 @@ import views.html.*;
 
 public class Application extends Controller {
 
-	private static MongoStatisticsManager mongo= new MongoStatisticsManager();
 	private static Game game = new Game();
 	private static List<String> squares = new ArrayList<String>();
 
@@ -111,41 +109,30 @@ public class Application extends Controller {
 	}
 
 	public static Result checkAnswer(int answer) {
+		User user=game.getActivePlayer().getUser();
+		user.getStatistics().setQuestionsAnswered(
+			user.getStatistics().getQuestionsAnswered()+1);
 		Question question = game.getBoard()
 				.getQuestions()
 				.getQuestion(
 						game.getBoard()
 								.getSquare(game.getActivePlayer().getPosition())
 								.getCategories());
-
 		if (game.trueAnswer(question, answer)) {
+			user.getStatistics().setQuestionsMatched(
+				user.getStatistics().getQuestionsMatched()+1);
 			game.getActivePlayer().getWedges()[question.getCategory().getValue()] = true;
-			if (game.getActivePlayer().allQuestionsMatched())
+			if (game.getActivePlayer().allQuestionsMatched()){
+				user.getStatistics().setTimesPlayed(
+					user.getStatistics().getTimesPlayed()+1);
+				game.updateStatistics();
 				return ok(win.render());
 			}
-			endGame(game.getActivePlayer());
+			game.updateStatistics();
 			return board("Your answer was right");
-		} else
-			game.getActivePlayer().getUser().getStatistics().
-				setQuestionsAnswered(
-					game.getActivePlayer().getUser().
-						getStatistics().getQuestionsAnswered()+1);
+		} else{
+			game.updateStatistics();
 			return board("Your answer was wrong. Try again.");
-	}
-	
-	private static void updateData(Player player){
-		User user=player.getUser();
-		user.getStatistics().setQuestionsMatched(
-				user.getStatistics().getQuestionsMatched()+1);
-		user.getStatistics().setQuestionsAnswered(
-				user.getStatistics().getQuestionsAnswered()+1);
-		mongo.updateStatistics(user);
-	}
-	private static void endGame(Player player){
-		updateData(player);
-		User user=player.getUser();
-		user.getStatistics().setTimesPlayed(
-				user.getStatistics().getTimesPlayed()+1);
-		mongo.updateStatistics(user);
+		}
 	}
 }
