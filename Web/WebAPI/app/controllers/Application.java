@@ -33,7 +33,7 @@ public class Application extends Controller {
 		User user = game.register(username, email, password);
 		if (user != null) {
 			if (user.getUsername().equals("admin"))
-				return ok(statistics.render());
+				return ok(statistics.render(game.getUsers()));
 			else
 				return ok(initial.render());
 		} else {
@@ -56,7 +56,7 @@ public class Application extends Controller {
 		User user = game.login(username, password);
 		if (user != null) {
 			if (user.getUsername().equals("admin"))
-				return ok(statistics.render());
+				return ok(statistics.render(game.getUsers()));
 			else
 				return initializeBoard(user);
 		} else {
@@ -65,7 +65,7 @@ public class Application extends Controller {
 	}
 
 	public static Result gotoStatistics() {
-		return ok(statistics.render());
+		return ok(statistics.render(game.getUsers()));
 	}
 
 	public static Result initializeBoard(User user) {

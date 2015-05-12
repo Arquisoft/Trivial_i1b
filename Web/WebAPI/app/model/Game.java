@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.DB.MongoQuestionManager;
+import model.DB.MongoStatisticsManager;
 import model.DB.MongoUserManager;
 import model.board.Board;
 import model.model.Die;
@@ -80,13 +81,13 @@ public class Game {
 		String[] position = string.split("_");
 		player.getPosition().setWalk(Integer.valueOf(position[0]));
 		player.getPosition().setIndex(Integer.valueOf(position[1]));
-//		for (Player p : players) {
-//			if (player.getUsername().equals(p.getUsername()))
-//				p.setPosition(player.getPosition());
-//		}
 	}
 	
 	public int throwDie() {
 		return Die.drop();
+	}
+	
+	public List<User> getUsers(){
+		return new MongoUserManager().getAllUsers();
 	}
 }
