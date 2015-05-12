@@ -1,3 +1,5 @@
+@(users: List[model.model.User])
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,24 +23,15 @@
 				<td width='150'><strong> Questions Answered</strong></td>
 				<td width='150'><strong> Questions Correct</strong></td>
 			</tr>
+			
+			@for(user <- users){
 			<tr height='35'>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>@user.getUsername()</td>
+				<td>@user.getStatistics().getTimesPlayed()</td>
+				<td>@user.getStatistics().getQuestionsAnswered()</td>
+				<td>@user.getStatistics().getQuestionsMatched()</td>
 			</tr>
-			<tr height='35'>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr height='35'>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			}
 		</table>
 		
 		</div>
