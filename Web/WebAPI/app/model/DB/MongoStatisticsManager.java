@@ -1,5 +1,8 @@
 package model.DB;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.model.Statistics;
 import model.model.User;
 
@@ -37,6 +40,19 @@ public class MongoStatisticsManager extends AbstractMongoManager {
 			DBCursor cursor = table.find(query);
 			while (cursor.hasNext())
 				stat = createStats(cursor.next());
+			return stat;
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+			return null;
+		}
+	}
+	
+	public List<Statistics> getAllStatistics() {
+		try {
+			List<Statistics> stat = new ArrayList<Statistics>();
+			DBCursor cursor = table.find();
+			while (cursor.hasNext())
+				stat.add(createStats(cursor.next()));
 			return stat;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
