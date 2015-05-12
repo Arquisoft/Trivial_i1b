@@ -72,8 +72,9 @@ public class Board {
 	public Square[] move(Player player, int movements) {
 		List<Square> posibleMovements = new ArrayList<Square>();
 		if (player.getPosition().getWalk() == 0) {
-			for (int i = 0; i < movements; i++) {
-				if (board[player.getPosition().getIndex() + i] instanceof CompositeSquare
+			for (int i = 1; i <= movements; i++) {
+				int pos=newExternalPosition(player.getPosition() ,i);
+				if (board[pos] instanceof CompositeSquare
 						&& player.allQuestionsMatched()) {
 					posibleMovements
 							.add(((CompositeSquare) board[player.getPosition()
@@ -119,9 +120,9 @@ public class Board {
 	private int newExternalPosition(Position position, int movement) {
 		int newPosition = position.getIndex() + movement;
 		if ((position.getIndex() + movement) > DEFAULT_SIZE)
-			newPosition = DEFAULT_SIZE - (position.getIndex() + movement);
+			newPosition = movement-(DEFAULT_SIZE - position.getIndex());
 		if((position.getIndex() + movement)<= 0)
-			newPosition = DEFAULT_SIZE - position.getIndex();
+			newPosition = DEFAULT_SIZE + (movement+position.getIndex());
 		return newPosition;
 	}
 
