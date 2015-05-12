@@ -90,4 +90,8 @@ public class Game {
 	public List<User> getUsers(){
 		return new MongoUserManager().getAllUsers();
 	}
+
+	public void updateStatistics(){
+		new MongoStatisticsManager().updateStatistics(activePlayer.getUser());
+	}
 }

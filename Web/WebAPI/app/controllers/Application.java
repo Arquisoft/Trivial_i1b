@@ -109,6 +109,9 @@ public class Application extends Controller {
 	}
 
 	public static Result checkAnswer(int answer) {
+		User user=game.getActivePlayer().getUser();
+		user.getStatistics().setQuestionsAnswered(
+			user.getStatistics().getQuestionsAnswered()+1);
 		Question question = game.getBoard()
 				.getQuestions()
 				.getQuestion(
@@ -116,11 +119,20 @@ public class Application extends Controller {
 								.getSquare(game.getActivePlayer().getPosition())
 								.getCategories());
 		if (game.trueAnswer(question, answer)) {
+			user.getStatistics().setQuestionsMatched(
+				user.getStatistics().getQuestionsMatched()+1);
 			game.getActivePlayer().getWedges()[question.getCategory().getValue()] = true;
-			if (game.getActivePlayer().allQuestionsMatched())
+			if (game.getActivePlayer().allQuestionsMatched()){
+				user.getStatistics().setTimesPlayed(
+					user.getStatistics().getTimesPlayed()+1);
+				game.updateStatistics();
 				return ok(win.render());
+			}
+			game.updateStatistics();
 			return board("Your answer was right");
-		} else
+		} else{
+			game.updateStatistics();
 			return board("Your answer was wrong. Try again.");
+		}
 	}
 }
